@@ -23,9 +23,13 @@ For detailed info, please, check the [Test plan document.](https://docs.google.c
 ## Progress history:
 **21 Feb 2022**
 
-Test plan is created.
+Test plan has been created.
 Test Plan location: [Test plan by a link with a reader access.](https://docs.google.com/document/d/1l68Rcsw-6cTbhl-qOcNNxPaNueLskr_ZQUb1wRXZaB8/edit?usp=sharing)
 
 **22 Feb 2022**
 
-Test suite list started. [Test suite list progess allowed by a link with a reader access.](https://docs.google.com/spreadsheets/d/1gaVGRTgIrKwP1MWMsqEYsPVpk4Y6xZjXLurVHDh1ZCc/edit?usp=sharing)
+Test suite list has been started. [Test suite list progess is allowing by a link with a reader access.](https://docs.google.com/spreadsheets/d/1gaVGRTgIrKwP1MWMsqEYsPVpk4Y6xZjXLurVHDh1ZCc/edit?usp=sharing)
+
+**27 Feb 2022**
+
+Test suite list has been finished at the point: all for free functions has been tested. [Test suite list progess is allowing by a link with a reader access.](https://docs.google.com/spreadsheets/d/1gaVGRTgIrKwP1MWMsqEYsPVpk4Y6xZjXLurVHDh1ZCc/edit?usp=sharing)
