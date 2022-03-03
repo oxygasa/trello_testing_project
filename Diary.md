@@ -38,6 +38,7 @@ Test suite list has been finished at the point: all for free functions has been 
 
 Bug (issue) report list has been started. [All issues are located by the link.](https://docs.google.com/document/d/1BAZBrh_fKAvKcIpSMAeZU9E4eP0P4QHBsINjis0egMA/edit?usp=sharing)
 
+
 **04 Mar 2022**
 * Automation scripting is started.
 * Framework and project structure creation has been started. 
