@@ -33,3 +33,12 @@ Test suite list has been started. [Test suite list progess is allowing by a link
 **27 Feb 2022**
 
 Test suite list has been finished at the point: all for free functions has been tested. [Test suite list progess is allowing by a link with a reader access.](https://docs.google.com/spreadsheets/d/1gaVGRTgIrKwP1MWMsqEYsPVpk4Y6xZjXLurVHDh1ZCc/edit?usp=sharing)
+
+**03 Mar 2022**
+
+Bug (issue) report list has been started. [All issues are located by the link.](https://docs.google.com/document/d/1BAZBrh_fKAvKcIpSMAeZU9E4eP0P4QHBsINjis0egMA/edit?usp=sharing)
+
+**04 Mar 2022**
+* Automation scripting is started.
+* Framework and project structure creation has been started. 
+* Packages, classes, methods with empty tests filling are created according to the stucture of the [Test suite list.](https://docs.google.com/spreadsheets/d/1gaVGRTgIrKwP1MWMsqEYsPVpk4Y6xZjXLurVHDh1ZCc/edit?usp=sharing)
