@@ -17,10 +17,10 @@ import static commons.Config.CLEAR_COOKIES;
 import static commons.Config.MAKE_SCREENSHOT_FOR_ALLURE;
 import static commons.Config.HOLD_BROWSER_OPEN;
 public class BaseTest extends BasePage {
-    WebDriver driver;
+   WebDriver driver;
 
     @BeforeTest
-    public void startBrowser() throws IOException
+    public WebDriver startBrowser() throws IOException
     {
         driver = CommonActions.driver;
         File buildFolder = new File("./DimitriSamosiuk/build/");
@@ -29,6 +29,7 @@ public class BaseTest extends BasePage {
             FileUtils.deleteDirectory(new File(String.valueOf(buildFolder)));
             FileUtils.deleteDirectory(new File(String.valueOf(allureResultFolder)));
         }
+        return driver;
     }
 
     @AfterSuite

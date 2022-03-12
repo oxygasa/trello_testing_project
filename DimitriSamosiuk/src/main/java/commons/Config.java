@@ -1,16 +1,14 @@
 package commons;
-
 public class Config {
-
     /**
      * Specify the browser name and operating system for tests:
      * CHROME_WINDOWS
      * FIREFOX_WINDOWS
-     * INTERNET_EXPLORER_WINDOWS
      **/
     public static final String PLATFORM_AND_BROWSER = "CHROME_WINDOWS";
-    /** Clear all cookies and cache after each interation.*/
-    public static final Boolean CLEAR_COOKIES = true;
+
+    /** Clear all cookies and cache after each interaction.*/
+    public static final Boolean CLEAR_COOKIES = false;
     /** To keep browser open after all tests.*/
     public static final Boolean HOLD_BROWSER_OPEN = false;
     /**

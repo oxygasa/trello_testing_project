@@ -1,12 +1,18 @@
 package workspaces;
 
+import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
+import pages.register.RegistrationPage;
+
+import static commons.CommonActions.driver;
 
 public class WorkspacePageTest {
 
     //TC ID TRE010 Workspace page: change the information about.
     @Test
-    public static void changeInformationAboutWorkspaceTest(){}
+    public static void changeInformationAboutWorkspaceTest(){
+
+    }
 
     //TC ID TRE011 Workspace page: Workspace page: Workspace table Premium require
     @Test
