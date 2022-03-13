@@ -76,7 +76,7 @@ public class CommonActions {
      * Method for Log in before any test within default credentials.
      * Credentials are located in LoginViaTrelloPage class.
      **/
-    public static void loginIntoTrelloWithinDefaultCredentials() throws InterruptedException {
+    public static void loginIntoTrelloWithinDefaultPreconditionCredentials() throws InterruptedException {
         PageFactory.initElements(driver, LoginViaTrelloPage.class);
         driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
         LoginViaTrelloPage.username.sendKeys(LoginViaTrelloPage.LOGIN_CREDENTIAL);

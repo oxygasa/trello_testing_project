@@ -81,7 +81,7 @@ public class LoginThroughTrelloTest extends BaseTest {
          * 1. Open https://trello.com/login
          * 2. Type a [Login credential] and a [Password credential].
          **/
-        CommonActions.loginIntoTrelloWithinDefaultCredentials();
+        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         /**
          * Expected result
          * 2. Access granted. The Boards page is opened. The Username is according to [Login credential]
