@@ -12,16 +12,13 @@ public class RegistrationPage extends BasePage {
     public static final String TRELLO_WELCOME_PAGE_URL = "https://trello.com";
     public static final String TRELLO_REGISTER_PAGE_URL = "https://trello.com/signup";
     public static final String CREATE_NEW_TEAM_PAGE_URL = "https://trello.com/create-first-team";
-    public static final String EMAIL_REGISTERED_EARLIER = "test@test.com";
+    public static final String EMAIL_REGISTERED_EARLIER = "trellou0@gmail.com";
     @FindBy(xpath = "//input[@name='email']")
     public static WebElement emailFromWelcomePage;
     @FindBy(xpath = "//button[@data-analytics-button='greenSignupHeroButton']")
     public static WebElement signUpFromWelcomePageButton;
     @FindBy(id = "email")
     public static WebElement emailFromRegisterPage;
-    @FindBy(id = "signup-submit")
-    public static WebElement continueButtonFromRegisterPage;
-    @FindBy (xpath = "//a[@href='/login']")
-    public static WebElement loginLink;
-
+    @FindBy(xpath = "//iframe[@title='reCAPTCHA']")
+    public static WebElement reCaptchaIframe;
 }

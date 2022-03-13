@@ -34,24 +34,23 @@ public class BaseTest extends BasePage {
 
     @AfterSuite
     public void closeBrowser() {
-        if (CLEAR_COOKIES) {
-            driver.manage().deleteAllCookies();
             if (!HOLD_BROWSER_OPEN) {
+                if (CLEAR_COOKIES) {
+                    driver.manage().deleteAllCookies();
+                }
                 driver.quit();
             }
-        }
     }
 
     @AfterMethod
     public void takingScreenshotsAfterEachTest() throws IOException {
-        if (MAKE_SCREENSHOT_FOR_ALLURE) {
+        if (MAKE_SCREENSHOT_FOR_ALLURE && !(driver ==null)) {
             Date date = new Date();
             String currentTime = String.valueOf(date.getTime());
             TakesScreenshot ts = (TakesScreenshot) driver;
             File bufferedScreenshotFile = ts.getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(bufferedScreenshotFile, new File(new StringBuilder().
                     append("./DimitriSamosiuk/build/screenshots/scr").append(currentTime).append(".png").toString()));
-        makeAttachScreenshotToAllure(ts);
         }
     }
     @Attachment

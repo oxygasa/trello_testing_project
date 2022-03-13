@@ -34,8 +34,11 @@ public class CommonActions {
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
     }
 
+    /**
+     * New tab opening within Url typing
+     **/
     public static void openUrlInNewBrowserTab(String Url) throws InterruptedException {
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         String window1 = driver.getWindowHandle();
         js.executeScript("window.open()");
@@ -52,7 +55,27 @@ public class CommonActions {
         driver.switchTo().window(window2);
         driver.get(Url);
     }
+    public static void closePreviousTab() throws InterruptedException{
+        Thread.sleep(2000);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        String window1 = driver.getWindowHandle();
+        Set<String> currentWindows = driver.getWindowHandles();
+        String window2 = null;
+        for (String window : currentWindows) {
+            if (!window.equals(window1)) {
+                window2 = window;
+                break;
+            }
+        }
+        ;
+        driver.switchTo().window(window2);
+        driver.close();
+    }
 
+    /**
+     * Method for Log in before any test within default credentials.
+     * Credentials are located in LoginViaTrelloPage class.
+     **/
     public static void loginIntoTrelloWithinDefaultCredentials() throws InterruptedException {
         PageFactory.initElements(driver, LoginViaTrelloPage.class);
         driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);

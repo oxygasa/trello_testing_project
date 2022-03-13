@@ -4,7 +4,7 @@
 * Application location:  [Trello for desktop web-browsers](https://trello.com)
 
 * Environment: Windows 10, Chrome last.
-* Test type priority: Integration tests are priorytised.
+* Test type priority: Integration tests are prioritised.
 
 ## Tools quick overview
 * Testing documentation: Git Markdown files (.md), Google Drive Docs (.gdoc)
@@ -15,10 +15,11 @@
 For detailed info, please, check the [Test plan document.](https://docs.google.com/document/d/1l68Rcsw-6cTbhl-qOcNNxPaNueLskr_ZQUb1wRXZaB8/edit?usp=sharing)
 
 ## Goal checklist
-1. [DONE] Create a Test Plan
-2. Make a Test Desing by creating Test Suite Lists.
-3. Make an Autotesting scenarios and code it.
-4. Connect to CI/CD system.
+1. [DONE] Create a Test Plan 
+2. [DONE] Make a Test Design by creating Test Suite Lists.
+3. [DONE] Do the defect reports during testing.
+4. [IN PROGRESS ... ] Make an Automation testing scenarios and code it.
+5. [... PENDING] Connect to CI/CD system.
 
 ## Progress history:
 **21 Feb 2022 - Testing job** 
@@ -86,7 +87,7 @@ Shift 11 a.m. - 11 p.m.
 * Automation tests are observed by QA Team Lead.
 
 Questions:
-1. Recaptcha on reg.
+1. Recaptcha on reg.;
 2. ChromeOptions driver(options) asking for code - regular browser local storage sharing within the web driver.  
 
 Ideas what to do:

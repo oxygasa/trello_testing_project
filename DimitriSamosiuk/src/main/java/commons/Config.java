@@ -10,7 +10,7 @@ public class Config {
     /** Clear all cookies and cache after each interaction.*/
     public static final Boolean CLEAR_COOKIES = false;
     /** To keep browser open after all tests.*/
-    public static final Boolean HOLD_BROWSER_OPEN = false;
+    public static final Boolean HOLD_BROWSER_OPEN = true;
     /**
      * To make a screenshot after each test.
      * Screenshots are located at DimitriQA/build/screenshots
