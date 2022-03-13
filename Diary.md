@@ -73,10 +73,9 @@ Shift 11 a.m. - 11 p.m.
 **11 Mar 2022 - 13 Mar 2022 - Testing job**
 * Employee's English assessment has been completed.
 * Automation scripting is started.
-* Packages, classes, methods with empty tests filling are created according to the structure of the 
-[Test suite list.](https://docs.google.com/spreadsheets/d/1gaVGRTgIrKwP1MWMsqEYsPVpk4Y6xZjXLurVHDh1ZCc/edit?usp=sharing)
-* Register (Sign up) functionality is covered by 60% automated test cases in case of blocker: Google Recaptcha.
-* Login (Sign in) method is implemented and don't call recaptcha if credentials are correct.
+* Packages, classes, methods with empty tests filling are created.
+* All Blockers notations about Registration, Sign In and Dropdown menues (React-select hidden html) are located in the Test Suite Lists.
+* Test cases have been automatised (TC ID TRE001 - TRE 015)
 
 **14 Mar - 15 Mar 2022 - External job**
 
@@ -84,12 +83,12 @@ Shift 11 a.m. - 11 p.m.
 
 **16 Mar 2022 - Testing job**
 
-* Automation tests are observed by QA Team Lead.
-
 Questions:
-1. Recaptcha on reg.;
-2. ChromeOptions driver(options) asking for code - regular browser local storage sharing within the web driver.  
+1. How to make already logged in Chrome browser via Google acc? Which filepath you used? [ChromeOptions] (https://stackoverflow.com/questions/31062789/how-to-load-default-profile-in-chrome-using-python-selenium-webdriver/31063104#31063104)
+2. Drop down menues in Trello. How to find via xpath the hidden HTML (React-select hidden html)?
+3. Ideas about Explicity waits for AJAX? Is it prohibited to use Thread.sleep for AJAX? I'd want to see your examples of Explicity waits.
+4. Comments in the code, is this ok for the clean code rules?
 
-Ideas what to do:
+Ideas from the mentor what to do:
 
 -----------
