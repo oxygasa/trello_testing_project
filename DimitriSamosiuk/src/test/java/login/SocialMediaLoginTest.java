@@ -7,14 +7,13 @@ import pages.login.LoginViaApplePage;
 import pages.login.LoginViaGooglePage;
 import pages.login.LoginViaMicrosoftPage;
 import pages.login.LoginViaTrelloPage;
-
 import static commons.CommonActions.driver;
 
 public class SocialMediaLoginTest {
 
     //TC ID TRE005 Social media login. Google.
     @Test
-    public static void socialMediaLoginGoogleTest(){
+    public static void socialMediaLoginGoogleTest() {
         /**
          * Steps to Reproduce
          * 1. Open https://trello.com/login
@@ -60,13 +59,13 @@ public class SocialMediaLoginTest {
          * Expected result
          * 3. Access granted. The Boards page is opened. The Username is according to [Login credential]
          **/
-        Assert.assertEquals(LoginViaTrelloPage.avatarEmail.getText(),LoginViaMicrosoftPage.LOGIN_CREDENTIAL);
+        Assert.assertEquals(LoginViaTrelloPage.avatarEmail.getText(), LoginViaMicrosoftPage.LOGIN_CREDENTIAL);
 
     }
 
     //TC ID TRE007 Social media login. Apple.
     @Test
-    public static void socialMediaLoginAppleTest(){
+    public static void socialMediaLoginAppleTest() {
         /**
          * Steps to Reproduce
          * 1. Open https://trello.com/login

@@ -7,13 +7,14 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import pages.login.LoginViaTrelloPage;
-
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
 import static commons.Config.PLATFORM_AND_BROWSER;
 
 public class CommonActions {
     public static WebDriver driver;
+
     /**
      * This is a browser setup methods.
      * Choose your properties only via file "src/main/java/commons/Config"
@@ -22,10 +23,10 @@ public class CommonActions {
     static {
         switch (PLATFORM_AND_BROWSER) {
             case "CHROME_WINDOWS":
-                  driver = new ChromeDriver();
+                driver = new ChromeDriver();
                 break;
             case "FIREFOX_WINDOWS":
-                  driver = new FirefoxDriver();
+                driver = new FirefoxDriver();
                 break;
             default:
                 Assert.fail("Incorrect browser name. Choose name of browser in src/main/java/commons/Config Browser name for now is: " + PLATFORM_AND_BROWSER);
@@ -34,9 +35,8 @@ public class CommonActions {
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
     }
 
-    /**
-     * New tab opening within Url typing
-     **/
+    /*** New tab opening within Url typing **/
+
     public static void openUrlInNewBrowserTab(String Url) throws InterruptedException {
         Thread.sleep(2000);
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -55,7 +55,26 @@ public class CommonActions {
         driver.switchTo().window(window2);
         driver.get(Url);
     }
-    public static void closePreviousTab() throws InterruptedException{
+
+    /*** Previous tab choosing without closing **/
+    public static void getBackToThePreviousTab() throws InterruptedException {
+        Thread.sleep(2000);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        String window1 = driver.getWindowHandle();
+        Set<String> currentWindows = driver.getWindowHandles();
+        String window2 = null;
+        for (String window : currentWindows) {
+            if (!window.equals(window1)) {
+                window2 = window;
+                break;
+            }
+        }
+        ;
+        driver.switchTo().window(window2);
+    }
+
+    /*** Close the previous tab **/
+    public static void closePreviousTab() throws InterruptedException {
         Thread.sleep(2000);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         String window1 = driver.getWindowHandle();

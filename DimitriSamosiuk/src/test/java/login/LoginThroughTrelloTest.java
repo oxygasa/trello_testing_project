@@ -6,7 +6,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.login.LoginViaTrelloPage;
-
 import static commons.CommonActions.driver;
 
 public class LoginThroughTrelloTest extends BaseTest {
@@ -87,6 +86,6 @@ public class LoginThroughTrelloTest extends BaseTest {
          * 2. Access granted. The Boards page is opened. The Username is according to [Login credential]
          **/
         LoginViaTrelloPage.avatarName.click();
-        Assert.assertEquals(LoginViaTrelloPage.avatarEmail.getText(),LoginViaTrelloPage.LOGIN_CREDENTIAL);
+        Assert.assertEquals(LoginViaTrelloPage.avatarEmail.getText(), LoginViaTrelloPage.LOGIN_CREDENTIAL);
     }
 }

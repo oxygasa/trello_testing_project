@@ -1,5 +1,9 @@
 package commons;
 public class Config {
+
+
+    /*** This is a class for WebDriver and browser behaviour setups.**/
+
     /**
      * Specify the browser name and operating system for tests:
      * CHROME_WINDOWS

@@ -1,28 +1,117 @@
 package boards;
 
+import commons.CommonActions;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.boards.BoardsPage;
+import pages.workspaces.WorkspaceListPage;
+import java.util.Random;
+
+import static commons.CommonActions.driver;
 
 public class WorkspacePageBoardsManipulationsTest {
 
     //TC ID TRE014 Workspace page: Boards Creation
     @Test
-    public static void boardsCreationTest(){}
+    public static void boardsCreationTest() throws InterruptedException {
+        /**
+         * Steps to Reproduce
+         * 1. Login to your account within precondition credentials.
+         * 2. Select the Workspace on a header.
+         * 3. Select Your Workspace.
+         **/
+        PageFactory.initElements(driver, WorkspaceListPage.class);
+        PageFactory.initElements(driver, BoardsPage.class);
+        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
+        WorkspaceListPage.headerWorkspaceDropdown.click();
+        WorkspaceListPage.workspacesNameList.get(0).click();
+        Thread.sleep(4000);
+        /**
+         * Steps to Reproduce
+         * 4. Close the last board where boards number is bigger than 8 (for automation purposes)
+         **/
+        String remainingCounter = BoardsPage.remainingBoardsCounter.getText();
+        char firstChar = remainingCounter.charAt(0);
+        int counterNumber = Integer.parseInt(String.valueOf(firstChar));
+        System.out.println(counterNumber);
+        int boardListSize = BoardsPage.existingBoardList.size();
+        if (counterNumber < 5) {
+            BoardsPage.existingBoardList.get(1).click();
+            BoardsPage.showRightSidebarButton.click();
+            BoardsPage.rightSidebarMoreButton.click();
+            BoardsPage.rightSidebarCloseBoardButton.click();
+            BoardsPage.rightSidebarDialogBoxCloseBoardButton.click();
+        }
+        /**
+         * Steps to Reproduce
+         * 5. Create a board with random parameters from Workspaces.
+         **/
+        Random random = new Random();
+        WorkspaceListPage.headerWorkspaceDropdown.click();
+        WorkspaceListPage.workspacesNameList.get(0).click();
+        Thread.sleep(2000);
+        BoardsPage.existingBoardList.get(0).click();
+        BoardsPage.backgroundForTheBoardImageList.get(random.nextInt(7)).click();
+        String newBoardNameTextFieldInputText = RandomStringUtils.randomAlphanumeric(10);
+        Thread.sleep(2000);
+        BoardsPage.newBoardNameInput.sendKeys(newBoardNameTextFieldInputText);
+//      BoardsPage.workspaceDropdownMenu.click();
+//      BoardsPage.workspaceDropdownMenuOption0.click(); //THIS LOCATOR IS HIDDEN IN HTML BY "REACT-SELECT".
+//      BoardsPage.workspaceVisibilityDropdownMenu.click();
+//      BoardsPage.workspaceVisibilityDropdownMenuOption0.click(); //THIS LOCATOR IS HIDDEN IN HTML BY "REACT-SELECT".
+        Thread.sleep(2000);
+        BoardsPage.newBoardSubmitButton.click();
+        Thread.sleep(2000);
+        String createdBoardNameText = BoardsPage.createdBoardName.getText();
+        Assert.assertEquals(createdBoardNameText, newBoardNameTextFieldInputText);
+
+        /**
+         * Steps to Reproduce
+         * 6. Open Boards page.
+         * 7. Check the Creation board module is opened on a Board page.
+         **/
+
+        WorkspaceListPage.headerWorkspaceDropdown.click();
+        WorkspaceListPage.workspacesNameList.get(0).click();
+        Thread.sleep(2000);
+        String boardsUrl = driver.getCurrentUrl() + "/boards";
+        driver.get(boardsUrl);
+        Thread.sleep(2000);
+        BoardsPage.createBoardFromBoardsPageButton.get(0).click();
+        Assert.assertTrue(BoardsPage.newBoardNameInput.isDisplayed());
+
+        /**
+         * 8. Check the Creation board module is opened in a Left Navigation Drawer.
+         **/
+        WorkspaceListPage.headerWorkspaceDropdown.click();
+        WorkspaceListPage.workspacesNameList.get(0).click();
+        Thread.sleep(2000);
+        WorkspaceListPage.addBoardFromLeftNavigationDrawer.click();
+        Assert.assertTrue(BoardsPage.newBoardNameInput.isDisplayed());
+    }
+
 
     //TC ID TRE015 Workspace page: Boards Free account limit counter checking
     @Test
-    public static void boardsFreeAccountLimitCounterTest(){}
+    public static void boardsFreeAccountLimitCounterTest() {
+    }
 
     //TC ID TRE016 Workspace page: Boards deletion, recovery and permanent deletion.
     @Test
-    public static void boardsDeleteRecoveryAndPermanentDeleteTest(){}
+    public static void boardsDeleteRecoveryAndPermanentDeleteTest() {
+    }
 
     //TC ID TRE017 Workspace page: Boards add to  favourite.
     @Test
-    public static void boardsAddToFavouriteTest(){}
+    public static void boardsAddToFavouriteTest() {
+    }
 
     //TC ID TRE018 Workspace page: Boards filter menu
     @Test
-    public static void boardsFilterMenuTest(){}
+    public static void boardsFilterMenuTest() {
+    }
 
 
 }

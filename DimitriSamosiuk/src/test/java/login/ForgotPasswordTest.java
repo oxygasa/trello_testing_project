@@ -5,14 +5,13 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.login.ForgotPasswordPage;
 import pages.login.LoginViaTrelloPage;
-
 import static commons.CommonActions.driver;
 
 public class ForgotPasswordTest {
 
     //TC ID TRE009 Forget password
     @Test
-    public static void restoreForgottenPasswordTest(){
+    public static void restoreForgottenPasswordTest() {
         /**
          * Steps to Reproduce
          * 1. Open https://trello.com/
@@ -34,6 +33,6 @@ public class ForgotPasswordTest {
          * No access to a mailservice.
          **/
         Assert.assertEquals(ForgotPasswordPage.atlassianForgotPasswordConfirmation.
-                getText(),ForgotPasswordPage.LOGIN_CREDENTIAL);
+                getText(), ForgotPasswordPage.LOGIN_CREDENTIAL);
     }
 }

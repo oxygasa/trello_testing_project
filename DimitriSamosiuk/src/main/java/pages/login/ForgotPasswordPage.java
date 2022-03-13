@@ -6,12 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import pages.base.BasePage;
 
 public class ForgotPasswordPage extends BasePage {
-    WebDriver driver;
-
-    public ForgotPasswordPage(WebDriver driver) {
-        this.driver = driver;
-    }
-
     public static final String LOGIN_CREDENTIAL = "trellou0@gmail.com";
     @FindBy(xpath = "//ul//a[@href='/forgot']")
     public static WebElement forgotPasswordLink;
@@ -25,4 +19,8 @@ public class ForgotPasswordPage extends BasePage {
     public static WebElement atlassianForgotPasswordConfirmation;
     @FindBy(className = "css-19r5em7")
     public static WebElement atlassianSubmitButton;
+    WebDriver driver;
+    public ForgotPasswordPage(WebDriver driver) {
+        this.driver = driver;
+    }
 }

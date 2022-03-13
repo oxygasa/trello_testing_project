@@ -8,7 +8,6 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.register.RegistrationPage;
 import pages.register.TempMail;
-
 import static commons.CommonActions.driver;
 
 public class RegisterUserTest extends BaseTest {

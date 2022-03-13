@@ -6,10 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import pages.base.BasePage;
 
 public class LoginViaMicrosoftPage extends BasePage {
-    WebDriver driver;
-    public LoginViaMicrosoftPage(WebDriver driver) {
-        this.driver=driver;
-    }
     public static final String LOGIN_CREDENTIAL = "trellou0@outlook.com";
     public static final String PASSWORD_CREDENTIAL = "Trellouser999Te!42";
     @FindBy(id = "msftButton")
@@ -24,5 +20,9 @@ public class LoginViaMicrosoftPage extends BasePage {
     public static WebElement microsoftSignInButton;
     @FindBy(id = "idBtn_Back")
     public static WebElement buttonNoAboutSavingSession;
+    WebDriver driver;
+    public LoginViaMicrosoftPage(WebDriver driver) {
+        this.driver = driver;
+    }
 
 }
