@@ -22,6 +22,8 @@ public class WorkspaceListPage extends BasePage {
     public static WebElement displayNameTextField;
     @FindBy(xpath = "//input[@id='teamTypeSelect']")
     public static WebElement teamTypeSelectDropdown;
+    @FindBy (id="react-select-3-option-7") //THIS LOCATOR IS HIDDEN IN HTML BY "REACT-SELECT".
+    public static WebElement teamTypeSelectDropdownOption1; //THIS LOCATOR IS HIDDEN IN HTML BY "REACT-SELECT".
     @FindBy(id = "name")
     public static WebElement shortNameTextField;
     @FindBy(id = "website")

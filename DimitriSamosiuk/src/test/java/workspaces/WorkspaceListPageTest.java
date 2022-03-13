@@ -1,7 +1,9 @@
 package workspaces;
 
 import commons.CommonActions;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
@@ -30,17 +32,22 @@ public class WorkspaceListPageTest {
         /**
          * Steps to Reproduce
          * 5. Type random text in the Display name text box.
-         * 6. Select random Workspace Type. [DROPDOWN IS DEVELOPED AS "INPUT", NOT AS "SELECT"]
-         * 7. Type random text in the text boxes Name, Website (optional), Description (optional).
-         * 8. Type random text in the Shortname text field.
-         * 9. Click the Save button.
          **/
         WorkspaceListPage.displayNameTextField.clear();
         WorkspaceListPage.displayNameTextField.sendKeys(RandomStringUtils.randomAlphanumeric(10));
 
-        Select teamTypeSelectDropdown = new Select(WorkspaceListPage.teamTypeSelectDropdown);
-        teamTypeSelectDropdown.selectByVisibleText("Education");
+        /**
+         * 6. Select random Workspace Type. [DROPDOWN IS DEVELOPED AS "INPUT", NOT AS "SELECT"]
+         **/
+      //  WorkspaceListPage.teamTypeSelectDropdown.click();
+      //  WorkspaceListPage.teamTypeSelectDropdownOption1.click(); //THIS LOCATOR IS HIDDEN IN HTML BY "REACT-SELECT".
 
+
+        /**
+         * 7. Type random text in the text boxes Name, Website (optional), Description (optional).
+         * 8. Type random text in the Shortname text field.
+         * 9. Click the Save button.
+         **/
         WorkspaceListPage.shortNameTextField.sendKeys(RandomStringUtils.randomAlphanumeric(10));
         WorkspaceListPage.websiteOptionalTextField.sendKeys(RandomStringUtils.randomAlphanumeric(10));
         WorkspaceListPage.descriptionOptionalTextField.sendKeys(RandomStringUtils.randomAlphanumeric(10));
