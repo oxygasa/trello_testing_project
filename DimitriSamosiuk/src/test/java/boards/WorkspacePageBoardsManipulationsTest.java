@@ -3,6 +3,7 @@ package boards;
 import commons.CommonActions;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.boards.BoardsPage;
@@ -27,16 +28,16 @@ public class WorkspacePageBoardsManipulationsTest {
         CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         WorkspaceListPage.headerWorkspaceDropdown.click();
         WorkspaceListPage.workspacesNameList.get(0).click();
-        Thread.sleep(4000);
         /**
          * Steps to Reproduce
          * 4. Close the last board where boards number is bigger than 8 (for automation purposes)
          **/
+        WebDriverWait wait = new WebDriverWait(driver,5);
+        wait.until(driver -> BoardsPage.remainingBoardsCounter);
         String remainingCounter = BoardsPage.remainingBoardsCounter.getText();
         char firstChar = remainingCounter.charAt(0);
         int counterNumber = Integer.parseInt(String.valueOf(firstChar));
         System.out.println(counterNumber);
-        int boardListSize = BoardsPage.existingBoardList.size();
         if (counterNumber < 5) {
             BoardsPage.existingBoardList.get(1).click();
             BoardsPage.showRightSidebarButton.click();
@@ -51,19 +52,19 @@ public class WorkspacePageBoardsManipulationsTest {
         Random random = new Random();
         WorkspaceListPage.headerWorkspaceDropdown.click();
         WorkspaceListPage.workspacesNameList.get(0).click();
-        Thread.sleep(2000);
+        wait.until(driver -> BoardsPage.existingBoardList.get(0));
         BoardsPage.existingBoardList.get(0).click();
         BoardsPage.backgroundForTheBoardImageList.get(random.nextInt(7)).click();
         String newBoardNameTextFieldInputText = RandomStringUtils.randomAlphanumeric(10);
-        Thread.sleep(2000);
+        wait.until(driver -> BoardsPage.newBoardNameInput);
         BoardsPage.newBoardNameInput.sendKeys(newBoardNameTextFieldInputText);
 //      BoardsPage.workspaceDropdownMenu.click();
 //      BoardsPage.workspaceDropdownMenuOption0.click(); //THIS LOCATOR IS HIDDEN IN HTML BY "REACT-SELECT".
 //      BoardsPage.workspaceVisibilityDropdownMenu.click();
 //      BoardsPage.workspaceVisibilityDropdownMenuOption0.click(); //THIS LOCATOR IS HIDDEN IN HTML BY "REACT-SELECT".
-        Thread.sleep(2000);
+        wait.until(driver -> BoardsPage.newBoardSubmitButton);
         BoardsPage.newBoardSubmitButton.click();
-        Thread.sleep(2000);
+        wait.until(driver -> BoardsPage.createdBoardName);
         String createdBoardNameText = BoardsPage.createdBoardName.getText();
         Assert.assertEquals(createdBoardNameText, newBoardNameTextFieldInputText);
 
@@ -78,7 +79,7 @@ public class WorkspacePageBoardsManipulationsTest {
         Thread.sleep(2000);
         String boardsUrl = driver.getCurrentUrl() + "/boards";
         driver.get(boardsUrl);
-        Thread.sleep(2000);
+        wait.until(driver -> BoardsPage.createBoardFromBoardsPageButton);
         BoardsPage.createBoardFromBoardsPageButton.get(0).click();
         Assert.assertTrue(BoardsPage.newBoardNameInput.isDisplayed());
 
@@ -87,7 +88,7 @@ public class WorkspacePageBoardsManipulationsTest {
          **/
         WorkspaceListPage.headerWorkspaceDropdown.click();
         WorkspaceListPage.workspacesNameList.get(0).click();
-        Thread.sleep(2000);
+        wait.until(driver -> WorkspaceListPage.addBoardFromLeftNavigationDrawer);
         WorkspaceListPage.addBoardFromLeftNavigationDrawer.click();
         Assert.assertTrue(BoardsPage.newBoardNameInput.isDisplayed());
     }

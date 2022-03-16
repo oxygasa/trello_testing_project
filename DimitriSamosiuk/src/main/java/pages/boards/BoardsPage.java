@@ -9,6 +9,10 @@ import pages.base.BasePage;
 import java.util.List;
 
 public class BoardsPage extends BasePage {
+    WebDriver driver;
+    public BoardsPage(WebDriver driver) {
+        this.driver = driver;
+    }
     @FindAll({@FindBy(xpath = "//ul[@class='boards-page-board-section-list']/li")})
     public static List<WebElement> existingBoardList;
     @FindBy(xpath = "//a[contains(@class,'js-show-sidebar')]")
@@ -39,8 +43,4 @@ public class BoardsPage extends BasePage {
     public static WebElement createdBoardName;
     @FindAll({@FindBy(xpath = "//li[@data-test-id='create-board-tile']")})
     public static List<WebElement> createBoardFromBoardsPageButton;
-    WebDriver driver;
-    public BoardsPage(WebDriver driver) {
-        this.driver = driver;
-    }
 }

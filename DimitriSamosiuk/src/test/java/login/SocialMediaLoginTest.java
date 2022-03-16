@@ -1,12 +1,15 @@
 package login;
 
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.login.LoginViaApplePage;
 import pages.login.LoginViaGooglePage;
 import pages.login.LoginViaMicrosoftPage;
 import pages.login.LoginViaTrelloPage;
+import pages.workspaces.WorkspaceListPage;
+
 import static commons.CommonActions.driver;
 
 public class SocialMediaLoginTest {
@@ -45,15 +48,16 @@ public class SocialMediaLoginTest {
         PageFactory.initElements(driver, LoginViaTrelloPage.class);
         driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
         LoginViaMicrosoftPage.microsoftOauthButton.click();
-        Thread.sleep(2000);
+        WebDriverWait wait = new WebDriverWait(driver,5);
+        wait.until(driver -> LoginViaMicrosoftPage.microsoftLoginTextField);
         LoginViaMicrosoftPage.microsoftLoginTextField.sendKeys(LoginViaMicrosoftPage.LOGIN_CREDENTIAL);
         LoginViaMicrosoftPage.microsoftLoginNextButton.click();
-        Thread.sleep(2000);
+        wait.until(driver -> LoginViaMicrosoftPage.microsoftPasswordTextField);
         LoginViaMicrosoftPage.microsoftPasswordTextField.sendKeys(LoginViaMicrosoftPage.PASSWORD_CREDENTIAL);
         LoginViaMicrosoftPage.microsoftSignInButton.click();
-        Thread.sleep(2000);
+        wait.until(driver -> LoginViaMicrosoftPage.buttonNoAboutSavingSession);
         LoginViaMicrosoftPage.buttonNoAboutSavingSession.click();
-        Thread.sleep(5000);
+        wait.until(driver -> LoginViaTrelloPage.avatarName);
         LoginViaTrelloPage.avatarName.click();
         /**
          * Expected result
