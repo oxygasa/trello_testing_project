@@ -6,6 +6,10 @@ import org.openqa.selenium.support.FindBy;
 import pages.base.BasePage;
 
 public class LoginViaTrelloPage extends BasePage {
+    WebDriver driver;
+    public LoginViaTrelloPage(WebDriver driver) {
+        this.driver = driver;
+    }
     public static final String TRELLO_LOGIN_PAGE = "https://trello.com/login";
     public static final String LOGIN_CREDENTIAL = "trellou0@gmail.com";
     public static final String PASSWORD_CREDENTIAL = "Trellouser999Te!42";
@@ -29,8 +33,4 @@ public class LoginViaTrelloPage extends BasePage {
     public static WebElement avatarName;
     @FindBy(className = "w6CkIi_9-1xviK")
     public static WebElement avatarEmail;
-    WebDriver driver;
-    public LoginViaTrelloPage(WebDriver driver) {
-        this.driver = driver;
-    }
 }

@@ -2,8 +2,10 @@ package workspaces;
 
 import commons.CommonActions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.login.LoginViaTrelloPage;
 import pages.workspaces.WorkspaceListPage;
 import org.apache.commons.lang3.RandomStringUtils;
 import static commons.CommonActions.driver;
@@ -24,7 +26,8 @@ public class WorkspaceListPageTest {
         CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         WorkspaceListPage.headerWorkspaceDropdown.click();
         WorkspaceListPage.workspacesNameList.get(1).click();
-        Thread.sleep(2000);
+        WebDriverWait wait = new WebDriverWait(driver,5);
+        wait.until(driver -> WorkspaceListPage.editWorkspaceDetailsButton);
         WorkspaceListPage.editWorkspaceDetailsButton.click();
         /**
          * Steps to Reproduce
@@ -62,7 +65,7 @@ public class WorkspaceListPageTest {
          * Expected Results
          * 9. All changes are saved.
          **/
-        Thread.sleep(4000);
+        wait.until(driver -> WorkspaceListPage.savedWebsiteOptionalTitle);
         String resultTextOfDisplayNameTitle = WorkspaceListPage.savedDisplayNameTitle.getText();
         String resultTextOfDescriptionOptionalTitle = WorkspaceListPage.savedDescriptionOptionalTitle.getText();
         String resultTextOfWebsiteOptionalTitle = WorkspaceListPage.savedWebsiteOptionalTitle.getText();
@@ -85,7 +88,8 @@ public class WorkspaceListPageTest {
         CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         WorkspaceListPage.headerWorkspaceDropdown.click();
         WorkspaceListPage.workspacesNameList.get(1).click();
-        Thread.sleep(2000);
+        WebDriverWait wait = new WebDriverWait(driver,5);
+        wait.until(driver -> WorkspaceListPage.workspaceCentralPageTabs.get(1));
         WorkspaceListPage.workspaceCentralPageTabs.get(1).click();
         /**
          * Expected Results
@@ -109,7 +113,8 @@ public class WorkspaceListPageTest {
         CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         WorkspaceListPage.headerWorkspaceDropdown.click();
         WorkspaceListPage.workspacesNameList.get(1).click();
-        Thread.sleep(2000);
+        WebDriverWait wait = new WebDriverWait(driver,5);
+        wait.until(driver -> WorkspaceListPage.leftNavigationDrawerTableButton);
         WorkspaceListPage.leftNavigationDrawerTableButton.click();
         String trialButtonActualTitle = WorkspaceListPage.trialButton.getText();
         /**
@@ -148,13 +153,15 @@ public class WorkspaceListPageTest {
 //        WorkspaceListPage.newWorkspaceDescriptionOptional.sendKeys(newWorkspaceDescriptionText);
 //        WorkspaceListPage.newWorkspaceSubmitButton.click();
 //        CommonActions.openUrlInNewBrowserTab(TempMail.TEMP_MAIL_PAGE_URL);
-//        Thread.sleep(2000);
+//        WebDriverWait wait = new WebDriverWait(driver,5);
+//        wait.until(driver -> TempMail.randomTempEmail);
 //        String randomTempEmailValue = TempMail.randomTempEmail.getAttribute("title");
 //        CommonActions.getBackToThePreviousTab();
 //        WorkspaceListPage.inviteTeamViaEmailInput.sendKeys(randomTempEmailValue);
 //        WorkspaceListPage.inviteTeamSubmitButton.click();
 //        CommonActions.getBackToThePreviousTab();
-//        Thread.sleep(20000);
+//        WebDriverWait wait = new WebDriverWait(driver,5);
+//        wait.until(driver -> TempMail.incomeBoxMailListButtons.get(0));
 //        TempMail.incomeBoxMailListButtons.get(0).click();
 //        ///// Describe "link locator in email" here.}
 }

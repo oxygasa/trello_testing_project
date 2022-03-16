@@ -9,6 +9,10 @@ import pages.base.BasePage;
 import java.util.List;
 
 public class WorkspaceListPage extends BasePage {
+    WebDriver driver;
+    public WorkspaceListPage(WebDriver driver) {
+        this.driver = driver;
+    }
     public static final String expectedTrialButtonTitle = "Start 14-day free trial";
     @FindBy(xpath = "//button[@title='Workspaces']")
     public static WebElement headerWorkspaceDropdown;
@@ -60,10 +64,6 @@ public class WorkspaceListPage extends BasePage {
     public static WebElement inviteTeamViaEmailInput;
     @FindBy(xpath = "//input[@data-test-id='team-invite-submit-button'")
     public static WebElement inviteTeamSubmitButton;
-    WebDriver driver;
     @FindBy(xpath = "//button[@aria-label='Add board']")
     public static WebElement addBoardFromLeftNavigationDrawer;
-    public WorkspaceListPage(WebDriver driver) {
-        this.driver = driver;
-    }
 }
