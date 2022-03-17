@@ -43,4 +43,23 @@ public class BoardsPage extends BasePage {
     public static WebElement createdBoardName;
     @FindAll({@FindBy(xpath = "//li[@data-test-id='create-board-tile']")})
     public static List<WebElement> createBoardFromBoardsPageButton;
+    @FindBy(xpath = "//button[@data-test-id='start-free-trial-button']")
+    public static WebElement startFreeTrialButton;
+    @FindAll({@FindBy(xpath = "//li[@class='boards-page-board-section-list-item']")})
+    public static List<WebElement> boardListBoardInstance;
+    @FindBy(xpath = "//p[@class='_10OFAfgDRDpBNf']")
+    public static WebElement remainBoardCounter;
+    @FindBy(xpath = "//div[@class='board-tile mod-add']/p/span")
+    public static WebElement createNewBoardSign;
+    @FindBy(xpath = "//button[@data-test-id='workspace-chooser-trigger-button']")
+    public static WebElement reopenBoardButton;
+    @FindBy(xpath = "//button[contains(@class,'_3Bxyt3SMYgqcrM _3TTqkG5muwOzqZ ')]")
+    public static WebElement reopenBoardConfirmButton;
+    @FindBy(xpath = "//button[@data-test-id='close-board-delete-board-button']")
+    public static WebElement permanentDeleteLink;
+    @FindBy(xpath = "//button[@data-test-id='close-board-delete-board-confirm-button']")
+    public static WebElement permanentDeleteConfirmButton;
+    public static final String EXPECTED_PREMIUM_REQUIRE_TEXT = "Start free trial";
+    public static final String TEN_BOARDS_TESTING_WORKSPACE = "https://trello.com/tenboardstestworkspace";
+    public static final String WORKSPACE25 = "https://trello.com/workspacename25";
 }

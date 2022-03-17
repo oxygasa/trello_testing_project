@@ -1,12 +1,19 @@
 package commons;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import pages.boards.BoardsPage;
 import pages.login.LoginViaTrelloPage;
+import pages.workspaces.WorkspaceListPage;
+
+import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -103,6 +110,30 @@ public class CommonActions {
         LoginViaTrelloPage.submitButtonTrello.click();
         LoginViaTrelloPage.password.sendKeys(LoginViaTrelloPage.PASSWORD_CREDENTIAL);
         LoginViaTrelloPage.submitButtonAtlassian.click();
-        Thread.sleep(5000);
+        Thread.sleep(2000);
     }
-}
+
+
+        /**
+         * Method for creating the empty Board in any Workspace.
+         **/
+    public static void createOneRandomBoardInstance(String workspaceLink) throws InterruptedException {
+        driver.get(workspaceLink);
+        Thread.sleep(5000);
+        BoardsPage.createBoardFromBoardsPageButton.get(0).click();
+        String newBoardNameTextFieldInputText = RandomStringUtils.randomAlphanumeric(10);
+        BoardsPage.newBoardNameInput.sendKeys(newBoardNameTextFieldInputText);
+        Thread.sleep(5000);
+        BoardsPage.newBoardSubmitButton.click();
+        }
+
+        public static void closeOneBoardInstanceFromTheWorkspacePage(String workspaceLink) throws InterruptedException {
+            driver.get(workspaceLink);
+            BoardsPage.boardListBoardInstance.get(1).click();
+            Thread.sleep(2000);
+            BoardsPage.showRightSidebarButton.click();
+            BoardsPage.rightSidebarMoreButton.click();
+            BoardsPage.rightSidebarCloseBoardButton.click();
+            BoardsPage.rightSidebarDialogBoxCloseBoardButton.click();
+        }
+    }
