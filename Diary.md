@@ -63,7 +63,7 @@ Shift 11 a.m. - 11 p.m.
 
 **08 Mar 2022 - Testing job**
 * English assessment preparations. The date for exams is 11 Mar 2022.
-* Automation Framework and project structure creation has been started. 
+* Automation Framework and project structure creation has been finished. 
 * Automation Tools (Dependencies) have been added and plugged in to the project structure.
 
 **09 Mar - 10 Mar 2022 - External job**
@@ -90,5 +90,31 @@ Questions:
 4. Comments in the code, is this ok for the clean code rules?
 
 Ideas from the mentor what to do:
+1. Explicity waiters could be implemented by special methods using few Selenium waiters together.
+2. Try to cooperate with Drop down menues via "Actions" class and "sendKeys" and "perform" methods.
+3. Comments are ok for explanation the code. But must be short.
+4. ChromeOptions class is disabled for last ChromeDriver versions.
+5. Cookies have short-time exiration. The better way is to log in by classic login via Trello credentials method and within login/password precondition data.
+6. The main target of Mentoring program is marked: try impossible scenarios transform into possible solution. More situations are good for discovering.
 
------------
+**17 Mar 2022 - Testing job**
+* Waiters implementation have been created and added to all Test cases. Sometime AJAX elements ask to compare Thread.sleep method within Waiters, because Explicity waiting couldn't catch elements on a client's side postfactum after page is uploaded. 
+* All dropdown blockers have been repaired by keyboard selection compromise.
+* Boards creation and deletion have been automated by loops and exceptions catching to increase manual deletion after test failure.
+
+**18 Mar - 20 Mar 2022 - External job**
+
+Shift 11 a.m. - 11 p.m.
+
+**21 Mar - 22 Mar 2022 - Sick days**
+Taking medicare that occurred due consequences of heavy physical work executing.
+Mentoring weekly updates have been cancelled.
+
+**23 Mar - 24 Mar 2022 - External job**
+
+Shift 11 a.m. - 11 p.m.
+
+**25 Mar - 27 Mar 2022 - Testing job**
+
+
+__________________________

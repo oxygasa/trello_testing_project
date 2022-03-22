@@ -1,13 +1,15 @@
 package workspaces;
 
 import commons.CommonActions;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.login.LoginViaTrelloPage;
+import pages.register.TempMail;
 import pages.workspaces.WorkspaceListPage;
 import org.apache.commons.lang3.RandomStringUtils;
+
 import static commons.CommonActions.driver;
 
 public class WorkspaceListPageTest {
@@ -26,8 +28,7 @@ public class WorkspaceListPageTest {
         CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         WorkspaceListPage.headerWorkspaceDropdown.click();
         WorkspaceListPage.workspacesNameList.get(1).click();
-        WebDriverWait wait = new WebDriverWait(driver,5);
-        wait.until(driver -> WorkspaceListPage.editWorkspaceDetailsButton);
+        CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.editWorkspaceDetailsButton);
         WorkspaceListPage.editWorkspaceDetailsButton.click();
         /**
          * Steps to Reproduce
@@ -41,9 +42,7 @@ public class WorkspaceListPageTest {
          * Steps to Reproduce
          * 6. Select random Workspace Type. [DROPDOWN IS DEVELOPED AS "INPUT", NOT AS "SELECT"]
          **/
-        //  WorkspaceListPage.teamTypeSelectDropdown.click();
-        //  WorkspaceListPage.teamTypeSelectDropdownOption1.click(); //THIS LOCATOR IS HIDDEN IN HTML BY "REACT-SELECT".
-
+        CommonActions.selectDropdownMenuNextValue(WorkspaceListPage.teamTypeSelectDropdown.get(0));
 
         /**
          * Steps to Reproduce
@@ -65,7 +64,8 @@ public class WorkspaceListPageTest {
          * Expected Results
          * 9. All changes are saved.
          **/
-        wait.until(driver -> WorkspaceListPage.savedWebsiteOptionalTitle);
+        CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.savedWebsiteOptionalTitle);
+        Thread.sleep(2000);
         String resultTextOfDisplayNameTitle = WorkspaceListPage.savedDisplayNameTitle.getText();
         String resultTextOfDescriptionOptionalTitle = WorkspaceListPage.savedDescriptionOptionalTitle.getText();
         String resultTextOfWebsiteOptionalTitle = WorkspaceListPage.savedWebsiteOptionalTitle.getText();
@@ -88,8 +88,7 @@ public class WorkspaceListPageTest {
         CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         WorkspaceListPage.headerWorkspaceDropdown.click();
         WorkspaceListPage.workspacesNameList.get(1).click();
-        WebDriverWait wait = new WebDriverWait(driver,5);
-        wait.until(driver -> WorkspaceListPage.workspaceCentralPageTabs.get(1));
+        CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.workspaceCentralPageTabs.get(1));
         WorkspaceListPage.workspaceCentralPageTabs.get(1).click();
         /**
          * Expected Results
@@ -113,8 +112,7 @@ public class WorkspaceListPageTest {
         CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         WorkspaceListPage.headerWorkspaceDropdown.click();
         WorkspaceListPage.workspacesNameList.get(1).click();
-        WebDriverWait wait = new WebDriverWait(driver,5);
-        wait.until(driver -> WorkspaceListPage.leftNavigationDrawerTableButton);
+        CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.leftNavigationDrawerTableButton);
         WorkspaceListPage.leftNavigationDrawerTableButton.click();
         String trialButtonActualTitle = WorkspaceListPage.trialButton.getText();
         /**
@@ -126,42 +124,36 @@ public class WorkspaceListPageTest {
 
 
     //TC ID TRE013 Left Navigation Drawer on Boards: Create new Workspace.
-/**
- * BLOCKER IN A STEP 3.
- *
- **/
-//    //@Test
-//    public static void createNewWorkspaceFromLeftNavigationDrawerOnBoards() throws InterruptedException {
-//        /**
-//         * Steps to Reproduce
-//         * 1. Login to your account within precondition credentials then open Boards page.
-//         * 2. On the Left Navigation Drawer on Workspace section click "+" button.
-//         * 3. Type Random symbols to a Workspace name and Workspace description. Select random Workspace type.
-//         * (Blocker:A dropdown menu list locators are in a hidden html (React-select). Can't be seen by xpath).
-//         * 4. Invite random user using temp mail service.
-//         **/
-//        PageFactory.initElements(driver, WorkspaceListPage.class);
-//        PageFactory.initElements(driver, TempMail.class);
-//        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
-//        WorkspaceListPage.headerAddWorkspace.click();
-//        WorkspaceListPage.headerCreateWorkspaceButton.click();
-//        String newWorkspaceInputText = RandomStringUtils.randomAlphanumeric(10);
-//        WorkspaceListPage.newWorkspaceNameInput.sendKeys(newWorkspaceInputText);
-//        //  WorkspaceListPage.workspaceTypeSelectDropdown.click();
-//        //  WorkspaceListPage.teamTypeSelectDropdownOption1.click(); //THIS LOCATOR IS HIDDEN IN HTML BY "REACT-SELECT".
-//        String newWorkspaceDescriptionText = RandomStringUtils.randomAlphanumeric(10);
-//        WorkspaceListPage.newWorkspaceDescriptionOptional.sendKeys(newWorkspaceDescriptionText);
-//        WorkspaceListPage.newWorkspaceSubmitButton.click();
-//        CommonActions.openUrlInNewBrowserTab(TempMail.TEMP_MAIL_PAGE_URL);
-//        WebDriverWait wait = new WebDriverWait(driver,5);
-//        wait.until(driver -> TempMail.randomTempEmail);
-//        String randomTempEmailValue = TempMail.randomTempEmail.getAttribute("title");
-//        CommonActions.getBackToThePreviousTab();
-//        WorkspaceListPage.inviteTeamViaEmailInput.sendKeys(randomTempEmailValue);
-//        WorkspaceListPage.inviteTeamSubmitButton.click();
-//        CommonActions.getBackToThePreviousTab();
-//        WebDriverWait wait = new WebDriverWait(driver,5);
-//        wait.until(driver -> TempMail.incomeBoxMailListButtons.get(0));
-//        TempMail.incomeBoxMailListButtons.get(0).click();
-//        ///// Describe "link locator in email" here.}
+    @Test
+    public static void createNewWorkspaceFromLeftNavigationDrawerOnBoards() throws InterruptedException {
+        /**
+         * Steps to Reproduce
+         * 1. Login to your account within precondition credentials then open Boards page.
+         * 2. On the Left Navigation Drawer on Workspace section click "+" button.
+         * 3. Type Random symbols to a Workspace name and Workspace description. Select random Workspace type.
+         * (Blocker:A dropdown menu list locators are in a hidden html (React-select). Can't be seen by xpath).
+         * 4. Invite random user using temp mail service.
+         **/
+        PageFactory.initElements(driver, WorkspaceListPage.class);
+        PageFactory.initElements(driver, TempMail.class);
+        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
+        WorkspaceListPage.createNewWorkspaceWithinRandomValues();
+        WorkspaceListPage.confirmInviteNewMemberViaTeamEmail();
+        CommonActions.getBackToThePreviousTab();
+        CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.workspaceMembersTab);
+        WorkspaceListPage.workspaceMembersTab.click();
+        CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.peopleCounter);
+        /**
+         * Expected result
+         * 5. A workspace is created. 2 members are displayed.
+         **/
+        Assert.assertEquals(WorkspaceListPage.peopleCounter.getText(),"Workspace members (2)");
+        /**
+         * Post condition
+         * 1. Delete the workspace.
+         **/
+        WorkspaceListPage.deleteWorkspace();
+
+        ///// Describe "link locator in email" here.}
+    }
 }

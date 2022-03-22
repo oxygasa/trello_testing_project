@@ -16,6 +16,8 @@ public class TempMail extends BasePage {
     public static final String TEMP_MAIL_PAGE_URL = "https://temp-mail.io/";
     @FindBy(id = "email")
     public static WebElement randomTempEmail;
-    @FindAll({@FindBy(xpath = "//li[@class='message list-complete-item active']")})
+    @FindAll({@FindBy(xpath = "//li[contains(@class,'message list-complete')]")})
     public static List<WebElement> incomeBoxMailListButtons;
+    @FindBy(xpath = "//a[contains(text(),'Workspace')]")
+    public static WebElement joinWorkspaceList;
 }
