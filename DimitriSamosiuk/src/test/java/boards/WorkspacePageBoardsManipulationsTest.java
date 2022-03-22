@@ -2,6 +2,7 @@ package boards;
 
 import commons.CommonActions;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -133,7 +134,11 @@ public class WorkspacePageBoardsManipulationsTest {
         CommonActions.explicitWaitOfOneElementVisible(BoardsPage.createNewBoardSign);
         CommonActions.createOneRandomBoardInstance(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
+        CommonActions.explicitWaitOfOneElementVisible(BoardsPage.boardsStarIcon.get(0));
+        Actions action  = new Actions(driver);
+        action.moveToElement(BoardsPage.boardsStarIcon.get(0)).perform();
         BoardsPage.boardsStarIcon.get(0).click();
+        Thread.sleep(2000);
     }
 
     //TC ID TRE018 Workspace page: Boards filter menu
