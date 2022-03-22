@@ -64,7 +64,6 @@ public class WorkspacePageBoardsManipulationsTest {
     }
 
 
-
     //TC ID TRE015 Workspace page: Boards Free account limit counter checking
     @Test
     public static void boardsFreeAccountLimitCounterContinueTest() throws InterruptedException {
@@ -126,8 +125,15 @@ public class WorkspacePageBoardsManipulationsTest {
 
     //TC ID TRE017 Workspace page: Boards add to  favourite.
     @Test
-    public static void boardsAddToFavouriteTest() {
-
+    public static void boardsAddToFavouriteTest() throws InterruptedException {
+        PageFactory.initElements(driver, BoardsPage.class);
+        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
+        driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
+        Thread.sleep(500);
+        CommonActions.explicitWaitOfOneElementVisible(BoardsPage.createNewBoardSign);
+        CommonActions.createOneRandomBoardInstance(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
+        driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
+        BoardsPage.boardsStarIcon.get(0).click();
     }
 
     //TC ID TRE018 Workspace page: Boards filter menu

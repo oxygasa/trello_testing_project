@@ -61,6 +61,10 @@ public class BoardsPage extends BasePage {
     public static WebElement permanentDeleteLink;
     @FindBy(xpath = "//button[@data-test-id='close-board-delete-board-confirm-button']")
     public static WebElement permanentDeleteConfirmButton;
+    @FindAll({@FindBy(xpath = "//span[@class='board-tile-options']")})
+    public static List<WebElement> boardsStarIcon;
+    @FindAll({@FindBy(xpath = "//span[@class='board-tile-options']/span")})
+    public static List<WebElement> starMarkedStatus;
     public static final String EXPECTED_PREMIUM_REQUIRE_TEXT = "Start free trial";
     public static final String TEN_BOARDS_TESTING_WORKSPACE = "https://trello.com/tenboardstestworkspace";
     public static final String WORKSPACE25 = "https://trello.com/workspacename25";
