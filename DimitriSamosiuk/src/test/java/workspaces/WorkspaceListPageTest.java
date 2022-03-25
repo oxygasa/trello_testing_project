@@ -4,6 +4,7 @@ import commons.CommonActions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.boards.LeftNavigationDrawerOfBoardsPage;
 import pages.register.TempMail;
 import pages.workspaces.WorkspaceListPage;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -116,13 +117,14 @@ public class WorkspaceListPageTest {
          * 4. Expand Left Navigation Drawer then click Workspace table button.
          **/
         PageFactory.initElements(driver, WorkspaceListPage.class);
+        PageFactory.initElements(driver, LeftNavigationDrawerOfBoardsPage.class);
         CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         WorkspaceListPage.createNewWorkspace();
         String currentWorkspaceUrl = driver.getCurrentUrl();
-        CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.leftNavigationDrawerExpander);
-        WorkspaceListPage.leftNavigationDrawerExpander.click();
-        CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.leftNavigationDrawerTableButton);
-        WorkspaceListPage.leftNavigationDrawerTableButton.click();
+        CommonActions.explicitWaitOfOneElementVisible(LeftNavigationDrawerOfBoardsPage.expander);
+        LeftNavigationDrawerOfBoardsPage.expander.click();
+        CommonActions.explicitWaitOfOneElementVisible(LeftNavigationDrawerOfBoardsPage.tableButton);
+        LeftNavigationDrawerOfBoardsPage.tableButton.click();
         String trialButtonActualTitle = WorkspaceListPage.trialButton.getText();
         /**
          * Expected Results

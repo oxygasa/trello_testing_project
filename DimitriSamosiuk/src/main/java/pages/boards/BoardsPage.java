@@ -45,16 +45,14 @@ public class BoardsPage extends BasePage {
     public static List<WebElement> createBoardFromBoardsPageButton;
     @FindBy(xpath = "//button[@data-test-id='start-free-trial-button']")
     public static WebElement startFreeTrialButton;
-    @FindAll({@FindBy(xpath = "//li[@class='boards-page-board-section-list-item']")})
-    public static List<WebElement> boardListBoardInstance;
+    @FindAll({@FindBy(xpath = "//a[contains(@class,'board-tile')]")})
+    public static List<WebElement> boardInstancesList;
     @FindBy(xpath = "//span[contains(@class,'icon-star')]")
     public static WebElement starIconInTheBoardPage;
     @FindBy(xpath = "//div[@class='board-tile mod-add']/p/span")
     public static WebElement createNewBoardSign;
     @FindBy(xpath = "//button[@data-test-id='workspace-chooser-trigger-button']")
     public static WebElement reopenBoardButton;
-    @FindAll({@FindBy(xpath = "//li[@class='boards-page-board-section-list-item']")})
-    public static List<WebElement> boardList;
     @FindBy(xpath = "//button[contains(@class,'_3Bxyt3SMYgqcrM _3TTqkG5muwOzqZ ')]")
     public static WebElement reopenBoardConfirmButton;
     @FindBy(xpath = "//button[@data-test-id='close-board-delete-board-button']")

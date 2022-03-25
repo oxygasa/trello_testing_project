@@ -52,10 +52,6 @@ public class WorkspaceListPage extends BasePage {
     public static List<WebElement> workspaceCentralPageTabs;
     @FindBy(className = "_3yTFDpz8niFoyh")
     public static WebElement trialButton;
-    @FindBy(xpath = "//a[@title='Table']")
-    public static WebElement leftNavigationDrawerTableButton;
-    @FindBy(xpath = "//button[@data-test-id='workspace-navigation-expand-button']")
-    public static WebElement leftNavigationDrawerExpander;
     @FindBy(xpath = "//button[@data-test-id='header-create-menu-button']")
     public static WebElement headerAddWorkspace;
     @FindBy(xpath = "//button[@data-test-id='header-create-team-button']")

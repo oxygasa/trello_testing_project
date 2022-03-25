@@ -9,11 +9,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import pages.boards.BoardsPage;
 import pages.login.LoginViaTrelloPage;
-import pages.workspaces.WorkspaceListPage;
 
 import java.time.Duration;
 import java.util.List;
@@ -161,7 +159,7 @@ public class CommonActions {
      **/
         public static void closeOneBoardInstanceFromTheWorkspacePage(String workspaceLink) throws InterruptedException {
             driver.get(workspaceLink);
-            BoardsPage.boardListBoardInstance.get(1).click();
+            BoardsPage.boardInstancesList.get(1).click();
             CommonActions.explicitWaitOfOneElementVisible(BoardsPage.showRightSidebarButton);
             BoardsPage.showRightSidebarButton.click();
             CommonActions.explicitWaitOfOneElementVisible(BoardsPage.rightSidebarMoreButton);
