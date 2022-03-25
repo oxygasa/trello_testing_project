@@ -3,11 +3,9 @@ package login;
 import base.BaseTest;
 import commons.CommonActions;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.login.LoginViaTrelloPage;
-import pages.register.TempMail;
 
 import static commons.CommonActions.driver;
 
@@ -45,8 +43,7 @@ public class LoginThroughTrelloTest extends BaseTest {
         driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
         LoginViaTrelloPage.username.sendKeys(LoginViaTrelloPage.INCORRECT_LOGIN_CREDENTIAL_EXAMPLE_TWO);
         LoginViaTrelloPage.submitButtonTrello.click();
-        WebDriverWait wait = new WebDriverWait(driver,5);
-        wait.until(driver -> LoginViaTrelloPage.emailApprovalRequest);
+        CommonActions.explicitWaitOfOneElementVisible(LoginViaTrelloPage.emailApprovalRequest);
         /**
          * Expected result
          * 3. Module "Approve email" is displayed within the typed email value.

@@ -47,8 +47,8 @@ public class BoardsPage extends BasePage {
     public static WebElement startFreeTrialButton;
     @FindAll({@FindBy(xpath = "//li[@class='boards-page-board-section-list-item']")})
     public static List<WebElement> boardListBoardInstance;
-    @FindBy(xpath = "//p[@class='_10OFAfgDRDpBNf']")
-    public static WebElement remainBoardCounter;
+    @FindBy(xpath = "//span[contains(@class,'icon-star')]")
+    public static WebElement starIconInTheBoardPage;
     @FindBy(xpath = "//div[@class='board-tile mod-add']/p/span")
     public static WebElement createNewBoardSign;
     @FindBy(xpath = "//button[@data-test-id='workspace-chooser-trigger-button']")
@@ -63,8 +63,26 @@ public class BoardsPage extends BasePage {
     public static WebElement permanentDeleteConfirmButton;
     @FindAll({@FindBy(xpath = "//span[@class='board-tile-options']")})
     public static List<WebElement> boardsStarIcon;
+    @FindBy(xpath = "//span[contains(@class,'starred')]")
+    public static WebElement boardStarredIcon;
     @FindAll({@FindBy(xpath = "//span[@class='board-tile-options']/span")})
-    public static List<WebElement> starMarkedStatus;
+    public static List<WebElement> boardsStarredIcon;
+    @FindAll({@FindBy(xpath = "//span[@class='board-tile-options']/span")})
+    public static List<WebElement> boardsUnstarredIcon;
+    @FindAll({@FindBy(xpath ="//a[@class='board-tile']")})
+    public static List<WebElement> boardTile;
+    @FindAll({@FindBy(xpath ="//div[@class='board-tile-details-name']")})
+    public static List<WebElement> boardTitles;
+    @FindBy(xpath = "//div[contains(@class,'css-1og2rpm')]")
+    public static WebElement sortByFilter;
+    @FindBy(xpath = "//button[contains(@class,'_1Dp3s5P2VP237V')]")
+    public static WebElement filterByCollectionDropdown;
+    @FindBy(xpath = "//button[contains(@class,'_1tVNVS4PNoFo0k')]")
+    public static WebElement filterByCollectionPremiumRequireButton;
+    @FindBy(xpath = "//button[@data-test-id='popover-close']")
+    public static WebElement filterByCollectionPremiumRequireClosePopupButton;
+    @FindBy(xpath = "//input[@id='search']")
+    public static WebElement boardsSearchBox;
     public static final String EXPECTED_PREMIUM_REQUIRE_TEXT = "Start free trial";
     public static final String TEN_BOARDS_TESTING_WORKSPACE = "https://trello.com/tenboardstestworkspace";
     public static final String WORKSPACE25 = "https://trello.com/workspacename25";

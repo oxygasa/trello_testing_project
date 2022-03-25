@@ -34,8 +34,6 @@ public class WorkspaceListPage extends BasePage {
     public static WebElement displayNameTextField;
     @FindAll({@FindBy(xpath = "//div[contains(@class,'css-1og2rpm')]")})
     public static List<WebElement> teamTypeSelectDropdown;
-    @FindBy(id = "react-select-3-option-7") //THIS LOCATOR IS HIDDEN IN HTML BY "REACT-SELECT".
-    public static WebElement teamTypeSelectDropdownOption1; //THIS LOCATOR IS HIDDEN IN HTML BY "REACT-SELECT".
     @FindBy(id = "name")
     public static WebElement shortNameTextField;
     @FindBy(id = "website")
@@ -127,7 +125,7 @@ public class WorkspaceListPage extends BasePage {
         TempMail.incomeBoxMailListButtons.get(0).click();
         TempMail.joinWorkspaceList.click();
     }
-    public static void deleteWorkspace(){
+    public static void deleteWorkspace() throws InterruptedException {
         CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.workspaceSettingsTab);
         String getNewWorkspaceTitleName = WorkspaceListPage.newCreatedWorkspaceTitleName.getText();
         WorkspaceListPage.workspaceSettingsTab.click();

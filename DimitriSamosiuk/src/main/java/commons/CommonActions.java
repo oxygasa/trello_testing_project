@@ -119,22 +119,24 @@ public class CommonActions {
 
 
     /*** A explicit waiter, which do an assertion of presence 1 element **/
-    public static void explicitWaitOfOneElementVisible(WebElement webElementName) {
+    public static void explicitWaitOfOneElementVisible(WebElement webElementName) throws InterruptedException {
         Wait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofSeconds(1))
                 .ignoring(NoSuchElementException.class)
                 .ignoring(StaleElementReferenceException.class);
         wait.until(ExpectedConditions.visibilityOf(webElementName));
+        Thread.sleep(600);
     }
     /*** An explicit waiter which do an assertion of presence elements list **/
-    public static void explicitWaitOfElementsListVisible(List<WebElement> webElementsListName) {
+    public static void explicitWaitOfElementsListVisible(List<WebElement> webElementsListName) throws InterruptedException {
         Wait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofSeconds(1))
                 .ignoring(NoSuchElementException.class)
                 .ignoring(StaleElementReferenceException.class);
         wait.until(ExpectedConditions.visibilityOfAllElements(webElementsListName));
+        Thread.sleep(1000);
     }
 
         /**
@@ -163,7 +165,6 @@ public class CommonActions {
             CommonActions.explicitWaitOfOneElementVisible(BoardsPage.showRightSidebarButton);
             BoardsPage.showRightSidebarButton.click();
             CommonActions.explicitWaitOfOneElementVisible(BoardsPage.rightSidebarMoreButton);
-            Thread.sleep(500);
             BoardsPage.rightSidebarMoreButton.click();
             CommonActions.explicitWaitOfOneElementVisible(BoardsPage.rightSidebarCloseBoardButton);
             BoardsPage.rightSidebarCloseBoardButton.click();
@@ -182,4 +183,13 @@ public class CommonActions {
             action.sendKeys(Keys.ENTER).perform();
             dropdownMenuWebElementName.click();
         }
+    public static void selectDropdownMenuValueByPositionNumber(WebElement dropdownMenuWebElementName, int countsOfPressArrowDownButton){
+        dropdownMenuWebElementName.click();
+        Actions action = new Actions(driver);
+        for (int i = 0; i < countsOfPressArrowDownButton; i++) {
+            action.sendKeys(Keys.ARROW_DOWN).perform();
+        }
+        action.sendKeys(Keys.ENTER).perform();
+        dropdownMenuWebElementName.click();
+    }
     }

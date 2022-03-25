@@ -3,7 +3,6 @@ package register;
 import base.BaseTest;
 import commons.CommonActions;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -23,8 +22,7 @@ public class RegisterUserTest extends BaseTest {
          * 2. On https://id.atlassian.com/signup type the email from https://temp-mail.io/  then submit it.
          **/
         driver.get(TempMail.TEMP_MAIL_PAGE_URL);
-        WebDriverWait wait = new WebDriverWait(driver,5);
-        wait.until(driver -> TempMail.randomTempEmail);
+        CommonActions.explicitWaitOfOneElementVisible(TempMail.randomTempEmail);
         String randomTempEmailValue = TempMail.randomTempEmail.getAttribute("title");
         CommonActions.openUrlInNewBrowserTab(RegistrationPage.TRELLO_REGISTER_PAGE_URL);
         RegistrationPage.emailFromRegisterPage.sendKeys(randomTempEmailValue);

@@ -1,5 +1,6 @@
 package login;
 
+import commons.CommonActions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -8,7 +9,6 @@ import pages.login.LoginViaApplePage;
 import pages.login.LoginViaGooglePage;
 import pages.login.LoginViaMicrosoftPage;
 import pages.login.LoginViaTrelloPage;
-import pages.workspaces.WorkspaceListPage;
 
 import static commons.CommonActions.driver;
 
@@ -48,16 +48,15 @@ public class SocialMediaLoginTest {
         PageFactory.initElements(driver, LoginViaTrelloPage.class);
         driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
         LoginViaMicrosoftPage.microsoftOauthButton.click();
-        WebDriverWait wait = new WebDriverWait(driver,5);
-        wait.until(driver -> LoginViaMicrosoftPage.microsoftLoginTextField);
+        CommonActions.explicitWaitOfOneElementVisible(LoginViaMicrosoftPage.microsoftLoginTextField);
         LoginViaMicrosoftPage.microsoftLoginTextField.sendKeys(LoginViaMicrosoftPage.LOGIN_CREDENTIAL);
         LoginViaMicrosoftPage.microsoftLoginNextButton.click();
-        wait.until(driver -> LoginViaMicrosoftPage.microsoftPasswordTextField);
+        CommonActions.explicitWaitOfOneElementVisible(LoginViaMicrosoftPage.microsoftPasswordTextField);
         LoginViaMicrosoftPage.microsoftPasswordTextField.sendKeys(LoginViaMicrosoftPage.PASSWORD_CREDENTIAL);
         LoginViaMicrosoftPage.microsoftSignInButton.click();
-        wait.until(driver -> LoginViaMicrosoftPage.buttonNoAboutSavingSession);
+        CommonActions.explicitWaitOfOneElementVisible(LoginViaMicrosoftPage.buttonNoAboutSavingSession);
         LoginViaMicrosoftPage.buttonNoAboutSavingSession.click();
-        wait.until(driver -> LoginViaTrelloPage.avatarName);
+        CommonActions.explicitWaitOfOneElementVisible(LoginViaTrelloPage.avatarName);
         LoginViaTrelloPage.avatarName.click();
         /**
          * Expected result

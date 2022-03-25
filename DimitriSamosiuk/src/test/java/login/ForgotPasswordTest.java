@@ -30,7 +30,7 @@ public class ForgotPasswordTest {
         ForgotPasswordPage.atlassianSubmitButton.click();
         /**
          * BLOCKER
-         * No access to a mailservice.
+         * No access to a mail service.
          **/
         Assert.assertEquals(ForgotPasswordPage.atlassianForgotPasswordConfirmation.
                 getText(), ForgotPasswordPage.LOGIN_CREDENTIAL);
