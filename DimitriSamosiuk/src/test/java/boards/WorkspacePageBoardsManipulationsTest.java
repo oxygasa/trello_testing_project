@@ -2,23 +2,15 @@ package boards;
 
 import commons.CommonActions;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.checkerframework.checker.units.qual.A;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.boards.BoardsPage;
 import pages.workspaces.WorkspaceListPage;
-
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import static commons.CommonActions.driver;
 
 public class WorkspacePageBoardsManipulationsTest {
@@ -36,14 +28,14 @@ public class WorkspacePageBoardsManipulationsTest {
         /**
          * Create a board with random parameters from Workspaces.
          **/
-        CommonActions.createOneRandomBoardInstance(BoardsPage.WORKSPACE25);
+        CommonActions.createOneRandomBoardInstance(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         CommonActions.explicitWaitOfOneElementVisible(BoardsPage.newBoardNameInput);
         Assert.assertTrue(BoardsPage.newBoardNameInput.isDisplayed());
         /**
          * Post condition
          * Close the created board.
          **/
-        CommonActions.closeOneBoardInstanceFromTheWorkspacePage(BoardsPage.WORKSPACE25);
+        CommonActions.closeOneBoardInstanceFromTheWorkspacePage(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
     }
 
     //TC ID TRE014 Workspace page: Boards Creation
@@ -55,9 +47,9 @@ public class WorkspacePageBoardsManipulationsTest {
         PageFactory.initElements(driver, BoardsPage.class);
         PageFactory.initElements(driver, WorkspaceListPage.class);
         CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
-        CommonActions.createOneRandomBoardInstance(BoardsPage.WORKSPACE25);
+        CommonActions.createOneRandomBoardInstance(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         CommonActions.explicitWaitOfOneElementVisible(BoardsPage.newBoardNameInput);
-        driver.get(BoardsPage.WORKSPACE25);
+        driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         WorkspaceListPage.workspaceNavigationExpandButton.click();
         WorkspaceListPage.addBoardFromLeftNavigationDrawer.click();
         /**
@@ -69,7 +61,7 @@ public class WorkspacePageBoardsManipulationsTest {
          * 1. Close the created board.
          **/
         WorkspaceListPage.workspaceNavigationCollapseButton.click();
-        CommonActions.closeOneBoardInstanceFromTheWorkspacePage(BoardsPage.WORKSPACE25);
+        CommonActions.closeOneBoardInstanceFromTheWorkspacePage(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
     }
 
 

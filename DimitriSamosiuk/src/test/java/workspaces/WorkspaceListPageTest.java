@@ -1,8 +1,6 @@
 package workspaces;
 
 import commons.CommonActions;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -26,8 +24,8 @@ public class WorkspaceListPageTest {
          **/
         PageFactory.initElements(driver, WorkspaceListPage.class);
         CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
-        WorkspaceListPage.headerWorkspaceDropdown.click();
-        WorkspaceListPage.workspacesNameList.get(1).click();
+        WorkspaceListPage.createNewWorkspace();
+        String currentWorkspaceUrl = driver.getCurrentUrl();
         CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.editWorkspaceDetailsButton);
         WorkspaceListPage.editWorkspaceDetailsButton.click();
         /**
@@ -72,6 +70,11 @@ public class WorkspaceListPageTest {
         Assert.assertEquals(resultTextOfDisplayNameTitle, displayNameTextFieldInputText);
         Assert.assertEquals(resultTextOfDescriptionOptionalTitle, descriptionOptionalTextFieldInputText);
         Assert.assertEquals(resultTextOfWebsiteOptionalTitle, "http://" + websiteOptionalTextFieldInputText);
+        /**
+         * Post condition
+         * 1. Delete the workspace.
+         **/
+        WorkspaceListPage.deleteWorkspace();
     }
 
     //TC ID TRE011 Workspace page: Workspace page: Workspace table Premium require
@@ -86,8 +89,8 @@ public class WorkspaceListPageTest {
          **/
         PageFactory.initElements(driver, WorkspaceListPage.class);
         CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
-        WorkspaceListPage.headerWorkspaceDropdown.click();
-        WorkspaceListPage.workspacesNameList.get(1).click();
+        WorkspaceListPage.createNewWorkspace();
+        String currentWorkspaceUrl = driver.getCurrentUrl();
         CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.workspaceCentralPageTabs.get(1));
         WorkspaceListPage.workspaceCentralPageTabs.get(1).click();
         /**
@@ -96,6 +99,12 @@ public class WorkspaceListPageTest {
          **/
         String trialButtonActualTitle = WorkspaceListPage.trialButton.getText();
         Assert.assertEquals(trialButtonActualTitle, WorkspaceListPage.expectedTrialButtonTitle);
+        /**
+         * Post condition
+         * 1. Delete the workspace.
+         **/
+        driver.get(currentWorkspaceUrl);
+        WorkspaceListPage.deleteWorkspace();
     }
 
     //TC ID TRE012 Left Navigation Drawer: Workspace table Premium require checking
@@ -103,15 +112,15 @@ public class WorkspaceListPageTest {
     public static void workspaceTableLeftNavigationDrawerPremiumRequireTest() throws InterruptedException {
         /**
          * Steps to Reproduce
-         * 1. Login to your account within precondition credentials
-         * 2. Select the Workspace on a header.
          * 3. Select Your Workspace.
          * 4. Expand Left Navigation Drawer then click Workspace table button.
          **/
         PageFactory.initElements(driver, WorkspaceListPage.class);
         CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
-        WorkspaceListPage.headerWorkspaceDropdown.click();
-        WorkspaceListPage.workspacesNameList.get(1).click();
+        WorkspaceListPage.createNewWorkspace();
+        String currentWorkspaceUrl = driver.getCurrentUrl();
+        CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.leftNavigationDrawerExpander);
+        WorkspaceListPage.leftNavigationDrawerExpander.click();
         CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.leftNavigationDrawerTableButton);
         WorkspaceListPage.leftNavigationDrawerTableButton.click();
         String trialButtonActualTitle = WorkspaceListPage.trialButton.getText();
@@ -120,6 +129,12 @@ public class WorkspaceListPageTest {
          * 4. Premium account required message is displayed.
          **/
         Assert.assertEquals(trialButtonActualTitle, WorkspaceListPage.expectedTrialButtonTitle);
+        /**
+         * Post condition
+         * 1. Delete the workspace.
+         **/
+        driver.get(currentWorkspaceUrl);
+        WorkspaceListPage.deleteWorkspace();
     }
 
 
@@ -137,7 +152,7 @@ public class WorkspaceListPageTest {
         PageFactory.initElements(driver, WorkspaceListPage.class);
         PageFactory.initElements(driver, TempMail.class);
         CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
-        WorkspaceListPage.createNewWorkspaceWithinRandomValues();
+        WorkspaceListPage.createNewWorkspaceWithinInvite();
         WorkspaceListPage.confirmInviteNewMemberViaTeamEmail();
         CommonActions.getBackToThePreviousTab();
         CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.workspaceMembersTab);
@@ -153,7 +168,5 @@ public class WorkspaceListPageTest {
          * 1. Delete the workspace.
          **/
         WorkspaceListPage.deleteWorkspace();
-
-        ///// Describe "link locator in email" here.}
     }
 }
