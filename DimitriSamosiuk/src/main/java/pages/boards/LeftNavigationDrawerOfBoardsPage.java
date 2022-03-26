@@ -28,4 +28,6 @@ public class LeftNavigationDrawerOfBoardsPage extends BasePage {
     public static List<WebElement> confirmCloseBoardButton;
     @FindBy(xpath = "//button[@data-test-id='boards-list-show-more-button']")
     public static WebElement showMore;
+    @FindAll({@FindBy(xpath ="//a[@class='_2GFX5xx4d2BRju']")})
+    public static List<WebElement> navigationToBoardsTemplatesHomeWorkspaces;
 }

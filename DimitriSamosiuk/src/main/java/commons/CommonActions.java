@@ -101,18 +101,28 @@ public class CommonActions {
     }
 
     /**
-     * Method for Log in before any test within default credentials.
+     * Method for Login before any test within default credentials.
      * Credentials are located in LoginViaTrelloPage class.
      **/
     public static void loginIntoTrelloWithinDefaultPreconditionCredentials() throws InterruptedException {
         PageFactory.initElements(driver, LoginViaTrelloPage.class);
-        driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
-        LoginViaTrelloPage.username.sendKeys(LoginViaTrelloPage.LOGIN_CREDENTIAL);
-        Thread.sleep(2000);
-        LoginViaTrelloPage.submitButtonTrello.click();
-        LoginViaTrelloPage.password.sendKeys(LoginViaTrelloPage.PASSWORD_CREDENTIAL);
-        LoginViaTrelloPage.submitButtonAtlassian.click();
-        Thread.sleep(3000);
+        try {
+            driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
+            LoginViaTrelloPage.username.sendKeys(LoginViaTrelloPage.LOGIN_CREDENTIAL);
+            Thread.sleep(2000);
+            LoginViaTrelloPage.submitButtonTrello.click();
+            LoginViaTrelloPage.password.sendKeys(LoginViaTrelloPage.PASSWORD_CREDENTIAL);
+            LoginViaTrelloPage.submitButtonAtlassian.click();
+            Thread.sleep(3000);
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
+            LoginViaTrelloPage.username.sendKeys(LoginViaTrelloPage.LOGIN_CREDENTIAL);
+            Thread.sleep(2000);
+            LoginViaTrelloPage.submitButtonTrello.click();
+            LoginViaTrelloPage.password.sendKeys(LoginViaTrelloPage.PASSWORD_CREDENTIAL);
+            LoginViaTrelloPage.submitButtonAtlassian.click();
+            Thread.sleep(3000);
+        }
     }
 
 
@@ -126,6 +136,7 @@ public class CommonActions {
         wait.until(ExpectedConditions.visibilityOf(webElementName));
         Thread.sleep(600);
     }
+
     /*** An explicit waiter which do an assertion of presence elements list **/
     public static void explicitWaitOfElementsListVisible(List<WebElement> webElementsListName) throws InterruptedException {
         Wait<WebDriver> wait = new FluentWait<>(driver)
@@ -137,9 +148,9 @@ public class CommonActions {
         Thread.sleep(1000);
     }
 
-        /**
-         * Method is creating 1 empty Board in any Workspace.
-         **/
+    /**
+     * Method is creating 1 empty Board in any Workspace.
+     **/
     public static void createOneRandomBoardInstance(String workspaceLink) throws InterruptedException {
         driver.get(workspaceLink);
         Thread.sleep(1000);
@@ -148,40 +159,41 @@ public class CommonActions {
         String newBoardNameTextFieldInputText = RandomStringUtils.randomAlphanumeric(10);
         BoardsPage.newBoardNameInput.sendKeys(newBoardNameTextFieldInputText);
         Thread.sleep(3000); //The submit button is clickable and visible with inactive status.
-                                 // The waiter means this element is active.
-                                 // Need the Thread.sleep
+        // The waiter means this element is active.
+        // Need the Thread.sleep
         CommonActions.explicitWaitOfOneElementVisible(BoardsPage.newBoardSubmitButton);
         BoardsPage.newBoardSubmitButton.click();
-        }
+    }
 
     /**
      * 1 instance "Board" is closing (safe delete), because Trello has 10 boards to create for free.
      **/
-        public static void closeOneBoardInstanceFromTheWorkspacePage(String workspaceLink) throws InterruptedException {
-            driver.get(workspaceLink);
-            BoardsPage.boardInstancesList.get(1).click();
-            CommonActions.explicitWaitOfOneElementVisible(BoardsPage.showRightSidebarButton);
-            BoardsPage.showRightSidebarButton.click();
-            CommonActions.explicitWaitOfOneElementVisible(BoardsPage.rightSidebarMoreButton);
-            BoardsPage.rightSidebarMoreButton.click();
-            CommonActions.explicitWaitOfOneElementVisible(BoardsPage.rightSidebarCloseBoardButton);
-            BoardsPage.rightSidebarCloseBoardButton.click();
-            CommonActions.explicitWaitOfOneElementVisible(BoardsPage.rightSidebarDialogBoxCloseBoardButton);
-            BoardsPage.rightSidebarDialogBoxCloseBoardButton.click();
-        }
+    public static void closeOneBoardInstanceFromTheWorkspacePage(String workspaceLink) throws InterruptedException {
+        driver.get(workspaceLink);
+        BoardsPage.boardInstancesList.get(0).click();
+        CommonActions.explicitWaitOfOneElementVisible(BoardsPage.showRightSidebarButton);
+        BoardsPage.showRightSidebarButton.click();
+        CommonActions.explicitWaitOfOneElementVisible(BoardsPage.rightSidebarMoreButton);
+        BoardsPage.rightSidebarMoreButton.click();
+        CommonActions.explicitWaitOfOneElementVisible(BoardsPage.rightSidebarCloseBoardButton);
+        BoardsPage.rightSidebarCloseBoardButton.click();
+        CommonActions.explicitWaitOfOneElementVisible(BoardsPage.rightSidebarDialogBoxCloseBoardButton);
+        BoardsPage.rightSidebarDialogBoxCloseBoardButton.click();
+    }
 
     /**
      * Trello's dropdown menu values have been hidden by React Select feature.
      * This method is opening the dropdown menu and select the next value in the dropdown menu by Keys.ARROW_DOWN
      **/
-        public static void selectDropdownMenuNextValue(WebElement dropdownMenuWebElementName){
-            dropdownMenuWebElementName.click();
-            Actions action = new Actions(driver);
-            action.sendKeys(Keys.ARROW_DOWN).perform();
-            action.sendKeys(Keys.ENTER).perform();
-            dropdownMenuWebElementName.click();
-        }
-    public static void selectDropdownMenuValueByPositionNumber(WebElement dropdownMenuWebElementName, int countsOfPressArrowDownButton){
+    public static void selectDropdownMenuNextValue(WebElement dropdownMenuWebElementName) {
+        dropdownMenuWebElementName.click();
+        Actions action = new Actions(driver);
+        action.sendKeys(Keys.ARROW_DOWN).perform();
+        action.sendKeys(Keys.ENTER).perform();
+        dropdownMenuWebElementName.click();
+    }
+
+    public static void selectDropdownMenuValueByPositionNumber(WebElement dropdownMenuWebElementName, int countsOfPressArrowDownButton) {
         dropdownMenuWebElementName.click();
         Actions action = new Actions(driver);
         for (int i = 0; i < countsOfPressArrowDownButton; i++) {
@@ -190,4 +202,4 @@ public class CommonActions {
         action.sendKeys(Keys.ENTER).perform();
         dropdownMenuWebElementName.click();
     }
-    }
+}
