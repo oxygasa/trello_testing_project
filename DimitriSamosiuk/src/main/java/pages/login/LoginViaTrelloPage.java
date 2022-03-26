@@ -15,6 +15,8 @@ public class LoginViaTrelloPage extends BasePage {
     public static final String PASSWORD_CREDENTIAL = "Trellouser999Te!42";
     public static final String INCORRECT_LOGIN_CREDENTIAL_EXAMPLE_ONE = "3123412@af.com";
     public static final String INCORRECT_LOGIN_CREDENTIAL_EXAMPLE_TWO = "wename9713@shackvine.com";
+    public static final String SECOND_USER_LOGIN_CREDENTIAL = "trello2nduser@gmail.com";
+    public static final String SECOND_USER_PASSWORD_CREDENTIAL = "Trellouser999Te!42";
     @FindBy(id = "user")
     public static WebElement username;
     @FindBy(id = "password")

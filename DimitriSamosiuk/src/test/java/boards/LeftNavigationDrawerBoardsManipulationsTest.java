@@ -19,19 +19,13 @@ public class LeftNavigationDrawerBoardsManipulationsTest {
         /**
          * Precondition
          * Select the Workspace on a header.
+         * Close all visible boards.
          **/
         PageFactory.initElements(driver, LeftNavigationDrawerOfBoardsPage.class);
         PageFactory.initElements(driver, BoardsPage.class);
         CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-        /**
-         * Precondition
-         * Close all visible boards.
-         **/
-        while (BoardsPage.boardInstancesList.size() > 1) {
-            CommonActions.closeOneBoardInstanceFromTheWorkspacePage(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-            driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-        }
+        CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         /**
          * 1. Open any workspace.
          * 2. On the Left Navigation Drawer click "+" sign.

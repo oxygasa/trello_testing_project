@@ -5,7 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import pages.base.BasePage;
-
 import java.util.List;
 
 public class BoardsPage extends BasePage {

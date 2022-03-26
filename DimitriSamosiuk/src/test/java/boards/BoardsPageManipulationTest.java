@@ -26,11 +26,7 @@ public class BoardsPageManipulationTest {
         CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         Thread.sleep(500);
-        while (BoardsPage.boardInstancesList.size() > 0) {
-            CommonActions.closeOneBoardInstanceFromTheWorkspacePage(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-            driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-            CommonActions.explicitWaitOfOneElementVisible(BoardsPage.createNewBoardSign);
-        }
+        CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         /**
          * Preconditions
          * Create 4 boards (and remember their names).
@@ -70,11 +66,7 @@ public class BoardsPageManipulationTest {
          **/
         driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         Thread.sleep(500);
-        while (BoardsPage.boardInstancesList.size() > 0) {
-            CommonActions.closeOneBoardInstanceFromTheWorkspacePage(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-            driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-            CommonActions.explicitWaitOfOneElementVisible(BoardsPage.createNewBoardSign);
-        }
+        CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
     }
 
     //TC ID TRE021 Boards page: Your workspaces.
@@ -88,11 +80,7 @@ public class BoardsPageManipulationTest {
         CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         Thread.sleep(500);
-        while (BoardsPage.boardInstancesList.size() > 0) {
-            CommonActions.closeOneBoardInstanceFromTheWorkspacePage(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-            driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-            CommonActions.explicitWaitOfOneElementVisible(BoardsPage.createNewBoardSign);
-        }
+        CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         /**
          * Preconditions
          * Create 4 boards (and remember their names).
@@ -131,11 +119,6 @@ public class BoardsPageManipulationTest {
          * Close all visible boards
          **/
         driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-        Thread.sleep(500);
-        while (BoardsPage.boardInstancesList.size() > 0) {
-            CommonActions.closeOneBoardInstanceFromTheWorkspacePage(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-            driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-            CommonActions.explicitWaitOfOneElementVisible(BoardsPage.createNewBoardSign);
-        }
+        CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
     }
 }

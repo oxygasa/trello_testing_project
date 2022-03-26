@@ -126,6 +126,33 @@ public class CommonActions {
     }
 
 
+    /**
+     * The same login, but by the second user.
+     * For the workspace and board visibility tests.
+     * For all other tests use the primary user.
+     **/
+    public static void loginIntoTrelloBySecondUserCredentials() throws InterruptedException {
+        PageFactory.initElements(driver, LoginViaTrelloPage.class);
+        try {
+            driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
+            LoginViaTrelloPage.username.sendKeys(LoginViaTrelloPage.SECOND_USER_LOGIN_CREDENTIAL);
+            Thread.sleep(2000);
+            LoginViaTrelloPage.submitButtonTrello.click();
+            LoginViaTrelloPage.password.sendKeys(LoginViaTrelloPage.SECOND_USER_PASSWORD_CREDENTIAL);
+            LoginViaTrelloPage.submitButtonAtlassian.click();
+            Thread.sleep(3000);
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
+            LoginViaTrelloPage.username.sendKeys(LoginViaTrelloPage.SECOND_USER_LOGIN_CREDENTIAL);
+            Thread.sleep(2000);
+            LoginViaTrelloPage.submitButtonTrello.click();
+            LoginViaTrelloPage.password.sendKeys(LoginViaTrelloPage.SECOND_USER_PASSWORD_CREDENTIAL);
+            LoginViaTrelloPage.submitButtonAtlassian.click();
+            Thread.sleep(3000);
+        }
+    }
+
+
     /*** A explicit waiter, which do an assertion of presence 1 element **/
     public static void explicitWaitOfOneElementVisible(WebElement webElementName) throws InterruptedException {
         Wait<WebDriver> wait = new FluentWait<>(driver)
@@ -166,19 +193,51 @@ public class CommonActions {
     }
 
     /**
-     * 1 instance "Board" is closing (safe delete), because Trello has 10 boards to create for free.
+     * 1 instance "Board" is closing (safe delete).
      **/
     public static void closeOneBoardInstanceFromTheWorkspacePage(String workspaceLink) throws InterruptedException {
         driver.get(workspaceLink);
         BoardsPage.boardInstancesList.get(0).click();
-        CommonActions.explicitWaitOfOneElementVisible(BoardsPage.showRightSidebarButton);
-        BoardsPage.showRightSidebarButton.click();
-        CommonActions.explicitWaitOfOneElementVisible(BoardsPage.rightSidebarMoreButton);
-        BoardsPage.rightSidebarMoreButton.click();
-        CommonActions.explicitWaitOfOneElementVisible(BoardsPage.rightSidebarCloseBoardButton);
-        BoardsPage.rightSidebarCloseBoardButton.click();
-        CommonActions.explicitWaitOfOneElementVisible(BoardsPage.rightSidebarDialogBoxCloseBoardButton);
-        BoardsPage.rightSidebarDialogBoxCloseBoardButton.click();
+        try {
+            /**
+             * Within opening the Right Navigation Drawer
+             **/
+            Thread.sleep(500);
+            BoardsPage.showRightSidebarButton.click();
+            CommonActions.explicitWaitOfOneElementVisible(BoardsPage.rightSidebarMoreButton);
+            BoardsPage.rightSidebarMoreButton.click();
+            CommonActions.explicitWaitOfOneElementVisible(BoardsPage.rightSidebarCloseBoardButton);
+            BoardsPage.rightSidebarCloseBoardButton.click();
+            CommonActions.explicitWaitOfOneElementVisible(BoardsPage.rightSidebarDialogBoxCloseBoardButton);
+            BoardsPage.rightSidebarDialogBoxCloseBoardButton.click();
+        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException e) {
+            /**
+             * Don't stop if the Right Navigation Drawer is already opened.
+             **/
+            BoardsPage.rightSidebarMoreButton.click();
+            CommonActions.explicitWaitOfOneElementVisible(BoardsPage.rightSidebarCloseBoardButton);
+            BoardsPage.rightSidebarCloseBoardButton.click();
+            CommonActions.explicitWaitOfOneElementVisible(BoardsPage.rightSidebarDialogBoxCloseBoardButton);
+            BoardsPage.rightSidebarDialogBoxCloseBoardButton.click();
+        }
+
+    }
+
+    /**
+     * All visible instances of "Board" are closing (safe delete).
+     * It's need to keep 10 boards limit for free usage of the service.
+     * It's need to clean space before fill List collections and Assert them after.
+     **/
+    public static void closeAllVisibleBoards(String workspaceLink) throws InterruptedException {
+        try {
+            while (BoardsPage.boardInstancesList.size() > 0) {
+                ;
+                CommonActions.closeOneBoardInstanceFromTheWorkspacePage(workspaceLink);
+                driver.get(workspaceLink);
+            }
+        } catch (IndexOutOfBoundsException e) {
+            driver.get(workspaceLink);
+        }
     }
 
     /**
