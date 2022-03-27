@@ -17,21 +17,14 @@ public class SocialMediaLoginTest {
     //TC ID TRE005 Social media login. Google.
     @Test
     public static void socialMediaLoginGoogleTest() {
-        /**
-         * Steps to Reproduce
-         * 1. Open https://trello.com/login
-         * 2. Select "Sign in via Google". Type a [Login credential] and a [Password credential].
-         **/
+        /*** Select "Sign in via Google". Type a [Login credential] and a [Password credential]. **/
         PageFactory.initElements(driver, LoginViaGooglePage.class);
         PageFactory.initElements(driver, LoginViaTrelloPage.class);
         driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
         LoginViaGooglePage.googleOauthButton.click();
         LoginViaGooglePage.googleLoginTextField.sendKeys(LoginViaGooglePage.LOGIN_CREDENTIAL);
         LoginViaGooglePage.googleLoginNextButton.click();
-        /**
-         * BLOCKER
-         * Google secure message about the prohibition og using Web Driver for login into the Google account.
-         **/
+        /*** BLOCKER: Google secure message about the prohibition og using Web Driver for login into the Google account. **/
         Assert.assertTrue(LoginViaGooglePage.googleSeleniumBlockerMessage.isDisplayed());
     }
 
@@ -39,28 +32,16 @@ public class SocialMediaLoginTest {
     @Test
     public static void socialMediaLoginMicrosoftTest() throws InterruptedException {
         /**
-         * Steps to Reproduce
-         * 1. Open https://trello.com/login
-         * 2. Select "Sign in via Microsoft". Type a [Login credential] and a [Password credential].
-         * 3. Click "No" button for saving the session.
+         * Select "Sign in via Microsoft". Type a [Login credential] and a [Password credential].
+         * Click "No" button for saving the session.
          **/
         PageFactory.initElements(driver, LoginViaMicrosoftPage.class);
         PageFactory.initElements(driver, LoginViaTrelloPage.class);
         driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
-        LoginViaMicrosoftPage.microsoftOauthButton.click();
-        CommonActions.explicitWaitOfOneElementVisible(LoginViaMicrosoftPage.microsoftLoginTextField);
-        LoginViaMicrosoftPage.microsoftLoginTextField.sendKeys(LoginViaMicrosoftPage.LOGIN_CREDENTIAL);
-        LoginViaMicrosoftPage.microsoftLoginNextButton.click();
-        CommonActions.explicitWaitOfOneElementVisible(LoginViaMicrosoftPage.microsoftPasswordTextField);
-        LoginViaMicrosoftPage.microsoftPasswordTextField.sendKeys(LoginViaMicrosoftPage.PASSWORD_CREDENTIAL);
-        LoginViaMicrosoftPage.microsoftSignInButton.click();
-        CommonActions.explicitWaitOfOneElementVisible(LoginViaMicrosoftPage.buttonNoAboutSavingSession);
-        LoginViaMicrosoftPage.buttonNoAboutSavingSession.click();
+        LoginViaMicrosoftPage.loginViaMicrosoftLoginPage();
         CommonActions.explicitWaitOfOneElementVisible(LoginViaTrelloPage.avatarName);
         LoginViaTrelloPage.avatarName.click();
-        /**
-         * Expected result
-         * 3. Access granted. The Boards page is opened. The Username is according to [Login credential]
+        /*** Expected result: Access granted. The Boards page is opened. The Username is according to [Login credential]
          **/
         Assert.assertEquals(LoginViaTrelloPage.avatarEmail.getText(), LoginViaMicrosoftPage.LOGIN_CREDENTIAL);
 
@@ -69,11 +50,7 @@ public class SocialMediaLoginTest {
     //TC ID TRE007 Social media login. Apple.
     @Test
     public static void socialMediaLoginAppleTest() {
-        /**
-         * Steps to Reproduce
-         * 1. Open https://trello.com/login
-         * 2. Select "Sign in via Apple". Type a [Login credential] and a [Password credential].
-         **/
+        /*** Select "Sign in via Apple". Type a [Login credential] and a [Password credential]. **/
         PageFactory.initElements(driver, LoginViaApplePage.class);
         PageFactory.initElements(driver, LoginViaTrelloPage.class);
         driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
@@ -82,10 +59,7 @@ public class SocialMediaLoginTest {
         LoginViaApplePage.appleIDLoginNextButton.click();
         LoginViaApplePage.appleIDPasswordTextField.sendKeys(LoginViaApplePage.PASSWORD_CREDENTIAL);
         LoginViaApplePage.appleIDLoginNextButton.click();
-        /**
-         * BLOCKER
-         * Apple ID uses 2FA sending SMS.
-         **/
+        /*** BLOCKER: Apple ID uses 2FA sending SMS. **/
         Assert.assertTrue(LoginViaApplePage.apple2FADidntGetCodeLink.isDisplayed());
     }
 }

@@ -1,6 +1,6 @@
 package cards.header;
 
-import boards.WorkspacePageBoardsManipulationsTest;
+import boards.WorkspaceBoardsTest;
 import commons.CommonActions;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.Keys;
@@ -10,8 +10,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.boards.BoardsPage;
 import pages.cards.header.CardsHeader;
+import pages.cards.power_ups.PowerUpsPage;
 import pages.workspaces.WorkspaceListPage;
-import workspaces.WorkspaceListPageTest;
 
 import static commons.CommonActions.driver;
 
@@ -38,7 +38,7 @@ public class CardsHeaderTest {
     //TC ID TRE024 Board name changing.
     @Test
     public static void boardNameChangingTest() throws InterruptedException {
-        /*** Precondition**/
+        /*** Precondition: login**/
         PageFactory.initElements(driver, CardsHeader.class);
         PageFactory.initElements(driver, BoardsPage.class);
         CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
@@ -60,7 +60,7 @@ public class CardsHeaderTest {
     //TC ID TRE025 Star button clickable.
     @Test
     public static void starButtonClickableTest() throws InterruptedException {
-        WorkspacePageBoardsManipulationsTest.boardsAddToFavouriteTest();
+        WorkspaceBoardsTest.boardsAddToFavouriteTest();
     }
 
     //TC ID TRE026 Change and show workspaces.
@@ -193,7 +193,8 @@ public class CardsHeaderTest {
 //        /*** Post condition**/
 //        CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
 //    }
-//
+
+    /*** BLOCKER: Can't copy hidden invite link for future usage**/
 //    //TC ID TRE029 Invite sending.
 //    @Test
 //    public static void inviteSendingTest() throws InterruptedException {
@@ -202,7 +203,32 @@ public class CardsHeaderTest {
 
     //TC ID TRE030 Power-Ups functionality.
     @Test
-    public static void powerUpsFunctionalityTest() {
+    public static void powerUpsFunctionalityTest() throws InterruptedException {
+        /*** Precondition**/
+        PageFactory.initElements(driver, CardsHeader.class);
+        PageFactory.initElements(driver, BoardsPage.class);
+        PageFactory.initElements(driver, PowerUpsPage.class);
+        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
+        CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
+        CommonActions.createOneRandomBoardInstance(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
+        /*** Open any board. Click Board button. **/
+        CommonActions.explicitWaitOfOneElementVisible(PowerUpsPage.powerUpsButton);
+        PowerUpsPage.powerUpsButton.click();
+        CommonActions.explicitWaitOfOneElementVisible(PowerUpsPage.confirmRedirectToPowerUpsPage);
+        PowerUpsPage.confirmRedirectToPowerUpsPage.click();
+        CommonActions.explicitWaitOfOneElementVisible(PowerUpsPage.madeByTrelloButton);
+        Thread.sleep(3000);
+        PowerUpsPage.madeByTrelloButton.click();
+        CommonActions.explicitWaitOfOneElementVisible(PowerUpsPage.addPowerUpJiraButton);
+        PowerUpsPage.addPowerUpJiraButton.click();
+        Assert.assertTrue(PowerUpsPage.powerUpJiraSettingButton.isDisplayed());
+        PowerUpsPage.closePowerUpsPageButton.click();
+        PowerUpsPage.installedPowerUpOpeningButton.click();
+        CommonActions.explicitWaitOfOneElementVisible(PowerUpsPage.installedPowerUpInteractiveWindow);
+        Assert.assertTrue(PowerUpsPage.installedPowerUpInteractiveWindow.isDisplayed());
+        /*** Post condition**/
+        driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
+        CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
     }
 
     //TC ID TRE 031 Filter testing.

@@ -229,6 +229,8 @@ public class CommonActions {
      * It's need to clean space before fill List collections and Assert them after.
      **/
     public static void closeAllVisibleBoards(String workspaceLink) throws InterruptedException {
+        driver.get(workspaceLink);
+        Thread.sleep(500);
         try {
             while (BoardsPage.boardInstancesList.size() > 0) {
                 ;

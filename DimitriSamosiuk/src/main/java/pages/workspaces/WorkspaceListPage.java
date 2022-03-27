@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 import pages.base.BasePage;
 import pages.register.TempMail;
 
@@ -91,9 +92,7 @@ public class WorkspaceListPage extends BasePage {
     @FindBy(xpath = "//a[@data-test-id='show-later-button']")
     public static WebElement inviteIDoItLaterLink;
 
-    /**
-     * There are methods to make test steps code shorter
-     **/
+    /*** There are methods to make test steps code shorter **/
     public static void createNewWorkspaceWithinInvite() throws InterruptedException {
         WorkspaceListPage.headerAddWorkspace.click();
         WorkspaceListPage.headerCreateWorkspaceButton.click();
@@ -117,6 +116,7 @@ public class WorkspaceListPage extends BasePage {
         WorkspaceListPage.inviteTeamSubmitButton.click();
         CommonActions.getBackToThePreviousTab();
     }
+
     public static void createNewWorkspace() throws InterruptedException {
         WorkspaceListPage.headerAddWorkspace.click();
         WorkspaceListPage.headerCreateWorkspaceButton.click();
@@ -136,6 +136,32 @@ public class WorkspaceListPage extends BasePage {
         TempMail.incomeBoxMailListButtons.get(0).click();
         TempMail.joinWorkspaceList.click();
     }
+    public static void editExistingWorkspaceAndAssertChanges() throws InterruptedException {
+        WorkspaceListPage.displayNameTextField.clear();
+        String displayNameTextFieldInputText = RandomStringUtils.randomAlphanumeric(10);
+        WorkspaceListPage.displayNameTextField.sendKeys(displayNameTextFieldInputText);
+        CommonActions.selectDropdownMenuNextValue(WorkspaceListPage.teamTypeSelectDropdown.get(0));
+        WorkspaceListPage.shortNameTextField.clear();
+        String shortNameTextFieldInputText = RandomStringUtils.randomAlphanumeric(10);
+        WorkspaceListPage.shortNameTextField.sendKeys(shortNameTextFieldInputText);
+        WorkspaceListPage.websiteOptionalTextField.clear();
+        String websiteOptionalTextFieldInputText = RandomStringUtils.randomAlphanumeric(10);
+        WorkspaceListPage.websiteOptionalTextField.sendKeys(websiteOptionalTextFieldInputText);
+        WorkspaceListPage.descriptionOptionalTextField.clear();
+        String descriptionOptionalTextFieldInputText = RandomStringUtils.randomAlphanumeric(10);
+        WorkspaceListPage.descriptionOptionalTextField.sendKeys(descriptionOptionalTextFieldInputText);
+        WorkspaceListPage.saveButton.submit();
+        /*** Expected Results: all changes are saved. **/
+        CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.savedWebsiteOptionalTitle);
+        Thread.sleep(2000);
+        String resultTextOfDisplayNameTitle = WorkspaceListPage.savedDisplayNameTitle.getText();
+        String resultTextOfDescriptionOptionalTitle = WorkspaceListPage.savedDescriptionOptionalTitle.getText();
+        String resultTextOfWebsiteOptionalTitle = WorkspaceListPage.savedWebsiteOptionalTitle.getText();
+        Assert.assertEquals(resultTextOfDisplayNameTitle, displayNameTextFieldInputText);
+        Assert.assertEquals(resultTextOfDescriptionOptionalTitle, descriptionOptionalTextFieldInputText);
+        Assert.assertEquals(resultTextOfWebsiteOptionalTitle, "http://" + websiteOptionalTextFieldInputText);
+    }
+
     public static void deleteWorkspace() throws InterruptedException {
         CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.workspaceSettingsTab);
         String getNewWorkspaceTitleName = WorkspaceListPage.newCreatedWorkspaceTitleName.getText();

@@ -1,14 +1,11 @@
 package boards;
 
 import commons.CommonActions;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.boards.BoardsPage;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static commons.CommonActions.driver;
@@ -18,107 +15,36 @@ public class BoardsPageManipulationTest {
     //TC ID TRE020 Boards page: Recently viewed.
     @Test
     public static void recentlyViewedTest() throws InterruptedException {
-        /**
-         * Preconditions
-         * Close all visible boards, because the Java.Collection.List will be prepared for a saving the boards name.
-         **/
+        /*** Precondition: login, close all visible boards. Create 4 boards (and remember their names). **/
         PageFactory.initElements(driver, BoardsPage.class);
         CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
-        driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-        Thread.sleep(500);
         CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-        /**
-         * Preconditions
-         * Create 4 boards (and remember their names).
-         **/
-        List<String> expectedBoardNamesListener = new ArrayList<>();
-        while (BoardsPage.boardInstancesList.size() < 4) {
-            driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-            CommonActions.explicitWaitOfOneElementVisible(BoardsPage.createBoardFromBoardsPageButton.get(0));
-            BoardsPage.createBoardFromBoardsPageButton.get(0).click();
-            String newBoardNameTextFieldInputText = RandomStringUtils.randomAlphanumeric(10);
-            BoardsPage.newBoardNameInput.sendKeys(newBoardNameTextFieldInputText);
-            CommonActions.explicitWaitOfOneElementVisible(BoardsPage.newBoardSubmitButton);
-            Thread.sleep(3000); //Thread.sleep is necessary, because this inactive button is clickable.
-            //and don't create a board.
-            BoardsPage.newBoardSubmitButton.click();
-            expectedBoardNamesListener.add(newBoardNameTextFieldInputText);
-        }
+        List<String> expectedBoardNamesListener = BoardsPage.createCollectionOfFourExpectedBoards();
         expectedBoardNamesListener.sort(String.CASE_INSENSITIVE_ORDER);
         System.out.println("Expected List" + expectedBoardNamesListener);
-
-        /**
-         * Steps to Reproduce
-         2. Check, the /boards page contains the same boards.
-         **/
-        driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE + "/boards");
-        CommonActions.explicitWaitOfElementsListVisible(BoardsPage.boardsPageAllWorkspacesBoards);
-        List<String> actualResultBoardNames = new ArrayList<>();
-        for (int i = 0; i < BoardsPage.boardsPageAllWorkspacesBoards.size(); i++) {
-            actualResultBoardNames.add(BoardsPage.boardsPageAllWorkspacesBoards.get(i).getText());
-        }
+        /*** Check, the /boards page contains the same boards.**/
+        List<String> actualResultBoardNames = BoardsPage.saveBoardPageRecentBoardListToCollection();
         System.out.println("Actual result " + actualResultBoardNames);
         Assert.assertEquals(actualResultBoardNames, expectedBoardNamesListener);
-
-        /**
-         * Post condition.
-         * Close all visible boards
-         **/
-        driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-        Thread.sleep(500);
+        /*** Post condition: close all visible boards **/
         CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
     }
 
     //TC ID TRE021 Boards page: Your workspaces.
     @Test
     public static void yourWorkspacesTest() throws InterruptedException {
-        /**
-         * Preconditions
-         * Close all visible boards, because the Java.Collection.List will be prepared for a saving the boards name.
-         **/
+        /*** Precondition: login, close all visible boards. Create 4 boards (and remember their names). **/
         PageFactory.initElements(driver, BoardsPage.class);
         CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
-        driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-        Thread.sleep(500);
         CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-        /**
-         * Preconditions
-         * Create 4 boards (and remember their names).
-         **/
-        List<String> expectedBoardNamesListener = new ArrayList<>();
-        while (BoardsPage.boardInstancesList.size() < 1) {
-            driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-            CommonActions.explicitWaitOfOneElementVisible(BoardsPage.createBoardFromBoardsPageButton.get(0));
-            BoardsPage.createBoardFromBoardsPageButton.get(0).click();
-            String newBoardNameTextFieldInputText = RandomStringUtils.randomAlphanumeric(10);
-            BoardsPage.newBoardNameInput.sendKeys(newBoardNameTextFieldInputText);
-            CommonActions.explicitWaitOfOneElementVisible(BoardsPage.newBoardSubmitButton);
-            Thread.sleep(3000); //Thread.sleep is necessary, because this inactive button is clickable.
-            //and don't create a board.
-            BoardsPage.newBoardSubmitButton.click();
-            expectedBoardNamesListener.add(newBoardNameTextFieldInputText);
-        }
+        List<String> expectedBoardNamesListener = BoardsPage.createCollectionOfFourExpectedBoards();
         expectedBoardNamesListener.sort(String.CASE_INSENSITIVE_ORDER);
-        System.out.println("Expected List" + expectedBoardNamesListener.get(0));
-
-        /**
-         * Steps to Reproduce
-         2. Check, the /boards page contains the same boards.
-         **/
-        driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE + "/boards");
-        CommonActions.explicitWaitOfElementsListVisible(BoardsPage.boardsPageRecentBoardAndAllBoards);
-        List<String> actualResultBoardNames = new ArrayList<>();
-        for (int i = 0; i < BoardsPage.boardsPageRecentBoardAndAllBoards.size(); i++) {
-            actualResultBoardNames.add(BoardsPage.boardsPageRecentBoardAndAllBoards.get(i).getText());
-        }
+        System.out.println("Expected List" + expectedBoardNamesListener);
+        /*** Check, the /boards page contains the same boards.**/
+        List<String> actualResultBoardNames = BoardsPage.saveBoardPageWorkspaceBoardListToCollection();
         System.out.println("Actual result " + actualResultBoardNames.get(0));
         Assert.assertEquals(actualResultBoardNames.get(0), expectedBoardNamesListener.get(0));
-
-        /**
-         * Post condition.
-         * Close all visible boards
-         **/
-        driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
+        /*** Post condition: close all visible boards **/
         CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
     }
 }

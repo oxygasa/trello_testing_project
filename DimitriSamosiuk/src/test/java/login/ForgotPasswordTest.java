@@ -13,12 +13,9 @@ public class ForgotPasswordTest {
     @Test
     public static void restoreForgottenPasswordTest() {
         /**
-         * Steps to Reproduce
-         * 1. Open https://trello.com/
-         * 2. Click the Login button.
-         * 3. Select "I can't sign in"
-         * 4. Type a [Login credential] as email and submit.
-         * 5. Type the new password. This test suite will need changes to the new password.
+         * Select "I can't sign in"
+         * Type a [Login credential] as email and submit.
+         * Type the new password. This test suite will need changes to the new password.
          **/
         PageFactory.initElements(driver, LoginViaTrelloPage.class);
         PageFactory.initElements(driver, ForgotPasswordPage.class);
@@ -28,10 +25,7 @@ public class ForgotPasswordTest {
         ForgotPasswordPage.submitButton.submit();
         ForgotPasswordPage.atlassianSettingsLink.click();
         ForgotPasswordPage.atlassianSubmitButton.click();
-        /**
-         * BLOCKER
-         * No access to a mail service.
-         **/
+        /*** BLOCKER: Haven't accessed to a mail service. **/
         Assert.assertEquals(ForgotPasswordPage.atlassianForgotPasswordConfirmation.
                 getText(), ForgotPasswordPage.LOGIN_CREDENTIAL);
     }

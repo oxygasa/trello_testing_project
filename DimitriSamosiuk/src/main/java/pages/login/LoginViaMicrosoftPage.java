@@ -1,5 +1,6 @@
 package pages.login;
 
+import commons.CommonActions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,4 +25,16 @@ public class LoginViaMicrosoftPage extends BasePage {
     public static WebElement microsoftSignInButton;
     @FindBy(id = "idBtn_Back")
     public static WebElement buttonNoAboutSavingSession;
+
+    public static void loginViaMicrosoftLoginPage() throws InterruptedException {
+        LoginViaMicrosoftPage.microsoftOauthButton.click();
+        CommonActions.explicitWaitOfOneElementVisible(LoginViaMicrosoftPage.microsoftLoginTextField);
+        LoginViaMicrosoftPage.microsoftLoginTextField.sendKeys(LoginViaMicrosoftPage.LOGIN_CREDENTIAL);
+        LoginViaMicrosoftPage.microsoftLoginNextButton.click();
+        CommonActions.explicitWaitOfOneElementVisible(LoginViaMicrosoftPage.microsoftPasswordTextField);
+        LoginViaMicrosoftPage.microsoftPasswordTextField.sendKeys(LoginViaMicrosoftPage.PASSWORD_CREDENTIAL);
+        LoginViaMicrosoftPage.microsoftSignInButton.click();
+        CommonActions.explicitWaitOfOneElementVisible(LoginViaMicrosoftPage.buttonNoAboutSavingSession);
+        LoginViaMicrosoftPage.buttonNoAboutSavingSession.click();
+    }
 }
