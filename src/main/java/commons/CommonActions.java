@@ -33,16 +33,11 @@ public class CommonActions {
     static {
         switch (PLATFORM_AND_BROWSER) {
             case "CHROME_WINDOWS_LINUX":
-                try {
-                driver = new ChromeDriver(); // Windows initialisation trying
-                break;
-                } catch (NullPointerException e) {
-                    System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
                     ChromeOptions options = new ChromeOptions();
                     options.addArguments("headless");
                     options.addArguments("disable-gpu");
-                    driver = new ChromeDriver(options) //Linux initialisation trying
-                }
+                    driver = new ChromeDriver(options); //Linux initialisation trying
+                break;
             case "FIREFOX_WINDOWS":
                 driver = new FirefoxDriver();
                 break;
