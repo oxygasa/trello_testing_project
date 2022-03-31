@@ -51,7 +51,7 @@ PASSWORD: TrelloTest334
 1. [DONE] Create a Test Plan 
 2. [DONE] Make a Test Design by creating Test Suite Lists.
 3. [DONE] Do the defect reports during testing.
-4. [IN PROGRESS ... 40%] Make an Automation testing scenarios and code it.
+4. [IN PROGRESS ... 40%] Make an Automation testing scenarios and code them.
 5. [DONE] Connect to CI/CD system.
 
 ## Progress history:
