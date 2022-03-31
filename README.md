@@ -17,7 +17,7 @@ For detailed info, please, check the [Test plan document.](https://docs.google.c
 Login constants for tests:
 
 Primary user
-lOGIN: trellou0@gmail.com
+LOGIN: trellou0@gmail.com
 PASSWORD: Trellouser999Te!42
 
 2nd invited user
