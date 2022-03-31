@@ -6,8 +6,11 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import pages.base.BasePage;
+
+import java.util.List;
 
 import static commons.CommonActions.driver;
 
@@ -60,7 +63,16 @@ public class CardsHeader extends BasePage {
     public static WebElement invitationWindowCloseButton;
     @FindBy(xpath = "//input[@data-test-id='header-search-input']")
     public static WebElement searchBox;
-
+    @FindBy(xpath = "//button[@data-test-id='filter-popover-button']")
+    public static WebElement filterPopoverButton;
+    @FindBy(xpath = "//input[contains(@class,'nch-textfield__input')]")
+    public static WebElement filerKeywordInput;
+    @FindBy(xpath = "//div[contains(@title,'assigned')]")
+    public static WebElement cardsAssignedToMeCheckBox;
+    @FindAll({@FindBy(xpath = "//div[@class='D7o35mpYYtXnpz']")})
+    public static List<WebElement> allFilterCheckboxes;
+    @FindAll({@FindBy(xpath = "//div[contains(@class,'css-ufz0vj-control')]")})
+    public static List<WebElement> allFilterDropdowns;
     public static void inviteAndConnect2ndUserToTheBoardViaLink() throws InterruptedException {
         CommonActions.explicitWaitOfOneElementVisible(CardsHeader.inviteButton);
         CardsHeader.inviteButton.click();

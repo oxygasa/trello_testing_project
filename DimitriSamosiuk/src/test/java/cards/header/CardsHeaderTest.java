@@ -9,9 +9,13 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.boards.BoardsPage;
+import pages.cards.card_list_preview_page.CardListPreviewPage;
 import pages.cards.header.CardsHeader;
 import pages.cards.power_ups.PowerUpsPage;
 import pages.workspaces.WorkspaceListPage;
+
+import javax.smartcardio.Card;
+import java.util.Random;
 
 import static commons.CommonActions.driver;
 
@@ -50,9 +54,9 @@ public class CardsHeaderTest {
         String boardNameTextFieldInputText = RandomStringUtils.randomAlphanumeric(10);
         actions.click(CardsHeader.boardRenameInput).sendKeys(boardNameTextFieldInputText).sendKeys(Keys.ENTER).build().perform();
         driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-        System.out.println("expected"+boardNameTextFieldInputText);
-        System.out.println("actual"+BoardsPage.boardTitles.get(0).getText());
-        Assert.assertEquals(BoardsPage.boardTitles.get(0).getText(),boardNameTextFieldInputText);
+        System.out.println("expected" + boardNameTextFieldInputText);
+        System.out.println("actual" + BoardsPage.boardTitles.get(0).getText());
+        Assert.assertEquals(BoardsPage.boardTitles.get(0).getText(), boardNameTextFieldInputText);
         /*** Post condition**/
         CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
     }
@@ -86,7 +90,7 @@ public class CardsHeaderTest {
         CardsHeader.openWorkspaceMenu.click();
         CardsHeader.viewWorkspaceMenu.click();
         String resultTextOfDisplayNameTitle = WorkspaceListPage.savedDisplayNameTitle.getText();
-        Assert.assertEquals(resultTextOfDisplayNameTitle,workspaceNameExpected);
+        Assert.assertEquals(resultTextOfDisplayNameTitle, workspaceNameExpected);
         /*** Post condition**/
         CommonActions.closeAllVisibleBoards(driver.getCurrentUrl());
     }
@@ -102,7 +106,7 @@ public class CardsHeaderTest {
         driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         BoardsPage.boardInstancesList.get(0).click();
         CommonActions.explicitWaitOfOneElementVisible(CardsHeader.workspaceVisibleButton);
-        if(CardsHeader.workspaceVisibleButtonText.getText().equals("Public")){
+        if (CardsHeader.workspaceVisibleButtonText.getText().equals("Public")) {
             CardsHeader.workspaceVisibleButton.click();
             CommonActions.explicitWaitOfOneElementVisible(CardsHeader.privateBoardPermissionSelect);
             CardsHeader.privateBoardPermissionSelect.click();
@@ -127,7 +131,7 @@ public class CardsHeaderTest {
         driver.manage().deleteAllCookies();
         CommonActions.loginIntoTrelloBySecondUserCredentials();
         driver.get(boardUrl);
-        Assert.assertEquals(CardsHeader.boardTitleFor2ndUser.getText(),expectedBoardName);
+        Assert.assertEquals(CardsHeader.boardTitleFor2ndUser.getText(), expectedBoardName);
         /*** Post condition**/
         CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
     }
@@ -143,7 +147,7 @@ public class CardsHeaderTest {
         driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         BoardsPage.boardInstancesList.get(0).click();
         CommonActions.explicitWaitOfOneElementVisible(CardsHeader.workspaceVisibleButton);
-        if(CardsHeader.workspaceVisibleButtonText.getText().equals("Public")){
+        if (CardsHeader.workspaceVisibleButtonText.getText().equals("Public")) {
             CardsHeader.workspaceVisibleButton.click();
             CommonActions.explicitWaitOfOneElementVisible(CardsHeader.privateBoardPermissionSelect);
             CardsHeader.privateBoardPermissionSelect.click();
@@ -166,7 +170,7 @@ public class CardsHeaderTest {
         driver.manage().deleteAllCookies();
         CommonActions.loginIntoTrelloBySecondUserCredentials();
         driver.get(boardUrl);
-        Assert.assertEquals(CardsHeader.boardTitleFor2ndUser.getText(),expectedBoardName);
+        Assert.assertEquals(CardsHeader.boardTitleFor2ndUser.getText(), expectedBoardName);
         /*** Post condition**/
         CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
     }
@@ -233,6 +237,21 @@ public class CardsHeaderTest {
 
     //TC ID TRE 031 Filter testing.
     @Test
-    public static void filterTest() {
+    public static void filterTest() throws InterruptedException {
+        /*** Precondition:login, create a board, create the card for the filter testing**/
+        PageFactory.initElements(driver, CardsHeader.class);
+        PageFactory.initElements(driver, BoardsPage.class);
+        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
+        CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
+        CommonActions.createOneRandomBoardInstance(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
+        String expectedCardName = CardListPreviewPage.createRandomCardOnTheList(); // тут у меня null pointer, lol
+        int randomLabelColorPositionNumber = CardListPreviewPage.randomLabelColor();
+        /*** Open any board. Click Board button. **/
+        CardsHeader.filterPopoverButton.click();
+        CardsHeader.filerKeywordInput.sendKeys(expectedCardName);
+        CardsHeader.cardsAssignedToMeCheckBox.click();//assigned to me
+        CardsHeader.allFilterCheckboxes.get(3).click();//no date
+        CardsHeader.allFilterDropdowns.get(0).click();//labels color
+        CommonActions.selectDropdownMenuValueByPositionNumber(CardsHeader.allFilterDropdowns.get(0),randomLabelColorPositionNumber);//labels color
     }
 }

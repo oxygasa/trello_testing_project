@@ -1,5 +1,6 @@
 package workspaces;
 
+import base.BaseTest;
 import commons.CommonActions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -10,7 +11,7 @@ import pages.workspaces.WorkspaceListPage;
 
 import static commons.CommonActions.driver;
 
-public class WorkspaceListPageTest {
+public class WorkspaceListPageTest extends BaseTest {
 
     //TC ID TRE010 Workspace page: change the information about.
     @Test

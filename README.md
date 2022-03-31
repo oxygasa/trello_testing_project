@@ -1,27 +1,52 @@
 # Diary of trello testing project
 
+## Tools quick overview
 
 * Application location:  [Trello for desktop web-browsers](https://trello.com)
-
-* Environment: Windows 10, Chrome last.
+* Client: Windows 10, Chrome last. Server: Google cloud + Jenkins.
 * Test type priority: Integration tests are prioritised.
-
-## Tools quick overview
 * Testing documentation: Git Markdown files (.md), Google Drive Docs (.gdoc)
-* 
-* Source code editing and run tools and dependencies: IntelliJ IDEA (IDE), JDK 8, Maven 3, TestNG, Selenium 4, ChromeDriver.
+* Source code editing and run tools: IntelliJ IDEA (IDE), JDK 8, Maven 3, TestNG, Selenium 4, ChromeDriver.
 * Report tool: Allure report.
 * TestOps tool: Jenkins CI/CD.
 For detailed info, please, check the [Test plan document.](https://docs.google.com/document/d/1l68Rcsw-6cTbhl-qOcNNxPaNueLskr_ZQUb1wRXZaB8/edit?usp=sharing)
 
+## Credentials and links
+
+* [Trello address and credentials for the test automation:](https://trello.com)
+Login constants for tests:
+
+Primary user
+lOGIN: trellou0@gmail.com
+PASSWORD: Trellouser999Te!42
+
+2nd invited user
+LOGIN: trello2nduser@gmail.com
+PASSWORD: Trellouser999Te!42
+
+Workspaces constants for tests: TEN_BOARDS_WORKSPACE, WORKSPACE25
+
+* [Google drive Test suite list public link.](https://docs.google.com/spreadsheets/d/1gaVGRTgIrKwP1MWMsqEYsPVpk4Y6xZjXLurVHDh1ZCc/edit?usp=sharing)
+
+* [Test plan public link.](https://docs.google.com/document/d/1l68Rcsw-6cTbhl-qOcNNxPaNueLskr_ZQUb1wRXZaB8/edit?usp=sharing)
+
+* [GitHub address and SSH public key for source code sharing:] (https://github.com/oxygasa/trello_testing_project) git@github.com:oxygasa/trello_testing_project.git
+
+* [Jenkins address and credentials for the pipelines editing:] (http://34.64.230.195:8080/)
+lOGIN: Dzmitry_Samasiuk
+PASSWORD: TrelloTest334
+ 
+
 ## Goal checklist
+
 1. [DONE] Create a Test Plan 
 2. [DONE] Make a Test Design by creating Test Suite Lists.
 3. [DONE] Do the defect reports during testing.
-4. [IN PROGRESS ... ] Make an Automation testing scenarios and code it.
-5. [... PENDING] Connect to CI/CD system.
+4. [IN PROGRESS ... 40%] Make an Automation testing scenarios and code it.
+5. [DONE] Connect to CI/CD system.
 
 ## Progress history:
+
 **21 Feb 2022 - Testing job** 
 
 Test plan has been created.
@@ -107,6 +132,7 @@ Ideas from the mentor what to do:
 Shift 11 a.m. - 11 p.m.
 
 **21 Mar - 22 Mar 2022 - Sick days**
+
 Taking medicare that occurred due consequences of heavy physical work executing.
 Mentoring weekly updates have been cancelled.
 
@@ -116,5 +142,20 @@ Shift 11 a.m. - 11 p.m.
 
 **25 Mar - 27 Mar 2022 - Testing job**
 
+* TC complete status till TRE030 + Refactoring (methods cleanup - make steps shorter, comments shorting).
+* All repeated methods have the Test Base class and the CommonAction class as base classes. 
+* @BeforeTest methodes have been created to make the precondition code shorter.
+* Debug tool has been used for make less try/catch situations via solving the source of the problems.
 
-__________________________
+**28 Mar - 29 Mar 2022 - External job**
+
+Shift 11 a.m. - 11 p.m.
+
+**30 Mar - 31 Mar 2022 - Testing job**
+
+Mentoring updates: need to start earlier TestOps preparation via CI/CD tool "Jenkins". 
+Powered by Google Cloud Virtual Machine (GNU Linux Ubuntu 20.04 LTS)
+Jenkins workspace address http://34.64.230.195:8080/
+Credentials:
+----- User: Dzmitry_Samasiuk
+----- Password : TrelloTest334
