@@ -31,9 +31,9 @@ public class CommonActions {
 
     static {
         switch (PLATFORM_AND_BROWSER) {
-            case "CHROME_WINDOWS":
+            case "CHROME_WINDOWS_LINUX":
                 driver = new ChromeDriver();
-                break;
+                break;	
             case "FIREFOX_WINDOWS":
                 driver = new FirefoxDriver();
                 break;

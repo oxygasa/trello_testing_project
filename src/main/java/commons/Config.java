@@ -6,10 +6,10 @@ public class Config {
 
     /**
      * Specify the browser name and operating system for tests:
-     * CHROME_WINDOWS
+     * CHROME_WINDOWS_LINUX
      * FIREFOX_WINDOWS
      **/
-    public static final String PLATFORM_AND_BROWSER = "CHROME_WINDOWS";
+    public static final String PLATFORM_AND_BROWSER = "CHROME_WINDOWS_LINUX";
 
     /** Clear all cookies and cache after each interaction.*/
     public static final Boolean CLEAR_COOKIES = false;
