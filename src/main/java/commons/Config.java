@@ -19,7 +19,7 @@ public class Config {
      * To make a screenshot after each test.
      * Screenshots are located at DimitriQA/build/screenshots
      **/
-    public static final Boolean MAKE_SCREENSHOT_FOR_ALLURE = true;
+    public static final Boolean MAKE_SCREENSHOTS = true;
     /**
      * After each run the reports and screenshots will be deleted.
      * The target folders for clearing are DimitriSamosiuk/build

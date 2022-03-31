@@ -16,7 +16,7 @@ import java.util.Date;
 
 import static commons.Config.CLEAR_TEST_REPORT_AND_SCREENSHOT_DIRECTORY;
 import static commons.Config.CLEAR_COOKIES;
-import static commons.Config.MAKE_SCREENSHOT_FOR_ALLURE;
+import static commons.Config.MAKE_SCREENSHOTS;
 import static commons.Config.HOLD_BROWSER_OPEN;
 
 public class BaseTest extends BasePage {
@@ -46,13 +46,13 @@ public class BaseTest extends BasePage {
 
     @AfterMethod
     public void takingScreenshotsAfterEachTest() throws IOException {
-        if (MAKE_SCREENSHOT_FOR_ALLURE && !(driver == null)) {
+        if (MAKE_SCREENSHOTS && !(driver == null)) {
             Date date = new Date();
             String currentTime = String.valueOf(date.getTime());
             TakesScreenshot ts = (TakesScreenshot) driver;
             File bufferedScreenshotFile = ts.getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(bufferedScreenshotFile, new File(new StringBuilder().
-                    append("./DimitriSamosiuk/build/screenshots/scr").append(currentTime).append(".png").toString()));
+                    append("./screenshots/").append(currentTime).append(".png").toString()));
         }
     }
 
