@@ -17,11 +17,15 @@ For detailed info, please, check the [Test plan document.](https://docs.google.c
 Login constants for tests:
 
 Primary user
+
 LOGIN: trellou0@gmail.com
+
 PASSWORD: Trellouser999Te!42
 
 2nd invited user
+
 LOGIN: trello2nduser@gmail.com
+
 PASSWORD: Trellouser999Te!42
 
 Workspaces constants for tests: TEN_BOARDS_WORKSPACE, WORKSPACE25
@@ -30,10 +34,12 @@ Workspaces constants for tests: TEN_BOARDS_WORKSPACE, WORKSPACE25
 
 * [Test plan public link.](https://docs.google.com/document/d/1l68Rcsw-6cTbhl-qOcNNxPaNueLskr_ZQUb1wRXZaB8/edit?usp=sharing)
 
-* [GitHub address and SSH public key for source code sharing:] (https://github.com/oxygasa/trello_testing_project) git@github.com:oxygasa/trello_testing_project.git
+* [GitHub address and SSH public key for source code sharing.] (https://github.com/oxygasa/trello_testing_project) git@github.com:oxygasa/trello_testing_project.git
 
-* [Jenkins address and credentials for the pipelines editing:] (http://34.64.230.195:8080/)
-lOGIN: Dzmitry_Samasiuk
+* [Jenkins address and credentials for the pipelines editing.] (http://34.64.230.195:8080/)
+
+LOGIN: Dzmitry_Samasiuk
+
 PASSWORD: TrelloTest334
  
 
@@ -154,8 +160,13 @@ Shift 11 a.m. - 11 p.m.
 **30 Mar - 31 Mar 2022 - Testing job**
 
 Mentoring updates: need to start earlier TestOps preparation via CI/CD tool "Jenkins". 
+
 Powered by Google Cloud Virtual Machine (GNU Linux Ubuntu 20.04 LTS)
+
 Jenkins workspace address http://34.64.230.195:8080/
+
 Credentials:
+
 ----- User: Dzmitry_Samasiuk
+
 ----- Password : TrelloTest334
