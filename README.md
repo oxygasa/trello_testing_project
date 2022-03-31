@@ -14,6 +14,7 @@ For detailed info, please, check the [Test plan document.](https://docs.google.c
 ## Credentials and links
 
 * [Trello address and credentials for the test automation:](https://trello.com)
+
 Login constants for tests:
 
 Primary user
@@ -34,9 +35,11 @@ Workspaces constants for tests: TEN_BOARDS_WORKSPACE, WORKSPACE25
 
 * [Test plan public link.](https://docs.google.com/document/d/1l68Rcsw-6cTbhl-qOcNNxPaNueLskr_ZQUb1wRXZaB8/edit?usp=sharing)
 
-* [GitHub address and SSH public key for source code sharing.] (https://github.com/oxygasa/trello_testing_project) git@github.com:oxygasa/trello_testing_project.git
+* [GitHub address and SSH public key for source code sharing.](https://github.com/oxygasa/trello_testing_project) 
 
-* [Jenkins address and credentials for the pipelines editing.] (http://34.64.230.195:8080/)
+git@github.com:oxygasa/trello_testing_project.git
+
+* [Jenkins address and credentials for the pipelines editing.](http://34.64.230.195:8080)
 
 LOGIN: Dzmitry_Samasiuk
 
