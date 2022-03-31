@@ -3,6 +3,7 @@ package commons;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
@@ -32,8 +33,16 @@ public class CommonActions {
     static {
         switch (PLATFORM_AND_BROWSER) {
             case "CHROME_WINDOWS_LINUX":
-                driver = new ChromeDriver();
-                break;	
+                try {
+                driver = new ChromeDriver(); // Windows initialisation trying
+                break;
+                } catch (NullPointerException e) {
+                    System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+                    ChromeOptions options = new ChromeOptions();
+                    options.addArguments("headless");
+                    options.addArguments("disable-gpu");
+                    driver = new ChromeDriver(options) //Linux initialisation trying
+                }
             case "FIREFOX_WINDOWS":
                 driver = new FirefoxDriver();
                 break;
