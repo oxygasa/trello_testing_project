@@ -39,7 +39,7 @@ Workspaces constants for tests: TEN_BOARDS_WORKSPACE, WORKSPACE25
 
 git@github.com:oxygasa/trello_testing_project.git
 
-* [Jenkins address and credentials for the pipelines editing.](http://34.64.230.195:8080)
+* [Jenkins address and credentials for the pipelines editing.](http://35.216.15.139:8080/) <-- This address is dynamic when admin initiate the server reboot.
 
 LOGIN: Dzmitry_Samasiuk
 
@@ -166,7 +166,7 @@ Mentoring updates: need to start earlier TestOps preparation via CI/CD tool "Jen
 
 Powered by Google Cloud Virtual Machine (GNU Linux Ubuntu 20.04 LTS)
 
-Jenkins workspace address http://34.64.230.195:8080/
+Jenkins workspace address http://35.216.15.139:8080/
 
 Credentials:
 
