@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 import pages.boards.BoardsPage;
 import pages.login.LoginViaTrelloPage;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 import java.time.Duration;
 import java.util.List;
@@ -32,11 +33,20 @@ public class CommonActions {
 
     static {
         switch (PLATFORM_AND_BROWSER) {
-            case "CHROME_WINDOWS_LINUX":
-                    ChromeOptions options = new ChromeOptions();
-                    options.addArguments("headless");
-                    options.addArguments("disable-gpu");
-                    driver = new ChromeDriver(options); //Linux initialisation trying
+            case "CHROME_WINDOWS":
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver();
+                break;
+            case "CHROME_WINDOWS_HEADLESS":
+                WebDriverManager.chromedriver().setup();
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("headless");
+                options.addArguments("disable-gpu");
+                driver = new ChromeDriver(options); //Linux initialisation trying
+                break;
+            case "CHROME_LINUX":
+                WebDriverManager wdm = WebDriverManager.chromedriver().linux().enableVnc().enableRecording();
+                driver = wdm.create();
                 break;
             case "FIREFOX_WINDOWS":
                 driver = new FirefoxDriver();

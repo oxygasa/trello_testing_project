@@ -1,6 +1,7 @@
 package base;
 
 import commons.CommonActions;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Attachment;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -14,10 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 
-import static commons.Config.CLEAR_TEST_REPORT_AND_SCREENSHOT_DIRECTORY;
-import static commons.Config.CLEAR_COOKIES;
-import static commons.Config.MAKE_SCREENSHOTS;
-import static commons.Config.HOLD_BROWSER_OPEN;
+import static commons.Config.*;
 
 public class BaseTest extends BasePage {
     WebDriver driver;
