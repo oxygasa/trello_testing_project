@@ -11,7 +11,7 @@ public class Config {
      * CHROME_LINUX
      * FIREFOX_WINDOWS
      **/
-    public static final String PLATFORM_AND_BROWSER = "CHROME_LINUX";
+    public static final String PLATFORM_AND_BROWSER = "CHROME_WINDOWS";
 
     /** Clear all cookies and cache after each interaction.*/
     public static final Boolean CLEAR_COOKIES = false;
