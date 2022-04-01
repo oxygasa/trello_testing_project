@@ -42,7 +42,7 @@ public class CommonActions {
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("headless");
                 options.addArguments("disable-gpu");
-                driver = new ChromeDriver(options); //Linux initialisation trying
+                driver = new ChromeDriver(options);
                 break;
             case "CHROME_LINUX":
                 WebDriverManager wdm = WebDriverManager.chromedriver().linux().enableVnc().enableRecording();
