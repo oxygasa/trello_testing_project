@@ -22,10 +22,4 @@ public class Config {
      * Screenshots are located at DimitriQA/build/screenshots
      **/
     public static final Boolean MAKE_SCREENSHOTS = true;
-    /**
-     * After each run the reports and screenshots will be deleted.
-     * The target folders for clearing are DimitriSamosiuk/build
-     * and DimitriSamosiuk/../allure-results
-     **/
-    public static final Boolean CLEAR_TEST_REPORT_AND_SCREENSHOT_DIRECTORY = false;
 }

@@ -16,6 +16,7 @@ public class LoginThroughTrelloTest extends BaseTest {
     @Test
     public static void loginWithinIncorrectCredentialsPartOneTest() {
         /*** Open https://trello.com/login. Type [Incorrect login credential example one] as a login. stay the password clear. **/
+        driver.manage().deleteAllCookies();
         PageFactory.initElements(driver, LoginViaTrelloPage.class);
         driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
         LoginViaTrelloPage.username.sendKeys(LoginViaTrelloPage.INCORRECT_LOGIN_CREDENTIAL_EXAMPLE_ONE);
@@ -29,6 +30,7 @@ public class LoginThroughTrelloTest extends BaseTest {
     @Test
     public static void loginWithinIncorrectCredentialsPartTwoTest() throws InterruptedException {
         /*** Type [Incorrect login credential example two] as a login. stay the password clear. **/
+        driver.manage().deleteAllCookies();
         PageFactory.initElements(driver, LoginViaTrelloPage.class);
         driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
         LoginViaTrelloPage.username.sendKeys(LoginViaTrelloPage.INCORRECT_LOGIN_CREDENTIAL_EXAMPLE_TWO);
@@ -43,6 +45,7 @@ public class LoginThroughTrelloTest extends BaseTest {
     @Test
     public static void loginWithinIncorrectCredentialsPartThreeTest() {
         /*** Type a [Login credential], stay the password clear. **/
+        driver.manage().deleteAllCookies();
         PageFactory.initElements(driver, LoginViaTrelloPage.class);
         driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
         LoginViaTrelloPage.username.clear();
@@ -57,7 +60,6 @@ public class LoginThroughTrelloTest extends BaseTest {
     @Test
     public static void loginWithinCorrectCredentialsTest() throws InterruptedException {
         /*** Type a [Login credential] and a [Password credential]. **/
-        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         /*** Access granted. The Boards page is opened. The Username is according to [Login credential] **/
         LoginViaTrelloPage.avatarName.click();
         Assert.assertEquals(LoginViaTrelloPage.avatarEmail.getText(), LoginViaTrelloPage.LOGIN_CREDENTIAL);

@@ -19,6 +19,7 @@ public class RegisterUserTest extends BaseTest {
          * Type the email from https://temp-mail.io/  then submit it.
          * On https://id.atlassian.com/signup type the email from https://temp-mail.io/  then submit it.
          **/
+        driver.manage().deleteAllCookies();
         PageFactory.initElements(driver, RegistrationPage.class);
         PageFactory.initElements(driver, TempMail.class);
         driver.get(TempMail.TEMP_MAIL_PAGE_URL);
@@ -40,6 +41,7 @@ public class RegisterUserTest extends BaseTest {
          * Type [default email name] in email text field then click the "Sign up it's free" button.
          * In the "Display name" type random name then submit.
          **/
+        driver.manage().deleteAllCookies();
         PageFactory.initElements(driver, RegistrationPage.class);
         SoftAssert softAssert = new SoftAssert();
         driver.get(RegistrationPage.TRELLO_WELCOME_PAGE_URL);

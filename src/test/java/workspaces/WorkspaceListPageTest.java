@@ -18,7 +18,6 @@ public class WorkspaceListPageTest extends BaseTest {
     public static void changeInformationAboutWorkspaceTest() throws InterruptedException {
         /*** Precondition: login **/
         PageFactory.initElements(driver, WorkspaceListPage.class);
-        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         /*** Navigate to Edit Workspace Details button. **/
         WorkspaceListPage.createNewWorkspace();
         CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.editWorkspaceDetailsButton);
@@ -34,7 +33,6 @@ public class WorkspaceListPageTest extends BaseTest {
     public static void workspaceTableTabPremiumRequireTest() throws InterruptedException {
         /*** Precondition: login**/
         PageFactory.initElements(driver, WorkspaceListPage.class);
-        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         /*** Create new Workspace and navigate to the Workspace table tab.**/
         WorkspaceListPage.createNewWorkspace();
         String currentWorkspaceUrl = driver.getCurrentUrl();
@@ -54,7 +52,6 @@ public class WorkspaceListPageTest extends BaseTest {
         /*** Precondition: login and open the workspace**/
         PageFactory.initElements(driver, WorkspaceListPage.class);
         PageFactory.initElements(driver, LeftNavigationDrawer.class);
-        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         WorkspaceListPage.createNewWorkspace();
         String currentWorkspaceUrl = driver.getCurrentUrl();
         /*** Expand Left Navigation Drawer then click Workspace table button. **/
@@ -77,7 +74,6 @@ public class WorkspaceListPageTest extends BaseTest {
         /*** Precondition: login**/
         PageFactory.initElements(driver, WorkspaceListPage.class);
         PageFactory.initElements(driver, TempMail.class);
-        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         /*** Create the workspace within member invite.**/
         WorkspaceListPage.createNewWorkspaceWithinInvite();
         WorkspaceListPage.confirmInviteNewMemberViaTeamEmail();

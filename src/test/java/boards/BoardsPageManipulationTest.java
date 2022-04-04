@@ -17,7 +17,6 @@ public class BoardsPageManipulationTest {
     public static void recentlyViewedTest() throws InterruptedException {
         /*** Precondition: login, close all visible boards. Create 4 boards (and remember their names). **/
         PageFactory.initElements(driver, BoardsPage.class);
-        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         List<String> expectedBoardNamesListener = BoardsPage.createCollectionOfFourExpectedBoards();
         expectedBoardNamesListener.sort(String.CASE_INSENSITIVE_ORDER);
@@ -35,7 +34,6 @@ public class BoardsPageManipulationTest {
     public static void yourWorkspacesTest() throws InterruptedException {
         /*** Precondition: login, close all visible boards. Create 4 boards (and remember their names). **/
         PageFactory.initElements(driver, BoardsPage.class);
-        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         List<String> expectedBoardNamesListener = BoardsPage.createCollectionOfFourExpectedBoards();
         expectedBoardNamesListener.sort(String.CASE_INSENSITIVE_ORDER);

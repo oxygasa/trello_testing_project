@@ -17,6 +17,7 @@ public class ForgotPasswordTest {
          * Type a [Login credential] as email and submit.
          * Type the new password. This test suite will need changes to the new password.
          **/
+        driver.manage().deleteAllCookies();
         PageFactory.initElements(driver, LoginViaTrelloPage.class);
         PageFactory.initElements(driver, ForgotPasswordPage.class);
         driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);

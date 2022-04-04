@@ -114,31 +114,6 @@ public class CommonActions {
         driver.close();
     }
 
-    /**
-     * Method for Login before any test within default credentials.
-     * Credentials are located in LoginViaTrelloPage class.
-     **/
-    public static void loginIntoTrelloWithinDefaultPreconditionCredentials() throws InterruptedException {
-        PageFactory.initElements(driver, LoginViaTrelloPage.class);
-        try {
-            driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
-            LoginViaTrelloPage.username.sendKeys(LoginViaTrelloPage.LOGIN_CREDENTIAL);
-            Thread.sleep(2000);
-            LoginViaTrelloPage.submitButtonTrello.click();
-            LoginViaTrelloPage.password.sendKeys(LoginViaTrelloPage.PASSWORD_CREDENTIAL);
-            LoginViaTrelloPage.submitButtonAtlassian.click();
-            Thread.sleep(3000);
-        } catch (org.openqa.selenium.NoSuchElementException e) {
-            driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
-            LoginViaTrelloPage.username.sendKeys(LoginViaTrelloPage.LOGIN_CREDENTIAL);
-            Thread.sleep(2000);
-            LoginViaTrelloPage.submitButtonTrello.click();
-            LoginViaTrelloPage.password.sendKeys(LoginViaTrelloPage.PASSWORD_CREDENTIAL);
-            LoginViaTrelloPage.submitButtonAtlassian.click();
-            Thread.sleep(3000);
-        }
-    }
-
 
     /**
      * The same login, but by the second user.

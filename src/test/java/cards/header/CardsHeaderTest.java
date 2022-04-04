@@ -24,7 +24,6 @@ public class CardsHeaderTest {
         /*** Precondition**/
         PageFactory.initElements(driver, CardsHeader.class);
         PageFactory.initElements(driver, BoardsPage.class);
-        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         CommonActions.createOneRandomBoardInstance(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         /*** Open any board. Click Board button. **/
@@ -42,7 +41,6 @@ public class CardsHeaderTest {
         /*** Precondition: login**/
         PageFactory.initElements(driver, CardsHeader.class);
         PageFactory.initElements(driver, BoardsPage.class);
-        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         CommonActions.createOneRandomBoardInstance(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         /*** Open any board. Change the board name. **/
@@ -71,7 +69,6 @@ public class CardsHeaderTest {
         PageFactory.initElements(driver, WorkspaceListPage.class);
         PageFactory.initElements(driver, CardsHeader.class);
         PageFactory.initElements(driver, BoardsPage.class);
-        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         CommonActions.createOneRandomBoardInstance(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         /*** Open any board. Change the workspace. Check the place of the board is changed. **/
@@ -99,7 +96,6 @@ public class CardsHeaderTest {
         PageFactory.initElements(driver, WorkspaceListPage.class);
         PageFactory.initElements(driver, CardsHeader.class);
         PageFactory.initElements(driver, BoardsPage.class);
-        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         BoardsPage.boardInstancesList.get(0).click();
         CommonActions.explicitWaitOfOneElementVisible(CardsHeader.workspaceVisibleButton);
@@ -140,7 +136,6 @@ public class CardsHeaderTest {
         PageFactory.initElements(driver, WorkspaceListPage.class);
         PageFactory.initElements(driver, CardsHeader.class);
         PageFactory.initElements(driver, BoardsPage.class);
-        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         BoardsPage.boardInstancesList.get(0).click();
         CommonActions.explicitWaitOfOneElementVisible(CardsHeader.workspaceVisibleButton);
@@ -209,7 +204,6 @@ public class CardsHeaderTest {
         PageFactory.initElements(driver, CardsHeader.class);
         PageFactory.initElements(driver, BoardsPage.class);
         PageFactory.initElements(driver, PowerUpsPage.class);
-        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         CommonActions.createOneRandomBoardInstance(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         /*** Open any board. Click Board button. **/
@@ -238,7 +232,6 @@ public class CardsHeaderTest {
         /*** Precondition:login, create a board, create the card for the filter testing**/
         PageFactory.initElements(driver, CardsHeader.class);
         PageFactory.initElements(driver, BoardsPage.class);
-        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         CommonActions.createOneRandomBoardInstance(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         String expectedCardName = CardListPreviewPage.createRandomCardOnTheList(); // тут у меня null pointer, lol

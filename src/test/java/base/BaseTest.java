@@ -1,16 +1,17 @@
 package base;
 
 import commons.CommonActions;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import io.qameta.allure.Attachment;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import pages.base.BasePage;
+import pages.login.LoginViaTrelloPage;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
@@ -21,41 +22,48 @@ public class BaseTest extends BasePage {
     WebDriver driver;
 
     @BeforeTest
-    public WebDriver startBrowser() throws IOException {
+    public WebDriver startBrowser() throws InterruptedException {
         driver = CommonActions.driver;
-        File buildFolder = new File("./DimitriSamosiuk/build/");
-        File allureResultFolder = new File(".allure-results");
-        if (buildFolder.isDirectory() && CLEAR_TEST_REPORT_AND_SCREENSHOT_DIRECTORY) {
-            FileUtils.deleteDirectory(new File(String.valueOf(buildFolder)));
-            FileUtils.deleteDirectory(new File(String.valueOf(allureResultFolder)));
+        if (CLEAR_COOKIES) {
+            driver.manage().deleteAllCookies();
+        }
+        PageFactory.initElements(driver, LoginViaTrelloPage.class);
+        try {
+            driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
+            LoginViaTrelloPage.username.sendKeys(LoginViaTrelloPage.LOGIN_CREDENTIAL);
+            Thread.sleep(2000);
+            LoginViaTrelloPage.submitButtonTrello.click();
+            LoginViaTrelloPage.password.sendKeys(LoginViaTrelloPage.PASSWORD_CREDENTIAL);
+            LoginViaTrelloPage.submitButtonAtlassian.click();
+            Thread.sleep(3000);
+        } catch (NoSuchElementException | InterruptedException e) {
+            driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
+            LoginViaTrelloPage.username.sendKeys(LoginViaTrelloPage.LOGIN_CREDENTIAL);
+            Thread.sleep(2000);
+            LoginViaTrelloPage.submitButtonTrello.click();
+            LoginViaTrelloPage.password.sendKeys(LoginViaTrelloPage.PASSWORD_CREDENTIAL);
+            LoginViaTrelloPage.submitButtonAtlassian.click();
+            Thread.sleep(3000);
         }
         return driver;
     }
 
-    @AfterSuite
-    public void closeBrowser() {
-        if (!HOLD_BROWSER_OPEN) {
-            if (CLEAR_COOKIES) {
-                driver.manage().deleteAllCookies();
-            }
-            driver.quit();
-        }
-    }
-
-    @AfterMethod
-    public void takingScreenshotsAfterEachTest() throws IOException {
+    @AfterTest
+    public void closeBrowser() throws IOException {
         if (MAKE_SCREENSHOTS && !(driver == null)) {
             Date date = new Date();
             String currentTime = String.valueOf(date.getTime());
             TakesScreenshot ts = (TakesScreenshot) driver;
             File bufferedScreenshotFile = ts.getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(bufferedScreenshotFile, new File(new StringBuilder().
-                    append("./screenshots/").append(currentTime).append(".png").toString()));
+            FileUtils.copyFile(bufferedScreenshotFile, new File("./screenshots/" + currentTime + ".png"));
         }
-    }
-
-    @Attachment
-    public byte[] makeAttachScreenshotToAllure(TakesScreenshot takesScreenshot) {
-        return takesScreenshot.getScreenshotAs(OutputType.BYTES);
+        if (!HOLD_BROWSER_OPEN) {
+            if (CLEAR_COOKIES) {
+                assert driver != null;
+                driver.manage().deleteAllCookies();
+            }
+            assert driver != null;
+            driver.quit();
+        }
     }
 }

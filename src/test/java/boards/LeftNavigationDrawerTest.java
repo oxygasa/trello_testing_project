@@ -17,7 +17,6 @@ public class LeftNavigationDrawerTest {
         /*** Precondition: login, close all visible boards. **/
         PageFactory.initElements(driver, LeftNavigationDrawer.class);
         PageFactory.initElements(driver, BoardsPage.class);
-        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         /*** On the any Workspaces Left Navigation Drawer create a board with a random title. **/
         driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
@@ -33,7 +32,6 @@ public class LeftNavigationDrawerTest {
         /*** Precondition: login, navigate to boards page. **/
         PageFactory.initElements(driver, LeftNavigationDrawer.class);
         PageFactory.initElements(driver, BoardsPage.class);
-        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE+ "/boards");
         /*** Open recent pages and check their presence. **/
         LeftNavigationDrawer.navigationToBoardsTemplatesHomeWorkspaces.get(0).click();

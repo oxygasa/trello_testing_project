@@ -17,6 +17,7 @@ public class SocialMediaLoginTest {
     @Test
     public static void socialMediaLoginGoogleTest() {
         /*** Select "Sign in via Google". Type a [Login credential] and a [Password credential]. **/
+        driver.manage().deleteAllCookies();
         PageFactory.initElements(driver, LoginViaGooglePage.class);
         PageFactory.initElements(driver, LoginViaTrelloPage.class);
         driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
@@ -34,6 +35,7 @@ public class SocialMediaLoginTest {
          * Select "Sign in via Microsoft". Type a [Login credential] and a [Password credential].
          * Click "No" button for saving the session.
          **/
+        driver.manage().deleteAllCookies();
         PageFactory.initElements(driver, LoginViaMicrosoftPage.class);
         PageFactory.initElements(driver, LoginViaTrelloPage.class);
         driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
@@ -50,6 +52,7 @@ public class SocialMediaLoginTest {
     @Test
     public static void socialMediaLoginAppleTest() {
         /*** Select "Sign in via Apple". Type a [Login credential] and a [Password credential]. **/
+        driver.manage().deleteAllCookies();
         PageFactory.initElements(driver, LoginViaApplePage.class);
         PageFactory.initElements(driver, LoginViaTrelloPage.class);
         driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);

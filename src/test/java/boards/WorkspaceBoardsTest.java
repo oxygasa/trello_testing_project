@@ -21,7 +21,6 @@ public class WorkspaceBoardsTest {
     public static void boardsCreationBeginTest() throws InterruptedException {
         /*** Precondition: login **/
         PageFactory.initElements(driver, BoardsPage.class);
-        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         /*** Create a board with random parameters from Workspaces. **/
         CommonActions.createOneRandomBoardInstance(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         CommonActions.explicitWaitOfOneElementVisible(BoardsPage.newBoardNameInput);
@@ -36,7 +35,6 @@ public class WorkspaceBoardsTest {
         /*** Precondition: login, create a board instance **/
         PageFactory.initElements(driver, BoardsPage.class);
         PageFactory.initElements(driver, WorkspaceListPage.class);
-        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         CommonActions.createOneRandomBoardInstance(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         CommonActions.explicitWaitOfOneElementVisible(BoardsPage.newBoardNameInput);
         driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
@@ -53,7 +51,6 @@ public class WorkspaceBoardsTest {
     public static void boardsFreeAccountLimitCounterContinueTest() throws InterruptedException {
         /*** Precondition: login, close all visible boards. **/
         PageFactory.initElements(driver, BoardsPage.class);
-        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         CommonActions.explicitWaitOfOneElementVisible(BoardsPage.createNewBoardSign);
         CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
@@ -81,7 +78,6 @@ public class WorkspaceBoardsTest {
     public static void boardsAddToFavouriteTest() throws InterruptedException {
         /*** Precondition: login, close all visible boards. **/
         PageFactory.initElements(driver, BoardsPage.class);
-        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         /*** Open any workspace. Add to favorite any board inside the board instance. **/
         driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
@@ -121,7 +117,6 @@ public class WorkspaceBoardsTest {
     public static void boardsFilterMenuTest() throws InterruptedException {
         /*** Precondition: login, close all visible boards. Create 4 boards (and remember their names). **/
         PageFactory.initElements(driver, BoardsPage.class);
-        CommonActions.loginIntoTrelloWithinDefaultPreconditionCredentials();
         CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         List<String> expectedBoardNamesListener = BoardsPage.createCollectionOfFourExpectedBoards();
         System.out.println("Expected List" + expectedBoardNamesListener);
