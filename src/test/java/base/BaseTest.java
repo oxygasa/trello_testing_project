@@ -1,7 +1,9 @@
 package base;
 
 import commons.CommonActions;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.apache.commons.io.FileUtils;
+import org.aspectj.lang.annotation.Before;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -20,7 +22,6 @@ import static commons.Config.*;
 
 public class BaseTest extends BasePage {
     WebDriver driver;
-
     @BeforeTest
     public WebDriver startBrowser() throws InterruptedException {
         driver = CommonActions.driver;
