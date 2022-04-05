@@ -1,5 +1,6 @@
 package boards;
 
+import base.BaseTest;
 import commons.CommonActions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -10,7 +11,7 @@ import java.util.List;
 
 import static commons.CommonActions.driver;
 
-public class BoardsPageManipulationTest {
+public class BoardsPageManipulationTest extends BaseTest {
 
     //TC ID TRE020 Boards page: Recently viewed.
     @Test
@@ -18,7 +19,7 @@ public class BoardsPageManipulationTest {
         /*** Precondition: login, close all visible boards. Create 4 boards (and remember their names). **/
         PageFactory.initElements(driver, BoardsPage.class);
         CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-        List<String> expectedBoardNamesListener = BoardsPage.createCollectionOfFourExpectedBoards();
+        List<String> expectedBoardNamesListener = BoardsPage.createCollectionOfFiveExpectedBoards();
         expectedBoardNamesListener.sort(String.CASE_INSENSITIVE_ORDER);
         System.out.println("Expected List" + expectedBoardNamesListener);
         /*** Check, the /boards page contains the same boards.**/
@@ -35,7 +36,7 @@ public class BoardsPageManipulationTest {
         /*** Precondition: login, close all visible boards. Create 4 boards (and remember their names). **/
         PageFactory.initElements(driver, BoardsPage.class);
         CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-        List<String> expectedBoardNamesListener = BoardsPage.createCollectionOfFourExpectedBoards();
+        List<String> expectedBoardNamesListener = BoardsPage.createCollectionOfFiveExpectedBoards();
         expectedBoardNamesListener.sort(String.CASE_INSENSITIVE_ORDER);
         System.out.println("Expected List" + expectedBoardNamesListener);
         /*** Check, the /boards page contains the same boards.**/

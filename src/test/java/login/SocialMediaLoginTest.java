@@ -1,5 +1,6 @@
 package login;
 
+import base.BaseTest;
 import commons.CommonActions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -11,7 +12,7 @@ import pages.login.LoginViaTrelloPage;
 
 import static commons.CommonActions.driver;
 
-public class SocialMediaLoginTest {
+public class SocialMediaLoginTest extends BaseTest {
 
     //TC ID TRE005 Social media login. Google.
     @Test
@@ -54,8 +55,6 @@ public class SocialMediaLoginTest {
         /*** Select "Sign in via Apple". Type a [Login credential] and a [Password credential]. **/
         driver.manage().deleteAllCookies();
         PageFactory.initElements(driver, LoginViaApplePage.class);
-        PageFactory.initElements(driver, LoginViaTrelloPage.class);
-        driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
         LoginViaApplePage.appleOauthButton.click();
         LoginViaApplePage.appleIDLoginTextField.sendKeys(LoginViaApplePage.LOGIN_CREDENTIAL);
         LoginViaApplePage.appleIDLoginNextButton.click();

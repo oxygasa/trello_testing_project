@@ -1,5 +1,6 @@
 package boards;
 
+import base.BaseTest;
 import commons.CommonActions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -9,7 +10,7 @@ import pages.boards.LeftNavigationDrawer;
 
 import static commons.CommonActions.driver;
 
-public class LeftNavigationDrawerTest {
+public class LeftNavigationDrawerTest extends BaseTest {
 
     //TC ID TRE019 Left Navigation Drawer: Add, Favourite, close boards.
     @Test

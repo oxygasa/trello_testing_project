@@ -49,10 +49,11 @@ public class CardsHeaderTest extends BaseTest {
         CommonActions.explicitWaitOfOneElementVisible(CardsHeader.boardRenameInput);
         String boardNameTextFieldInputText = RandomStringUtils.randomAlphanumeric(10);
         actions.click(CardsHeader.boardRenameInput).sendKeys(boardNameTextFieldInputText).sendKeys(Keys.ENTER).build().perform();
+        String expectedTitleAfterRename = CardsHeader.boardRenameInput.getText();
         driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-        System.out.println("expected" + boardNameTextFieldInputText);
+        System.out.println("expected" + expectedTitleAfterRename);
         System.out.println("actual" + BoardsPage.boardTitles.get(0).getText());
-        Assert.assertEquals(BoardsPage.boardTitles.get(0).getText(), boardNameTextFieldInputText);
+        Assert.assertEquals(BoardsPage.boardTitles.get(0).getText(), expectedTitleAfterRename);
         /*** Post condition**/
         CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
     }
@@ -76,6 +77,8 @@ public class CardsHeaderTest extends BaseTest {
         CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         CommonActions.createOneRandomBoardInstance(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         /*** Open any board. Change the workspace. Check the place of the board is changed. **/
+        driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
+        BoardsPage.boardInstancesList.get(0).click();
         CommonActions.explicitWaitOfOneElementVisible(CardsHeader.openWorkspaceMenu);
         CardsHeader.openWorkspaceMenu.click();
         CommonActions.explicitWaitOfOneElementVisible(CardsHeader.changeWorkspaceMenu);
@@ -100,20 +103,25 @@ public class CardsHeaderTest extends BaseTest {
         PageFactory.initElements(driver, WorkspaceListPage.class);
         PageFactory.initElements(driver, CardsHeader.class);
         PageFactory.initElements(driver, BoardsPage.class);
-        driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-        BoardsPage.boardInstancesList.get(0).click();
-        CommonActions.explicitWaitOfOneElementVisible(CardsHeader.workspaceVisibleButton);
-        if (CardsHeader.workspaceVisibleButtonText.getText().equals("Public")) {
-            CardsHeader.workspaceVisibleButton.click();
-            CommonActions.explicitWaitOfOneElementVisible(CardsHeader.privateBoardPermissionSelect);
-            CardsHeader.privateBoardPermissionSelect.click();
+        try {
+            driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
+            CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
+            CommonActions.createOneRandomBoardInstance(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
+        } catch (org.openqa.selenium.TimeoutException | org.openqa.selenium.NoSuchElementException e) {
+            if (CardsHeader.workspaceVisibleButtonText.getText().equals("Public")) {
+                CardsHeader.workspaceVisibleButton.click();
+                CommonActions.explicitWaitOfOneElementVisible(CardsHeader.privateBoardPermissionSelect);
+                CardsHeader.privateBoardPermissionSelect.click();
+                driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
+                CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
+                CommonActions.createOneRandomBoardInstance(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
+            }
         }
-        driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-        CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-        CommonActions.createOneRandomBoardInstance(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         /*** 1. Open any board.
          2. Change a workspace visible (3. Private, 6. Public).
          **/
+        driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
+        BoardsPage.boardInstancesList.get(0).click();
         CommonActions.explicitWaitOfOneElementVisible(CardsHeader.workspaceVisibleButton);
         String expectedBoardName = CardsHeader.boardRenameInput.getText();
         CardsHeader.workspaceVisibleButton.click();
@@ -129,8 +137,6 @@ public class CardsHeaderTest extends BaseTest {
         CommonActions.loginIntoTrelloBySecondUserCredentials();
         driver.get(boardUrl);
         Assert.assertEquals(CardsHeader.boardTitleFor2ndUser.getText(), expectedBoardName);
-        /*** Post condition**/
-        CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
     }
 
     //TC ID TRE027 Workspace visible change.
@@ -215,6 +221,7 @@ public class CardsHeaderTest extends BaseTest {
         PowerUpsPage.powerUpsButton.click();
         CommonActions.explicitWaitOfOneElementVisible(PowerUpsPage.confirmRedirectToPowerUpsPage);
         PowerUpsPage.confirmRedirectToPowerUpsPage.click();
+        Thread.sleep(3000);
         CommonActions.explicitWaitOfOneElementVisible(PowerUpsPage.madeByTrelloButton);
         Thread.sleep(3000);
         PowerUpsPage.madeByTrelloButton.click();

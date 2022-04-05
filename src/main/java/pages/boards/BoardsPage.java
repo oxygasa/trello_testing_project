@@ -62,6 +62,8 @@ public class BoardsPage extends BasePage {
     public static List<WebElement> boardsPageAllWorkspacesBoards;
     @FindAll({@FindBy(xpath = "//div[@class='board-tile-details-name']/div")})
     public static List<WebElement> boardsPageRecentBoardAndAllBoards;
+    @FindBy(xpath = "//span[@data-test-id='business-class-text']")
+    public static WebElement premiumUserStatusText;
     WebDriver driver;
     public BoardsPage(WebDriver driver) {
         this.driver = driver;
@@ -69,7 +71,7 @@ public class BoardsPage extends BasePage {
 
     /*** There are methods to make test steps code shorter **/
 
-    public static List<String> createCollectionOfFourExpectedBoards() throws InterruptedException {
+    public static List<String> createCollectionOfFiveExpectedBoards() throws InterruptedException {
         List<String> expectedBoardNamesListener = new ArrayList<>();
         while (BoardsPage.boardInstancesList.size() < 4) {
             CommonActions.driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
@@ -133,8 +135,9 @@ public class BoardsPage extends BasePage {
     public static List<String> saveBoardPageRecentBoardListToCollection() throws InterruptedException {
         CommonActions.driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE + "/boards");
         CommonActions.explicitWaitOfElementsListVisible(BoardsPage.boardsPageAllWorkspacesBoards);
+        Thread.sleep(2000);
         List<String> actualResultBoardNames = new ArrayList<>();
-        for (int i = 0; i < BoardsPage.boardsPageAllWorkspacesBoards.size(); i++) {
+        for (int i = 0; i < BoardsPage.boardsPageAllWorkspacesBoards.size(); ++i) {
             actualResultBoardNames.add(BoardsPage.boardsPageAllWorkspacesBoards.get(i).getText());
         }
         return actualResultBoardNames;

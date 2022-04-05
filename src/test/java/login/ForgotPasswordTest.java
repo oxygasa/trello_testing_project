@@ -1,5 +1,6 @@
 package login;
 
+import base.BaseTest;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -7,7 +8,7 @@ import pages.login.ForgotPasswordPage;
 import pages.login.LoginViaTrelloPage;
 import static commons.CommonActions.driver;
 
-public class ForgotPasswordTest {
+public class ForgotPasswordTest extends BaseTest {
 
     //TC ID TRE009 Forget password
     @Test

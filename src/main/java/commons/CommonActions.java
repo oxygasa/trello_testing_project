@@ -222,7 +222,6 @@ public class CommonActions {
         Thread.sleep(500);
         try {
             while (BoardsPage.boardInstancesList.size() > 0) {
-                ;
                 CommonActions.closeOneBoardInstanceFromTheWorkspacePage(workspaceLink);
                 driver.get(workspaceLink);
             }

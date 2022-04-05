@@ -29,9 +29,9 @@ public class LoginViaTrelloPage extends BasePage {
     public static WebElement accountNotExistError;
     @FindBy(id = "password-error")
     public static WebElement passwordIsNotTypedError;
-    @FindBy(xpath = "//p[contains(@class,'sc-kjoXOD')]")
+    @FindBy(xpath = "//div[@id='email-sent-page']/p")
     public static WebElement emailApprovalRequest;
-    @FindBy(xpath = "//button[@aria-label='Open member menu']")
+    @FindBy(xpath = "//button[@data-test-id='header-member-menu-button']")
     public static WebElement avatarName;
     @FindBy(className = "w6CkIi_9-1xviK")
     public static WebElement avatarEmail;
