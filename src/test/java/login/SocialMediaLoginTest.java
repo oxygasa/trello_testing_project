@@ -55,6 +55,8 @@ public class SocialMediaLoginTest extends BaseTest {
         /*** Select "Sign in via Apple". Type a [Login credential] and a [Password credential]. **/
         driver.manage().deleteAllCookies();
         PageFactory.initElements(driver, LoginViaApplePage.class);
+        PageFactory.initElements(driver, LoginViaTrelloPage.class);
+        driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
         LoginViaApplePage.appleOauthButton.click();
         LoginViaApplePage.appleIDLoginTextField.sendKeys(LoginViaApplePage.LOGIN_CREDENTIAL);
         LoginViaApplePage.appleIDLoginNextButton.click();

@@ -5,6 +5,7 @@ import commons.CommonActions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.boards.BoardsPage;
 import pages.boards.LeftNavigationDrawer;
 import pages.register.TempMail;
 import pages.workspaces.WorkspaceListPage;
@@ -74,16 +75,12 @@ public class WorkspaceListPageTest extends BaseTest {
         /*** Precondition: login**/
         PageFactory.initElements(driver, WorkspaceListPage.class);
         PageFactory.initElements(driver, TempMail.class);
-        /*** Create the workspace within member invite.**/
-        WorkspaceListPage.createNewWorkspaceWithinInvite();
-        WorkspaceListPage.confirmInviteNewMemberViaTeamEmail();
-        CommonActions.getBackToThePreviousTab();
-        CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.workspaceMembersTab);
-        WorkspaceListPage.workspaceMembersTab.click();
-        CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.peopleCounter);
-        /*** Expected result: The workspace is created. 2 members are displayed. **/
-        Assert.assertEquals(WorkspaceListPage.peopleCounter.getText(),"Workspace members (2)");
-        /*** Post condition: Delete the workspace. **/
+        PageFactory.initElements(driver, BoardsPage.class);
+        /*** Create the workspace from the board page.**/
+        driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE+"/boards");
+        CommonActions.explicitWaitOfOneElementVisible(BoardsPage.boardLeftNavigationCreateWorkspace);
+        BoardsPage.boardLeftNavigationCreateWorkspace.click();
+        WorkspaceListPage.createNewWorkspaceHeadless();
         WorkspaceListPage.deleteWorkspace();
     }
 }

@@ -23,9 +23,10 @@ public class WorkspaceBoardsTest extends BaseTest {
         /*** Precondition: login **/
         PageFactory.initElements(driver, BoardsPage.class);
         /*** Create a board with random parameters from Workspaces. **/
+        CommonActions.closeAllVisibleBoards((BoardsPage.TEN_BOARDS_TESTING_WORKSPACE));
         CommonActions.createOneRandomBoardInstance(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-        CommonActions.explicitWaitOfOneElementVisible(BoardsPage.newBoardNameInput);
-        Assert.assertTrue(BoardsPage.newBoardNameInput.isDisplayed());
+        driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
+        Assert.assertTrue(BoardsPage.boardInstancesList.get(0).isDisplayed());
         /*** Post condition: Close all visible boards. **/
         CommonActions.closeAllVisibleBoards((BoardsPage.TEN_BOARDS_TESTING_WORKSPACE));
     }
@@ -38,8 +39,8 @@ public class WorkspaceBoardsTest extends BaseTest {
         PageFactory.initElements(driver, WorkspaceListPage.class);
         CommonActions.createOneRandomBoardInstance(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-        CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.workspaceNavigationExpandButton);
         Thread.sleep(2000);
+        CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.workspaceNavigationExpandButton);
         WorkspaceListPage.workspaceNavigationExpandButton.click();
         WorkspaceListPage.addBoardFromLeftNavigationDrawer.click();
         /*** Expected result: Left Navigation Drawer contains a Board instance created. **/
@@ -70,7 +71,7 @@ public class WorkspaceBoardsTest extends BaseTest {
             driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
             CommonActions.explicitWaitOfOneElementVisible(BoardsPage.createBoardFromBoardsPageButton.get(0));
             BoardsPage.createBoardFromBoardsPageButton.get(0).click();
-            CommonActions.explicitWaitOfOneElementVisible(BoardsPage.startFreeTrialButton);
+            Thread.sleep(2000);
             String startFreeTrialTextOnButton = BoardsPage.startFreeTrialButton.getText();
             /*** Expected result: A premium requiring pop up is shown after 10-th creating new board. **/
             Assert.assertEquals(startFreeTrialTextOnButton, BoardsPage.EXPECTED_PREMIUM_REQUIRE_TEXT); //free version ask for premium.

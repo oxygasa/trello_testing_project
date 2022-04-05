@@ -66,6 +66,8 @@ public class CardsHeader extends BasePage {
     public static WebElement filerKeywordInput;
     @FindBy(xpath = "//div[contains(@title,'assigned')]")
     public static WebElement cardsAssignedToMeCheckBox;
+    @FindBy(xpath = "//span[@data-test-id='board-view-option']/..")
+    public static WebElement BoardViewSwitcherPremiumBoardButton;
     @FindAll({@FindBy(xpath = "//div[@class='D7o35mpYYtXnpz']")})
     public static List<WebElement> allFilterCheckboxes;
     @FindAll({@FindBy(xpath = "//div[contains(@class,'css-ufz0vj-control')]")})

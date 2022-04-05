@@ -90,32 +90,9 @@ public class WorkspaceListPage extends BasePage {
     @FindBy(xpath = "//a[@data-test-id='show-later-button']")
     public static WebElement inviteIDoItLaterLink;
 
-    /*** There are methods to make test steps code shorter **/
-    public static void createNewWorkspaceWithinInvite() throws InterruptedException {
-        WorkspaceListPage.headerAddWorkspace.click();
-        WorkspaceListPage.headerCreateWorkspaceButton.click();
-        String newWorkspaceInputText = RandomStringUtils.randomAlphanumeric(10);
-        WorkspaceListPage.newWorkspaceNameInput.sendKeys(newWorkspaceInputText);
-        CommonActions.selectDropdownMenuNextValue(WorkspaceListPage.workspaceTypeSelectDropdown);
-        String newWorkspaceDescriptionText = RandomStringUtils.randomAlphanumeric(10);
-        WorkspaceListPage.newWorkspaceDescriptionOptional.sendKeys(newWorkspaceDescriptionText);
-        WorkspaceListPage.newWorkspaceSubmitButton.click();
-        CommonActions.openUrlInNewBrowserTab(TempMail.TEMP_MAIL_PAGE_URL);
-        Thread.sleep(2000);
-        CommonActions.explicitWaitOfOneElementVisible(TempMail.randomTempEmail);
-        String randomTempEmailValue = TempMail.randomTempEmail.getAttribute("title");
-        CommonActions.getBackToThePreviousTab();
-        CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.inviteTeamViaEmailInput);
-        WorkspaceListPage.inviteTeamViaEmailInput.click();
-        WorkspaceListPage.inviteTeamViaEmailInput.sendKeys(randomTempEmailValue);
-        Actions action = new Actions(CommonActions.driver);
-        action.sendKeys(Keys.ENTER).perform();
-        Thread.sleep(1000);
-        WorkspaceListPage.inviteTeamSubmitButton.click();
-        CommonActions.getBackToThePreviousTab();
-    }
-
     public static void createNewWorkspace() throws InterruptedException {
+        Thread.sleep(1000);
+        CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.headerAddWorkspace);
         WorkspaceListPage.headerAddWorkspace.click();
         WorkspaceListPage.headerCreateWorkspaceButton.click();
         String newWorkspaceInputText = RandomStringUtils.randomAlphanumeric(10);
@@ -126,14 +103,17 @@ public class WorkspaceListPage extends BasePage {
         WorkspaceListPage.newWorkspaceSubmitButton.click();
         WorkspaceListPage.inviteIDoItLaterLink.click();
     }
-    public static void confirmInviteNewMemberViaTeamEmail() throws InterruptedException {
-        Thread.sleep(10000);
-        CommonActions.driver.navigate().refresh();
-        Thread.sleep(2000);
-        CommonActions.explicitWaitOfOneElementVisible(TempMail.incomeBoxMailListButtons.get(0));
-        TempMail.incomeBoxMailListButtons.get(0).click();
-        TempMail.joinWorkspaceList.click();
+    public static void createNewWorkspaceHeadless() throws InterruptedException {
+        Thread.sleep(1000);
+        String newWorkspaceInputText = RandomStringUtils.randomAlphanumeric(10);
+        WorkspaceListPage.newWorkspaceNameInput.sendKeys(newWorkspaceInputText);
+        CommonActions.selectDropdownMenuNextValue(WorkspaceListPage.workspaceTypeSelectDropdown);
+        String newWorkspaceDescriptionText = RandomStringUtils.randomAlphanumeric(10);
+        WorkspaceListPage.newWorkspaceDescriptionOptional.sendKeys(newWorkspaceDescriptionText);
+        WorkspaceListPage.newWorkspaceSubmitButton.click();
+        WorkspaceListPage.inviteIDoItLaterLink.click();
     }
+
     public static void editExistingWorkspaceAndAssertChanges() throws InterruptedException {
         WorkspaceListPage.displayNameTextField.clear();
         String displayNameTextFieldInputText = RandomStringUtils.randomAlphanumeric(10);

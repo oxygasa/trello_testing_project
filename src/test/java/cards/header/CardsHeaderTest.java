@@ -28,10 +28,15 @@ public class CardsHeaderTest extends BaseTest {
         CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         CommonActions.createOneRandomBoardInstance(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         /*** Open any board. Click Board button. **/
-        CommonActions.explicitWaitOfOneElementVisible(CardsHeader.boardViewSwitcherButton);
-        CardsHeader.boardViewSwitcherButton.click();
-        /*** A Board is opened. A module with a Premium asking is displayed.**/
-        Assert.assertTrue(CardsHeader.boardViewSwitcherFreeTrialButton.isDisplayed());
+        try {
+            CommonActions.explicitWaitOfOneElementVisible(CardsHeader.boardViewSwitcherButton);
+            CardsHeader.boardViewSwitcherButton.click();
+            /*** A Board is opened. A module with a Premium asking is displayed.**/
+            Assert.assertTrue(CardsHeader.boardViewSwitcherFreeTrialButton.isDisplayed()); //trial assert trying
+        } catch (org.openqa.selenium.NoSuchElementException e)
+        {
+            CardsHeader.BoardViewSwitcherPremiumBoardButton.isDisplayed(); //premium assert trying
+        }
         /*** Post condition**/
         CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
     }
@@ -221,9 +226,8 @@ public class CardsHeaderTest extends BaseTest {
         PowerUpsPage.powerUpsButton.click();
         CommonActions.explicitWaitOfOneElementVisible(PowerUpsPage.confirmRedirectToPowerUpsPage);
         PowerUpsPage.confirmRedirectToPowerUpsPage.click();
-        Thread.sleep(3000);
+        Thread.sleep(8000);
         CommonActions.explicitWaitOfOneElementVisible(PowerUpsPage.madeByTrelloButton);
-        Thread.sleep(3000);
         PowerUpsPage.madeByTrelloButton.click();
         CommonActions.explicitWaitOfOneElementVisible(PowerUpsPage.addPowerUpJiraButton);
         PowerUpsPage.addPowerUpJiraButton.click();

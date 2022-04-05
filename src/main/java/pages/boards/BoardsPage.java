@@ -64,6 +64,8 @@ public class BoardsPage extends BasePage {
     public static List<WebElement> boardsPageRecentBoardAndAllBoards;
     @FindBy(xpath = "//span[@data-test-id='business-class-text']")
     public static WebElement premiumUserStatusText;
+    @FindBy(xpath = "//button[@data-test-id='home-navigation-create-team-button']")
+    public static WebElement boardLeftNavigationCreateWorkspace;
     WebDriver driver;
     public BoardsPage(WebDriver driver) {
         this.driver = driver;
