@@ -22,6 +22,7 @@ import static commons.Config.*;
 
 public class BaseTest extends BasePage {
     WebDriver driver;
+
     @BeforeTest
     public WebDriver startBrowser() throws InterruptedException {
         driver = CommonActions.driver;

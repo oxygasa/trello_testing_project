@@ -1,5 +1,6 @@
 package cards.header;
 
+import base.BaseTest;
 import boards.WorkspaceBoardsTest;
 import commons.CommonActions;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -16,7 +17,7 @@ import pages.workspaces.WorkspaceListPage;
 
 import static commons.CommonActions.driver;
 
-public class CardsHeaderTest {
+public class CardsHeaderTest extends BaseTest {
 
     //TC ID TRE023 Board dropdown Premium require checking.
     @Test
@@ -59,6 +60,9 @@ public class CardsHeaderTest {
     //TC ID TRE025 Star button clickable.
     @Test
     public static void starButtonClickableTest() throws InterruptedException {
+        PageFactory.initElements(driver, WorkspaceListPage.class);
+        PageFactory.initElements(driver, CardsHeader.class);
+        PageFactory.initElements(driver, BoardsPage.class);
         WorkspaceBoardsTest.boardsAddToFavouriteTest();
     }
 
