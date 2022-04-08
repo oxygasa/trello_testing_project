@@ -152,6 +152,7 @@ public class BoardsPage extends BasePage {
         for (int i = 0; i < BoardsPage.boardsPageRecentBoardAndAllBoards.size(); i++) {
             actualResultBoardNames.add(BoardsPage.boardsPageRecentBoardAndAllBoards.get(i).getText());
         }
-        return actualResultBoardNames;
+        actualResultBoardNames.remove(0); //Recent viewed board not needed for this collection.        return actualResultBoardNames;
+    return actualResultBoardNames;
     }
 }

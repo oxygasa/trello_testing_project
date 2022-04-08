@@ -41,8 +41,8 @@ public class BoardsPageManipulationTest extends BaseTest {
         System.out.println("Expected List" + expectedBoardNamesListener);
         /*** Check, the /boards page contains the same boards.**/
         List<String> actualResultBoardNames = BoardsPage.saveBoardPageWorkspaceBoardListToCollection();
-        System.out.println("Actual result " + actualResultBoardNames.get(0));
-        Assert.assertEquals(actualResultBoardNames.get(0), expectedBoardNamesListener.get(0));
+        System.out.println("Actual result " + actualResultBoardNames);
+        Assert.assertEquals(actualResultBoardNames, expectedBoardNamesListener);
         /*** Post condition: close all visible boards **/
         CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
     }
