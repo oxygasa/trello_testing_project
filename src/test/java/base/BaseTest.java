@@ -1,9 +1,8 @@
 package base;
 
 import commons.CommonActions;
-import io.qameta.allure.selenide.AllureSelenide;
+import commons.Config;
 import org.apache.commons.io.FileUtils;
-import org.aspectj.lang.annotation.Before;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -18,15 +17,13 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 
-import static commons.Config.*;
-
 public class BaseTest extends BasePage {
     WebDriver driver;
 
     @BeforeTest
     public WebDriver startBrowser() throws InterruptedException {
         driver = CommonActions.driver;
-        if (CLEAR_COOKIES) {
+        if (Config.clearCookies) {
             driver.manage().deleteAllCookies();
         }
         PageFactory.initElements(driver, LoginViaTrelloPage.class);
@@ -52,15 +49,15 @@ public class BaseTest extends BasePage {
 
     @AfterTest
     public void closeBrowser() throws IOException {
-        if (MAKE_SCREENSHOTS && !(driver == null)) {
+        if (Config.makeScreenshots && !(driver == null)) {
             Date date = new Date();
             String currentTime = String.valueOf(date.getTime());
             TakesScreenshot ts = (TakesScreenshot) driver;
             File bufferedScreenshotFile = ts.getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(bufferedScreenshotFile, new File("./screenshots/" + currentTime + ".png"));
         }
-        if (!HOLD_BROWSER_OPEN) {
-            if (CLEAR_COOKIES) {
+        if (!Config.holdBrowserOpen) {
+            if (Config.clearCookies) {
                 assert driver != null;
                 driver.manage().deleteAllCookies();
             }

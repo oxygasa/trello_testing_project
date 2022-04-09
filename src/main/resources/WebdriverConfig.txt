@@ -1,0 +1,48 @@
+PLATFORM_AND_BROWSER = "CHROME_WINDOWS";
+CLEAR_COOKIES = false;
+HOLD_BROWSER_OPEN = false;
+MAKE_SCREENSHOTS = true;
+________________________
+
+
+<<<<< Edit your choices only in the top of this file <<<<<<
+
+
+
+WEB DRIVER REALTIME CONFIG FILE IN TXT FORMAT
+
+
+
+>>>>>> See the helpful explanations in the bottom of this file >>>>>>>
+
+
+
+/*** This is a Webdriver config file. Select the browser. "Headless" means "the invisible browser" ***/
+1ST EXAMPLE. PLATFORM_AND_BROWSER = "CHROME_WINDOWS";
+    /** VARIATIONS:
+     * CHROME_WINDOWS
+     * CHROME_WINDOWS_HEADLESS
+     * CHROME_LINUX
+     * FIREFOX_WINDOWS
+     **/
+
+/** Clear all cookies and cache before starting each test.*/
+2ND EXAMPLE. CLEAR_COOKIES = false;
+    /** VARIATIONS:
+     * true
+     * false
+     **/
+
+/** To keep browser opened after each test. Use "true" only in IDE. Use "false" for CI/CD systems. */
+3RD EXAMPLE. HOLD_BROWSER_OPEN = false;
+     /** VARIATIONS:
+      * true
+      * false
+      **/
+
+/** Screenshots are creating for every test (positive and negative). Screenshots are located at "%Project_main_folder%/screenshots/currentTime.png" */
+4TH EXAMPLE. MAKE_SCREENSHOTS = true;
+     /** VARIATIONS:
+      * true
+      * false
+      **/

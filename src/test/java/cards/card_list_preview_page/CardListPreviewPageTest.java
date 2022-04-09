@@ -1,8 +1,9 @@
 package cards.card_list_preview_page;
 
+import base.BaseTest;
 import org.testng.annotations.Test;
 
-public class CardListPreviewPageTest {
+public class CardListPreviewPageTest extends BaseTest {
     //TC ID TRE056 Add another list
     @Test
     public static void addAnotherListTest() {

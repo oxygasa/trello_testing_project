@@ -20,19 +20,16 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import static commons.Config.PLATFORM_AND_BROWSER;
-
 public class CommonActions {
     public static WebDriver driver;
 
     /**
      * This is a browser setup method.
-     * The selected Browser is starting and initialising as "Web driver".
-     * Choose your properties only via true/false tumblers in the file "src/main/java/commons/Config"
+     * Make your choices only by editing values in a txt file /src/main/resources/WebdriverConfig.txt:
      **/
 
     static {
-        switch (PLATFORM_AND_BROWSER) {
+        switch (Config.platformAndBrowser) {
             case "CHROME_WINDOWS":
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
@@ -52,7 +49,7 @@ public class CommonActions {
                 driver = new FirefoxDriver();
                 break;
             default:
-                Assert.fail("Incorrect browser name. Choose name of browser in src/main/java/commons/Config Browser name for now is: " + PLATFORM_AND_BROWSER);
+                Assert.fail("Incorrect browser name. Choose name of browser in src/main/java/commons/Config Browser name for now is: " + Config.platformAndBrowser);
         }
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
@@ -169,7 +166,7 @@ public class CommonActions {
      **/
     public static void createOneRandomBoardInstance(String workspaceLink) throws InterruptedException {
         driver.get(workspaceLink);
-        Thread.sleep(1000);
+        Thread.sleep(1500);
         CommonActions.explicitWaitOfOneElementVisible(BoardsPage.createBoardFromBoardsPageButton.get(0));
         BoardsPage.createBoardFromBoardsPageButton.get(0).click();
         String newBoardNameTextFieldInputText = RandomStringUtils.randomAlphanumeric(10);
@@ -225,7 +222,7 @@ public class CommonActions {
                 CommonActions.closeOneBoardInstanceFromTheWorkspacePage(workspaceLink);
                 driver.get(workspaceLink);
             }
-        } catch (IndexOutOfBoundsException e) {
+        } catch (IndexOutOfBoundsException|org.openqa.selenium.StaleElementReferenceException e) {
             driver.get(workspaceLink);
         }
     }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite">
-    <test name="Trello regression">
+<suite name="Trello regression">
+    <test name="All test suites">
         <classes>
             <class name="automation.after_saving.SavedScenarioTextManipulationsTest">
                 <methods>

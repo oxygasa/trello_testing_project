@@ -37,15 +37,14 @@ public class WorkspaceBoardsTest extends BaseTest {
         /*** Precondition: login, create a board instance **/
         PageFactory.initElements(driver, BoardsPage.class);
         PageFactory.initElements(driver, WorkspaceListPage.class);
-        CommonActions.createOneRandomBoardInstance(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         Thread.sleep(2000);
-        CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.workspaceNavigationExpandButton);
         WorkspaceListPage.workspaceNavigationExpandButton.click();
         WorkspaceListPage.addBoardFromLeftNavigationDrawer.click();
         /*** Expected result: Left Navigation Drawer contains a Board instance created. **/
         Assert.assertTrue(BoardsPage.newBoardNameInput.isDisplayed());
         /*** Post condition: Close all visible boards. **/
+        WorkspaceListPage.workspaceNavigationCollapseButton.click();
         CommonActions.closeAllVisibleBoards(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
     }
 
