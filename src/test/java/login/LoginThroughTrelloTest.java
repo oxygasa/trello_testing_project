@@ -62,6 +62,7 @@ public class LoginThroughTrelloTest extends BaseTest {
         /*** Type a [Login credential] and a [Password credential]. **/
         /*** Access granted. The Boards page is opened. The Username is according to [Login credential] **/
         PageFactory.initElements(driver, LoginViaTrelloPage.class);
+        CommonActions.explicitWaitOfOneElementVisible(LoginViaTrelloPage.avatarName);
         LoginViaTrelloPage.avatarName.click();
         Assert.assertEquals(LoginViaTrelloPage.avatarEmail.getText(), LoginViaTrelloPage.LOGIN_CREDENTIAL);
     }

@@ -24,6 +24,8 @@ WEB DRIVER REALTIME CONFIG FILE IN TXT FORMAT
      * CHROME_WINDOWS_HEADLESS
      * CHROME_LINUX
      * FIREFOX_WINDOWS
+     * EDGE_WINDOWS
+     * SAFARI_MAC
      **/
 
 /** Clear all cookies and cache before starting each test.*/

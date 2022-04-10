@@ -4,14 +4,17 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 import pages.boards.BoardsPage;
+import pages.cards.header.CardsHeader;
 import pages.login.LoginViaTrelloPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -46,7 +49,16 @@ public class CommonActions {
                 driver = wdm.create();
                 break;
             case "FIREFOX_WINDOWS":
+                WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
+                break;
+            case "EDGE_WINDOWS":
+                WebDriverManager.edgedriver().setup();
+                driver = new EdgeDriver();
+                break;
+            case "SAFARI_MAC":
+                WebDriverManager.safaridriver().setup();
+                driver = new SafariDriver();
                 break;
             default:
                 Assert.fail("Incorrect browser name. Choose name of browser in src/main/java/commons/Config Browser name for now is: " + Config.platformAndBrowser);
@@ -165,6 +177,7 @@ public class CommonActions {
      * Method is creating 1 empty Board in any Workspace.
      **/
     public static void createOneRandomBoardInstance(String workspaceLink) throws InterruptedException {
+        PageFactory.initElements(driver, BoardsPage.class);
         driver.get(workspaceLink);
         Thread.sleep(1500);
         CommonActions.explicitWaitOfOneElementVisible(BoardsPage.createBoardFromBoardsPageButton.get(0));
@@ -182,6 +195,8 @@ public class CommonActions {
      * 1 instance "Board" is closing (safe delete).
      **/
     public static void closeOneBoardInstanceFromTheWorkspacePage(String workspaceLink) throws InterruptedException {
+        PageFactory.initElements(driver, BoardsPage.class);
+        PageFactory.initElements(driver, CardsHeader.class);
         driver.get(workspaceLink);
         BoardsPage.boardInstancesList.get(0).click();
         try {
@@ -189,6 +204,13 @@ public class CommonActions {
              * Within opening the Right Navigation Drawer
              **/
             Thread.sleep(500);
+            CardsHeader.hideRightSidebar.click();
+            CommonActions.explicitWaitOfOneElementVisible(CardsHeader.workspaceVisibleButtonText);
+            if (CardsHeader.workspaceVisibleButtonText.getText().equals("Public")) {
+                CardsHeader.workspaceVisibleButton.submit();
+                CommonActions.explicitWaitOfOneElementVisible(CardsHeader.privateBoardPermissionSelect);
+                CardsHeader.privateBoardPermissionSelect.click();
+            }
             BoardsPage.showRightSidebarButton.click();
             CommonActions.explicitWaitOfOneElementVisible(BoardsPage.rightSidebarMoreButton);
             BoardsPage.rightSidebarMoreButton.click();
@@ -200,11 +222,21 @@ public class CommonActions {
             /**
              * Don't stop if the Right Navigation Drawer is already opened.
              **/
-            BoardsPage.rightSidebarMoreButton.click();
-            CommonActions.explicitWaitOfOneElementVisible(BoardsPage.rightSidebarCloseBoardButton);
-            BoardsPage.rightSidebarCloseBoardButton.click();
-            CommonActions.explicitWaitOfOneElementVisible(BoardsPage.rightSidebarDialogBoxCloseBoardButton);
-            BoardsPage.rightSidebarDialogBoxCloseBoardButton.click();
+            try {
+                CardsHeader.hideRightSidebar.click();
+            } catch (org.openqa.selenium.ElementNotInteractableException f) {
+                CommonActions.explicitWaitOfOneElementVisible(CardsHeader.workspaceVisibleButtonText);
+                if (CardsHeader.workspaceVisibleButtonText.getText().equals("Public")) {
+                    CardsHeader.workspaceVisibleButton.click();
+                    CommonActions.explicitWaitOfOneElementVisible(CardsHeader.privateBoardPermissionSelect);
+                    CardsHeader.privateBoardPermissionSelect.click();
+                }
+                BoardsPage.rightSidebarMoreButton.click();
+                CommonActions.explicitWaitOfOneElementVisible(BoardsPage.rightSidebarCloseBoardButton);
+                BoardsPage.rightSidebarCloseBoardButton.click();
+                CommonActions.explicitWaitOfOneElementVisible(BoardsPage.rightSidebarDialogBoxCloseBoardButton);
+                BoardsPage.rightSidebarDialogBoxCloseBoardButton.click();
+            }
         }
 
     }
@@ -215,6 +247,8 @@ public class CommonActions {
      * It's need to clean space before fill List collections and Assert them after.
      **/
     public static void closeAllVisibleBoards(String workspaceLink) throws InterruptedException {
+        PageFactory.initElements(driver, BoardsPage.class);
+        PageFactory.initElements(driver, CardsHeader.class);
         driver.get(workspaceLink);
         Thread.sleep(500);
         try {
@@ -222,7 +256,7 @@ public class CommonActions {
                 CommonActions.closeOneBoardInstanceFromTheWorkspacePage(workspaceLink);
                 driver.get(workspaceLink);
             }
-        } catch (IndexOutOfBoundsException|org.openqa.selenium.StaleElementReferenceException e) {
+        } catch (IndexOutOfBoundsException | org.openqa.selenium.StaleElementReferenceException e) {
             driver.get(workspaceLink);
         }
     }

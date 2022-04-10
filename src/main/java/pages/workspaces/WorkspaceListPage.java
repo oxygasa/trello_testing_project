@@ -91,7 +91,7 @@ public class WorkspaceListPage extends BasePage {
     public static WebElement inviteIDoItLaterLink;
 
     public static void createNewWorkspace() throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(5000);
         CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.headerAddWorkspace);
         WorkspaceListPage.headerAddWorkspace.click();
         WorkspaceListPage.headerCreateWorkspaceButton.click();
@@ -104,7 +104,7 @@ public class WorkspaceListPage extends BasePage {
         WorkspaceListPage.inviteIDoItLaterLink.click();
     }
     public static void createNewWorkspaceHeadless() throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         String newWorkspaceInputText = RandomStringUtils.randomAlphanumeric(10);
         WorkspaceListPage.newWorkspaceNameInput.sendKeys(newWorkspaceInputText);
         CommonActions.selectDropdownMenuNextValue(WorkspaceListPage.workspaceTypeSelectDropdown);

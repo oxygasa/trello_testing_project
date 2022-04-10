@@ -49,6 +49,8 @@ public class Config {
          * CHROME_WINDOWS_HEADLESS
          * CHROME_LINUX
          * FIREFOX_WINDOWS
+         * EDGE_WINDOWS
+         * SAFARI_MAC
          **/
         String getPlatformAndBrowserFromTxt = String.valueOf(trimmedValueOfPlatformAndBrowser);
         scanner.close();

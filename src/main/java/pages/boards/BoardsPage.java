@@ -42,8 +42,6 @@ public class BoardsPage extends BasePage {
     public static WebElement boardStarredIcon;
     @FindAll({@FindBy(xpath = "//span[@class='board-tile-options']/span")})
     public static List<WebElement> boardsStarredIcon;
-    @FindAll({@FindBy(xpath = "//a[@class='board-tile']")})
-    public static List<WebElement> boardTile;
     @FindAll({@FindBy(xpath = "//div[@class='board-tile-details-name']")})
     public static List<WebElement> boardTitles;
     @FindBy(xpath = "//div[contains(@class,'css-1og2rpm')]")
@@ -67,6 +65,8 @@ public class BoardsPage extends BasePage {
     @FindBy(xpath = "//button[@data-test-id='home-navigation-create-team-button']")
     public static WebElement boardLeftNavigationCreateWorkspace;
     WebDriver driver;
+    @FindAll({@FindBy(xpath = "//h3[@class='boards-page-board-section-header-name']")})
+    public static List<WebElement> recentViewedBoard;
     public BoardsPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -152,7 +152,9 @@ public class BoardsPage extends BasePage {
         for (int i = 0; i < BoardsPage.boardsPageRecentBoardAndAllBoards.size(); i++) {
             actualResultBoardNames.add(BoardsPage.boardsPageRecentBoardAndAllBoards.get(i).getText());
         }
-        actualResultBoardNames.remove(0); //Recent viewed board not needed for this collection.        return actualResultBoardNames;
+        if (BoardsPage.recentViewedBoard.get(0).getText().equals("Recently viewed")){
+            actualResultBoardNames.remove(0); //Recent viewed board could be added to the collection randomly (the same locator) if Selenium click the board.
+        }
     return actualResultBoardNames;
     }
 }

@@ -38,7 +38,7 @@ public class WorkspaceBoardsTest extends BaseTest {
         PageFactory.initElements(driver, BoardsPage.class);
         PageFactory.initElements(driver, WorkspaceListPage.class);
         driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         WorkspaceListPage.workspaceNavigationExpandButton.click();
         WorkspaceListPage.addBoardFromLeftNavigationDrawer.click();
         /*** Expected result: Left Navigation Drawer contains a Board instance created. **/
@@ -93,8 +93,8 @@ public class WorkspaceBoardsTest extends BaseTest {
         CommonActions.explicitWaitOfOneElementVisible(BoardsPage.createNewBoardSign);
         CommonActions.createOneRandomBoardInstance(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
         driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
-        CommonActions.explicitWaitOfOneElementVisible(BoardsPage.boardTile.get(0));
-        BoardsPage.boardTile.get(0).click();
+        CommonActions.explicitWaitOfOneElementVisible(BoardsPage.boardInstancesList.get(0));
+        BoardsPage.boardInstancesList.get(0).click();
         CommonActions.explicitWaitOfOneElementVisible(BoardsPage.starIconInTheBoardPage);
         BoardsPage.starIconInTheBoardPage.click();
         /**
@@ -110,8 +110,8 @@ public class WorkspaceBoardsTest extends BaseTest {
         Assert.assertTrue(BoardsPage.boardsStarredIcon.get(0).isDisplayed());
         BoardsPage.boardsStarIcon.get(0).click();
         Assert.assertFalse(BoardsPage.boardsStarredIcon.get(0).isSelected());
-        CommonActions.explicitWaitOfOneElementVisible(BoardsPage.boardTile.get(0));
-        BoardsPage.boardTile.get(0).click();
+        CommonActions.explicitWaitOfOneElementVisible(BoardsPage.boardInstancesList.get(0));
+        BoardsPage.boardInstancesList.get(0).click();
         try {
             BoardsPage.boardStarredIcon.click();
         } catch (NoSuchElementException e) {

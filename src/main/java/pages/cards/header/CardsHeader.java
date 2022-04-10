@@ -34,7 +34,7 @@ public class CardsHeader extends BasePage {
     public static WebElement changeWorkspaceSubmitButton;
     @FindBy(xpath = "//a[@class='js-view-org']")
     public static WebElement viewWorkspaceMenu;
-    @FindBy(id = "permission-level")
+    @FindBy(id = "//a[@id='permission-level']/..")
     public static WebElement workspaceVisibleButton;
     @FindBy(xpath = "//a[@id='permission-level']//span[@class='board-header-btn-text']")
     public static WebElement workspaceVisibleButtonText;
@@ -72,6 +72,8 @@ public class CardsHeader extends BasePage {
     public static List<WebElement> allFilterCheckboxes;
     @FindAll({@FindBy(xpath = "//div[contains(@class,'css-ufz0vj-control')]")})
     public static List<WebElement> allFilterDropdowns;
+    @FindBy(xpath = "//a[contains(@class,'js-hide-sidebar')]")
+    public static WebElement hideRightSidebar;
     public static void inviteAndConnect2ndUserToTheBoardViaLink() throws InterruptedException {
         CommonActions.explicitWaitOfOneElementVisible(CardsHeader.inviteButton);
         CardsHeader.inviteButton.click();
