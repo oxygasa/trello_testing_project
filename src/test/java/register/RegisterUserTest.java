@@ -13,7 +13,7 @@ import static commons.CommonActions.driver;
 public class RegisterUserTest extends BaseTest {
     //TC ID TRE001 Register a new user through Trello
     @Test
-    public static void registerNewUserThroughTrelloTest() throws InterruptedException {
+    public void registerNewUserThroughTrelloTest() throws InterruptedException {
         /**
          * Open https://trello.com/signup
          * Type the email from https://temp-mail.io/  then submit it.
@@ -36,7 +36,7 @@ public class RegisterUserTest extends BaseTest {
 
     //TC ID TRE002 Registration with an existing data
     @Test
-    public static void registerWithExistingDataTest() {
+    public void registerWithExistingDataTest() {
         /**
          * Type [default email name] in email text field then click the "Sign up it's free" button.
          * In the "Display name" type random name then submit.

@@ -5,121 +5,121 @@ import org.testng.annotations.Test;
 public class RightNavigationDrawerTest {
     //TC ID TRE032 Change Workspace test.
     @Test
-    public static void changeWorkspaceTest() {
+    public void changeWorkspaceTest() {
     }
 
     //TC ID TRE033 Card cover test.
     @Test
-    public static void cardCoverTest() {
+    public void cardCoverTest() {
     }
 
     //TC ID TRE034 Commenting permissions.
     @Test
-    public static void commentingPermissionsTest() {
+    public void commentingPermissionsTest() {
     }
 
     //TC ID TRE035 Add, Remove permissions
     @Test
-    public static void addRemovePermissionsTest() {
+    public void addRemovePermissionsTest() {
     }
 
     //TC ID TRE036 Allow Workspace members to edit and join.
     @Test
-    public static void allowWorkspaceMembersToEditAndJoinTest() {
+    public void allowWorkspaceMembersToEditAndJoinTest() {
     }
 
     //TC ID TRE037 Labels displaying on cards.
     @Test
-    public static void labelsDisplayingOnCardsTest() {
+    public void labelsDisplayingOnCardsTest() {
     }
 
     //TC ID TRE038 Collections premium require checking.
     @Test
-    public static void collectionsPremiumRequireTest() {
+    public void collectionsPremiumRequireTest() {
     }
 
     //TC ID TRE039 Try Premium module is displaying and clickable.
     @Test
-    public static void tryPremiumFirstModuleTest() {
+    public void tryPremiumFirstModuleTest() {
     }
 
     //TC ID TRE040 Archived items manipulations checking.
     @Test
-    public static void archivedItemsTest() {
+    public void archivedItemsTest() {
     }
 
     //TC ID TRE041 Add cards via email.
     @Test
-    public static void addCardsViaEmailTest() {
+    public void addCardsViaEmailTest() {
     }
 
     //TC ID TRE042 Watch button and email notification testing.
     @Test
-    public static void watchAndEmailNotificationTest() {
+    public void watchAndEmailNotificationTest() {
     }
 
     //TC ID TRE043 Make Template Premium required checking.
     @Test
-    public static void makeTemplatePremiumRequireTest() {
+    public void makeTemplatePremiumRequireTest() {
     }
 
     //TC ID TRE044 Copy Board function testing.
     @Test
-    public static void copyBoardTest() {
+    public void copyBoardTest() {
     }
 
     //TC ID TRE045 Print and Export to suggested formats.
     @Test
-    public static void printAndExportTest() {
+    public void printAndExportTest() {
     }
 
     //TC ID TRE046 Close Board function testing.
     @Test
-    public static void closeBoardTest() {
+    public void closeBoardTest() {
     }
 
     //TC ID TRE047 Link to this board testing.
     @Test
-    public static void linkToThisBoardTest() {
+    public void linkToThisBoardTest() {
     }
 
     //TC ID TRE048 QR Code test.
     @Test
-    public static void qrCodeTest() {
+    public void qrCodeTest() {
     }
 
     //TC ID TRE049 About this board formatting testing.
     @Test
-    public static void aboutThisBoardFormattingTest() {
+    public void aboutThisBoardFormattingTest() {
     }
 
     //TC ID TRE050 Commenting on a card testing.
     @Test
-    public static void commentOnCardTest() {
+    public void commentOnCardTest() {
     }
 
     //TC ID TRE051 Change card background testing.
     @Test
-    public static void changeCardBackgroundTest() {
+    public void changeCardBackgroundTest() {
     }
 
     //TC ID TRE052 Custom fields Premium requiring test.
     @Test
-    public static void customFieldPremiumRequireTest() {
+    public void customFieldPremiumRequireTest() {
     }
 
     //TC ID TRE053 Try Premium module checking.
     @Test
-    public static void tryPremiumSecondModuleTest() {
+    public void tryPremiumSecondModuleTest() {
     }
 
     //TC ID TRE054 Stickers module testing.
     @Test
-    public static void stickersTest() {
+    public void stickersTest() {
     }
 
     //TC ID TRE055 Activity history checking.
     @Test
-    public static void activityTest() {
+    public void activityTest() {
     }
 }

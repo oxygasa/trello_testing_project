@@ -16,7 +16,7 @@ public class SocialMediaLoginTest extends BaseTest {
 
     //TC ID TRE005 Social media login. Google.
     @Test
-    public static void socialMediaLoginGoogleTest() {
+    public void socialMediaLoginGoogleTest() {
         /*** Select "Sign in via Google". Type a [Login credential] and a [Password credential]. **/
         driver.manage().deleteAllCookies();
         PageFactory.initElements(driver, LoginViaGooglePage.class);
@@ -31,7 +31,7 @@ public class SocialMediaLoginTest extends BaseTest {
 
     //TC ID TRE007 Social media login. Microsoft.
     @Test
-    public static void socialMediaLoginMicrosoftTest() throws InterruptedException {
+    public void socialMediaLoginMicrosoftTest() throws InterruptedException {
         /**
          * Select "Sign in via Microsoft". Type a [Login credential] and a [Password credential].
          * Click "No" button for saving the session.
@@ -51,7 +51,7 @@ public class SocialMediaLoginTest extends BaseTest {
 
     //TC ID TRE007 Social media login. Apple.
     @Test
-    public static void socialMediaLoginAppleTest() {
+    public void socialMediaLoginAppleTest() {
         /*** Select "Sign in via Apple". Type a [Login credential] and a [Password credential]. **/
         driver.manage().deleteAllCookies();
         PageFactory.initElements(driver, LoginViaApplePage.class);

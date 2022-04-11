@@ -1,12 +1,13 @@
 package pages.boards;
 
 import commons.CommonActions;
-import org.apache.commons.lang3.RandomStringUtils;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import pages.base.BasePage;
 
 import java.util.List;
@@ -36,32 +37,29 @@ public class LeftNavigationDrawer extends BasePage {
     }
 
     public static void createBoardInstance() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(CommonActions.driver, BoardsPage.class);
+
         LeftNavigationDrawer.expander.click();
         LeftNavigationDrawer.addBoard.click();
-        String newBoardNameTextFieldInputText = RandomStringUtils.randomAlphanumeric(10);
-        BoardsPage.newBoardNameInput.sendKeys(newBoardNameTextFieldInputText);
-        Thread.sleep(3000); //The submit button is clickable and visible with inactive status.
-        // The waiter means this element is active.
-        // Need the Thread.sleep
-        CommonActions.explicitWaitOfOneElementVisible(BoardsPage.newBoardSubmitButton);
-        BoardsPage.newBoardSubmitButton.click();
+        boardsPage.typeRandomBoardTitle().submitBoardSave();
     }
 
-    public static void closeAllVisibleBoards(String workspaceName) throws InterruptedException {
-        CommonActions.driver.get(workspaceName);
+    public static void closeAllVisibleBoardsViaLeftNaviDrawer() {
+        BoardsPage boardsPage = PageFactory.initElements(CommonActions.driver, BoardsPage.class);
+        CommonActions.driver.get(boardsPage.getDefaultWorkspaceUrl());
         while (LeftNavigationDrawer.workspacesAndBoardsList.size() > 1) {
-            CommonActions.driver.get(BoardsPage.TEN_BOARDS_TESTING_WORKSPACE);
+            CommonActions.driver.get(boardsPage.getDefaultWorkspaceUrl());
             Actions actions = new Actions(CommonActions.driver);
             try {
                 CommonActions.explicitWaitOfOneElementVisible(LeftNavigationDrawer.workspacesAndBoardsList.get(0));
                 //2 modules (a workspace module, a board module) have 1 size-changeable List<WebElement>
                 actions.moveToElement(LeftNavigationDrawer.workspacesAndBoardsList.get(2)).build().perform();
-            } catch (java.lang.IndexOutOfBoundsException e) {
+            } catch (IndexOutOfBoundsException | InterruptedException e) {
                 try {
                     LeftNavigationDrawer.showMore.click();
                     CommonActions.explicitWaitOfOneElementVisible(LeftNavigationDrawer.workspacesAndBoardsList.get(0));
                     actions.moveToElement(LeftNavigationDrawer.workspacesAndBoardsList.get(2)).build().perform();
-                } catch (org.openqa.selenium.NoSuchElementException f) {
+                } catch (NoSuchElementException | InterruptedException f) {
                     break; // boards are successfully closed.
                 }
             }
@@ -72,7 +70,7 @@ public class LeftNavigationDrawer extends BasePage {
                 LeftNavigationDrawer.closeBoardMenu.click();
                 CommonActions.explicitWaitOfOneElementVisible(LeftNavigationDrawer.confirmCloseBoardButton.get(1));
                 LeftNavigationDrawer.confirmCloseBoardButton.get(1).click();
-            } catch (org.openqa.selenium.NoSuchElementException | IndexOutOfBoundsException f) {
+            } catch (NoSuchElementException | IndexOutOfBoundsException | InterruptedException f) {
                 break; // boards are successfully closed.
             }
         }

@@ -14,7 +14,7 @@ public class LoginThroughTrelloTest extends BaseTest {
     //TC ID TRE003 Incorrect credentials
 
     @Test
-    public static void loginWithinIncorrectCredentialsPartOneTest() {
+    public void loginWithinIncorrectCredentialsPartOneTest() {
         /*** Open https://trello.com/login. Type [Incorrect login credential example one] as a login. stay the password clear. **/
         driver.manage().deleteAllCookies();
         PageFactory.initElements(driver, LoginViaTrelloPage.class);
@@ -28,7 +28,7 @@ public class LoginThroughTrelloTest extends BaseTest {
     //TC ID TRE003 Incorrect credentials
 
     @Test
-    public static void loginWithinIncorrectCredentialsPartTwoTest() throws InterruptedException {
+    public void loginWithinIncorrectCredentialsPartTwoTest() throws InterruptedException {
         /*** Type [Incorrect login credential example two] as a login. stay the password clear. **/
         driver.manage().deleteAllCookies();
         PageFactory.initElements(driver, LoginViaTrelloPage.class);
@@ -43,7 +43,7 @@ public class LoginThroughTrelloTest extends BaseTest {
 
     //TC ID TRE003 Incorrect credentials
     @Test
-    public static void loginWithinIncorrectCredentialsPartThreeTest() {
+    public void loginWithinIncorrectCredentialsPartThreeTest() {
         /*** Type a [Login credential], stay the password clear. **/
         driver.manage().deleteAllCookies();
         PageFactory.initElements(driver, LoginViaTrelloPage.class);
@@ -58,7 +58,7 @@ public class LoginThroughTrelloTest extends BaseTest {
     //TC ID TRE004 Correct credentials
 
     @Test
-    public static void loginWithinCorrectCredentialsTest() throws InterruptedException {
+    public void loginWithinCorrectCredentialsTest() throws InterruptedException {
         /*** Type a [Login credential] and a [Password credential]. **/
         /*** Access granted. The Boards page is opened. The Username is according to [Login credential] **/
         PageFactory.initElements(driver, LoginViaTrelloPage.class);

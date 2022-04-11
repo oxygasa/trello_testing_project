@@ -10,143 +10,168 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import pages.base.BasePage;
+import pages.cards.header.CardsHeader;
 import pages.register.TempMail;
 
 import java.util.List;
 
+import static commons.CommonActions.driver;
+
 public class WorkspaceListPage extends BasePage {
     WebDriver driver;
+
     public WorkspaceListPage(WebDriver driver) {
         this.driver = driver;
     }
+
     /**
      * Web elements
      **/
-    public static final String expectedTrialButtonTitle = "Start 14-day free trial";
+    private final String EXPECTED_TRIAL_BUTTON_TITLE = "Start 14-day free trial";
     @FindBy(xpath = "//button[@title='Workspaces']")
-    public static WebElement headerWorkspaceDropdown;
+    private WebElement headerWorkspaceDropdown;
     @FindAll({@FindBy(xpath = "//a[@data-test-id='workspace-switcher-popover-tile']")})
-    public static List<WebElement> workspacesNameList;
+    private List<WebElement> workspacesNameList;
     @FindBy(xpath = "//span[@aria-label='EditIcon']/ancestor::button[1]")
-    public static WebElement editWorkspaceDetailsButton;
+    private WebElement editWorkspaceDetailsButton;
     @FindBy(id = "displayName")
-    public static WebElement displayNameTextField;
+    private WebElement displayNameTextField;
     @FindAll({@FindBy(xpath = "//div[contains(@class,'css-1og2rpm')]")})
-    public static List<WebElement> teamTypeSelectDropdown;
+    private List<WebElement> teamTypeSelectDropdown;
     @FindBy(id = "name")
-    public static WebElement shortNameTextField;
+    private WebElement shortNameTextField;
     @FindBy(id = "website")
-    public static WebElement websiteOptionalTextField;
+    private WebElement websiteOptionalTextField;
     @FindBy(id = "desc")
-    public static WebElement descriptionOptionalTextField;
+    private WebElement descriptionOptionalTextField;
     @FindBy(xpath = "//button[@type='submit']")
-    public static WebElement saveButton;
-    @FindBy(className = "_2bvXXmbrsPh8Ck")
-    public static WebElement savedDisplayNameTitle;
+    private WebElement saveButton;
     @FindBy(xpath = "//div[@class='Et7qpeaH3d--pj']/p")
-    public static WebElement savedDescriptionOptionalTitle;
-    @FindBy(xpath = "//p/a")
-    public static WebElement savedWebsiteOptionalTitle;
+    private WebElement savedDescriptionOptionalTitle;
+
     @FindAll({@FindBy(xpath = "//a[contains(@class, 'tabbed-pane-nav-item-button')]")})
-    public static List<WebElement> workspaceCentralPageTabs;
+    private List<WebElement> workspaceCentralPageTabs;
     @FindBy(className = "_3yTFDpz8niFoyh")
-    public static WebElement trialButton;
+    private WebElement trialButton;
     @FindBy(xpath = "//button[@data-test-id='header-create-menu-button']")
-    public static WebElement headerAddWorkspace;
+    private WebElement headerAddWorkspace;
     @FindBy(xpath = "//button[@data-test-id='header-create-team-button']")
-    public static WebElement headerCreateWorkspaceButton;
+    private WebElement headerCreateWorkspaceButton;
     @FindBy(xpath = "//input[@data-test-id='header-create-team-name-input']")
-    public static WebElement newWorkspaceNameInput;
+    private WebElement newWorkspaceNameInput;
     @FindBy(xpath = "//div[@data-test-id='header-create-team-type-input']")
-    public static WebElement workspaceTypeSelectDropdown;
+    private WebElement workspaceTypeSelectDropdown;
     @FindBy(className = "_3WDCVZHeu3AAvH")
-    public static WebElement newWorkspaceDescriptionOptional;
+    private WebElement newWorkspaceDescriptionOptional;
     @FindBy(xpath = "//button[@data-test-id='header-create-team-submit-button']")
-    public static WebElement newWorkspaceSubmitButton;
+    private WebElement newWorkspaceSubmitButton;
     @FindBy(xpath = "//input[@data-test-id='add-members-input']")
-    public static WebElement inviteTeamViaEmailInput;
+    private WebElement inviteTeamViaEmailInput;
     @FindBy(xpath = "//button[@data-test-id='team-invite-submit-button']")
-    public static WebElement inviteTeamSubmitButton;
-    @FindBy(xpath = "//button[@aria-label='Add board']")
-    public static WebElement addBoardFromLeftNavigationDrawer;
-    @FindBy(xpath = "//button[@data-test-id='workspace-navigation-expand-button']")
-    public static WebElement workspaceNavigationExpandButton;
-    @FindBy(xpath = "//button[@data-test-id='workspace-navigation-collapse-button']")
-    public static WebElement workspaceNavigationCollapseButton;
+    private WebElement inviteTeamSubmitButton;
     @FindBy(xpath = "//a[@data-test-id='team-members-link']")
-    public static WebElement peopleCounter;
+    private WebElement peopleCounter;
     @FindBy(xpath = "//a[@data-tab='members']")
-    public static WebElement workspaceMembersTab;
+    private WebElement workspaceMembersTab;
     @FindBy(xpath = "//a[@data-tab='settings']")
-    public static WebElement workspaceSettingsTab;
+    private WebElement workspaceSettingsTab;
     @FindBy(xpath = "//button[@data-test-id='delete-workspace-button']")
-    public static WebElement deleteWorkspaceLink;
-    @FindBy (xpath = "//h1[@class='_2bvXXmbrsPh8Ck']")
-    public static WebElement newCreatedWorkspaceTitleName;
-    @FindBy (xpath = "//input[@data-test-id='delete-workspace-confirm-field']")
-    public static WebElement confirmDeletionWorkspaceNameInput;
-    @FindBy (xpath = "//button[@data-test-id='delete-workspace-confirm-button']")
-    public static WebElement confirmDeleteWorkspaceButton;
+    private WebElement deleteWorkspaceLink;
+    @FindBy(xpath = "//h1[@class='_2bvXXmbrsPh8Ck']")
+    private WebElement newCreatedWorkspaceTitleName;
+    @FindBy(xpath = "//input[@data-test-id='delete-workspace-confirm-field']")
+    private WebElement confirmDeletionWorkspaceNameInput;
+    @FindBy(xpath = "//button[@data-test-id='delete-workspace-confirm-button']")
+    private WebElement confirmDeleteWorkspaceButton;
     @FindBy(xpath = "//a[@data-test-id='show-later-button']")
-    public static WebElement inviteIDoItLaterLink;
+    private WebElement inviteIDoItLaterLink;
 
-    public static void createNewWorkspace() throws InterruptedException {
+    public String getExpectedTrialButtonTitle() {
+        return EXPECTED_TRIAL_BUTTON_TITLE;
+    }
+
+    /*** CRUD manipulations with Workspaces***/
+    public WorkspaceListPage createNewWorkspace() throws InterruptedException {
         Thread.sleep(5000);
-        CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.headerAddWorkspace);
-        WorkspaceListPage.headerAddWorkspace.click();
-        WorkspaceListPage.headerCreateWorkspaceButton.click();
+        CommonActions.explicitWaitOfOneElementVisible(headerAddWorkspace);
+        headerAddWorkspace.click();
+        headerCreateWorkspaceButton.click();
         String newWorkspaceInputText = RandomStringUtils.randomAlphanumeric(10);
-        WorkspaceListPage.newWorkspaceNameInput.sendKeys(newWorkspaceInputText);
-        CommonActions.selectDropdownMenuNextValue(WorkspaceListPage.workspaceTypeSelectDropdown);
+        newWorkspaceNameInput.sendKeys(newWorkspaceInputText);
+        CommonActions.selectDropdownMenuNextValue(workspaceTypeSelectDropdown);
         String newWorkspaceDescriptionText = RandomStringUtils.randomAlphanumeric(10);
-        WorkspaceListPage.newWorkspaceDescriptionOptional.sendKeys(newWorkspaceDescriptionText);
-        WorkspaceListPage.newWorkspaceSubmitButton.click();
-        WorkspaceListPage.inviteIDoItLaterLink.click();
-    }
-    public static void createNewWorkspaceHeadless() throws InterruptedException {
-        Thread.sleep(2000);
-        String newWorkspaceInputText = RandomStringUtils.randomAlphanumeric(10);
-        WorkspaceListPage.newWorkspaceNameInput.sendKeys(newWorkspaceInputText);
-        CommonActions.selectDropdownMenuNextValue(WorkspaceListPage.workspaceTypeSelectDropdown);
-        String newWorkspaceDescriptionText = RandomStringUtils.randomAlphanumeric(10);
-        WorkspaceListPage.newWorkspaceDescriptionOptional.sendKeys(newWorkspaceDescriptionText);
-        WorkspaceListPage.newWorkspaceSubmitButton.click();
-        WorkspaceListPage.inviteIDoItLaterLink.click();
+        newWorkspaceDescriptionOptional.sendKeys(newWorkspaceDescriptionText);
+        newWorkspaceSubmitButton.click();
+        inviteIDoItLaterLink.click();
+        return this;
     }
 
-    public static void editExistingWorkspaceAndAssertChanges() throws InterruptedException {
-        WorkspaceListPage.displayNameTextField.clear();
+    public WorkspaceListPage createNewWorkspaceHeadless() throws InterruptedException {
+        Thread.sleep(2000);
+        String newWorkspaceInputText = RandomStringUtils.randomAlphanumeric(10);
+        newWorkspaceNameInput.sendKeys(newWorkspaceInputText);
+        CommonActions.selectDropdownMenuNextValue(workspaceTypeSelectDropdown);
+        String newWorkspaceDescriptionText = RandomStringUtils.randomAlphanumeric(10);
+        newWorkspaceDescriptionOptional.sendKeys(newWorkspaceDescriptionText);
+        newWorkspaceSubmitButton.click();
+        inviteIDoItLaterLink.click();
+        return this;
+    }
+
+    public WorkspaceListPage editExistingWorkspaceAndAssertChanges() throws InterruptedException {
+        displayNameTextField.clear();
         String displayNameTextFieldInputText = RandomStringUtils.randomAlphanumeric(10);
-        WorkspaceListPage.displayNameTextField.sendKeys(displayNameTextFieldInputText);
-        CommonActions.selectDropdownMenuNextValue(WorkspaceListPage.teamTypeSelectDropdown.get(0));
-        WorkspaceListPage.shortNameTextField.clear();
+        displayNameTextField.sendKeys(displayNameTextFieldInputText);
+        CommonActions.selectDropdownMenuNextValue(teamTypeSelectDropdown.get(0));
+        shortNameTextField.clear();
         String shortNameTextFieldInputText = RandomStringUtils.randomAlphanumeric(10);
-        WorkspaceListPage.shortNameTextField.sendKeys(shortNameTextFieldInputText);
-        WorkspaceListPage.websiteOptionalTextField.clear();
+        shortNameTextField.sendKeys(shortNameTextFieldInputText);
+        websiteOptionalTextField.clear();
         String websiteOptionalTextFieldInputText = RandomStringUtils.randomAlphanumeric(10);
-        WorkspaceListPage.websiteOptionalTextField.sendKeys(websiteOptionalTextFieldInputText);
-        WorkspaceListPage.descriptionOptionalTextField.clear();
+        websiteOptionalTextField.sendKeys(websiteOptionalTextFieldInputText);
+        descriptionOptionalTextField.clear();
         String descriptionOptionalTextFieldInputText = RandomStringUtils.randomAlphanumeric(10);
-        WorkspaceListPage.descriptionOptionalTextField.sendKeys(descriptionOptionalTextFieldInputText);
-        WorkspaceListPage.saveButton.submit();
+        descriptionOptionalTextField.sendKeys(descriptionOptionalTextFieldInputText);
+        saveButton.submit();
         /*** Expected Results: all changes are saved. **/
-        CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.savedWebsiteOptionalTitle);
-        Thread.sleep(2000);
-        String resultTextOfDisplayNameTitle = WorkspaceListPage.savedDisplayNameTitle.getText();
-        String resultTextOfDescriptionOptionalTitle = WorkspaceListPage.savedDescriptionOptionalTitle.getText();
-        String resultTextOfWebsiteOptionalTitle = WorkspaceListPage.savedWebsiteOptionalTitle.getText();
-        Assert.assertEquals(resultTextOfDisplayNameTitle, displayNameTextFieldInputText);
-        Assert.assertEquals(resultTextOfDescriptionOptionalTitle, descriptionOptionalTextFieldInputText);
-        Assert.assertEquals(resultTextOfWebsiteOptionalTitle, "http://" + websiteOptionalTextFieldInputText);
+
+        return this;
     }
 
-    public static void deleteWorkspace() throws InterruptedException {
-        CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.workspaceSettingsTab);
-        String getNewWorkspaceTitleName = WorkspaceListPage.newCreatedWorkspaceTitleName.getText();
-        WorkspaceListPage.workspaceSettingsTab.click();
-        CommonActions.explicitWaitOfOneElementVisible(WorkspaceListPage.deleteWorkspaceLink);
-        WorkspaceListPage.deleteWorkspaceLink.click();
-        WorkspaceListPage.confirmDeletionWorkspaceNameInput.sendKeys(getNewWorkspaceTitleName);
-        WorkspaceListPage.confirmDeleteWorkspaceButton.click();
+    public WorkspaceListPage deleteWorkspace() throws InterruptedException {
+        CommonActions.explicitWaitOfOneElementVisible(workspaceSettingsTab);
+        String getNewWorkspaceTitleName = newCreatedWorkspaceTitleName.getText();
+        workspaceSettingsTab.click();
+        CommonActions.explicitWaitOfOneElementVisible(deleteWorkspaceLink);
+        deleteWorkspaceLink.click();
+        confirmDeletionWorkspaceNameInput.sendKeys(getNewWorkspaceTitleName);
+        confirmDeleteWorkspaceButton.click();
+        return this;
+    }
+
+    /*** Methods for shorting steps ***/
+    public WorkspaceListPage navigateToEditWorkspace() throws InterruptedException {
+        CommonActions.explicitWaitOfOneElementVisible(editWorkspaceDetailsButton);
+        editWorkspaceDetailsButton.click();
+        return this;
+    }
+
+    public WorkspaceListPage navigateToTableTab() throws InterruptedException {
+        CommonActions.explicitWaitOfOneElementVisible(workspaceCentralPageTabs.get(1));
+        workspaceCentralPageTabs.get(1).click();
+        return this;
+    }
+
+    public WorkspaceListPage assertTableTrialAsk() {
+        String trialButtonActualTitle = trialButton.getText();
+        Assert.assertEquals(trialButtonActualTitle, getExpectedTrialButtonTitle());
+        return this;
+    }
+
+    public WorkspaceListPage assertLeftNaviDrawerTrialAsk() {
+        String trialButtonActualTitle = trialButton.getText();
+        /*** Expected Results: Premium account required message is displayed. **/
+        Assert.assertEquals(trialButtonActualTitle, getExpectedTrialButtonTitle());
+        return this;
     }
 }

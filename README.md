@@ -39,10 +39,9 @@ Workspaces constants for tests: TEN_BOARDS_WORKSPACE, WORKSPACE25
 
 git@github.com:oxygasa/trello_testing_project.git
 
-* [Jenkins address and credentials for the pipelines editing.](http://35.216.15.139:8080/) <-- This address is dynamic when admin initiate the server reboot.
+* [Jenkins address and credentials for the pipelines editing.] jenkins.epam.com/jenkins
 
-LOGIN: Dzmitry_Samasiuk
-
+LOGIN: Dzmitry_Samasiuk@epam.com
 PASSWORD: TrelloTest334
  
 
@@ -51,7 +50,7 @@ PASSWORD: TrelloTest334
 1. [DONE] Create a Test Plan 
 2. [DONE] Make a Test Design by creating Test Suite Lists.
 3. [DONE] Do the defect reports during testing.
-4. [IN PROGRESS ... 40%] Make an Automation testing scenarios and code them.
+4. [IN PROGRESS ... 50%] Make an Automation testing scenarios and code them.
 5. [DONE] Connect to CI/CD system.
 
 ## Progress history:
@@ -166,10 +165,42 @@ Mentoring updates: need to start earlier TestOps preparation via CI/CD tool "Jen
 
 Powered by Google Cloud Virtual Machine (GNU Linux Ubuntu 20.04 LTS)
 
-Jenkins workspace address http://35.216.15.139:8080/
-
+Jenkins workspace address http://jenkins.epam.com/jenkins
 Credentials:
-
------ User: Dzmitry_Samasiuk
-
+----- User: Dzmitry_Samasiuk@epam.com
 ----- Password : TrelloTest334
+
+**1 Apr - 3 Apr 2022 - External job**
+
+Shift 11 a.m. - 11 p.m.
+
+**4 Apr - 5 Apr 2022 - Mentoring updates**
+
+CI/CD Flaking test repairing.
+Blockers repairing.
+Code refactoring.
+Windows and Linux nodes adding.
+Variations of the reporting systems: Allure report, Maven Surefire, Jenkins command promt.
+
+**6 Apr - 7 Apr 2022 - External job**
+
+Shift 11 a.m. - 11 p.m.
+
+
+**8 Apr - 10 Apr 2022 - Testing job**
+
+Massive refactoring.
+Implement the incapsulation.
+Erase static methods.
+Retest the 30% of the test materials.
+
+**11 Apr - 12 Apr 2022 - External job**
+
+Shift 11 a.m. - 11 p.m.
+
+**12 Apr - 13 Apr 2022 Mentoring updates**
+
+Massive refactoring.
+Implement the incapsulation.
+Erase static methods.
+Retest the 100% of the test materials.

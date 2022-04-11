@@ -12,7 +12,7 @@ public class ForgotPasswordTest extends BaseTest {
 
     //TC ID TRE009 Forget password
     @Test
-    public static void restoreForgottenPasswordTest() {
+    public void restoreForgottenPasswordTest() {
         /**
          * Select "I can't sign in"
          * Type a [Login credential] as email and submit.
