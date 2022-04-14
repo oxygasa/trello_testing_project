@@ -2,7 +2,6 @@ package pages.cards.header;
 
 import commons.CommonActions;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

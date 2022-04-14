@@ -8,7 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.boards.BoardsPage;
-import pages.workspaces.WorkspaceListPage;
 
 import java.util.Collections;
 import java.util.List;

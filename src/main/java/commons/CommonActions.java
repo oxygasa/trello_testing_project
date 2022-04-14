@@ -2,7 +2,6 @@ package commons;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -35,13 +34,6 @@ public class CommonActions {
             case "CHROME_WINDOWS":
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
-                break;
-            case "CHROME_WINDOWS_HEADLESS":
-                WebDriverManager.chromedriver().setup();
-                ChromeOptions options = new ChromeOptions();
-                options.addArguments("headless");
-                options.addArguments("disable-gpu");
-                driver = new ChromeDriver(options);
                 break;
             case "CHROME_LINUX":
                 WebDriverManager wdm = WebDriverManager.chromedriver().linux().enableVnc().enableRecording();

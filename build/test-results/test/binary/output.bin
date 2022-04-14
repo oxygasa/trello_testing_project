@@ -1,0 +1,1188 @@
+Ž03:45:39.141 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56985 : 1
+Ž03:45:39.141 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56468 : 1
+Ž03:45:40.240 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56985 : 1
+Ž03:45:40.241 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56468 : 1
+Ž03:45:41.342 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56985 : 1
+Ž03:45:41.342 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56468 : 1
+Ž03:45:42.441 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56985 : 1
+Ž03:45:42.441 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56468 : 1
+Ž03:45:43.541 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56985 : 1
+Ž03:45:43.541 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56468 : 1
+Ì03:45:43.609 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:45:43.609 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Ž03:45:44.641 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56468 : 1
+Z03:45:44.796 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 98
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:45:44.797 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ø03:45:44.896 [Forwarding isElementDisplayed on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/execute/sync'
+¹03:45:44.896 [Forwarding isElementDisplayed on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/execute/sync'
+Z03:45:45.166 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+FPOST /session/7d862bfbcd5e619bbbfa6c9730464732/execute/sync HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 48780
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:45.166 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ž03:45:45.748 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56985 : 1
+Ž03:45:45.748 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56468 : 1
+Ì03:45:45.779 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:45:45.779 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Z03:45:45.779 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 98
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:45:45.779 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+ø03:45:45.795 [Forwarding clickElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element/7b4948bb-2f82-4ac3-9aad-0a40e71ed052/click'
+Ù03:45:45.795 [Forwarding clickElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element/7b4948bb-2f82-4ac3-9aad-0a40e71ed052/click'
+Z03:45:45.892 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+lPOST /session/7d862bfbcd5e619bbbfa6c9730464732/element/7b4948bb-2f82-4ac3-9aad-0a40e71ed052/click HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 50
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:45.893 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ì03:45:45.900 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:45:45.900 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Z03:45:46.252 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 98
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:45:46.253 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+ø03:45:46.254 [Forwarding clickElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element/7af0afe8-2be3-4293-9c8a-ccde5eb2071b/click'
+Ù03:45:46.254 [Forwarding clickElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element/7af0afe8-2be3-4293-9c8a-ccde5eb2071b/click'
+Z03:45:46.339 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+lPOST /session/7d862bfbcd5e619bbbfa6c9730464732/element/7af0afe8-2be3-4293-9c8a-ccde5eb2071b/click HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 50
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:46.341 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ì03:45:46.351 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:45:46.351 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Z03:45:46.640 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 101
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:45:46.640 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+ý03:45:46.640 [Forwarding sendKeysToElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element/ece28149-a21c-4048-a53a-8c481bff836e/value'
+Þ03:45:46.640 [Forwarding sendKeysToElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element/ece28149-a21c-4048-a53a-8c481bff836e/value'
+Z03:45:46.793 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+lPOST /session/7d862bfbcd5e619bbbfa6c9730464732/element/ece28149-a21c-4048-a53a-8c481bff836e/value HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 181
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:46.793 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ì03:45:46.793 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:45:46.793 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Ž03:45:46.851 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56468 : 1
+Z03:45:46.867 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 99
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:45:46.867 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+ø03:45:46.882 [Forwarding clickElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element/a22bdca6-0874-40e0-9734-4d456fda3fe0/click'
+Ù03:45:46.882 [Forwarding clickElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element/a22bdca6-0874-40e0-9734-4d456fda3fe0/click'
+Z03:45:47.246 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+lPOST /session/7d862bfbcd5e619bbbfa6c9730464732/element/a22bdca6-0874-40e0-9734-4d456fda3fe0/click HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 50
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:47.247 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+È03:45:47.628 [Forwarding actions on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/actions'
+©03:45:47.628 [Forwarding actions on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/actions'
+Z03:45:47.743 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/actions HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 261
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:47.744 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+È03:45:47.749 [Forwarding actions on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/actions'
+©03:45:47.749 [Forwarding actions on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/actions'
+Z03:45:47.765 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/actions HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 261
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:47.766 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ì03:45:47.771 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:45:47.771 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Z03:45:47.802 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 99
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:45:47.802 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+ø03:45:47.808 [Forwarding clickElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element/a22bdca6-0874-40e0-9734-4d456fda3fe0/click'
+Ù03:45:47.808 [Forwarding clickElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element/a22bdca6-0874-40e0-9734-4d456fda3fe0/click'
+Z03:45:47.863 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+lPOST /session/7d862bfbcd5e619bbbfa6c9730464732/element/a22bdca6-0874-40e0-9734-4d456fda3fe0/click HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 50
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:47.864 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ì03:45:47.868 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:45:47.869 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Z03:45:47.888 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 60
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:45:47.889 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+ý03:45:47.893 [Forwarding sendKeysToElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element/7b612329-d7c0-43b8-9aa2-042a903631e4/value'
+Þ03:45:47.893 [Forwarding sendKeysToElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element/7b612329-d7c0-43b8-9aa2-042a903631e4/value'
+Ž03:45:47.940 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56468 : 1
+Z03:45:48.110 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+lPOST /session/7d862bfbcd5e619bbbfa6c9730464732/element/7b612329-d7c0-43b8-9aa2-042a903631e4/value HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 181
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:48.111 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ì03:45:48.114 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:45:48.115 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Z03:45:48.137 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 105
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:45:48.137 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+ø03:45:48.142 [Forwarding clickElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element/ee4184cb-ee88-45ed-94e6-0be66d910ce9/click'
+Ù03:45:48.142 [Forwarding clickElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element/ee4184cb-ee88-45ed-94e6-0be66d910ce9/click'
+Z03:45:48.334 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+lPOST /session/7d862bfbcd5e619bbbfa6c9730464732/element/ee4184cb-ee88-45ed-94e6-0be66d910ce9/click HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 50
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:48.337 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ì03:45:48.345 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:45:48.346 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Z03:45:48.807 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 85
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:45:48.807 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+ø03:45:48.816 [Forwarding clickElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element/1ee7653c-7552-480f-926f-bc29cd5a3cf7/click'
+Ù03:45:48.817 [Forwarding clickElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element/1ee7653c-7552-480f-926f-bc29cd5a3cf7/click'
+Ž03:45:49.041 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56468 : 1
+Z03:45:49.314 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+lPOST /session/7d862bfbcd5e619bbbfa6c9730464732/element/1ee7653c-7552-480f-926f-bc29cd5a3cf7/click HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 50
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:49.314 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ì03:45:49.318 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:45:49.318 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Ž03:45:50.141 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56468 : 1
+Z03:45:51.157 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 102
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:45:51.158 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ø03:45:51.175 [Forwarding isElementDisplayed on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/execute/sync'
+¹03:45:51.175 [Forwarding isElementDisplayed on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/execute/sync'
+Z03:45:51.206 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+FPOST /session/7d862bfbcd5e619bbbfa6c9730464732/execute/sync HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 48780
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:51.223 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ž03:45:51.241 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56985 : 1
+Ž03:45:51.241 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56468 : 1
+Ì03:45:51.842 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:45:51.842 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Z03:45:51.842 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 102
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:45:51.842 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+ø03:45:51.857 [Forwarding clickElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element/eed593d7-d450-4757-85f1-03e35fea2b04/click'
+Ù03:45:51.857 [Forwarding clickElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element/eed593d7-d450-4757-85f1-03e35fea2b04/click'
+Z03:45:51.963 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+lPOST /session/7d862bfbcd5e619bbbfa6c9730464732/element/eed593d7-d450-4757-85f1-03e35fea2b04/click HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 50
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:51.964 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ì03:45:51.968 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:45:51.968 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Z03:45:51.972 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 56
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:45:51.972 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+ø03:45:51.988 [Forwarding clearElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element/d30dd6e9-89ec-44df-87ab-906617251dca/clear'
+Ù03:45:51.988 [Forwarding clearElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element/d30dd6e9-89ec-44df-87ab-906617251dca/clear'
+Z03:45:52.256 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+lPOST /session/7d862bfbcd5e619bbbfa6c9730464732/element/d30dd6e9-89ec-44df-87ab-906617251dca/clear HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 50
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:52.257 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ì03:45:52.269 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:45:52.269 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Z03:45:52.286 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 56
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:45:52.289 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+ý03:45:52.298 [Forwarding sendKeysToElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element/d30dd6e9-89ec-44df-87ab-906617251dca/value'
+Þ03:45:52.298 [Forwarding sendKeysToElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element/d30dd6e9-89ec-44df-87ab-906617251dca/value'
+Ž03:45:52.342 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56468 : 1
+Z03:45:52.492 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+lPOST /session/7d862bfbcd5e619bbbfa6c9730464732/element/d30dd6e9-89ec-44df-87ab-906617251dca/value HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 181
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:52.492 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Î03:45:52.509 [Forwarding findElements on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/elements'
+¯03:45:52.509 [Forwarding findElements on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/elements'
+Z03:45:52.540 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+BPOST /session/7d862bfbcd5e619bbbfa6c9730464732/elements HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 84
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 169
+
+Ï03:45:52.541 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+ø03:45:52.563 [Forwarding clickElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element/836975e1-b9f8-4e08-8101-d75824d9919e/click'
+Ù03:45:52.563 [Forwarding clickElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element/836975e1-b9f8-4e08-8101-d75824d9919e/click'
+Z03:45:52.661 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+lPOST /session/7d862bfbcd5e619bbbfa6c9730464732/element/836975e1-b9f8-4e08-8101-d75824d9919e/click HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 50
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:52.661 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+È03:45:52.667 [Forwarding actions on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/actions'
+©03:45:52.667 [Forwarding actions on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/actions'
+Z03:45:52.685 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/actions HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 261
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:52.686 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+È03:45:52.696 [Forwarding actions on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/actions'
+©03:45:52.696 [Forwarding actions on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/actions'
+Z03:45:52.712 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/actions HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 261
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:52.713 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+ø03:45:52.718 [Forwarding clickElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element/836975e1-b9f8-4e08-8101-d75824d9919e/click'
+Ù03:45:52.718 [Forwarding clickElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element/836975e1-b9f8-4e08-8101-d75824d9919e/click'
+Z03:45:52.782 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+lPOST /session/7d862bfbcd5e619bbbfa6c9730464732/element/836975e1-b9f8-4e08-8101-d75824d9919e/click HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 50
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:52.783 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ì03:45:52.790 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:45:52.790 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Z03:45:52.811 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 49
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:45:52.812 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+ø03:45:52.816 [Forwarding clearElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element/18f360f1-f1f2-4765-a951-ea2606ae94e9/clear'
+Ù03:45:52.816 [Forwarding clearElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element/18f360f1-f1f2-4765-a951-ea2606ae94e9/clear'
+Z03:45:52.888 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+lPOST /session/7d862bfbcd5e619bbbfa6c9730464732/element/18f360f1-f1f2-4765-a951-ea2606ae94e9/clear HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 50
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:52.890 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ì03:45:52.901 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:45:52.902 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Z03:45:52.924 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 49
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:45:52.924 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+ý03:45:52.929 [Forwarding sendKeysToElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element/18f360f1-f1f2-4765-a951-ea2606ae94e9/value'
+Þ03:45:52.929 [Forwarding sendKeysToElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element/18f360f1-f1f2-4765-a951-ea2606ae94e9/value'
+Z03:45:53.147 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+lPOST /session/7d862bfbcd5e619bbbfa6c9730464732/element/18f360f1-f1f2-4765-a951-ea2606ae94e9/value HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 181
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:53.149 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ì03:45:53.157 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:45:53.158 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Z03:45:53.174 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 52
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:45:53.175 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+ø03:45:53.178 [Forwarding clearElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element/e3ed2f45-c4ac-4b73-8649-ed8b47836569/clear'
+Ù03:45:53.178 [Forwarding clearElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element/e3ed2f45-c4ac-4b73-8649-ed8b47836569/clear'
+Z03:45:53.219 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+lPOST /session/7d862bfbcd5e619bbbfa6c9730464732/element/e3ed2f45-c4ac-4b73-8649-ed8b47836569/clear HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 50
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:53.219 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ì03:45:53.234 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:45:53.234 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Z03:45:53.234 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 52
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:45:53.234 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+ý03:45:53.250 [Forwarding sendKeysToElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element/e3ed2f45-c4ac-4b73-8649-ed8b47836569/value'
+Þ03:45:53.250 [Forwarding sendKeysToElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element/e3ed2f45-c4ac-4b73-8649-ed8b47836569/value'
+Ž03:45:53.442 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56468 : 1
+Z03:45:53.457 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+lPOST /session/7d862bfbcd5e619bbbfa6c9730464732/element/e3ed2f45-c4ac-4b73-8649-ed8b47836569/value HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 181
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:53.458 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ì03:45:53.464 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:45:53.464 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Z03:45:53.501 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 49
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:45:53.503 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+ø03:45:53.504 [Forwarding clearElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element/de70a825-234d-4c18-8481-05242ba9859d/clear'
+Ù03:45:53.504 [Forwarding clearElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element/de70a825-234d-4c18-8481-05242ba9859d/clear'
+Z03:45:53.571 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+lPOST /session/7d862bfbcd5e619bbbfa6c9730464732/element/de70a825-234d-4c18-8481-05242ba9859d/clear HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 50
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:53.571 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ì03:45:53.571 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:45:53.571 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Z03:45:53.598 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 49
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:45:53.599 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+ý03:45:53.602 [Forwarding sendKeysToElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element/de70a825-234d-4c18-8481-05242ba9859d/value'
+Þ03:45:53.602 [Forwarding sendKeysToElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element/de70a825-234d-4c18-8481-05242ba9859d/value'
+Z03:45:53.807 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+lPOST /session/7d862bfbcd5e619bbbfa6c9730464732/element/de70a825-234d-4c18-8481-05242ba9859d/value HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 181
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:53.807 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ì03:45:53.811 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:45:53.811 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Z03:45:53.827 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 71
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:45:53.828 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ó03:45:53.831 [Forwarding submitElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/execute/sync'
+´03:45:53.832 [Forwarding submitElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/execute/sync'
+Z03:45:53.847 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+FPOST /session/7d862bfbcd5e619bbbfa6c9730464732/execute/sync HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 563
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:53.847 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ì03:45:53.850 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:45:53.850 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Z03:45:53.870 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 72
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:45:53.870 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ø03:45:53.882 [Forwarding isElementDisplayed on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/execute/sync'
+¹03:45:53.882 [Forwarding isElementDisplayed on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/execute/sync'
+Z03:45:53.912 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+FPOST /session/7d862bfbcd5e619bbbfa6c9730464732/execute/sync HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 48780
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:53.913 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ì03:45:54.520 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:45:54.520 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Ž03:45:54.540 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56468 : 1
+Z03:45:54.560 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 77
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:45:54.561 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+ø03:45:54.563 [Forwarding getElementText on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'GET' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element/5f5cd0f4-bb25-42c1-8f12-e0ee47720e5c/text'
+Ù03:45:54.564 [Forwarding getElementText on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for GET '/session/7d862bfbcd5e619bbbfa6c9730464732/element/5f5cd0f4-bb25-42c1-8f12-e0ee47720e5c/text'
+Z03:45:54.786 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+cRequest DefaultFullHttpRequest(decodeResult: success, version: HTTP/1.1, content: EmptyByteBufBE)
+jGET /session/7d862bfbcd5e619bbbfa6c9730464732/element/5f5cd0f4-bb25-42c1-8f12-e0ee47720e5c/text HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Cache-Control: no-cache
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 22
+
+Ï03:45:54.787 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ì03:45:54.788 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:45:54.788 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Z03:45:54.788 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 72
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:45:54.788 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+ø03:45:54.803 [Forwarding clickElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element/58404d6a-481b-4cff-9eb2-d81187bca1f6/click'
+Ù03:45:54.803 [Forwarding clickElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element/58404d6a-481b-4cff-9eb2-d81187bca1f6/click'
+Z03:45:55.168 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+lPOST /session/7d862bfbcd5e619bbbfa6c9730464732/element/58404d6a-481b-4cff-9eb2-d81187bca1f6/click HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 50
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:45:55.168 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ì03:45:55.176 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:45:55.177 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Ž03:45:55.641 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56468 : 1
+Z03:45:56.209 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 96
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:45:56.210 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ø03:45:56.238 [Forwarding isElementDisplayed on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/execute/sync'
+¹03:45:56.239 [Forwarding isElementDisplayed on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/execute/sync'
+Ž03:45:56.740 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56468 : 1
+Ž03:45:57.841 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56468 : 1
+Ž03:45:58.941 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56468 : 1
+Ž03:46:00.041 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56468 : 1
+Z03:46:00.590 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+FPOST /session/7d862bfbcd5e619bbbfa6c9730464732/execute/sync HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 48780
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:46:00.591 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ž03:46:01.144 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56985 : 1
+Ž03:46:01.144 [AsyncHttpClient-1-1] DEBUG org.asynchttpclient.netty.channel.DefaultChannelPool - Entry count for : http://localhost:56468 : 1
+Ì03:46:01.206 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:46:01.206 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Z03:46:01.206 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 96
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:46:01.206 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+ø03:46:01.206 [Forwarding clickElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element/cbd4d24f-94fb-4750-b22d-51b4474df550/click'
+Ù03:46:01.206 [Forwarding clickElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element/cbd4d24f-94fb-4750-b22d-51b4474df550/click'
+Z03:46:01.334 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+lPOST /session/7d862bfbcd5e619bbbfa6c9730464732/element/cbd4d24f-94fb-4750-b22d-51b4474df550/click HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 50
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:46:01.334 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ì03:46:01.340 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:46:01.340 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Z03:46:01.356 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 102
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:46:01.356 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+ý03:46:01.371 [Forwarding sendKeysToElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element/78ca8f52-f0d8-40d7-958d-9abbd43da33f/value'
+Þ03:46:01.371 [Forwarding sendKeysToElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element/78ca8f52-f0d8-40d7-958d-9abbd43da33f/value'
+Z03:46:01.558 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+lPOST /session/7d862bfbcd5e619bbbfa6c9730464732/element/78ca8f52-f0d8-40d7-958d-9abbd43da33f/value HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 181
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:46:01.559 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+Ì03:46:01.562 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+­03:46:01.562 [Forwarding findElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element'
+Z03:46:01.583 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+APOST /session/7d862bfbcd5e619bbbfa6c9730464732/element HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 104
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 88
+
+Ï03:46:01.584 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]
+ø03:46:01.587 [Forwarding clickElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using pooled Channel '[id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]' for 'POST' to 'http://localhost:56985/session/7d862bfbcd5e619bbbfa6c9730464732/element/a797cfcf-991e-47f5-9ca2-8ba18e662789/click'
+Ù03:46:01.587 [Forwarding clickElement on session 7d862bfbcd5e619bbbfa6c9730464732 to remote] DEBUG org.asynchttpclient.netty.request.NettyRequestSender - Using open Channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985] for POST '/session/7d862bfbcd5e619bbbfa6c9730464732/element/a797cfcf-991e-47f5-9ca2-8ba18e662789/click'
+Z03:46:01.687 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.handler.HttpHandler - 
+
+FRequest DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+lPOST /session/7d862bfbcd5e619bbbfa6c9730464732/element/a797cfcf-991e-47f5-9ca2-8ba18e662789/click HTTP/1.1
++User-Agent: selenium/4.1.3 (java windows)
+Content-Length: 50
+/Content-Type: application/json; charset=utf-8
+host: localhost:56985
+accept: */*
+
+HResponse DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+/Content-Type: application/json; charset=utf-8
+cache-control: no-cache
+content-length: 14
+
+Ï03:46:01.687 [AsyncHttpClient-1-2] DEBUG org.asynchttpclient.netty.channel.ChannelManager - Adding key: http://localhost:56985 for channel [id: 0xbedfc600, L:/127.0.0.1:56462 - R:localhost/127.0.0.1:56985]

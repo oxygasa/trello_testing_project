@@ -1,7 +1,6 @@
 package pages.boards;
 
 import commons.CommonActions;
-import lombok.Getter;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
