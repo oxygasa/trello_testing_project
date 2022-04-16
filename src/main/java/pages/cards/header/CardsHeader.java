@@ -13,18 +13,15 @@ import org.testng.Assert;
 import pages.base.BasePage;
 import pages.boards.BoardsPage;
 import pages.cards.card_list_preview_page.CardListPreviewPage;
-import pages.workspaces.WorkspaceListPage;
 
 import java.util.List;
-
-import static commons.CommonActions.driver;
 
 public class CardsHeader extends BasePage {
     WebDriver driver;
     @FindBy(xpath = "//button[@data-test-id='board-views-switcher-button']")
     private WebElement boardViewSwitcherButton;
-    @FindBy(xpath = "//button[@data-test-id='board-views-upsell-prompt-start-free-trial-button']")
-    private WebElement boardViewSwitcherFreeTrialButton;
+    @FindBy(xpath = "//button[@data-test-id='board-views-upsell-prompt-upgrade-bc-button']")
+    private WebElement switchBoardViewPremiumAsking;
     @FindBy(xpath = "//div[contains(@class,'js-rename-board')]")
     private WebElement boardRenameInput;
     @FindBy(xpath = "//h1[contains(@class,'board-header-btn-text')]")
@@ -107,12 +104,7 @@ public class CardsHeader extends BasePage {
         CommonActions.explicitWaitOfOneElementVisible(boardViewSwitcherButton);
         boardViewSwitcherButton.click();
         /*** A Board is opened. A module with a Premium asking is displayed.**/
-        Assert.assertTrue(boardViewSwitcherFreeTrialButton.isDisplayed()); //trial assert trying
-        return this;
-    }
-
-    public CardsHeader checkIsUserIsPremium() {
-        BoardViewSwitcherPremiumBoardButton.isDisplayed(); //premium assert trying
+        Assert.assertTrue(switchBoardViewPremiumAsking.isDisplayed());
         return this;
     }
 

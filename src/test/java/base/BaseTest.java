@@ -39,7 +39,8 @@ public class BaseTest extends BasePage {
             loginViaTrelloPage.submitButtonTrello.click();
             loginViaTrelloPage.password.sendKeys(loginViaTrelloPage.PASSWORD_CREDENTIAL);
             loginViaTrelloPage.submitButtonAtlassian.click();
-            Thread.sleep(3000);
+            Thread.sleep(7000); // <== Hardly need for finish load the login
+                                     // completely and prevent Cookies loss and Flake all tests.
         }
         return driver;
     }

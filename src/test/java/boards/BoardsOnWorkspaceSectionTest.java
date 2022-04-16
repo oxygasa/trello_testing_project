@@ -14,7 +14,7 @@ import java.util.List;
 
 import static commons.CommonActions.driver;
 
-public class WorkspaceBoardsTest extends BaseTest {
+public class BoardsOnWorkspaceSectionTest extends BaseTest {
 
     //TC ID TRE014 Workspace page: Boards Creation
     @Test

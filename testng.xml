@@ -68,7 +68,7 @@
                     <include name="duplicatingBoardsFunctionalityTest"/>
                 </methods>
             </class>
-            <class name="boards.WorkspaceBoardsTest">
+            <class name="boards.BoardsOnWorkspaceSectionTest">
                 <methods>
                     <include name="boardsCreationBeginTest"/>
                     <include name="boardsCreationContinueTest"/>

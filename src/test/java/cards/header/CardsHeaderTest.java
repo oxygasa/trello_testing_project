@@ -1,7 +1,7 @@
 package cards.header;
 
 import base.BaseTest;
-import boards.WorkspaceBoardsTest;
+import boards.BoardsOnWorkspaceSectionTest;
 import commons.CommonActions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -24,11 +24,7 @@ public class CardsHeaderTest extends BaseTest {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
         /*** Open any board. Click Board button. **/
-        try {
-            cardsHeader.tryToChangeBoardViewAsFreeUser();
-        } catch (org.openqa.selenium.NoSuchElementException e) {
-            cardsHeader.checkIsUserIsPremium();
-        }
+        cardsHeader.tryToChangeBoardViewAsFreeUser();
         /*** Post condition**/
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
     }
@@ -50,8 +46,8 @@ public class CardsHeaderTest extends BaseTest {
     //TC ID TRE025 Star button clickable.
     @Test
     public void starButtonClickableTest() throws InterruptedException {
-        WorkspaceBoardsTest workspaceBoardsTest = new WorkspaceBoardsTest();
-        workspaceBoardsTest.boardsAddToFavouriteTest();
+        BoardsOnWorkspaceSectionTest boardsOnWorkspaceSectionTest = new BoardsOnWorkspaceSectionTest();
+        boardsOnWorkspaceSectionTest.boardsAddToFavouriteTest();
     }
 
     //TC ID TRE026 Change and show workspaces.
