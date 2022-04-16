@@ -32,7 +32,8 @@ public class WorkspaceListPageTest extends BaseTest {
         /*** Create new Workspace and navigate to the Workspace table tab.**/
         workspaceListPage.createNewWorkspace();
         String currentWorkspaceUrl = driver.getCurrentUrl();
-        workspaceListPage.navigateToTableTab()
+        workspaceListPage
+                .navigateToTableTab()
                 .assertTableTrialAsk();
         /*** Post condition: Delete the workspace. **/
         driver.get(currentWorkspaceUrl);
@@ -44,14 +45,13 @@ public class WorkspaceListPageTest extends BaseTest {
     public void workspaceTableLeftNavigationDrawerPremiumRequireTest() throws InterruptedException {
         /*** Precondition: login and open the workspace**/
         WorkspaceListPage workspaceListPage = PageFactory.initElements(driver, WorkspaceListPage.class);
-        PageFactory.initElements(driver, LeftNavigationDrawer.class);
+        LeftNavigationDrawer leftNavigationDrawer = PageFactory.initElements(driver, LeftNavigationDrawer.class);
         workspaceListPage.createNewWorkspace();
         String currentWorkspaceUrl = driver.getCurrentUrl();
         /*** Expand Left Navigation Drawer then click Workspace table button. **/
-        CommonActions.explicitWaitOfOneElementVisible(LeftNavigationDrawer.expander);
-        LeftNavigationDrawer.expander.click();
-        CommonActions.explicitWaitOfOneElementVisible(LeftNavigationDrawer.tableButton);
-        LeftNavigationDrawer.tableButton.click();
+        leftNavigationDrawer
+                .expandLeftNaviDrawer()
+                .selectWorkspaceTable();
         workspaceListPage.assertLeftNaviDrawerTrialAsk();
         /*** Post condition: Delete the workspace. **/
         driver.get(currentWorkspaceUrl);
@@ -64,7 +64,6 @@ public class WorkspaceListPageTest extends BaseTest {
     public void createNewWorkspaceFromLeftNavigationDrawerOnBoardsTest() throws InterruptedException {
         /*** Precondition: login**/
         WorkspaceListPage workspaceListPage = PageFactory.initElements(driver, WorkspaceListPage.class);
-        PageFactory.initElements(driver, TempMail.class);
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         /*** Create the workspace from the board page.**/
         driver.get(boardsPage.getDefaultWorkspaceUrl()+"/boards");

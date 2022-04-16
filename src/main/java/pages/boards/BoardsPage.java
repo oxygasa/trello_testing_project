@@ -8,8 +8,6 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import pages.base.BasePage;
-import pages.workspaces.WorkspaceListPage;
-
 import java.util.ArrayList;
 import java.util.List;
 

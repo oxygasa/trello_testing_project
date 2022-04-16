@@ -144,6 +144,7 @@ public class CommonActions {
 
     /*** A explicit waiter, which do an assertion of presence 1 element **/
     public static void explicitWaitOfOneElementVisible(WebElement webElementName) throws InterruptedException {
+        Thread.sleep(1000);
         Wait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofSeconds(1))

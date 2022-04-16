@@ -130,6 +130,13 @@ public class CardsHeader extends BasePage {
         return this;
     }
 
+    public CardsHeader checkTheBoardNameIsExpected(String expectedBoardName) throws InterruptedException {
+        Thread.sleep(4000);
+        CommonActions.explicitWaitOfOneElementVisible(boardRenameInput);
+        Assert.assertEquals(boardRenameInput.getText(), expectedBoardName);
+        return this;
+    }
+
     public CardsHeader changeWorkspace() throws InterruptedException {
         CommonActions.explicitWaitOfOneElementVisible(openWorkspaceMenu);
         openWorkspaceMenu.click();
