@@ -2,4 +2,5 @@
 allure-results/
 allure-report/
 target/
+build/
 screenshots/
