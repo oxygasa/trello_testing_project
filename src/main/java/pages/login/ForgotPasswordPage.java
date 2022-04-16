@@ -3,24 +3,42 @@ package pages.login;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import pages.base.BasePage;
+
+import static commons.CommonActions.driver;
 
 public class ForgotPasswordPage extends BasePage {
     WebDriver driver;
     public ForgotPasswordPage(WebDriver driver) {
         this.driver = driver;
     }
-    public static final String LOGIN_CREDENTIAL = "trellou0@gmail.com";
     @FindBy(xpath = "//ul//a[@href='/forgot']")
-    public static WebElement forgotPasswordLink;
+    public WebElement forgotPasswordLink;
     @FindBy(id = "email")
-    public static WebElement forgotPasswordEmailMandatory;
+    public WebElement forgotPasswordEmailMandatory;
     @FindBy(id = "submit")
-    public static WebElement submitButton;
+    public WebElement submitButton;
     @FindBy(id = "aa-forgot-link")
-    public static WebElement atlassianSettingsLink;
+    public WebElement atlassianSettingsLink;
     @FindBy(xpath = "//div/p[@class]")
-    public static WebElement atlassianForgotPasswordConfirmation;
+    public WebElement atlassianForgotPasswordConfirmation;
     @FindBy(className = "css-19r5em7")
-    public static WebElement atlassianSubmitButton;
+    public WebElement atlassianSubmitButton;
+
+    public ForgotPasswordPage askPasswordRestore(){
+        LoginViaTrelloPage loginViaTrelloPage = PageFactory.initElements(driver, LoginViaTrelloPage.class);
+        driver.manage().deleteAllCookies();
+        driver.get(loginViaTrelloPage.TRELLO_LOGIN_PAGE);
+        forgotPasswordLink.click();
+        forgotPasswordEmailMandatory.sendKeys(loginViaTrelloPage.LOGIN_CREDENTIAL);
+        submitButton.submit();
+        atlassianSettingsLink.click();
+        atlassianSubmitButton.click();
+        /*** BLOCKER: Haven't accessed to a mail service. **/
+        Assert.assertEquals(atlassianForgotPasswordConfirmation.
+                getText(), loginViaTrelloPage.LOGIN_CREDENTIAL);
+        return this;
+    }
 }

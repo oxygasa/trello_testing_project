@@ -121,22 +121,22 @@ public class CommonActions {
      * For all other tests use the primary user.
      **/
     public static void loginIntoTrelloBySecondUserCredentials() throws InterruptedException {
-        PageFactory.initElements(driver, LoginViaTrelloPage.class);
+        LoginViaTrelloPage loginViaTrelloPage = PageFactory.initElements(driver, LoginViaTrelloPage.class);
         try {
-            driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
-            LoginViaTrelloPage.username.sendKeys(LoginViaTrelloPage.SECOND_USER_LOGIN_CREDENTIAL);
+            driver.get(loginViaTrelloPage.TRELLO_LOGIN_PAGE);
+            loginViaTrelloPage.username.sendKeys(loginViaTrelloPage.SECOND_USER_LOGIN_CREDENTIAL);
             Thread.sleep(2000);
-            LoginViaTrelloPage.submitButtonTrello.click();
-            LoginViaTrelloPage.password.sendKeys(LoginViaTrelloPage.SECOND_USER_PASSWORD_CREDENTIAL);
-            LoginViaTrelloPage.submitButtonAtlassian.click();
+            loginViaTrelloPage.submitButtonTrello.click();
+            loginViaTrelloPage.password.sendKeys(loginViaTrelloPage.SECOND_USER_PASSWORD_CREDENTIAL);
+            loginViaTrelloPage.submitButtonAtlassian.click();
             Thread.sleep(3000);
         } catch (org.openqa.selenium.NoSuchElementException e) {
-            driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
-            LoginViaTrelloPage.username.sendKeys(LoginViaTrelloPage.SECOND_USER_LOGIN_CREDENTIAL);
+            driver.get(loginViaTrelloPage.TRELLO_LOGIN_PAGE);
+            loginViaTrelloPage.username.sendKeys(loginViaTrelloPage.SECOND_USER_LOGIN_CREDENTIAL);
             Thread.sleep(2000);
-            LoginViaTrelloPage.submitButtonTrello.click();
-            LoginViaTrelloPage.password.sendKeys(LoginViaTrelloPage.SECOND_USER_PASSWORD_CREDENTIAL);
-            LoginViaTrelloPage.submitButtonAtlassian.click();
+            loginViaTrelloPage.submitButtonTrello.click();
+            loginViaTrelloPage.password.sendKeys(loginViaTrelloPage.SECOND_USER_PASSWORD_CREDENTIAL);
+            loginViaTrelloPage.submitButtonAtlassian.click();
             Thread.sleep(3000);
         }
     }

@@ -3,23 +3,41 @@ package pages.login;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import pages.base.BasePage;
+
+import static commons.CommonActions.driver;
 
 public class LoginViaApplePage extends BasePage {
     WebDriver driver;
     public LoginViaApplePage(WebDriver driver) {
         this.driver = driver;
     }
-    public static final String LOGIN_CREDENTIAL = "trellou0@gmail.com";
-    public static final String PASSWORD_CREDENTIAL = "sfjkg@Gygfuyg%%^$12521";
+    public final String LOGIN_CREDENTIAL = "trellou0@gmail.com";
+    public final String PASSWORD_CREDENTIAL = "sfjkg@Gygfuyg%%^$12521";
     @FindBy(id = "signInWithAppleButton")
-    public static WebElement appleOauthButton;
+    public WebElement appleOauthButton;
     @FindBy(id = "account_name_text_field")
-    public static WebElement appleIDLoginTextField;
+    public WebElement appleIDLoginTextField;
     @FindBy(id = "sign-in")
-    public static WebElement appleIDLoginNextButton;
+    public WebElement appleIDLoginNextButton;
     @FindBy(id = "password_text_field")
-    public static WebElement appleIDPasswordTextField;
+    public WebElement appleIDPasswordTextField;
     @FindBy(id = "didnt-get-code")
-    public static WebElement apple2FADidntGetCodeLink;
+    public WebElement apple2FADidntGetCodeLink;
+
+    public LoginViaApplePage tryToLoginViaApple(){
+        LoginViaTrelloPage loginViaTrelloPage = PageFactory.initElements(driver, LoginViaTrelloPage.class);
+        driver.manage().deleteAllCookies();
+        driver.get(loginViaTrelloPage.TRELLO_LOGIN_PAGE);
+        appleOauthButton.click();
+        appleIDLoginTextField.sendKeys(LOGIN_CREDENTIAL);
+        appleIDLoginNextButton.click();
+        appleIDPasswordTextField.sendKeys(PASSWORD_CREDENTIAL);
+        appleIDLoginNextButton.click();
+        /*** BLOCKER: Apple ID uses 2FA sending SMS. **/
+        Assert.assertTrue(apple2FADidntGetCodeLink.isDisplayed());
+        return this;
+    }
 }

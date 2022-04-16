@@ -1,9 +1,7 @@
 package login;
 
 import base.BaseTest;
-import commons.CommonActions;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.login.LoginViaTrelloPage;
 
@@ -14,17 +12,17 @@ public class LoginViaTrelloTest extends BaseTest {
     //TC ID TRE003 Incorrect credentials
 
     @Test
-    public void loginWithinIncorrectCredentials() {
+    public void loginWithNotRegisteredCredentials() throws InterruptedException {
         /*** Open https://trello.com/login. Type [Incorrect login credential example one] as a login. stay the password clear. **/
-        driver.manage().deleteAllCookies();
         LoginViaTrelloPage loginViaTrelloPage = PageFactory.initElements(driver, LoginViaTrelloPage.class);
         loginViaTrelloPage.loginWithNotRegisteredCredentials();
+
     }
 
     //TC ID TRE003 Incorrect credentials
 
     @Test
-    public void loginWithinNotComfirmedEmail() throws InterruptedException {
+    public void loginWithinNotConfirmedEmail() throws InterruptedException {
         /*** Type [Incorrect login credential example two] as a login. stay the password clear. **/
         driver.manage().deleteAllCookies();
         LoginViaTrelloPage loginViaTrelloPage = PageFactory.initElements(driver, LoginViaTrelloPage.class);
@@ -37,7 +35,7 @@ public class LoginViaTrelloTest extends BaseTest {
         /*** Type a [Login credential], stay the password clear. **/
         driver.manage().deleteAllCookies();
         LoginViaTrelloPage loginViaTrelloPage = PageFactory.initElements(driver, LoginViaTrelloPage.class);
-        loginViaTrelloPage.loginViaEmptyPassword();
+        loginViaTrelloPage.loginWithEmptyPassword();
     }
 
     //TC ID TRE004 Correct credentials
@@ -48,6 +46,6 @@ public class LoginViaTrelloTest extends BaseTest {
         /*** Access granted. The Boards page is opened. The Username is according to [Login credential] **/
         LoginViaTrelloPage loginViaTrelloPage = PageFactory.initElements(driver, LoginViaTrelloPage.class);
         //login into system is a @BeforeTest method
-        loginViaTrelloPage.checkTheUserExist();
+        loginViaTrelloPage.checkTheCorrectlyLoggedUserExist();
     }
 }

@@ -18,15 +18,8 @@ public class SocialMediaLoginTest extends BaseTest {
     @Test
     public void socialMediaLoginGoogleTest() {
         /*** Select "Sign in via Google". Type a [Login credential] and a [Password credential]. **/
-        driver.manage().deleteAllCookies();
-        PageFactory.initElements(driver, LoginViaGooglePage.class);
-        PageFactory.initElements(driver, LoginViaTrelloPage.class);
-        driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
-        LoginViaGooglePage.googleOauthButton.click();
-        LoginViaGooglePage.googleLoginTextField.sendKeys(LoginViaGooglePage.LOGIN_CREDENTIAL);
-        LoginViaGooglePage.googleLoginNextButton.click();
-        /*** BLOCKER: Google secure message about the prohibition og using Web Driver for login into the Google account. **/
-        Assert.assertTrue(LoginViaGooglePage.googleSeleniumBlockerMessage.isDisplayed());
+        LoginViaGooglePage loginViaGooglePage = PageFactory.initElements(driver, LoginViaGooglePage.class);
+        loginViaGooglePage.tryToLoginViaGoogle();
     }
 
     //TC ID TRE007 Social media login. Microsoft.
@@ -36,33 +29,17 @@ public class SocialMediaLoginTest extends BaseTest {
          * Select "Sign in via Microsoft". Type a [Login credential] and a [Password credential].
          * Click "No" button for saving the session.
          **/
-        driver.manage().deleteAllCookies();
-        PageFactory.initElements(driver, LoginViaMicrosoftPage.class);
-        PageFactory.initElements(driver, LoginViaTrelloPage.class);
-        driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
-        LoginViaMicrosoftPage.loginViaMicrosoftLoginPage();
-        CommonActions.explicitWaitOfOneElementVisible(LoginViaTrelloPage.avatarName);
-        LoginViaTrelloPage.avatarName.click();
-        /*** Expected result: Access granted. The Boards page is opened. The Username is according to [Login credential]
-         **/
-        Assert.assertEquals(LoginViaTrelloPage.avatarEmail.getText(), LoginViaMicrosoftPage.LOGIN_CREDENTIAL);
-
+        LoginViaMicrosoftPage loginViaMicrosoftPage = PageFactory.initElements(driver, LoginViaMicrosoftPage.class);
+        loginViaMicrosoftPage.tryToLoginViaMicrosoft();
+//If it fails, write a try/catch test for checking the MS Protection message. It happens after 50 oaths and proceed 3 days.
+// After 3 days MS oauth is available again.
     }
 
     //TC ID TRE007 Social media login. Apple.
     @Test
     public void socialMediaLoginAppleTest() {
         /*** Select "Sign in via Apple". Type a [Login credential] and a [Password credential]. **/
-        driver.manage().deleteAllCookies();
-        PageFactory.initElements(driver, LoginViaApplePage.class);
-        PageFactory.initElements(driver, LoginViaTrelloPage.class);
-        driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
-        LoginViaApplePage.appleOauthButton.click();
-        LoginViaApplePage.appleIDLoginTextField.sendKeys(LoginViaApplePage.LOGIN_CREDENTIAL);
-        LoginViaApplePage.appleIDLoginNextButton.click();
-        LoginViaApplePage.appleIDPasswordTextField.sendKeys(LoginViaApplePage.PASSWORD_CREDENTIAL);
-        LoginViaApplePage.appleIDLoginNextButton.click();
-        /*** BLOCKER: Apple ID uses 2FA sending SMS. **/
-        Assert.assertTrue(LoginViaApplePage.apple2FADidntGetCodeLink.isDisplayed());
+        LoginViaApplePage loginViaApplePage = PageFactory.initElements(driver, LoginViaApplePage.class);
+        loginViaApplePage.tryToLoginViaApple();
     }
 }

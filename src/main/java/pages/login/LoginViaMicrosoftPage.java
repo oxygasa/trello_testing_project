@@ -4,6 +4,8 @@ import commons.CommonActions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import pages.base.BasePage;
 
 public class LoginViaMicrosoftPage extends BasePage {
@@ -11,30 +13,43 @@ public class LoginViaMicrosoftPage extends BasePage {
     public LoginViaMicrosoftPage(WebDriver driver) {
         this.driver = driver;
     }
-    public static final String LOGIN_CREDENTIAL = "trellou0@outlook.com";
-    public static final String PASSWORD_CREDENTIAL = "Trellouser999Te!42";
+    public final String LOGIN_CREDENTIAL = "trellou0@outlook.com";
+    public final String PASSWORD_CREDENTIAL = "Trellouser999Te!42";
     @FindBy(id = "msftButton")
-    public static WebElement microsoftOauthButton;
+    public WebElement microsoftOauthButton;
     @FindBy(id = "i0116")
-    public static WebElement microsoftLoginTextField;
+    public WebElement microsoftLoginTextField;
     @FindBy(id = "idSIButton9")
-    public static WebElement microsoftLoginNextButton;
+    public WebElement microsoftLoginNextButton;
     @FindBy(id = "i0118")
-    public static WebElement microsoftPasswordTextField;
+    public WebElement microsoftPasswordTextField;
     @FindBy(id = "idSIButton9")
-    public static WebElement microsoftSignInButton;
+    public WebElement microsoftSignInButton;
     @FindBy(id = "idBtn_Back")
-    public static WebElement buttonNoAboutSavingSession;
+    public WebElement buttonNoAboutSavingSession;
 
-    public static void loginViaMicrosoftLoginPage() throws InterruptedException {
-        LoginViaMicrosoftPage.microsoftOauthButton.click();
-        CommonActions.explicitWaitOfOneElementVisible(LoginViaMicrosoftPage.microsoftLoginTextField);
-        LoginViaMicrosoftPage.microsoftLoginTextField.sendKeys(LoginViaMicrosoftPage.LOGIN_CREDENTIAL);
-        LoginViaMicrosoftPage.microsoftLoginNextButton.click();
-        CommonActions.explicitWaitOfOneElementVisible(LoginViaMicrosoftPage.microsoftPasswordTextField);
-        LoginViaMicrosoftPage.microsoftPasswordTextField.sendKeys(LoginViaMicrosoftPage.PASSWORD_CREDENTIAL);
-        LoginViaMicrosoftPage.microsoftSignInButton.click();
-        CommonActions.explicitWaitOfOneElementVisible(LoginViaMicrosoftPage.buttonNoAboutSavingSession);
-        LoginViaMicrosoftPage.buttonNoAboutSavingSession.click();
+    public LoginViaMicrosoftPage tryToLoginViaMicrosoft() throws InterruptedException {
+        LoginViaTrelloPage loginViaTrelloPage = PageFactory.initElements(driver, LoginViaTrelloPage.class);
+        driver.manage().deleteAllCookies();
+        driver.get(loginViaTrelloPage.TRELLO_LOGIN_PAGE);
+        followTheLoginProcessOnMSLogPage();
+        CommonActions.explicitWaitOfOneElementVisible(loginViaTrelloPage.avatarName);
+        loginViaTrelloPage.avatarName.click();
+        /*** Expected result: Access granted. The Boards page is opened. The Username is according to [Login credential]
+         **/
+        Assert.assertEquals(loginViaTrelloPage.avatarEmail.getText(), LOGIN_CREDENTIAL);
+        return this;
+    }
+    public LoginViaMicrosoftPage followTheLoginProcessOnMSLogPage() throws InterruptedException {
+        microsoftOauthButton.click();
+        CommonActions.explicitWaitOfOneElementVisible(microsoftLoginTextField);
+        microsoftLoginTextField.sendKeys(LOGIN_CREDENTIAL);
+        microsoftLoginNextButton.click();
+        CommonActions.explicitWaitOfOneElementVisible(microsoftPasswordTextField);
+        microsoftPasswordTextField.sendKeys(PASSWORD_CREDENTIAL);
+        microsoftSignInButton.click();
+        CommonActions.explicitWaitOfOneElementVisible(buttonNoAboutSavingSession);
+        buttonNoAboutSavingSession.click();
+    return this;
     }
 }

@@ -3,21 +3,35 @@ package pages.login;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import pages.base.BasePage;
+
+import static commons.CommonActions.driver;
 
 public class LoginViaGooglePage extends BasePage {
     WebDriver driver;
     public LoginViaGooglePage(WebDriver driver) {
         this.driver = driver;
     }
-    public static final String LOGIN_CREDENTIAL = "trellou0@gmail.com";
-    public static final String PASSWORD_CREDENTIAL = "Trellouser999Te!42";
     @FindBy(id = "googleButton")
-    public static WebElement googleOauthButton;
+    public WebElement googleOauthButton;
     @FindBy(id = "identifierId")
-    public static WebElement googleLoginTextField;
+    public WebElement googleLoginTextField;
     @FindBy(id = "identifierNext")
-    public static WebElement googleLoginNextButton;
+    public WebElement googleLoginNextButton;
     @FindBy(id = "headingText")
-    public static WebElement googleSeleniumBlockerMessage;
+    public WebElement googleSeleniumBlockerMessage;
+
+    public LoginViaGooglePage tryToLoginViaGoogle(){
+        LoginViaTrelloPage loginViaTrelloPage = PageFactory.initElements(driver, LoginViaTrelloPage.class);
+        driver.manage().deleteAllCookies();
+        driver.get(loginViaTrelloPage.TRELLO_LOGIN_PAGE);
+        googleOauthButton.click();
+        googleLoginTextField.sendKeys(loginViaTrelloPage.LOGIN_CREDENTIAL);
+        googleLoginNextButton.click();
+        /*** BLOCKER: Google secure message about the prohibition og using Web Driver for login into the Google account. **/
+        Assert.assertTrue(googleSeleniumBlockerMessage.isDisplayed());
+        return this;
+    }
 }

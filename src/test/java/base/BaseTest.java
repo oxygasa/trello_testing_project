@@ -23,25 +23,22 @@ public class BaseTest extends BasePage {
     @BeforeTest
     public WebDriver startBrowser() throws InterruptedException {
         driver = CommonActions.driver;
-        if (Config.clearCookies) {
-            driver.manage().deleteAllCookies();
-        }
-        PageFactory.initElements(driver, LoginViaTrelloPage.class);
+        LoginViaTrelloPage loginViaTrelloPage = PageFactory.initElements(driver, LoginViaTrelloPage.class);
         try {
-            driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
-            LoginViaTrelloPage.username.sendKeys(LoginViaTrelloPage.LOGIN_CREDENTIAL);
+            driver.get(loginViaTrelloPage.TRELLO_LOGIN_PAGE);
+            loginViaTrelloPage.username.sendKeys(loginViaTrelloPage.LOGIN_CREDENTIAL);
             Thread.sleep(2000);
-            LoginViaTrelloPage.submitButtonTrello.click();
-            LoginViaTrelloPage.password.sendKeys(LoginViaTrelloPage.PASSWORD_CREDENTIAL);
-            LoginViaTrelloPage.submitButtonAtlassian.click();
+            loginViaTrelloPage.submitButtonTrello.click();
+            loginViaTrelloPage.password.sendKeys(loginViaTrelloPage.PASSWORD_CREDENTIAL);
+            loginViaTrelloPage.submitButtonAtlassian.click();
             Thread.sleep(3000);
         } catch (NoSuchElementException | InterruptedException e) {
-            driver.get(LoginViaTrelloPage.TRELLO_LOGIN_PAGE);
-            LoginViaTrelloPage.username.sendKeys(LoginViaTrelloPage.LOGIN_CREDENTIAL);
+            driver.get(loginViaTrelloPage.TRELLO_LOGIN_PAGE);
+            loginViaTrelloPage.username.sendKeys(loginViaTrelloPage.LOGIN_CREDENTIAL);
             Thread.sleep(2000);
-            LoginViaTrelloPage.submitButtonTrello.click();
-            LoginViaTrelloPage.password.sendKeys(LoginViaTrelloPage.PASSWORD_CREDENTIAL);
-            LoginViaTrelloPage.submitButtonAtlassian.click();
+            loginViaTrelloPage.submitButtonTrello.click();
+            loginViaTrelloPage.password.sendKeys(loginViaTrelloPage.PASSWORD_CREDENTIAL);
+            loginViaTrelloPage.submitButtonAtlassian.click();
             Thread.sleep(3000);
         }
         return driver;
@@ -61,8 +58,10 @@ public class BaseTest extends BasePage {
                 assert driver != null;
                 driver.manage().deleteAllCookies();
             }
-            assert driver != null;
-            driver.quit();
+            if (driver != null) {
+                driver.quit();
+                driver = null;
+            }
         }
     }
 }
