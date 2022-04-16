@@ -20,6 +20,8 @@ public class LeftNavigationDrawer extends BasePage {
     public WebElement tableButton;
     @FindBy(xpath = "//button[@data-test-id='workspace-navigation-expand-button']")
     public WebElement expander;
+    @FindBy(xpath = "//button[@data-test-id='workspace-navigation-collapse-button']")
+    private WebElement collapser;
     @FindBy(xpath = "//button[@aria-label='Add board']")
     public WebElement addBoard;
     @FindAll({@FindBy(xpath = "//ul[@data-test-id='collapsible-list-items']//a")})
@@ -43,6 +45,11 @@ public class LeftNavigationDrawer extends BasePage {
         expander.click();
         return this;
     }
+    public LeftNavigationDrawer collapseLeftNaviDrawer(){
+        collapser.click();
+        return this;
+    }
+
     public LeftNavigationDrawer createBoardInstance() throws InterruptedException {
         BoardsPage boardsPage = PageFactory.initElements(CommonActions.driver, BoardsPage.class);
         addBoard.click();

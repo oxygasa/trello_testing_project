@@ -18,7 +18,7 @@ public class WorkspaceBoardsTest extends BaseTest {
 
     //TC ID TRE014 Workspace page: Boards Creation
     @Test
-    public void boardsCreationBeginTest() throws InterruptedException {
+    public void boardsCreationTest() throws InterruptedException {
         /*** Precondition: login **/
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         /*** Create a board with random parameters from Workspaces. **/
@@ -30,21 +30,6 @@ public class WorkspaceBoardsTest extends BaseTest {
         CommonActions.closeAllVisibleBoards((boardsPage.getDefaultWorkspaceUrl()));
     }
 
-    //TC ID TRE014 Workspace page: Boards Creation
-    @Test
-    public void boardsCreationContinueTest() throws InterruptedException {
-        /*** Precondition: login, create a board instance **/
-        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-        driver.get(boardsPage.getDefaultWorkspaceUrl());
-        Thread.sleep(5000);
-        boardsPage.expandNaviDrawer()
-                .createWorkspaceFromLeftNaviDrawer()
-                .navigateToNaviDrawerBoardList()
-                .isRandomBoardTitleDisplays()
-                .collapseNaviDrawer();
-        /*** Post condition: Close all visible boards. **/
-        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
-    }
 
     //TC ID TRE015 Workspace page: Boards Free account limit counter checking
     @Test (retryAnalyzer = FlakingTestRepeater.class)
@@ -52,10 +37,7 @@ public class WorkspaceBoardsTest extends BaseTest {
         /*** Precondition: login, close all visible boards. **/
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         driver.get(boardsPage.getDefaultWorkspaceUrl());
-        boardsPage.isStartCreateBoardDisplays();
-        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         /*** Open or create any workspace, create 10 boards. **/
-        try {
             while (boardsPage.countBoardsNumber() < 10) {
                 try {
                     CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
@@ -71,11 +53,6 @@ public class WorkspaceBoardsTest extends BaseTest {
             /*** Expected result: A premium requiring pop up is shown after 10-th creating new board. **/
             boardsPage.the11thBoardFreeAccAssert();
             CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
-        } catch (NoSuchElementException | org.openqa.selenium.TimeoutException e) {
-            driver.get(boardsPage.getDefaultWorkspaceUrl());
-            boardsPage.the11thBoardPremiumAccAssert();
-            CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
-        }
     }
 
     //TC ID TRE017 Workspace page: Boards add to  favourite.

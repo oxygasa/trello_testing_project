@@ -27,10 +27,6 @@ public class BoardsPage extends BasePage {
     private List<WebElement> boardsStarredIcon;
     @FindBy(xpath = "//a[contains(@class,'js-close-board')]")
     private WebElement rightSidebarCloseBoardButton;
-    @FindBy(xpath = "//button[@data-test-id='workspace-navigation-expand-button']")
-    private WebElement workspaceNavigationExpandButton;
-    @FindBy(xpath = "//button[@data-test-id='workspace-navigation-collapse-button']")
-    private WebElement workspaceNavigationCollapseButton;
     @FindBy(xpath = "//button[@aria-label='Add board']")
     private WebElement addBoardFromLeftNavigationDrawer;
     @FindBy(xpath = "//input[@value='Close']")
@@ -39,7 +35,7 @@ public class BoardsPage extends BasePage {
     private WebElement newBoardNameInput;
     @FindBy(xpath = "//button[@data-test-id='create-board-submit-button']")
     private WebElement newBoardSubmitButton;
-    @FindBy(xpath = "//button[@data-test-id='start-free-trial-button']")
+    @FindBy(xpath = "//a[contains(@class,'_3QMgDmYO8j2CrA')]/span")
     private WebElement startFreeTrialButton;
     @FindBy(xpath = "//span[contains(@class,'icon-star')]")
     private WebElement starIconInTheBoardPage;
@@ -66,7 +62,7 @@ public class BoardsPage extends BasePage {
     @FindBy(xpath = "//span[@data-test-id='business-class-text']")
     private WebElement premiumUserStatusText;
     @FindBy(xpath = "//button[@data-test-id='home-navigation-create-team-button']")
-    private WebElement boardLeftNavigationCreateWorkspace;
+    private WebElement createWorkspaceLeftNaviDrawer;
     @FindAll({@FindBy(xpath = "//h3[@class='boards-page-board-section-header-name']")})
     private List<WebElement> recentViewedBoard;
     @FindBy(xpath = "//a[contains(@class,'js-hide-sidebar')]")
@@ -161,23 +157,9 @@ public class BoardsPage extends BasePage {
         return actualResultBoardNames;
     }
 
-    public List<String> saveBoardPageWorkspaceBoardListToCollection() throws InterruptedException {
-        CommonActions.driver.get(getDefaultWorkspaceUrl() + "/boards");
-        CommonActions.explicitWaitOfElementsListVisible(boardsPageRecentBoardAndAllBoards);
-        List<String> actualResultBoardNames = new ArrayList<>();
-        for (int i = 0; i < boardsPageRecentBoardAndAllBoards.size(); i++) {
-            actualResultBoardNames.add(boardsPageRecentBoardAndAllBoards.get(i).getText());
-        }
-        if (recentViewedBoard.get(0).getText().equals("Recently viewed")) {
-            actualResultBoardNames.remove(0); //Recent viewed board could be added to the collection randomly (the same locator) if Selenium click the board.
-        }
-        return actualResultBoardNames;
-    }
-
-
 
     /*** Series of methods for deleting the board. Actions **/
-    public BoardsPage openRightNaviDrawer() throws InterruptedException {
+    public BoardsPage openRightNaviDrawer() {
         showRightSidebarButton.click();
         return this;
     }
@@ -222,23 +204,13 @@ public class BoardsPage extends BasePage {
 
     public BoardsPage the11thBoardFreeAccAssert() {
         String startFreeTrialTextOnButton = startFreeTrialButton.getText();
-        Assert.assertEquals(startFreeTrialTextOnButton, "Start 14-day free trial"); //free version ask for premium.
-        return this;
-    }
-
-    public BoardsPage the11thBoardPremiumAccAssert() {
-        Assert.assertEquals(premiumUserStatusText.getText(), "Premium"); //is it premium account?
+        Assert.assertEquals(startFreeTrialTextOnButton, "Upgrade"); //free version ask for premium.
         return this;
     }
 
     public BoardsPage activatePremiumBoardFilter() throws InterruptedException {
         filterByCollectionDropdown.click();
-        try {
-            Assert.assertEquals(filterByCollectionPremiumRequireButton.getText(), "Try it free for 14 days");
-        } catch (org.openqa.selenium.NoSuchElementException e) {
-            Assert.assertEquals(premiumCreateCollection.getText(), "Create a collection");
-        }
-
+            Assert.assertEquals(filterByCollectionPremiumRequireButton.getText(), "Upgrade to Premium");
         filterByCollectionPremiumRequireClosePopupButton.click();
         boardsSearchBox.sendKeys(chooseZAFromDropdownAndSaveToCollection().get(0));
         return this;
@@ -272,10 +244,6 @@ public class BoardsPage extends BasePage {
         return this;
     }
 
-    public BoardsPage isRandomBoardTitleDisplays() {
-        Assert.assertTrue(newBoardNameInput.isDisplayed());
-        return this;
-    }
 
     public BoardsPage submitBoardSave() throws InterruptedException {
         Thread.sleep(3000); //The submit button is clickable and visible with inactive status.
@@ -314,19 +282,12 @@ public class BoardsPage extends BasePage {
     }
 
     /*** Left NaviDrawer operations **/
-    public BoardsPage expandNaviDrawer(){
-        workspaceNavigationExpandButton.click();
-        return this;
-    }
 
-    public BoardsPage collapseNaviDrawer(){
-        workspaceNavigationCollapseButton.click();
-        return this;
-    }
 
     public BoardsPage createWorkspaceFromLeftNaviDrawer() throws InterruptedException {
-        CommonActions.explicitWaitOfOneElementVisible(boardLeftNavigationCreateWorkspace);
-        boardLeftNavigationCreateWorkspace.click();
+        Thread.sleep(3000);
+        CommonActions.explicitWaitOfOneElementVisible(createWorkspaceLeftNaviDrawer);
+        createWorkspaceLeftNaviDrawer.click();
         return this;
     }
     public BoardsPage navigateToNaviDrawerBoardList(){
