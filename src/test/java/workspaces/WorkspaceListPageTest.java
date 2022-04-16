@@ -1,19 +1,18 @@
 package workspaces;
 
 import base.BaseTest;
-import commons.CommonActions;
+import commons.FlakingTestOneChanceToPass;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 import pages.boards.BoardsPage;
 import pages.boards.LeftNavigationDrawer;
-import pages.register.TempMail;
 import pages.workspaces.WorkspaceListPage;
 import static commons.CommonActions.driver;
 
 public class WorkspaceListPageTest extends BaseTest {
 
     //TC ID TRE010 Workspace page: change the information about.
-    @Test
+    @Test (retryAnalyzer = FlakingTestOneChanceToPass.class)
     public void changeInformationAboutWorkspaceTest() throws InterruptedException {
         /*** Precondition: login **/
         WorkspaceListPage workspaceListPage = PageFactory.initElements(driver, WorkspaceListPage.class);
@@ -41,7 +40,7 @@ public class WorkspaceListPageTest extends BaseTest {
     }
 
     //TC ID TRE012 Left Navigation Drawer: Workspace table Premium require checking
-    @Test
+    @Test (retryAnalyzer = FlakingTestOneChanceToPass.class)
     public void workspaceTableLeftNavigationDrawerPremiumRequireTest() throws InterruptedException {
         /*** Precondition: login and open the workspace**/
         WorkspaceListPage workspaceListPage = PageFactory.initElements(driver, WorkspaceListPage.class);
@@ -60,7 +59,7 @@ public class WorkspaceListPageTest extends BaseTest {
 
 
     //TC ID TRE013 Left Navigation Drawer on Boards: Create new Workspace.
-    @Test
+    @Test (retryAnalyzer = FlakingTestOneChanceToPass.class)
     public void createNewWorkspaceFromLeftNavigationDrawerOnBoardsTest() throws InterruptedException {
         /*** Precondition: login**/
         WorkspaceListPage workspaceListPage = PageFactory.initElements(driver, WorkspaceListPage.class);

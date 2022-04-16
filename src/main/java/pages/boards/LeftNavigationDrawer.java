@@ -91,7 +91,7 @@ public class LeftNavigationDrawer extends BasePage {
     }
 
     public LeftNavigationDrawer selectWorkspaceTable() throws InterruptedException {
-        WorkspaceListPage workspaceListPage = PageFactory.initElements(driver, WorkspaceListPage.class);
+        Thread.sleep(5000);
         CommonActions.explicitWaitOfOneElementVisible(tableButton);
         tableButton.click();
         return this;

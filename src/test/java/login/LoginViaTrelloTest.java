@@ -1,6 +1,7 @@
 package login;
 
 import base.BaseTest;
+import commons.FlakingTestOneChanceToPass;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 import pages.login.LoginViaTrelloPage;
@@ -40,7 +41,7 @@ public class LoginViaTrelloTest extends BaseTest {
 
     //TC ID TRE004 Correct credentials
 
-    @Test
+    @Test (retryAnalyzer = FlakingTestOneChanceToPass.class)
     public void loginWithinCorrectCredentialsTest() throws InterruptedException {
         /*** Type a [Login credential] and a [Password credential]. **/
         /*** Access granted. The Boards page is opened. The Username is according to [Login credential] **/

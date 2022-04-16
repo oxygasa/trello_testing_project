@@ -185,19 +185,21 @@ public class CommonActions {
         CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
         driver.get(workspaceLink);
         boardsPage.openFirstExistingBoard();
+        Thread.sleep(1500);
         try {
-            /**
-             * Within opening the Right Navigation Drawer
-             **/
-            boardsPage.openRightNaviDrawer()
-                    .clickMoreButton()
-                    .clickDeleteButtonAndConfirmIt();
-        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.TimeoutException e) {
             /**
              * Don't stop if the Right Navigation Drawer is already opened.
              **/
             boardsPage.hideExistingDrawer()
                     .openRightNaviDrawer()
+                    .clickMoreButton()
+                    .clickDeleteButtonAndConfirmIt();
+
+        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException | org.openqa.selenium.TimeoutException e) {
+            /**
+             * Within opening the Right Navigation Drawer
+             **/
+            boardsPage.openRightNaviDrawer()
                     .clickMoreButton()
                     .clickDeleteButtonAndConfirmIt();
         }

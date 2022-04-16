@@ -2,16 +2,12 @@ package pages.workspaces;
 
 import commons.CommonActions;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import pages.base.BasePage;
-import pages.cards.header.CardsHeader;
-import pages.register.TempMail;
 
 import java.util.List;
 
@@ -92,7 +88,7 @@ public class WorkspaceListPage extends BasePage {
 
     /*** CRUD manipulations with Workspaces***/
     public WorkspaceListPage createNewWorkspace() throws InterruptedException {
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         CommonActions.explicitWaitOfOneElementVisible(headerAddWorkspace);
         headerAddWorkspace.click();
         headerCreateWorkspaceButton.click();
@@ -102,6 +98,8 @@ public class WorkspaceListPage extends BasePage {
         String newWorkspaceDescriptionText = RandomStringUtils.randomAlphanumeric(10);
         newWorkspaceDescriptionOptional.sendKeys(newWorkspaceDescriptionText);
         newWorkspaceSubmitButton.click();
+        Thread.sleep(2000);
+        CommonActions.explicitWaitOfOneElementVisible(inviteIDoItLaterLink);
         inviteIDoItLaterLink.click();
         return this;
     }

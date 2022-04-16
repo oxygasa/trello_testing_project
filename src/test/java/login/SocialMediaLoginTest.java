@@ -1,14 +1,12 @@
 package login;
 
 import base.BaseTest;
-import commons.CommonActions;
+import commons.FlakingTestOneChanceToPass;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.login.LoginViaApplePage;
 import pages.login.LoginViaGooglePage;
 import pages.login.LoginViaMicrosoftPage;
-import pages.login.LoginViaTrelloPage;
 
 import static commons.CommonActions.driver;
 
@@ -36,8 +34,8 @@ public class SocialMediaLoginTest extends BaseTest {
     }
 
     //TC ID TRE007 Social media login. Apple.
-    @Test
-    public void socialMediaLoginAppleTest() {
+    @Test (retryAnalyzer = FlakingTestOneChanceToPass.class)
+    public void socialMediaLoginAppleTest() throws InterruptedException {
         /*** Select "Sign in via Apple". Type a [Login credential] and a [Password credential]. **/
         LoginViaApplePage loginViaApplePage = PageFactory.initElements(driver, LoginViaApplePage.class);
         loginViaApplePage.tryToLoginViaApple();

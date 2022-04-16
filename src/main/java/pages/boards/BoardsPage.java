@@ -285,7 +285,7 @@ public class BoardsPage extends BasePage {
 
 
     public BoardsPage createWorkspaceFromLeftNaviDrawer() throws InterruptedException {
-        Thread.sleep(3000);
+        Thread.sleep(10000);
         CommonActions.explicitWaitOfOneElementVisible(createWorkspaceLeftNaviDrawer);
         createWorkspaceLeftNaviDrawer.click();
         return this;

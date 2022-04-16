@@ -44,8 +44,10 @@ public class LoginViaTrelloPage extends BasePage {
     /**Steps**/
 
     public LoginViaTrelloPage checkTheCorrectlyLoggedUserExist() throws InterruptedException {
+        Thread.sleep(10000); //for gradle test
         CommonActions.explicitWaitOfOneElementVisible(avatarName);
         avatarName.click();
+        CommonActions.explicitWaitOfOneElementVisible(avatarEmail);
         Assert.assertEquals(avatarEmail.getText(), LOGIN_CREDENTIAL);
         return this;
     }

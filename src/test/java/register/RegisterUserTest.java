@@ -1,6 +1,7 @@
 package register;
 
 import base.BaseTest;
+import commons.FlakingTestOneChanceToPass;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 import pages.register.RegistrationPage;
@@ -23,8 +24,8 @@ public class RegisterUserTest extends BaseTest {
     }
 
     //TC ID TRE002 Registration with an existing data
-    @Test
-    public void registerWithExistingDataTest() {
+    @Test (retryAnalyzer = FlakingTestOneChanceToPass.class)
+    public void registerWithExistingDataTest() throws InterruptedException {
         /**
          * Type [default email name] in email text field then click the "Sign up it's free" button.
          * In the "Display name" type random name then submit.

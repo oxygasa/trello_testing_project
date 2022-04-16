@@ -2,7 +2,7 @@ package boards;
 
 import base.BaseTest;
 import commons.CommonActions;
-import commons.FlakingTestRepeater;
+import commons.FlakingTestOneChanceToPass;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -32,7 +32,7 @@ public class BoardsOnWorkspaceSectionTest extends BaseTest {
 
 
     //TC ID TRE015 Workspace page: Boards Free account limit counter checking
-    @Test (retryAnalyzer = FlakingTestRepeater.class)
+    @Test (retryAnalyzer = FlakingTestOneChanceToPass.class)
     public void boardsFreeAccountLimitCounterTest() throws InterruptedException {
         /*** Precondition: login, close all visible boards. **/
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);

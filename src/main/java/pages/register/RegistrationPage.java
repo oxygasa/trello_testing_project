@@ -1,5 +1,6 @@
 package pages.register;
 
+import commons.CommonActions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -42,10 +43,12 @@ public class RegistrationPage extends BasePage {
         return this;
     }
 
-    public RegistrationPage tryToRegisterWithExistingLoginCredentials(){
+    public RegistrationPage tryToRegisterWithExistingLoginCredentials() throws InterruptedException {
         driver.manage().deleteAllCookies();
         SoftAssert softAssert = new SoftAssert();
         driver.get(TRELLO_WELCOME_PAGE_URL);
+        Thread.sleep(4000);
+        CommonActions.explicitWaitOfOneElementVisible(emailFromWelcomePage);
         emailFromWelcomePage.sendKeys(EMAIL_REGISTERED_EARLIER);
         signUpFromWelcomePageButton.click();
         String emailOnRegisterPage = emailFromRegisterPage.getText();

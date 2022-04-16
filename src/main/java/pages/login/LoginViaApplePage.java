@@ -1,5 +1,6 @@
 package pages.login;
 
+import commons.CommonActions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,7 +28,7 @@ public class LoginViaApplePage extends BasePage {
     @FindBy(id = "didnt-get-code")
     public WebElement apple2FADidntGetCodeLink;
 
-    public LoginViaApplePage tryToLoginViaApple(){
+    public LoginViaApplePage tryToLoginViaApple() throws InterruptedException {
         LoginViaTrelloPage loginViaTrelloPage = PageFactory.initElements(driver, LoginViaTrelloPage.class);
         driver.manage().deleteAllCookies();
         driver.get(loginViaTrelloPage.TRELLO_LOGIN_PAGE);
@@ -36,6 +37,8 @@ public class LoginViaApplePage extends BasePage {
         appleIDLoginNextButton.click();
         appleIDPasswordTextField.sendKeys(PASSWORD_CREDENTIAL);
         appleIDLoginNextButton.click();
+        Thread.sleep(3000);
+        CommonActions.explicitWaitOfOneElementVisible(apple2FADidntGetCodeLink);
         /*** BLOCKER: Apple ID uses 2FA sending SMS. **/
         Assert.assertTrue(apple2FADidntGetCodeLink.isDisplayed());
         return this;
