@@ -1,9 +1,11 @@
 package login;
 
 import base.BaseTest;
+import commons.CommonActions;
 import commons.FlakingTestOneChanceToPass;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
+import pages.boards.BoardsPage;
 import pages.login.LoginViaTrelloPage;
 
 import static commons.CommonActions.driver;
@@ -17,7 +19,6 @@ public class LoginViaTrelloTest extends BaseTest {
         /*** Open https://trello.com/login. Type [Incorrect login credential example one] as a login. stay the password clear. **/
         LoginViaTrelloPage loginViaTrelloPage = PageFactory.initElements(driver, LoginViaTrelloPage.class);
         loginViaTrelloPage.loginWithNotRegisteredCredentials();
-
     }
 
     //TC ID TRE003 Incorrect credentials

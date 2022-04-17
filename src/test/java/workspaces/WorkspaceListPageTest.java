@@ -45,6 +45,7 @@ public class WorkspaceListPageTest extends BaseTest {
         /*** Precondition: login and open the workspace**/
         WorkspaceListPage workspaceListPage = PageFactory.initElements(driver, WorkspaceListPage.class);
         LeftNavigationDrawer leftNavigationDrawer = PageFactory.initElements(driver, LeftNavigationDrawer.class);
+        Thread.sleep(5000); //CI-CD need it to finish login process completely.
         workspaceListPage.createNewWorkspace();
         String currentWorkspaceUrl = driver.getCurrentUrl();
         /*** Expand Left Navigation Drawer then click Workspace table button. **/

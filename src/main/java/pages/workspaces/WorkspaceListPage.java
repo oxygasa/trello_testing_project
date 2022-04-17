@@ -6,24 +6,21 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import pages.base.BasePage;
+import pages.boards.BoardsPage;
 
 import java.util.List;
 
 import static commons.CommonActions.driver;
 
 public class WorkspaceListPage extends BasePage {
-    WebDriver driver;
-
-    public WorkspaceListPage(WebDriver driver) {
-        this.driver = driver;
-    }
-
     /**
      * Web elements
      **/
     private final String EXPECTED_TRIAL_BUTTON_TITLE = "Start 14-day free trial";
+    WebDriver driver;
     @FindBy(xpath = "//button[@title='Workspaces']")
     private WebElement headerWorkspaceDropdown;
     @FindAll({@FindBy(xpath = "//a[@data-test-id='workspace-switcher-popover-tile']")})
@@ -44,8 +41,7 @@ public class WorkspaceListPage extends BasePage {
     private WebElement saveButton;
     @FindBy(xpath = "//div[@class='Et7qpeaH3d--pj']/p")
     private WebElement savedDescriptionOptionalTitle;
-
-    @FindAll({@FindBy(xpath = "//a[contains(@class, 'tabbed-pane-nav-item-button')]")})
+    @FindAll({@FindBy(xpath = "//li[@class='tabbed-pane-nav-item']/a")})
     private List<WebElement> workspaceCentralPageTabs;
     @FindBy(className = "_3yTFDpz8niFoyh")
     private WebElement trialButton;
@@ -81,6 +77,9 @@ public class WorkspaceListPage extends BasePage {
     private WebElement confirmDeleteWorkspaceButton;
     @FindBy(xpath = "//a[@data-test-id='show-later-button']")
     private WebElement inviteIDoItLaterLink;
+    public WorkspaceListPage(WebDriver driver) {
+        this.driver = driver;
+    }
 
     public String getExpectedTrialButtonTitle() {
         return EXPECTED_TRIAL_BUTTON_TITLE;
@@ -88,7 +87,8 @@ public class WorkspaceListPage extends BasePage {
 
     /*** CRUD manipulations with Workspaces***/
     public WorkspaceListPage createNewWorkspace() throws InterruptedException {
-        Thread.sleep(10000);
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.explicitWaitOfOneElementVisible(headerAddWorkspace);
         headerAddWorkspace.click();
         headerCreateWorkspaceButton.click();
@@ -155,6 +155,7 @@ public class WorkspaceListPage extends BasePage {
     }
 
     public WorkspaceListPage navigateToTableTab() throws InterruptedException {
+        Thread.sleep(3000);
         CommonActions.explicitWaitOfOneElementVisible(workspaceCentralPageTabs.get(1));
         workspaceCentralPageTabs.get(1).click();
         return this;

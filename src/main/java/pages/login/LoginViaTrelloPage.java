@@ -1,12 +1,16 @@
 package pages.login;
 
 import commons.CommonActions;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import pages.base.BasePage;
+import pages.boards.BoardsPage;
+import pages.workspaces.WorkspaceListPage;
 
 import static commons.CommonActions.driver;
 
@@ -36,6 +40,8 @@ public class LoginViaTrelloPage extends BasePage {
     public WebElement submitButtonAtlassian;
     @FindBy(xpath = "//button[@data-test-id='header-member-menu-button']")
     public WebElement avatarName;
+    @FindBy (xpath = "//a[@class='js-login']")
+    public WebElement loginAgainLink;
     WebDriver driver;
     public LoginViaTrelloPage(WebDriver driver) {
         this.driver = driver;
@@ -44,11 +50,43 @@ public class LoginViaTrelloPage extends BasePage {
     /**Steps**/
 
     public LoginViaTrelloPage checkTheCorrectlyLoggedUserExist() throws InterruptedException {
-        Thread.sleep(10000); //for gradle test
-        CommonActions.explicitWaitOfOneElementVisible(avatarName);
-        avatarName.click();
-        CommonActions.explicitWaitOfOneElementVisible(avatarEmail);
-        Assert.assertEquals(avatarEmail.getText(), LOGIN_CREDENTIAL);
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        try {
+            Thread.sleep(5000); //if @Before method about login finished successfully
+            driver.get(boardsPage.getDefaultWorkspaceUrl());
+            Thread.sleep(2000);
+            CommonActions.explicitWaitOfOneElementVisible(avatarName);
+            avatarName.click();
+            CommonActions.explicitWaitOfOneElementVisible(avatarEmail);
+            Assert.assertEquals(avatarEmail.getText(), LOGIN_CREDENTIAL);
+        } catch (org.openqa.selenium.TimeoutException e)
+        { loginAgainLink.click(); //if @Before method didn't start. Login again
+            try {
+                driver.get(TRELLO_LOGIN_PAGE);
+                username.sendKeys(LOGIN_CREDENTIAL);
+                Thread.sleep(2000);
+                submitButtonTrello.click();
+                password.sendKeys(PASSWORD_CREDENTIAL);
+                submitButtonAtlassian.click();
+                Thread.sleep(3000);
+            } catch (NoSuchElementException | InterruptedException f) {
+                driver.get(TRELLO_LOGIN_PAGE);
+                username.sendKeys(LOGIN_CREDENTIAL);
+                Thread.sleep(2000);
+                submitButtonTrello.click();
+                password.sendKeys(PASSWORD_CREDENTIAL);
+                submitButtonAtlassian.click();
+                Thread.sleep(7000); // <== Hardly need for finish load the login
+                // completely and prevent Cookies loss and Flake all tests.
+            }
+            Thread.sleep(5000); //if @Before method about login finished successfully
+            driver.get(boardsPage.getDefaultWorkspaceUrl());
+            Thread.sleep(2000);
+            CommonActions.explicitWaitOfOneElementVisible(avatarName);
+            avatarName.click();
+            CommonActions.explicitWaitOfOneElementVisible(avatarEmail);
+            Assert.assertEquals(avatarEmail.getText(), LOGIN_CREDENTIAL);
+        }
         return this;
     }
 
