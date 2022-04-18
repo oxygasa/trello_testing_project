@@ -42,3 +42,44 @@ tasks.withType(JavaCompile) {
 tasks.named('test') {
     useTestNG()
 }
+
+/** TEST VARIATIONS
+ * For example use command: ./gradle cards test
+ * and only tests filtered by task "card" will run
+ * **/
+
+// Tests by packages (test suite lists)
+task automation(type: Test) {
+    include 'automation.*'
+}
+task boards(type: Test) {
+    include 'boards.*'
+}
+task cards(type: Test) {
+    include 'cards.*'
+}
+task login(type: Test) {
+    include 'login.*'
+}
+task register(type: Test) {
+    include 'register.*'
+}
+task settings(type: Test) {
+    include 'settings.*'
+}
+task workspaces(type: Test) {
+    include 'workspaces.*'
+}
+
+// Smoke test
+task smoke(type: Test) {
+    include 'login.LoginViaTrelloTest.*'
+    include '*boardsCreationTest'
+    include '*changeInformationAboutWorkspaceTest'
+    include 'cards.header.*'
+    include 'cards.fullscreen_card_mode.*'
+}
+
+task regression(type: Test) {
+    include '*'
+}

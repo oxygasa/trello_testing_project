@@ -54,8 +54,7 @@ public class CardsHeaderTest extends BaseTest {
     @Test
     public void changeAndShowWorkspacesTest() throws InterruptedException {
         /*** Precondition**/
-        WorkspaceListPage workspaceListPage = PageFactory.initElements(driver, WorkspaceListPage.class);
-        CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
+       CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
@@ -71,7 +70,6 @@ public class CardsHeaderTest extends BaseTest {
     @Test
     public void workspaceVisibleChangeTest() throws InterruptedException {
         /*** Precondition**/
-        WorkspaceListPage workspaceListPage = PageFactory.initElements(driver, WorkspaceListPage.class);
         CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
 
