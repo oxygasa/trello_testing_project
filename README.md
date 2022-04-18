@@ -3,57 +3,56 @@
 ## Tools quick overview
 
 * Application location:  [Trello for desktop web-browsers](https://trello.com)
-* Client: Windows 10, Chrome last. Server: Google cloud + Jenkins.
+* Client: Windows 10 Enterprise LTS, Chrome v. 100+ last. Server: Google cloud node + Jenkins and Localhost node.
 * Test type priority: Integration tests are prioritised.
 * Testing documentation: Git Markdown files (.md), Google Drive Docs (.gdoc)
-* Source code editing and run tools: IntelliJ IDEA (IDE), JDK 8, Maven 3, TestNG, Selenium 4, ChromeDriver.
-* Report tool: Allure report.
-* TestOps tool: Jenkins CI/CD.
+* Source code editing and run tools: IntelliJ IDEA Community Edition 2022.1 (Freeware IDE), Java Dev Kit 11 (Apache zulu-11 Openjdk), Apache Maven 3.8.3, Apache Gradle 7.4.2, TestNG 7.3.0, Selenium 4.1.3, WebDrivers Cross browser by Bonigarcia.
+* Report tool: QA meta Allure reports 2.17.3, slf4j-api 1.7.36, assertj 3.22.0, Maven Surefire 3.8.1, Gradle HTML reports 7.4.2
+* TestOps tool: CI/CD Jenkins 2.342, TeamCity (optional)
 For detailed info, please, check the [Test plan document.](https://docs.google.com/document/d/1l68Rcsw-6cTbhl-qOcNNxPaNueLskr_ZQUb1wRXZaB8/edit?usp=sharing)
 
 ## Credentials and links
 
 * [Trello address and credentials for the test automation:](https://trello.com)
 
-Login constants for tests:
+Login constants for testing the [Trello login page](https://trello.com/login):
 
-Primary user
+**Primary user:**
+**LOGIN:** trellou0@gmail.com
+**PASSWORD:** Trellouser999Te!42
 
-LOGIN: trellou0@gmail.com
+**2nd invited user:**
+**LOGIN:** trello2nduser@gmail.com
+**PASSWORD:** Trellouser999Te!42
 
-PASSWORD: Trellouser999Te!42
+**Workspaces constants for tests:** TEN_BOARDS_WORKSPACE, WORKSPACE25
 
-2nd invited user
-
-LOGIN: trello2nduser@gmail.com
-
-PASSWORD: Trellouser999Te!42
-
-Workspaces constants for tests: TEN_BOARDS_WORKSPACE, WORKSPACE25
-
+**Testing manual style documentation:**
 * [Google drive Test suite list public link.](https://docs.google.com/spreadsheets/d/1gaVGRTgIrKwP1MWMsqEYsPVpk4Y6xZjXLurVHDh1ZCc/edit?usp=sharing)
 
 * [Test plan public link.](https://docs.google.com/document/d/1l68Rcsw-6cTbhl-qOcNNxPaNueLskr_ZQUb1wRXZaB8/edit?usp=sharing)
 
-* [GitHub address and SSH public key for source code sharing.](https://github.com/oxygasa/trello_testing_project) 
+* [GitHub address and SSH public key for source code sharing](https://github.com/oxygasa/trello_testing_project): 
 
 git@github.com:oxygasa/trello_testing_project.git
 
-* [Jenkins address and credentials for the pipelines editing.] jenkins.epam.com/jenkins
+* [Jenkins address and credentials for the pipelines editing](https://jenkins.epam.com/jenkins)
+  (credentials also are allowed for localhost node):
 
-LOGIN: Dzmitry_Samasiuk@epam.com
-PASSWORD: TrelloTest334
+**LOGIN:** Dzmitry_Samasiuk@epam.com
+**PASSWORD:** TrelloTest334
  
 
 ## Goal checklist
 
-1. [DONE] Create a Test Plan 
-2. [DONE] Make a Test Design by creating Test Suite Lists.
-3. [DONE] Do the defect reports during testing.
-4. [IN PROGRESS ... 50%] Make an Automation testing scenarios and code them.
-5. [DONE] Connect to CI/CD system.
+1. **[DONE]** Create a Test Plan 
+2. **[DONE]** Make a Test Design by creating Test Suite Lists.
+3. **[DONE]** Do the defect reports during testing.
+4. **[IN PROGRESS ... 50%]** Make an Automation testing scenarios and code them.
+5. **[DONE]** Connect to CI/CD system.
+6. **[DONE]** Link all builders with an external servers.
 
-## Progress history:
+## Progress history (log):
 
 **21 Feb 2022 - Testing job** 
 
@@ -161,14 +160,15 @@ Shift 11 a.m. - 11 p.m.
 
 **30 Mar - 31 Mar 2022 - Testing job**
 
-Mentoring updates: need to start earlier TestOps preparation via CI/CD tool "Jenkins". 
+* Mentoring updates: need to start earlier TestOps preparation via CI/CD tool "Jenkins". 
 
-Powered by Google Cloud Virtual Machine (GNU Linux Ubuntu 20.04 LTS)
+* Powered by Google Cloud Virtual Machine (GNU Linux Ubuntu 20.04 LTS)
 
-Jenkins workspace address http://jenkins.epam.com/jenkins
+* Jenkins workspace address http://jenkins.epam.com/jenkins
+
 Credentials:
------ User: Dzmitry_Samasiuk@epam.com
------ Password : TrelloTest334
+**User:** Dzmitry_Samasiuk@epam.com
+**Password:** TrelloTest334
 
 **1 Apr - 3 Apr 2022 - External job**
 
@@ -176,11 +176,11 @@ Shift 11 a.m. - 11 p.m.
 
 **4 Apr - 5 Apr 2022 - Mentoring updates**
 
-CI/CD Flaking test repairing.
-Blockers repairing.
-Code refactoring.
-Windows and Linux nodes adding.
-Variations of the reporting systems: Allure report, Maven Surefire, Jenkins command promt.
+* CI/CD Flaking test repairing.
+* Blockers repairing.
+* Code refactoring.
+* Windows and Linux nodes adding.
+* Variations of the reporting systems: Allure report, Maven Surefire, Jenkins command promt.
 
 **6 Apr - 7 Apr 2022 - External job**
 
@@ -189,18 +189,26 @@ Shift 11 a.m. - 11 p.m.
 
 **8 Apr - 10 Apr 2022 - Testing job**
 
-Massive refactoring.
-Implement the incapsulation.
-Erase static methods.
-Retest the 30% of the test materials.
+* Massive refactoring.
+* Implement the encapsulation.
+* Erase static methods.
+* Retest the 30% of the test materials.
 
 **11 Apr - 12 Apr 2022 - External job**
 
 Shift 11 a.m. - 11 p.m.
 
-**12 Apr - 13 Apr 2022 Mentoring updates**
+**13 Apr - 15 Apr 2022 Mentoring updates**
 
-Massive refactoring.
-Implement the incapsulation.
-Erase static methods.
-Retest the 100% of the test materials.
+* Massive refactoring.
+* Retest the 100% of the test materials.
+
+**16 Apr - 20 Apr 2022 Mentoring updates**
+
+* Cross the project from Maven to Gradle.
+* Make test suites by Test NG and connect them to Gradle.
+* Make scripts for running different types of tests.
+* Refactor tests by Lazy init.
+* Add the parallel run, 
+* Add preconditions and post conditions.
+

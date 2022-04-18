@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Trello regression">
-    <test name="All test suites">
+<suite name="Regression testng.xml file">
+
+    <test name="Integration test: Automation function">
         <classes>
             <class name="automation.after_saving.SavedScenarioTextManipulationsTest">
                 <methods>
@@ -56,25 +57,28 @@
                     <include name="fieldsRulesPremiumRequireTest"/>
                 </methods>
             </class>
-            <class name="boards.BoardsPageManipulationTest">
+            <class name="boards.BoardTemplateTest">
                 <methods>
-                    <include name="recentlyViewedTest"/>
-                    <include name="yourWorkspacesTest"/>
-                </methods>
-            </class>
-            <class name="boards.LeftNavigationDrawerTest">
-                <methods>
-                    <include name="addAndCloseBoardsTest"/>
-                    <include name="duplicatingBoardsFunctionalityTest"/>
+                    <include name="makeBoardFromTemplateTest"/>
                 </methods>
             </class>
             <class name="boards.BoardsOnWorkspaceSectionTest">
                 <methods>
-                    <include name="boardsCreationBeginTest"/>
-                    <include name="boardsCreationContinueTest"/>
-                    <include name="boardsFreeAccountLimitCounterContinueTest"/>
+                    <include name="boardsCreationTest"/>
+                    <include name="boardsFreeAccountLimitCounterTest"/>
                     <include name="boardsAddToFavouriteTest"/>
                     <include name="boardsFilterMenuTest"/>
+                </methods>
+            </class>
+            <class name="boards.BoardsPageManipulationTest">
+                <methods>
+                    <include name="recentlyViewedBoardIsDisplayingOnBoardsPageTest"/>
+                    <include name="boardsDisplayingInYourWorkspacesSectionTest"/>
+                </methods>
+            </class>
+            <class name="boards.LeftNavigationDrawerTest">
+                <methods>
+                    <include name="CRUDBoardsFromLeftNaviDrawerTest"/>
                 </methods>
             </class>
             <class name="cards.card_list_preview_page.CardListPreviewPageTest">
@@ -155,11 +159,11 @@
                     <include name="restoreForgottenPasswordTest"/>
                 </methods>
             </class>
-            <class name="login.LoginThroughTrelloTest">
+            <class name="login.LoginViaTrelloTest">
                 <methods>
-                    <include name="loginWithinIncorrectCredentialsPartOneTest"/>
-                    <include name="loginWithinIncorrectCredentialsPartTwoTest"/>
-                    <include name="loginWithinIncorrectCredentialsPartThreeTest"/>
+                    <include name="loginWithNotRegisteredCredentials"/>
+                    <include name="loginWithinNotConfirmedEmail"/>
+                    <include name="loginWithinEmptyPasswordField"/>
                     <include name="loginWithinCorrectCredentialsTest"/>
                 </methods>
             </class>
@@ -172,7 +176,7 @@
             </class>
             <class name="register.RegisterUserTest">
                 <methods>
-                    <include name="registerNewUserThroughTrelloTest"/>
+                    <include name="registerNewUserViaTrelloTest"/>
                     <include name="registerWithExistingDataTest"/>
                 </methods>
             </class>
