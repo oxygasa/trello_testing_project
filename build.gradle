@@ -50,36 +50,82 @@ tasks.named('test') {
 
 // Tests by packages (test suite lists)
 task automation(type: Test) {
+    maxParallelForks = 4
     include 'automation.*'
+    systemProperties System.properties
+    testLogging {
+        events "PASSED", "STARTED", "FAILED", "SKIPPED"
+    }
 }
 task boards(type: Test) {
+    maxParallelForks = 4
     include 'boards.*'
+    systemProperties System.properties
+    testLogging {
+        events "PASSED", "STARTED", "FAILED", "SKIPPED"
+    }
 }
 task cards(type: Test) {
+    maxParallelForks = 4
     include 'cards.*'
+    systemProperties System.properties
+    testLogging {
+        events "PASSED", "STARTED", "FAILED", "SKIPPED"
+    }
 }
 task login(type: Test) {
+    maxParallelForks = 4
     include 'login.*'
+    systemProperties System.properties
+    testLogging {
+        events "PASSED", "STARTED", "FAILED", "SKIPPED"
+    }
 }
 task register(type: Test) {
+    maxParallelForks = 4
     include 'register.*'
+    systemProperties System.properties
+    testLogging {
+        events "PASSED", "STARTED", "FAILED", "SKIPPED"
+    }
 }
 task settings(type: Test) {
+    maxParallelForks = 4
     include 'settings.*'
+    systemProperties System.properties
+    testLogging {
+        events "PASSED", "STARTED", "FAILED", "SKIPPED"
+    }
 }
 task workspaces(type: Test) {
+    maxParallelForks = 4
     include 'workspaces.*'
+    systemProperties System.properties
+    testLogging {
+        events "PASSED", "STARTED", "FAILED", "SKIPPED"
+    }
 }
 
 // Smoke test
 task smoke(type: Test) {
+    maxParallelForks = 4
     include 'login.LoginViaTrelloTest.*'
     include '*boardsCreationTest'
     include '*changeInformationAboutWorkspaceTest'
     include 'cards.header.*'
     include 'cards.fullscreen_card_mode.*'
+    systemProperties System.properties
+    testLogging {
+        events "PASSED", "STARTED", "FAILED", "SKIPPED"
+    }
 }
 
+// Runs all tests
 task regression(type: Test) {
+    maxParallelForks = 6
     include '*'
+    systemProperties System.properties
+    testLogging {
+        events "PASSED", "STARTED", "FAILED", "SKIPPED"
+    }
 }
