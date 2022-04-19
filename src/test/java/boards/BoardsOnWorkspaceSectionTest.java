@@ -17,7 +17,7 @@ import static commons.CommonActions.driver;
 public class BoardsOnWorkspaceSectionTest extends BaseTest {
 
     //TC ID TRE014 Workspace page: Boards Creation
-    @Test
+    @Test (groups={"smoke", "critical_path"})
     public void boardsCreationTest() throws InterruptedException {
         /*** Precondition: login **/
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
@@ -32,7 +32,7 @@ public class BoardsOnWorkspaceSectionTest extends BaseTest {
 
 
     //TC ID TRE015 Workspace page: Boards Free account limit counter checking
-    @Test (retryAnalyzer = FlakingTestOneChanceToPass.class)
+    @Test (retryAnalyzer = FlakingTestOneChanceToPass.class, groups={"smoke", "critical_path"})
     public void boardsFreeAccountLimitCounterTest() throws InterruptedException {
         /*** Precondition: login, close all visible boards. **/
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
@@ -56,7 +56,7 @@ public class BoardsOnWorkspaceSectionTest extends BaseTest {
     }
 
     //TC ID TRE017 Workspace page: Boards add to  favourite.
-    @Test
+    @Test (groups={"critical_path"})
     public void boardsAddToFavouriteTest() throws InterruptedException {
         /*** Precondition: login, close all visible boards. **/
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);

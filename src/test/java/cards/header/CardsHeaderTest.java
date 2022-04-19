@@ -30,7 +30,7 @@ public class CardsHeaderTest extends BaseTest {
     }
 
     //TC ID TRE024 Board name changing.
-    @Test
+    @Test (groups={"smoke", "critical_path"})
     public void boardNameChangingTest() throws InterruptedException {
         /*** Precondition: login**/
         CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
@@ -67,7 +67,7 @@ public class CardsHeaderTest extends BaseTest {
     }
 
     //TC ID TRE027 Workspace visible change.
-    @Test
+    @Test (groups={"smoke", "critical_path"})
     public void workspaceVisibleChangeTest() throws InterruptedException {
         /*** Precondition**/
         CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
@@ -98,7 +98,7 @@ public class CardsHeaderTest extends BaseTest {
     }
 
     //TC ID TRE027 Workspace visible change.
-    @Test
+    @Test (groups={"smoke", "critical_path"})
     public void workspaceVisibleChangeContinueTest() throws InterruptedException {
         /*** Precondition**/
        CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
@@ -129,7 +129,7 @@ public class CardsHeaderTest extends BaseTest {
 ////TC ID TRE029 Invite sending.
 
     //TC ID TRE030 Power-Ups functionality.
-    @Test
+    @Test (groups={"critical_path"})
     public void powerUpsFunctionalityTest() throws InterruptedException {
         /*** Precondition**/
         CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);

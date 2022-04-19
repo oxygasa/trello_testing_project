@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 public class SettingsTest {
     //TC ID TRE110 Profile and visibility section checking.
-    @Test
+    @Test (groups={"critical_path"})
     public void profileAndVisibilityTest(){}
 
     //TC ID TRE111 Activity section checking.
@@ -16,11 +16,11 @@ public class SettingsTest {
     public void cardsTest(){}
 
     //TC ID TRE113 Change language section checking.
-    @Test
+    @Test (groups={"critical_path"})
     public void changeLanguageTest(){}
 
     //TC ID TRE114 Change notification email frequency checking.
-    @Test
+    @Test (groups={"critical_path"})
     public void changeNotificationEmailFrequencyTest(){}
 
     //TC ID TRE115 Allow desktop notifications checking.
@@ -56,6 +56,6 @@ public class SettingsTest {
     public void downloadPersonalDataTest(){}
 
     //TC ID TRE123 Testing the Manage or Delete account function.
-    @Test
+    @Test (groups={"critical_path"})
     public void manageOrDeleteAccountTest(){}
 }

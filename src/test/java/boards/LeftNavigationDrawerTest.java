@@ -11,7 +11,7 @@ import static commons.CommonActions.driver;
 public class LeftNavigationDrawerTest extends BaseTest {
 
     //TC ID TRE019 Left Navigation Drawer: Add, Favourite, close boards.
-    @Test
+    @Test (groups={"smoke", "critical_path"})
     public void CRUDBoardsFromLeftNaviDrawerTest() throws InterruptedException {
         /*** Precondition: login, close all visible boards. **/
         LeftNavigationDrawer leftNavigationDrawer = PageFactory.initElements(driver, LeftNavigationDrawer.class);

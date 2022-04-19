@@ -10,7 +10,7 @@ import static commons.CommonActions.driver;
 
 public class RegisterUserTest extends BaseTest {
     //TC ID TRE001 Register a new user through Trello
-    @Test
+    @Test (groups={"smoke", "critical_path"})
     public void registerNewUserViaTrelloTest() throws InterruptedException {
         /**
          * Open https://trello.com/signup

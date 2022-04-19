@@ -11,7 +11,7 @@ import static commons.CommonActions.driver;
 public class ForgotPasswordTest extends BaseTest {
 
     //TC ID TRE009 Forget password
-    @Test
+    @Test (groups={"smoke", "critical_path"})
     public void restoreForgottenPasswordTest() {
         /**
          * Select "I can't sign in"

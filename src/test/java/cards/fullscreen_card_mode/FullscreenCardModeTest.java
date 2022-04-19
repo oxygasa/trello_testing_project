@@ -5,77 +5,77 @@ import org.testng.annotations.Test;
 public class FullscreenCardModeTest {
 
     //TC ID TRE060 Checking the possibility to edit a card's Title by add and change text in a fullscreen mode.
-    @Test
+    @Test (groups={"smoke", "critical_path"})
     public void titleTest() {
     }
 
     //TC ID TRE061 Under title "in list" dropdown menu test.
-    @Test
+    @Test (groups={"smoke", "critical_path"})
     public void inListTest() {
     }
 
     //TC ID TRE062 Checking the possibility to edit a card's Description by add and change text in a fullscreen mode.
-    @Test
+    @Test (groups={"smoke", "critical_path"})
     public void descriptionTest() {
     }
 
     //TC ID TRE063 Attachments from PC section testing.
-    @Test
+    @Test (groups={"smoke", "critical_path"})
     public void attachmentsFromPCTest() {
     }
 
     //TC ID TRE064 Attachments from Trello section testing.
-    @Test
+    @Test (groups={"smoke", "critical_path"})
     public void attachmentsFromTrelloTest() {
     }
 
     //TC ID TRE065 Attachments from Google Drive section testing.
-    @Test
+    @Test (groups={"critical_path"})
     public void attachmentsFromGoogleDriveTest() {
     }
 
     //TC ID TRE066 Attachments from Dropbox section testing.
-    @Test
+    @Test (groups={"critical_path"})
     public void attachmentsFromDropboxTest() {
     }
 
     //TC ID TRE067 Attachments from Box section testing.
-    @Test
+    @Test (groups={"critical_path"})
     public void attachmentsFromBoxTest() {
     }
 
     //TC ID TRE068 Attachments from Onedrive section testing.
-    @Test
+    @Test (groups={"critical_path"})
     public void attachmentsFromOnedriveTest() {
     }
 
     //TC ID TRE069 Attachments by a link testing.
-    @Test
+    @Test (groups={"smoke", "critical_path"})
     public void attachmentsByLinkTest() {
     }
 
     //TC ID TRE070 Write a comment module testing.
-    @Test
+    @Test (groups={"smoke", "critical_path"})
     public void writeCommentTest() {
     }
 
     //TC ID TRE071 Add to card: Members
-    @Test
+    @Test (groups={"smoke", "critical_path"})
     public void addMembersToCardTest() {
     }
 
     //TC ID TRE072 Test Labels and their names are displaying.
-    @Test
+    @Test (groups={"smoke", "critical_path"})
     public void labelsTest() {
     }
 
     //TC ID TRE073 Check the behaviour of checklist in a fullscreen card.
-    @Test
+    @Test (groups={"smoke", "critical_path"})
     public void checklistTest() {
     }
 
     //TC ID TRE074 Check the behaviour of card when date is created, edited and completed.
-    @Test
+    @Test (groups={"smoke", "critical_path"})
     public void datesTest() {
     }
 
@@ -89,13 +89,13 @@ public class FullscreenCardModeTest {
     public void showHideButtonTest() {
     }
 
-    //TC ID TRE077 Cards fullscreen opening test.
+    //TC ID TRE077 Cards full-screen opening test.
     @Test
-    public void cardsFullscreenOpeningTest() {
+    public void cardsMultiScreenOpeningTest() {
     }
 
     //TC ID TRE078 Power-Ups functionality test.
-    @Test
+    @Test (groups={"critical_path"})
     public void powerUpsFunctionalityTest() {
     }
 

@@ -40,27 +40,29 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-tasks.withType(Test) {
+/*** TestNG.xml is for allure reports only. Tests in gradle are the tasks.***/
+tasks.withType(Test) { //any tests properties
     useTestNG {
         def dirTestNg = System.getProperty("testngReportOutput")
         outputDirectory = dirTestNg ? file(dirTestNg) : file("$buildDir/testngQaReports") //testng reports
         def dirGradleReports = System.getProperty("gradleReportOutput")
-        outputDirectory = dirGradleReports ? file(dirGradleReports) : file("$buildDir/target/gradleHtmlQaReport") //gradle reports
-        suites 'src/test/resources/testng.xml' //here is TESTNG.XML landings
+        outputDirectory = dirGradleReports ? file(dirGradleReports) : file("$buildDir/target/gradleHtmlQaReport")
+        //gradle reports
+        useDefaultListeners = true
     }
 }
 
 boolean runParallelTests
-if (runParallelTests=true) {
+if (runParallelTests = true) {
     test.maxParallelForks(4)
     test.forkEvery(4)
 }
 
 boolean markTestPassStatus
-if (markTestPassStatus=true){
+if (markTestPassStatus = true) {
     test.systemProperties System.properties
     test.testLogging {
-    events "PASSED", "STARTED", "FAILED", "SKIPPED"
+        events "PASSED", "STARTED", "FAILED", "SKIPPED"
     }
     test.testLogging.showStandardStreams = true
 }
@@ -72,68 +74,81 @@ if (markTestPassStatus=true){
  * and only tests filtered by the task "cards" will run
  * ===============================================***/
 
-// Run all tests
-task regression(type: Test) {
-    runParallelTests=true
-    markTestPassStatus=true
-    useTestNG() {
+// Run all tests (include low priority)
+task extendedTest(type: Test) {
+    runParallelTests = true
+    markTestPassStatus = true
+}
 
+
+// Smoke test (basic functionality testing)
+task smokeTest(type: Test) {
+    runParallelTests = false
+    markTestPassStatus = true
+    useTestNG {
+        includeGroups 'smoke'
     }
 }
 
-
-// Smoke tests
-task smoke(type: Test) {
-    runParallelTests=true
-    markTestPassStatus=true
-    exclude '*'
-    include 'login.LoginViaTrelloTest.*'
-    include '*boardsCreationTest'
-    include '*changeInformationAboutWorkspaceTest'
-    include 'cards.header.*'
-    include 'cards.fullscreen_card_mode.*'
+// Critical path tests (regular using functionality testing, general requirements)
+task criticalPathTest(type: Test) {
+    runParallelTests = false
+    markTestPassStatus = true
+    useTestNG {
+        includeGroups 'critical_path'
+    }
 }
+
+//
 
 // Tests by packages (test suite lists)
 task automation(type: Test) {
-    runParallelTests=true
-    markTestPassStatus=true
-    exclude '*'
-    include 'automation.*'
+    runParallelTests = true
+    markTestPassStatus = true
+    filter {
+        includeTestsMatching("automation*")
+    }
 }
+
 task boards(type: Test) {
-    runParallelTests=true
-    markTestPassStatus=true
-    exclude '*'
-    include 'boards.*'
+    runParallelTests = true
+    markTestPassStatus = true
+    filter {
+        includeTestsMatching("boards*")
+    }
 }
 task cards(type: Test) {
-    runParallelTests=true
-    markTestPassStatus=true
-    exclude '*'
-    include 'cards.*'
+    runParallelTests = true
+    markTestPassStatus = true
+    filter {
+        includeTestsMatching("cards*")
+    }
 }
 task login(type: Test) {
-    runParallelTests=true
-    markTestPassStatus=true
-    exclude '*'
-    include 'login.*'
+    runParallelTests = true
+    markTestPassStatus = true
+    filter {
+        includeTestsMatching("login*")
+    }
 }
 task register(type: Test) {
-    runParallelTests=true
-    markTestPassStatus=true
-    exclude '*'
-    include 'register.*'
+    runParallelTests = true
+    markTestPassStatus = true
+    filter {
+        includeTestsMatching("register*")
+    }
 }
 task settings(type: Test) {
-    runParallelTests=true
-    markTestPassStatus=true
-    exclude '*'
-    include 'settings.*'
+    runParallelTests = true
+    markTestPassStatus = true
+    filter {
+        includeTestsMatching("settings*")
+    }
 }
 task workspaces(type: Test) {
-    runParallelTests=true
-    markTestPassStatus=true
-    exclude '*'
-    include 'workspaces.*'
+    runParallelTests = true
+    markTestPassStatus = true
+    filter {
+        includeTestsMatching("workspace*")
+    }
 }

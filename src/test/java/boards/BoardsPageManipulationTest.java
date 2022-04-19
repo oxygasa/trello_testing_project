@@ -22,7 +22,7 @@ public class BoardsPageManipulationTest extends BaseTest {
     }
 
     //TC ID TRE021 Boards page: Your workspaces.
-    @Test
+    @Test (groups={"smoke", "critical_path"})
     public void boardsDisplayingInYourWorkspacesSectionTest() throws InterruptedException {
         /*** Precondition: login, close all visible boards. Create 4 boards (and remember their names). **/
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);

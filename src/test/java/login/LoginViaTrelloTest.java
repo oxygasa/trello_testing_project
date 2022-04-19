@@ -32,7 +32,7 @@ public class LoginViaTrelloTest extends BaseTest {
     }
 
     //TC ID TRE003 Incorrect credentials
-    @Test
+    @Test (groups={"smoke", "critical_path"})
     public void loginWithinEmptyPasswordField() {
         /*** Type a [Login credential], stay the password clear. **/
         driver.manage().deleteAllCookies();
@@ -42,7 +42,7 @@ public class LoginViaTrelloTest extends BaseTest {
 
     //TC ID TRE004 Correct credentials
 
-    @Test (retryAnalyzer = FlakingTestOneChanceToPass.class)
+    @Test (retryAnalyzer = FlakingTestOneChanceToPass.class, groups={"smoke", "critical_path"})
     public void loginWithinCorrectCredentialsTest() throws InterruptedException {
         /*** Type a [Login credential] and a [Password credential]. **/
         /*** Access granted. The Boards page is opened. The Username is according to [Login credential] **/

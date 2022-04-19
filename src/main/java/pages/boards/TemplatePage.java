@@ -32,7 +32,7 @@ public class TemplatePage extends BasePage {
         Thread.sleep(5000);
         CommonActions.explicitWaitOfOneElementVisible(useTemplateButton);
         useTemplateButton.click();
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         CommonActions.explicitWaitOfOneElementVisible(templateCreateConfirmButton);
         templateCreateConfirmButton.click();
         return this;

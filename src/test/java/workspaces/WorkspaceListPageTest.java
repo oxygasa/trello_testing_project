@@ -12,7 +12,7 @@ import static commons.CommonActions.driver;
 public class WorkspaceListPageTest extends BaseTest {
 
     //TC ID TRE010 Workspace page: change the information about.
-    @Test (retryAnalyzer = FlakingTestOneChanceToPass.class)
+    @Test (retryAnalyzer = FlakingTestOneChanceToPass.class, groups={"smoke", "critical_path"})
     public void changeInformationAboutWorkspaceTest() throws InterruptedException {
         /*** Precondition: login **/
         WorkspaceListPage workspaceListPage = PageFactory.initElements(driver, WorkspaceListPage.class);
@@ -60,7 +60,7 @@ public class WorkspaceListPageTest extends BaseTest {
 
 
     //TC ID TRE013 Left Navigation Drawer on Boards: Create new Workspace.
-    @Test (retryAnalyzer = FlakingTestOneChanceToPass.class)
+    @Test (retryAnalyzer = FlakingTestOneChanceToPass.class, groups={"critical_path"})
     public void createNewWorkspaceFromLeftNavigationDrawerOnBoardsTest() throws InterruptedException {
         /*** Precondition: login**/
         WorkspaceListPage workspaceListPage = PageFactory.initElements(driver, WorkspaceListPage.class);

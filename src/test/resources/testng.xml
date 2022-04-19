@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Regression testng.xml file">
 
-    <test name="Integration test: Automation function">
+    <test name="Integration test: Cards automation">
         <classes>
             <class name="automation.after_saving.SavedScenarioTextManipulationsTest">
                 <methods>
@@ -57,6 +57,10 @@
                     <include name="fieldsRulesPremiumRequireTest"/>
                 </methods>
             </class>
+        </classes>
+    </test>
+        <test name="Integration test: Boards">
+        <classes>
             <class name="boards.BoardTemplateTest">
                 <methods>
                     <include name="makeBoardFromTemplateTest"/>
@@ -81,6 +85,10 @@
                     <include name="CRUDBoardsFromLeftNaviDrawerTest"/>
                 </methods>
             </class>
+        </classes>
+    </test>
+    <test name="Integration test: Cards">
+        <classes>
             <class name="cards.card_list_preview_page.CardListPreviewPageTest">
                 <methods>
                     <include name="addAnotherListTest"/>
@@ -154,6 +162,10 @@
                     <include name="activityTest"/>
                 </methods>
             </class>
+        </classes>
+    </test>
+    <test name="Integration tests: Login">
+        <classes>
             <class name="login.ForgotPasswordTest">
                 <methods>
                     <include name="restoreForgottenPasswordTest"/>
@@ -174,12 +186,20 @@
                     <include name="socialMediaLoginAppleTest"/>
                 </methods>
             </class>
+        </classes>
+    </test>
+    <test name="Integration tests: Registration">
+        <classes>
             <class name="register.RegisterUserTest">
                 <methods>
                     <include name="registerNewUserViaTrelloTest"/>
                     <include name="registerWithExistingDataTest"/>
                 </methods>
             </class>
+        </classes>
+    </test>
+    <test name="Integration tests: Settings">
+        <classes>
             <class name="settings.SettingsTest">
                 <methods>
                     <include name="profileAndVisibilityTest"/>
@@ -198,6 +218,10 @@
                     <include name="manageOrDeleteAccountTest"/>
                 </methods>
             </class>
+        </classes>
+    </test>
+    <test name="Integration tests: Workspaces">
+        <classes>
             <class name="workspaces.WorkspaceListPageTest">
                 <methods>
                     <include name="changeInformationAboutWorkspaceTest"/>

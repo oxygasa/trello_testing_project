@@ -14,7 +14,7 @@ import static commons.CommonActions.driver;
 public class BoardTemplateTest  extends BaseTest {
 
     //TC ID TRE022 Make a board from Template.
-    @Test
+    @Test (groups={"critical_path"})
     public void makeBoardFromTemplateTest() throws InterruptedException {
         /*** Precondition: login, navigate to template page page. **/
         TemplatePage templatePage = PageFactory.initElements(driver, TemplatePage.class);

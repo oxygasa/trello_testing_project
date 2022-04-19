@@ -13,7 +13,7 @@ import static commons.CommonActions.driver;
 public class SocialMediaLoginTest extends BaseTest {
 
     //TC ID TRE005 Social media login. Google.
-    @Test
+    @Test (groups={"critical_path"})
     public void socialMediaLoginGoogleTest() {
         /*** Select "Sign in via Google". Type a [Login credential] and a [Password credential]. **/
         LoginViaGooglePage loginViaGooglePage = PageFactory.initElements(driver, LoginViaGooglePage.class);
@@ -21,7 +21,7 @@ public class SocialMediaLoginTest extends BaseTest {
     }
 
     //TC ID TRE007 Social media login. Microsoft.
-    @Test
+    @Test (groups={"critical_path"})
     public void socialMediaLoginMicrosoftTest() throws InterruptedException {
         /**
          * Select "Sign in via Microsoft". Type a [Login credential] and a [Password credential].
@@ -34,7 +34,7 @@ public class SocialMediaLoginTest extends BaseTest {
     }
 
     //TC ID TRE007 Social media login. Apple.
-    @Test (retryAnalyzer = FlakingTestOneChanceToPass.class)
+    @Test (retryAnalyzer = FlakingTestOneChanceToPass.class, groups={"critical_path"})
     public void socialMediaLoginAppleTest() throws InterruptedException {
         /*** Select "Sign in via Apple". Type a [Login credential] and a [Password credential]. **/
         LoginViaApplePage loginViaApplePage = PageFactory.initElements(driver, LoginViaApplePage.class);

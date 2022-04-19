@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 public class RightNavigationDrawerTest {
     //TC ID TRE032 Change Workspace test.
-    @Test
+    @Test (groups={"critical_path"})
     public void changeWorkspaceTest() {
     }
 
@@ -24,7 +24,7 @@ public class RightNavigationDrawerTest {
     }
 
     //TC ID TRE036 Allow Workspace members to edit and join.
-    @Test
+    @Test (groups={"critical_path"})
     public void allowWorkspaceMembersToEditAndJoinTest() {
     }
 
