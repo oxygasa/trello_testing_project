@@ -54,8 +54,8 @@ tasks.withType(Test) { //any tests properties
 
 boolean runParallelTests
 if (runParallelTests = true) {
-    test.maxParallelForks(4)
-    test.forkEvery(4)
+    test.maxParallelForks(2)
+    test.forkEvery(2)
 }
 
 boolean markTestPassStatus
@@ -76,7 +76,7 @@ if (markTestPassStatus = true) {
 
 // Run all tests (include low priority)
 task extendedTest(type: Test) {
-    runParallelTests = true
+    runParallelTests = false
     markTestPassStatus = true
 }
 
@@ -125,14 +125,14 @@ task cards(type: Test) {
     }
 }
 task login(type: Test) {
-    runParallelTests = true
+    runParallelTests = false
     markTestPassStatus = true
     filter {
         includeTestsMatching("login*")
     }
 }
 task register(type: Test) {
-    runParallelTests = true
+    runParallelTests = false
     markTestPassStatus = true
     filter {
         includeTestsMatching("register*")
