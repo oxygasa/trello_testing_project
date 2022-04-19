@@ -203,7 +203,7 @@ Shift 11 a.m. - 11 p.m.
 * Massive refactoring.
 * Retest the 100% of the test materials.
 
-**16 Apr - 20 Apr 2022 Mentoring updates**
+**16 Apr - 20 Apr 2022 Testing job**
 
 * Cross the project from Maven to Gradle.
 * Make test suites by Test NG and connect them to Gradle.

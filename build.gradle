@@ -40,7 +40,6 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-/*** TestNG.xml is for allure reports only. Tests in gradle are the tasks.***/
 tasks.withType(Test) { //any tests properties
     useTestNG {
         def dirTestNg = System.getProperty("testngReportOutput")
@@ -49,42 +48,25 @@ tasks.withType(Test) { //any tests properties
         outputDirectory = dirGradleReports ? file(dirGradleReports) : file("$buildDir/target/gradleHtmlQaReport")
         //gradle reports
         useDefaultListeners = true
+        test.systemProperties System.properties
+        test.testLogging { //Command promt test statuses displaying
+            events "PASSED", "STARTED", "FAILED", "SKIPPED"
+        }
+        test.testLogging.showStandardStreams = true
     }
 }
 
-boolean runParallelTests
-if (runParallelTests = true) {
-    test.maxParallelForks(2)
-    test.forkEvery(2)
-}
-
-boolean markTestPassStatus
-if (markTestPassStatus = true) {
-    test.systemProperties System.properties
-    test.testLogging {
-        events "PASSED", "STARTED", "FAILED", "SKIPPED"
-    }
-    test.testLogging.showStandardStreams = true
-}
 
 /***==================================================
  *                 TEST LIST
  * ===================================================
- * For example use prompt command: ./gradle cards test
+ * For example use prompt command: ./gradlew cards
  * and only tests filtered by the task "cards" will run
  * ===============================================***/
-
-// Run all tests (include low priority)
-task extendedTest(type: Test) {
-    runParallelTests = false
-    markTestPassStatus = true
-}
 
 
 // Smoke test (basic functionality testing)
 task smokeTest(type: Test) {
-    runParallelTests = false
-    markTestPassStatus = true
     useTestNG {
         includeGroups 'smoke'
     }
@@ -92,8 +74,6 @@ task smokeTest(type: Test) {
 
 // Critical path tests (regular using functionality testing, general requirements)
 task criticalPathTest(type: Test) {
-    runParallelTests = false
-    markTestPassStatus = true
     useTestNG {
         includeGroups 'critical_path'
     }
@@ -103,51 +83,37 @@ task criticalPathTest(type: Test) {
 
 // Tests by packages (test suite lists)
 task automation(type: Test) {
-    runParallelTests = true
-    markTestPassStatus = true
     filter {
         includeTestsMatching("automation*")
     }
 }
 
 task boards(type: Test) {
-    runParallelTests = true
-    markTestPassStatus = true
     filter {
         includeTestsMatching("boards*")
     }
 }
 task cards(type: Test) {
-    runParallelTests = true
-    markTestPassStatus = true
     filter {
         includeTestsMatching("cards*")
     }
 }
 task login(type: Test) {
-    runParallelTests = false
-    markTestPassStatus = true
     filter {
         includeTestsMatching("login*")
     }
 }
 task register(type: Test) {
-    runParallelTests = false
-    markTestPassStatus = true
     filter {
         includeTestsMatching("register*")
     }
 }
 task settings(type: Test) {
-    runParallelTests = true
-    markTestPassStatus = true
     filter {
         includeTestsMatching("settings*")
     }
 }
 task workspaces(type: Test) {
-    runParallelTests = true
-    markTestPassStatus = true
     filter {
         includeTestsMatching("workspace*")
     }
