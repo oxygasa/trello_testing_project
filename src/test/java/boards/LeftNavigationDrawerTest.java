@@ -19,6 +19,8 @@ public class LeftNavigationDrawerTest extends BaseTest {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         /*** On the any Workspaces Left Navigation Drawer create a board with a random title. **/
         driver.get(boardsPage.getDefaultWorkspaceUrl());
+        driver.navigate().refresh();
+        Thread.sleep(5000);
         leftNavigationDrawer
                 .expandLeftNaviDrawer()
                 .createBoardInstance();

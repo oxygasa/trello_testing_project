@@ -1,10 +1,9 @@
 package pages.cards.header;
 
 import commons.CommonActions;
+import graphql.language.StringValue;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -12,9 +11,10 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import pages.base.BasePage;
 import pages.boards.BoardsPage;
-import pages.cards.card_list_preview_page.CardListPreviewPage;
+import pages.cards.card_list.CardListPage;
 
 import java.util.List;
+import java.util.Random;
 
 public class CardsHeader extends BasePage {
     WebDriver driver;
@@ -71,13 +71,22 @@ public class CardsHeader extends BasePage {
     @FindBy(xpath = "//span[@data-test-id='board-view-option']/..")
     private WebElement BoardViewSwitcherPremiumBoardButton;
     @FindAll({@FindBy(xpath = "//div[@class='D7o35mpYYtXnpz']")})
-    private List<WebElement> allFilterCheckboxes;
+    private List<WebElement> filterCheckboxesList;
     @FindAll({@FindBy(xpath = "//div[contains(@class,'css-ufz0vj-control')]")})
-    private List<WebElement> allFilterDropdowns;
+    private List<WebElement> colorsDropdown;
     private String expectedBoardName;
+    @FindAll({@FindBy(xpath = "//a[contains(@class,'icon-close dark-hover')]")})
+    private List<WebElement> cancelEditingCardButton;
+    @FindAll({@FindBy(xpath = "//span[contains(@class,'js-card-name')]")})
+    private List<WebElement> cardTitleInput;
 
     public CardsHeader(WebDriver driver) {
         this.driver = driver;
+    }
+
+    public int randomLabelColor(){
+        Random random = new Random();
+        return random.nextInt(5);
     }
 
     public CardsHeader inviteAndConnect2ndUserToTheBoardViaLink() throws InterruptedException {
@@ -189,14 +198,25 @@ public class CardsHeader extends BasePage {
     }
 
     public CardsHeader selectRandomFilterDetails() throws InterruptedException {
-        String expectedCardName = CardListPreviewPage.createRandomCardOnTheList(); // тут у меня null pointer, lol
-        int randomLabelColorPositionNumber = CardListPreviewPage.randomLabelColor();
+        CardListPage cardListPage = PageFactory.initElements(driver, CardListPage.class);
+        int randomLabelColorPositionNumber = randomLabelColor();
         filterPopoverButton.click();
-        filerKeywordInput.sendKeys(expectedCardName);
+        Thread.sleep(2000);
         cardsAssignedToMeCheckBox.click();//assigned to me
-        allFilterCheckboxes.get(3).click();//no date
-        allFilterDropdowns.get(0).click();//labels color
-        CommonActions.selectDropdownMenuValueByPositionNumber(allFilterDropdowns.get(0), randomLabelColorPositionNumber);//labels color
+        Thread.sleep(2000);
+        filterCheckboxesList.get(2).click();//no date
+        Thread.sleep(2000);
+        colorsDropdown.get(0).click();//labels color
+        Thread.sleep(10000);
+        List<WebElement> shadowHost = driver.findElements(By.xpath("//div[contains(@class,'atlaskit-portal-container')]"));
+        List<WebElement> colorsList = shadowHost.get(0).findElements(By.xpath("//span[contains(@class,'HkzZB3nkUJ8qM9')]"));
+        colorsList.get(0).click();
+        //    CommonActions.selectDropdownMenuValueByPositionNumber(colorsDropdowns.get(0), randomLabelColorPositionNumber);//labels color
+        Thread.sleep(10000);
+        String expectedInput = cardTitleInput.get(0).getText();
+        Thread.sleep(2000);
+        filerKeywordInput.sendKeys(expectedInput);
+        Assert.assertEquals(cardTitleInput.get(0).getText(),expectedInput);
         return this;
     }
 }

@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.boards.BoardsPage;
+import pages.cards.card_list.CardListPage;
 import pages.cards.header.CardsHeader;
 import pages.cards.power_ups.PowerUpsPage;
 import pages.workspaces.WorkspaceListPage;
@@ -46,8 +47,8 @@ public class CardsHeaderTest extends BaseTest {
     //TC ID TRE025 Star button clickable.
     @Test
     public void starButtonClickableTest() throws InterruptedException {
-        BoardsOnWorkspaceSectionTest boardsOnWorkspaceSectionTest = new BoardsOnWorkspaceSectionTest();
-        boardsOnWorkspaceSectionTest.boardsAddToFavouriteTest();
+     //TC ID TRE 025 is a repeat of TC ID TRE017 Workspace page: Boards add to  favourite.
+     // Because TC ID TRE017 cover inside board assert.
     }
 
     //TC ID TRE026 Change and show workspaces.
@@ -164,12 +165,14 @@ public class CardsHeaderTest extends BaseTest {
     public void filterTest() throws InterruptedException {
         /*** Precondition:login, create a board, create the card for the filter testing**/
         CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
+        CardListPage cardListPage = PageFactory.initElements(driver, CardListPage.class);
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
         driver.get(boardsPage.getDefaultWorkspaceUrl());
         boardsPage.openFirstExistingBoard();
         /*** Select random filter values **/
+        cardListPage.createCard();
         cardsHeader.selectRandomFilterDetails();
     }
 }

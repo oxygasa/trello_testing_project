@@ -1,4 +1,4 @@
-package pages.cards.fullscreen_card_mode;
+package pages.cards.card_fullscreen;
 
 public class AttachmentViaGoogleDrivePage {
 }

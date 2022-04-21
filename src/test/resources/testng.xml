@@ -89,7 +89,7 @@
     </test>
     <test name="Integration test: Cards">
         <classes>
-            <class name="cards.card_list_preview_page.CardListPreviewPageTest">
+            <class name="cards.card_list_preview_page.CardListPageTest">
                 <methods>
                     <include name="addAnotherListTest"/>
                     <include name="addCardTest"/>

@@ -31,6 +31,8 @@ public class WorkspaceListPageTest extends BaseTest {
         /*** Create new Workspace and navigate to the Workspace table tab.**/
         workspaceListPage.createNewWorkspace();
         String currentWorkspaceUrl = driver.getCurrentUrl();
+        driver.navigate().refresh();
+        Thread.sleep(5000);
         workspaceListPage
                 .navigateToTableTab()
                 .assertTableTrialAsk();
@@ -48,6 +50,8 @@ public class WorkspaceListPageTest extends BaseTest {
         Thread.sleep(5000); //CI-CD need it to finish login process completely.
         workspaceListPage.createNewWorkspace();
         String currentWorkspaceUrl = driver.getCurrentUrl();
+        driver.navigate().refresh();
+        Thread.sleep(5000);
         /*** Expand Left Navigation Drawer then click Workspace table button. **/
         leftNavigationDrawer
                 .expandLeftNaviDrawer()
