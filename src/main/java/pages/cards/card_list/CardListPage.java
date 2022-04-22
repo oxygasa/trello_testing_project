@@ -35,8 +35,10 @@ public class CardListPage extends BasePage {
     private WebElement closePopupButton;
     @FindAll({@FindBy(xpath = "//a[@class='js-label-selector']/..")})
     private List<WebElement> labelsSelector;
-    @FindAll({@FindBy(xpath="//span[contains(@class,'js-select-label')]")})
+    @FindAll({@FindBy(xpath = "//span[contains(@class,'js-select-label')]")})
     private List<WebElement> colorList;
+    @FindBy(xpath = "//span[@data-color='green']")
+    private WebElement greenLabel;
 
     public List<WebElement> getColorList() {
         return colorList;
@@ -46,13 +48,12 @@ public class CardListPage extends BasePage {
         this.driver = driver;
     }
 
-    public int randomLabelColor(){
+    public int randomLabelColor() {
         Random random = new Random();
         return random.nextInt(5);
     }
 
     public CardListPage createCard() throws InterruptedException {
-        Thread.sleep(3000);
         CommonActions.explicitWaitOfOneElementVisible(addListButton.get(0));
         addListButton.get(0).click();
         String addListTitle = RandomStringUtils.randomAlphanumeric(10);
@@ -65,13 +66,6 @@ public class CardListPage extends BasePage {
         cardMoreOptionsButton.get(0).click();
         membersSelector.get(0).click();
         memberList.get(0).click();
-        closePopupButton.click();
-        addCardTitleButton.get(0).click();
-        cardTextArea.get(0).sendKeys(cardTitleInput);
-        saveCardTitleButton.get(0).click();
-        cardMoreOptionsButton.get(0).click();
-        labelsSelector.get(0).click();
-        colorList.get(randomLabelColor()).click();
         closePopupButton.click();
         return this;
     }

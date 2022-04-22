@@ -20,7 +20,7 @@ import java.util.Date;
 public class BaseTest extends BasePage {
     WebDriver driver;
 
-    @BeforeTest
+    @BeforeTest (alwaysRun = true)
     public WebDriver startBrowser() throws InterruptedException {
         driver = CommonActions.driver;
         LoginViaTrelloPage loginViaTrelloPage = PageFactory.initElements(driver, LoginViaTrelloPage.class);
@@ -45,7 +45,7 @@ public class BaseTest extends BasePage {
         return driver;
     }
 
-    @AfterTest
+    @AfterTest (alwaysRun = true)
     public void closeBrowser() throws IOException {
         if (Config.makeScreenshots && !(driver == null)) {
             Date date = new Date();

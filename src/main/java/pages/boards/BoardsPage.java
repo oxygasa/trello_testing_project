@@ -233,6 +233,7 @@ public class BoardsPage extends BasePage {
 
     /*** Series of methods for creating the board. Actions **/
     public BoardsPage startCreateBoard() throws InterruptedException {
+        Thread.sleep(1500);
         CommonActions.explicitWaitOfOneElementVisible(createBoardFromBoardsPageButton.get(0));
         createBoardFromBoardsPageButton.get(0).click();
         return this;
@@ -243,8 +244,10 @@ public class BoardsPage extends BasePage {
         return this;
     }
 
-    public BoardsPage typeRandomBoardTitle() {
+    public BoardsPage typeRandomBoardTitle() throws InterruptedException {
+        Thread.sleep(500);
         String newBoardNameTextFieldInputText = RandomStringUtils.randomAlphanumeric(10);
+        CommonActions.explicitWaitOfOneElementVisible(newBoardNameInput);
         newBoardNameInput.sendKeys(newBoardNameTextFieldInputText);
         return this;
     }

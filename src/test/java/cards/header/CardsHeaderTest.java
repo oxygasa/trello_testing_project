@@ -1,16 +1,13 @@
 package cards.header;
 
 import base.BaseTest;
-import boards.BoardsOnWorkspaceSectionTest;
 import commons.CommonActions;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.boards.BoardsPage;
 import pages.cards.card_list.CardListPage;
 import pages.cards.header.CardsHeader;
 import pages.cards.power_ups.PowerUpsPage;
-import pages.workspaces.WorkspaceListPage;
 
 import static commons.CommonActions.driver;
 
@@ -123,40 +120,46 @@ public class CardsHeaderTest extends BaseTest {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
     }
 
-    /*** BLOCKER: Can't copy hidden invite link for future usage**/
-////TC ID TRE028 Member board permission change.
+    //TC ID TRE028 Member board permission change.
+    @Test
+    public void adminPermissionInactiveTest() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
+        CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
+        cardsHeader
+                .isInviteLinkValid()
+                .startLoginAfterInvite();
+        CommonActions.loginIntoTrelloBySecondUserCredentials();
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        cardsHeader.checkTheHigherAndSelfPermissionsAreInactive();
+    }
 
-    /*** BLOCKER: Can't copy hidden invite link for future usage**/
-////TC ID TRE029 Invite sending.
+    //TC ID TRE029 Invite link is valid.
+    @Test
+    public void boardByInviteLinkTest() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
+        CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
+        cardsHeader.isInviteLinkValid();
 
+    }
     //TC ID TRE030 Power-Ups functionality.
     @Test (groups={"critical_path"})
     public void powerUpsFunctionalityTest() throws InterruptedException {
         /*** Precondition**/
-        CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-        PageFactory.initElements(driver, PowerUpsPage.class);
+        PowerUpsPage powerUpsPage = PageFactory.initElements(driver, PowerUpsPage.class);
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
         driver.get(boardsPage.getDefaultWorkspaceUrl());
         boardsPage.openFirstExistingBoard();
         /*** Open any board. Click Board button. **/
-        CommonActions.explicitWaitOfOneElementVisible(PowerUpsPage.powerUpsButton);
-        PowerUpsPage.powerUpsButton.click();
-        CommonActions.explicitWaitOfOneElementVisible(PowerUpsPage.confirmRedirectToPowerUpsPage);
-        PowerUpsPage.confirmRedirectToPowerUpsPage.click();
-        Thread.sleep(8000);
-        CommonActions.explicitWaitOfOneElementVisible(PowerUpsPage.madeByTrelloButton);
-        PowerUpsPage.madeByTrelloButton.click();
-        CommonActions.explicitWaitOfOneElementVisible(PowerUpsPage.addPowerUpJiraButton);
-        PowerUpsPage.addPowerUpJiraButton.click();
-        Assert.assertTrue(PowerUpsPage.powerUpJiraSettingButton.isDisplayed());
-        PowerUpsPage.closePowerUpsPageButton.click();
-        PowerUpsPage.installedPowerUpOpeningButton.click();
-        CommonActions.explicitWaitOfOneElementVisible(PowerUpsPage.installedPowerUpInteractiveWindow);
-        Assert.assertTrue(PowerUpsPage.installedPowerUpInteractiveWindow.isDisplayed());
-        /*** Post condition**/
-        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        powerUpsPage.openPowUpsStore()
+                        .installJira()
+                        .IsJiraInstalled();
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
     }
 

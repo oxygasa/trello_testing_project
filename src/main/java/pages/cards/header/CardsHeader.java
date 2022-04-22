@@ -1,20 +1,18 @@
 package pages.cards.header;
 
 import commons.CommonActions;
-import graphql.language.StringValue;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import pages.base.BasePage;
 import pages.boards.BoardsPage;
-import pages.cards.card_list.CardListPage;
 
 import java.util.List;
-import java.util.Random;
 
 public class CardsHeader extends BasePage {
     WebDriver driver;
@@ -52,14 +50,6 @@ public class CardsHeader extends BasePage {
     private WebElement avatarIcon;
     @FindBy(xpath = "//button[@data-test-id='header-member-menu-logout']")
     private WebElement logoutButton;
-    @FindBy(xpath = "//a[contains(@class,'board-header-btn-invite')]")
-    private WebElement inviteButton;
-    @FindBy(xpath = "//a[contains(@class,'js-show-invitation-link')]")
-    private WebElement inviteLinkCreator;
-    @FindBy(xpath = "//input[contains(@class,'js-invitation-link')]")
-    private WebElement invitationLinkForCopyField;
-    @FindBy(xpath = "//a[contains(@class,'pop-over-header-close-btn')]")
-    private WebElement invitationWindowCloseButton;
     @FindBy(xpath = "//input[@data-test-id='header-search-input']")
     private WebElement searchBox;
     @FindBy(xpath = "//button[@data-test-id='filter-popover-button']")
@@ -70,6 +60,8 @@ public class CardsHeader extends BasePage {
     private WebElement cardsAssignedToMeCheckBox;
     @FindBy(xpath = "//span[@data-test-id='board-view-option']/..")
     private WebElement BoardViewSwitcherPremiumBoardButton;
+    @FindBy(xpath = "//button[@data-test-id='board-share-button']")
+    private WebElement boardShareButton;
     @FindAll({@FindBy(xpath = "//div[@class='D7o35mpYYtXnpz']")})
     private List<WebElement> filterCheckboxesList;
     @FindAll({@FindBy(xpath = "//div[contains(@class,'css-ufz0vj-control')]")})
@@ -79,35 +71,29 @@ public class CardsHeader extends BasePage {
     private List<WebElement> cancelEditingCardButton;
     @FindAll({@FindBy(xpath = "//span[contains(@class,'js-card-name')]")})
     private List<WebElement> cardTitleInput;
+    @FindBy(xpath = "//div[@class='_1TqwtTDcAPw_Dc']/button")
+    private WebElement inviteLinkClipboard;
+    @FindBy(xpath = "//input[@data-test-id='add-members-input']")
+    private WebElement addMemberInput;
+    @FindBy(xpath = "//button[@data-test-id='board-invite-modal-close-button']")
+    private WebElement closeInviteWindow;
+    @FindBy(xpath = "//button[@id='logout-submit']")
+    private WebElement confirmlogout;
+    @FindBy(xpath = "//div[@class='invitation-link-description']")
+    private WebElement invitationDescription;
+    @FindBy(xpath = "//button[contains(@class,'js-login')]")
+    private WebElement inviteStatusLoginButton;
+    @FindAll({@FindBy(xpath = "//div[contains(@class,'js-list-draggable-board-members')]/a")})
+    private List<WebElement> memberList;
+    @FindBy(xpath = "//li[@class='_16b-lFr0zo4Zdb']")
+    private WebElement changePermissionButton;
+    @FindBy(xpath = "//div[@data-test-id='board-share-modal-title']")
+    private WebElement permissionEditWindow;
 
     public CardsHeader(WebDriver driver) {
         this.driver = driver;
     }
 
-    public int randomLabelColor(){
-        Random random = new Random();
-        return random.nextInt(5);
-    }
-
-    public CardsHeader inviteAndConnect2ndUserToTheBoardViaLink() throws InterruptedException {
-        CommonActions.explicitWaitOfOneElementVisible(inviteButton);
-        inviteButton.click();
-        CommonActions.explicitWaitOfOneElementVisible(inviteLinkCreator);
-        inviteLinkCreator.click();
-        Thread.sleep(2500);
-        Actions actions = new Actions(CommonActions.driver);
-        actions.moveToElement(invitationLinkForCopyField).doubleClick().build().perform();
-        invitationLinkForCopyField.sendKeys(Keys.chord(Keys.CONTROL, "c"));
-        invitationWindowCloseButton.click();
-        avatarIcon.click();
-        logoutButton.click();
-        CommonActions.driver.manage().deleteAllCookies();
-        CommonActions.loginIntoTrelloBySecondUserCredentials();
-        actions.moveToElement(searchBox).sendKeys(Keys.chord(Keys.CONTROL, "v"));
-        String inviteLink = searchBox.getText();
-        CommonActions.driver.get(inviteLink);
-        return this;
-    }
 
     public CardsHeader tryToChangeBoardViewAsFreeUser() throws InterruptedException {
         CommonActions.explicitWaitOfOneElementVisible(boardViewSwitcherButton);
@@ -175,48 +161,80 @@ public class CardsHeader extends BasePage {
         return this;
     }
 
-    public CardsHeader selectWorkspaceVisible() throws InterruptedException {
-        CommonActions.explicitWaitOfOneElementVisible(workspaceVisibleButton);
-        this.expectedBoardName = boardRenameInput.getText();
-        workspaceVisibleButton.click();
-        CommonActions.explicitWaitOfOneElementVisible(workspaceBoardPermissionSelect);
-        workspaceBoardPermissionSelect.click();
-        return this;
-    }
 
     public CardsHeader logoutFromTrello() throws InterruptedException {
         Thread.sleep(3000);
         avatarIcon.click();
+        CommonActions.explicitWaitOfOneElementVisible(logoutButton);
         logoutButton.click();
+        Thread.sleep(2000);
+        CommonActions.explicitWaitOfOneElementVisible(confirmlogout);
+        confirmlogout.click();
         driver.manage().deleteAllCookies();
-        return this;
-    }
-
-    public CardsHeader isTheSameBoard() {
-        Assert.assertEquals(boardTitleFor2ndUser.getText(), this.expectedBoardName);
+        driver.navigate().refresh();
+        Thread.sleep(500);
         return this;
     }
 
     public CardsHeader selectRandomFilterDetails() throws InterruptedException {
-        CardListPage cardListPage = PageFactory.initElements(driver, CardListPage.class);
-        int randomLabelColorPositionNumber = randomLabelColor();
         filterPopoverButton.click();
-        Thread.sleep(2000);
         cardsAssignedToMeCheckBox.click();//assigned to me
-        Thread.sleep(2000);
         filterCheckboxesList.get(2).click();//no date
-        Thread.sleep(2000);
-        colorsDropdown.get(0).click();//labels color
-        Thread.sleep(10000);
-        List<WebElement> shadowHost = driver.findElements(By.xpath("//div[contains(@class,'atlaskit-portal-container')]"));
-        List<WebElement> colorsList = shadowHost.get(0).findElements(By.xpath("//span[contains(@class,'HkzZB3nkUJ8qM9')]"));
-        colorsList.get(0).click();
-        //    CommonActions.selectDropdownMenuValueByPositionNumber(colorsDropdowns.get(0), randomLabelColorPositionNumber);//labels color
-        Thread.sleep(10000);
         String expectedInput = cardTitleInput.get(0).getText();
-        Thread.sleep(2000);
         filerKeywordInput.sendKeys(expectedInput);
-        Assert.assertEquals(cardTitleInput.get(0).getText(),expectedInput);
+        Assert.assertEquals(cardTitleInput.get(0).getText(), expectedInput);
+        return this;
+    }
+
+    public CardsHeader isInviteLinkValid() throws InterruptedException {
+        Thread.sleep(500);
+        CommonActions.explicitWaitOfOneElementVisible(boardShareButton);
+        boardShareButton.click();
+        Thread.sleep(3000);
+        CommonActions.explicitWaitOfOneElementVisible(inviteLinkClipboard);
+        for (int i = 0; i < 4; i++) {
+            inviteLinkClipboard.click();
+            Thread.sleep(1000);
+        }
+        String inviteLinkValue = CommonActions.getFromClipBoard();
+        closeInviteWindow.click();
+        logoutFromTrello();
+        driver.get(inviteLinkValue);
+        Thread.sleep(500);
+        CommonActions.explicitWaitOfOneElementVisible(invitationDescription);
+        Assert.assertTrue(invitationDescription.isDisplayed());
+        return this;
+    }
+
+    public CardsHeader startLoginAfterInvite() throws InterruptedException {
+        Thread.sleep(5000);
+        CommonActions.explicitWaitOfOneElementVisible(inviteStatusLoginButton);
+        inviteStatusLoginButton.click();
+        Thread.sleep(3000);
+        return this;
+    }
+
+    public CardsHeader checkTheHigherAndSelfPermissionsAreInactive() throws InterruptedException {
+        Thread.sleep(3000);
+        CommonActions.explicitWaitOfOneElementVisible(memberList.get(0));
+        memberList.get(0).click();
+        CommonActions.explicitWaitOfOneElementVisible(changePermissionButton);
+        changePermissionButton.click();
+        try {
+            Assert.assertFalse(permissionEditWindow.isDisplayed());
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            CommonActions.explicitWaitOfOneElementVisible(memberList.get(1));
+        }
+
+        CommonActions.explicitWaitOfOneElementVisible(memberList.get(1));
+        memberList.get(1).click();
+        CommonActions.explicitWaitOfOneElementVisible(changePermissionButton);
+        changePermissionButton.click();
+        try {
+            Assert.assertFalse(permissionEditWindow.isDisplayed());
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            CommonActions.explicitWaitOfOneElementVisible(changePermissionButton);
+        }
         return this;
     }
 }

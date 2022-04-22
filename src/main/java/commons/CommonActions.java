@@ -16,6 +16,10 @@ import pages.cards.header.CardsHeader;
 import pages.login.LoginViaTrelloPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
+import java.awt.*;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
@@ -55,7 +59,19 @@ public class CommonActions {
                 Assert.fail("Incorrect browser name. Choose name of browser in src/main/java/commons/Config Browser name for now is: " + Config.platformAndBrowser);
         }
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+    }
+
+    /*** This method is a CTRL + V from buffer, when you can't getText().
+     * For example click "an invitation link" protected web element and the link will save on the clipboard.
+     * Then CTRL+V the link to any String or text-field by using this method. **/
+    public static String getFromClipBoard(){
+        try {
+            return (String)Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor);
+        } catch (HeadlessException | UnsupportedFlavorException | IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return "";
     }
 
     /*** New Browser tab opening within Url typing **/
@@ -144,7 +160,7 @@ public class CommonActions {
 
     /*** A explicit waiter, which do an assertion of presence 1 element **/
     public static void explicitWaitOfOneElementVisible(WebElement webElementName) throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(1500);
         Wait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofSeconds(1))
@@ -171,7 +187,6 @@ public class CommonActions {
     public static void createOneRandomBoardInstance(String workspaceLink) throws InterruptedException {
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         driver.get(workspaceLink);
-        Thread.sleep(1500);
         boardsPage.startCreateBoard()
                 .typeRandomBoardTitle()
                 .submitBoardSave();
@@ -236,7 +251,6 @@ public class CommonActions {
         action.sendKeys(Keys.ENTER).perform();
         dropdownMenuWebElementName.click();
     }
-
     public static void selectDropdownMenuValueByPositionNumber(WebElement dropdownMenuWebElementName, int countsOfPressArrowDownButton) {
         dropdownMenuWebElementName.click();
         Actions action = new Actions(driver);
