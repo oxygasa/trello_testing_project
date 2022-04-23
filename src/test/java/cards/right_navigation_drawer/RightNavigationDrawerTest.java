@@ -5,6 +5,7 @@ import commons.CommonActions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 import pages.boards.BoardsPage;
+import pages.cards.card_fullscreen.FullscreenCardModePage;
 import pages.cards.card_list.CardListPage;
 import pages.cards.header.CardsHeader;
 import pages.cards.right_navigation_draver.RightNavigationDrawer;
@@ -38,7 +39,6 @@ public class RightNavigationDrawerTest  extends BaseTest {
         driver.get(boardsPage.getDefaultWorkspaceUrl());
         boardsPage.openFirstExistingBoard();
         cardListPage.createCard();
-        Thread.sleep(2000);
         cardListPage.addCardCover();
         rightNavigationDrawer.disableCover();
         /*** Post condition**/
@@ -47,12 +47,33 @@ public class RightNavigationDrawerTest  extends BaseTest {
 
     //TC ID TRE034 Commenting permissions.
     @Test
-    public void commentingPermissionsTest() {
+    public void commentingPermissionsTest() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
+        CardListPage cardListPage = PageFactory.initElements(driver, CardListPage.class);
+        CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
+        FullscreenCardModePage fullscreenCardModePage = PageFactory.initElements(driver, FullscreenCardModePage.class);
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
+        CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        cardListPage.createCard();
+        rightNavigationDrawer.changeCommentPermission();
+        cardsHeader
+                .isInviteLinkValid()
+                .startLoginAfterInvite();
+        CommonActions.loginIntoTrelloBySecondUserCredentials();
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        fullscreenCardModePage
+                .openActiveCard()
+                .isCommentTextFieldDoesntDisplay();
     }
 
     //TC ID TRE035 Add, Remove permissions
     @Test
     public void addRemovePermissionsTest() {
+
     }
 
     //TC ID TRE036 Allow Workspace members to edit and join.

@@ -77,13 +77,17 @@ public class CardListPage extends BasePage {
         cardTextArea.get(0).sendKeys(cardTitleInput);
         saveCardTitleButton.get(0).click();
         cardMoreOptionsButton.get(0).click();
+        CommonActions.explicitWaitOfOneElementVisible(membersSelector.get(0));
         membersSelector.get(0).click();
+        CommonActions.explicitWaitOfOneElementVisible(memberList.get(0));
         memberList.get(0).click();
         closePopupButton.click();
         return this;
     }
 
     public CardListPage addCardCover() throws InterruptedException {
+        Thread.sleep(2000);
+        CommonActions.explicitWaitOfOneElementVisible(activeCardPropertyButton.get(0));
         activeCardPropertyButton.get(activeCardPropertyButton.size() - 1).click();
         try {
             convertCardToRegularButton.click();

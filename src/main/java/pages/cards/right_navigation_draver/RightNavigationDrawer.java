@@ -33,6 +33,8 @@ public class RightNavigationDrawer extends BasePage {
     private WebElement submitWorkspaceButton;
     @FindAll({@FindBy(xpath = "//div[contains(@class,'list-card-cover')]")})
     private List<WebElement> createdCovers;
+    @FindAll({@FindBy(xpath = "//ul[@class='pop-over-list']/li")})
+    private List<WebElement> commentPermissionOptions;
     public RightNavigationDrawer changeWorkspace() throws InterruptedException {
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
 
@@ -112,6 +114,38 @@ public class RightNavigationDrawer extends BasePage {
             CommonActions.explicitWaitOfOneElementVisible(settingsMenuList.get(0));
             settingsMenuList.get(1).click();
             Assert.assertFalse(createdCovers.get(0).isDisplayed());
+        }
+        return this;
+    }
+    public RightNavigationDrawer changeCommentPermission() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+
+        try {
+            /**
+             * Don't stop if the Right Navigation Drawer is already opened.
+             **/
+            Thread.sleep(2000);
+            boardsPage.hideExistingDrawer()
+                    .openRightNaviDrawer()
+                    .clickMoreButton();
+            CommonActions.explicitWaitOfOneElementVisible(moreMenuList.get(0));
+            moreMenuList.get(0).click();
+            CommonActions.explicitWaitOfOneElementVisible(settingsMenuList.get(0));
+            settingsMenuList.get(2).click();
+            CommonActions.explicitWaitOfOneElementVisible(commentPermissionOptions.get(1));
+            commentPermissionOptions.get(1).click();
+        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException | org.openqa.selenium.TimeoutException e) {
+            /**
+             * Within opening the Right Navigation Drawer
+             **/
+            boardsPage.openRightNaviDrawer()
+                    .clickMoreButton();
+            CommonActions.explicitWaitOfOneElementVisible(moreMenuList.get(0));
+            moreMenuList.get(0).click();
+            CommonActions.explicitWaitOfOneElementVisible(settingsMenuList.get(0));
+            settingsMenuList.get(2).click();
+            CommonActions.explicitWaitOfOneElementVisible(commentPermissionOptions.get(1));
+            commentPermissionOptions.get(1).click();
         }
         return this;
     }
