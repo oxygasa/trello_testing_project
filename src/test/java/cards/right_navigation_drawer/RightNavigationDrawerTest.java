@@ -5,6 +5,7 @@ import commons.CommonActions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 import pages.boards.BoardsPage;
+import pages.cards.card_list.CardListPage;
 import pages.cards.header.CardsHeader;
 import pages.cards.right_navigation_draver.RightNavigationDrawer;
 
@@ -28,7 +29,20 @@ public class RightNavigationDrawerTest  extends BaseTest {
 
     //TC ID TRE033 Card cover test.
     @Test
-    public void cardCoverTest() {
+    public void cardCoverTest() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
+        CardListPage cardListPage = PageFactory.initElements(driver, CardListPage.class);
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
+        CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        cardListPage.createCard();
+        Thread.sleep(2000);
+        cardListPage.addCardCover();
+        rightNavigationDrawer.disableCover();
+        /*** Post condition**/
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
     }
 
     //TC ID TRE034 Commenting permissions.

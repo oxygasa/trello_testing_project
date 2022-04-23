@@ -1,6 +1,7 @@
 package pages.cards.right_navigation_draver;
 
 import commons.CommonActions;
+import org.apache.commons.compress.archivers.zip.X000A_NTFS;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -30,6 +31,8 @@ public class RightNavigationDrawer extends BasePage {
     private WebElement actualWorkspaceName;
     @FindBy(xpath = "//div[@class='js-loaded']/input")
     private WebElement submitWorkspaceButton;
+    @FindAll({@FindBy(xpath = "//div[contains(@class,'list-card-cover')]")})
+    private List<WebElement> createdCovers;
     public RightNavigationDrawer changeWorkspace() throws InterruptedException {
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
 
@@ -79,6 +82,36 @@ public class RightNavigationDrawer extends BasePage {
             Thread.sleep(4000);
             CommonActions.explicitWaitOfOneElementVisible(submitWorkspaceButton);
             submitWorkspaceButton.click();
+        }
+        return this;
+    }
+    public RightNavigationDrawer disableCover() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+
+        try {
+            /**
+             * Don't stop if the Right Navigation Drawer is already opened.
+             **/
+            Thread.sleep(2000);
+            boardsPage.hideExistingDrawer()
+                    .openRightNaviDrawer()
+                    .clickMoreButton();
+            CommonActions.explicitWaitOfOneElementVisible(moreMenuList.get(0));
+            moreMenuList.get(0).click();
+            CommonActions.explicitWaitOfOneElementVisible(settingsMenuList.get(0));
+            settingsMenuList.get(1).click();
+            Assert.assertFalse(createdCovers.get(0).isDisplayed());
+        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException | org.openqa.selenium.TimeoutException e) {
+            /**
+             * Within opening the Right Navigation Drawer
+             **/
+            boardsPage.openRightNaviDrawer()
+                    .clickMoreButton();
+            CommonActions.explicitWaitOfOneElementVisible(moreMenuList.get(0));
+            moreMenuList.get(0).click();
+            CommonActions.explicitWaitOfOneElementVisible(settingsMenuList.get(0));
+            settingsMenuList.get(1).click();
+            Assert.assertFalse(createdCovers.get(0).isDisplayed());
         }
         return this;
     }
