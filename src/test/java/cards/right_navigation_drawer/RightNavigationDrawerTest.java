@@ -38,8 +38,8 @@ public class RightNavigationDrawerTest  extends BaseTest {
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
         driver.get(boardsPage.getDefaultWorkspaceUrl());
         boardsPage.openFirstExistingBoard();
-        cardListPage.createCard();
-        cardListPage.addCardCover();
+        cardListPage.createCard()
+                    .addCardCover();
         rightNavigationDrawer.disableCover();
         /*** Post condition**/
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
@@ -77,7 +77,6 @@ public class RightNavigationDrawerTest  extends BaseTest {
         RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
         CardListPage cardListPage = PageFactory.initElements(driver, CardListPage.class);
         CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
-        FullscreenCardModePage fullscreenCardModePage = PageFactory.initElements(driver, FullscreenCardModePage.class);
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
         driver.get(boardsPage.getDefaultWorkspaceUrl());
@@ -93,9 +92,27 @@ public class RightNavigationDrawerTest  extends BaseTest {
         cardsHeader.checkTheHigherAndSelfPermissionsAreInactive();
     }
 
-    //TC ID TRE036 Allow Workspace members to edit and join.
+    //TC ID TRE036 Disallow Workspace members to edit and join.
     @Test (groups={"critical_path"})
-    public void allowWorkspaceMembersToEditAndJoinTest() {
+    public void disAllowWorkspaceMembersToEditAndJoinTest() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
+        CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
+        CardListPage cardListPage = PageFactory.initElements(driver, CardListPage.class);
+        FullscreenCardModePage fullscreenCardModePage = PageFactory.initElements(driver, FullscreenCardModePage.class);
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
+        CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        cardListPage.createCard();
+        rightNavigationDrawer.inviteOnlyTurnOn();
+        String disallowedBoard = driver.getCurrentUrl();
+        cardsHeader.logoutFromTrello();
+        CommonActions.loginIntoTrelloBySecondUserCredentials();
+        rightNavigationDrawer.navigateToDisallowedBoard(disallowedBoard);
+        fullscreenCardModePage
+                .openActiveCard()
+                .isCommentTextFieldDoesntDisplay();
     }
 
     //TC ID TRE037 Labels displaying on cards.

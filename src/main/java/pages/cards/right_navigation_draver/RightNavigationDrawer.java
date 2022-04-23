@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import pages.base.BasePage;
 import pages.boards.BoardsPage;
+import pages.cards.header.CardsHeader;
 
 import java.util.List;
 
@@ -172,6 +173,36 @@ public class RightNavigationDrawer extends BasePage {
             CommonActions.explicitWaitOfOneElementVisible(addRemovePermOptions.get(1));
             addRemovePermOptions.get(1).click();
         }
+        return this;
+    }
+
+    public RightNavigationDrawer inviteOnlyTurnOn() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        try {
+            /**
+             * Don't stop if the Right Navigation Drawer is already opened.
+             **/
+            Thread.sleep(2000);
+            boardsPage.hideExistingDrawer();
+            navigateToSettings();
+            CommonActions.explicitWaitOfOneElementVisible(settingsMenuList.get(0));
+            settingsMenuList.get(4).click();
+        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException |
+                 org.openqa.selenium.TimeoutException e) {
+            /**
+             * Within opening the Right Navigation Drawer
+             **/
+            navigateToSettings();
+            CommonActions.explicitWaitOfOneElementVisible(settingsMenuList.get(0));
+            settingsMenuList.get(4).click();
+        }
+        return this;
+    }
+
+    public RightNavigationDrawer navigateToDisallowedBoard(String disallowedBoardUrl) throws InterruptedException {
+
+        driver.get(disallowedBoardUrl);
+
         return this;
     }
 }
