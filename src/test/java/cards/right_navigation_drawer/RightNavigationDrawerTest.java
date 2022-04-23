@@ -72,8 +72,25 @@ public class RightNavigationDrawerTest  extends BaseTest {
 
     //TC ID TRE035 Add, Remove permissions
     @Test
-    public void addRemovePermissionsTest() {
-
+    public void addRemovePermissionsTest() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
+        CardListPage cardListPage = PageFactory.initElements(driver, CardListPage.class);
+        CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
+        FullscreenCardModePage fullscreenCardModePage = PageFactory.initElements(driver, FullscreenCardModePage.class);
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
+        CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        cardListPage.createCard();
+        rightNavigationDrawer.addRemovePermTurnOff();
+        cardsHeader
+                .isInviteLinkValid()
+                .startLoginAfterInvite();
+        CommonActions.loginIntoTrelloBySecondUserCredentials();
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        cardsHeader.checkTheHigherAndSelfPermissionsAreInactive();
     }
 
     //TC ID TRE036 Allow Workspace members to edit and join.
