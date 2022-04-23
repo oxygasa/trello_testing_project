@@ -197,7 +197,6 @@ public class CommonActions {
      **/
     public static void closeOneBoardInstanceFromTheWorkspacePage(String workspaceLink) throws InterruptedException {
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-        CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
         driver.get(workspaceLink);
         boardsPage.openFirstExistingBoard();
         Thread.sleep(1500);

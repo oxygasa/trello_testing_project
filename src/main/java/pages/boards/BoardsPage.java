@@ -180,7 +180,8 @@ public class BoardsPage extends BasePage {
         return this;
     }
 
-    public BoardsPage hideExistingDrawer() {
+    public BoardsPage hideExistingDrawer() throws InterruptedException {
+        CommonActions.explicitWaitOfOneElementVisible(hideRightSidebar);
         hideRightSidebar.click();
         return this;
     }

@@ -1,11 +1,29 @@
 package cards.right_navigation_drawer;
 
+import base.BaseTest;
+import commons.CommonActions;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
+import pages.boards.BoardsPage;
+import pages.cards.header.CardsHeader;
+import pages.cards.right_navigation_draver.RightNavigationDrawer;
 
-public class RightNavigationDrawerTest {
+import static commons.CommonActions.driver;
+
+public class RightNavigationDrawerTest  extends BaseTest {
     //TC ID TRE032 Change Workspace test.
     @Test (groups={"critical_path"})
-    public void changeWorkspaceTest() {
+    public void changeWorkspaceTest() throws InterruptedException {
+        /*** Precondition**/
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
+        CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        rightNavigationDrawer.changeWorkspace();
+        /*** Post condition**/
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
     }
 
     //TC ID TRE033 Card cover test.
