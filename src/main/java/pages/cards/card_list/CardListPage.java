@@ -2,12 +2,11 @@ package pages.cards.card_list;
 
 import commons.CommonActions;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 import pages.base.BasePage;
 
 import java.util.List;
@@ -47,10 +46,25 @@ public class CardListPage extends BasePage {
     private WebElement convertCardToRegularButton;
     @FindBy(xpath = "//div/a[contains(@class,'js-edit-cover')]")
     private WebElement changeCardCoverButton;
+    @FindBy(xpath = "//div/a[contains(@class,'js-edit-labels')]")
+    private WebElement changeLabelButton;
+    @FindAll({@FindBy(xpath = "//ul[contains(@class,'js-labels-list')]/li")})
+    private List<WebElement> labelList;
+    @FindAll({@FindBy(xpath = "//ul[contains(@class,'js-labels-list')]/li/a")})
+    private List<WebElement> editLabelList;
     @FindAll({@FindBy(xpath = "//div[@class='YkrFKRFIBVAiVq']/button")})
     private List<WebElement> coverList;
     @FindBy(xpath = "//input[contains(@class,'js-save-edits')]")
     private WebElement submitCover;
+    @FindBy(xpath = "//input[contains(@class,'js-submit')]")
+    private WebElement submitLabel;
+    @FindBy(xpath = "//input[@id='labelName']")
+    private WebElement labelNameInput;
+    @FindAll({@FindBy(xpath = "//div[@class='u-clearfix']/span")})
+    private List<WebElement> editLabelColorList;
+
+    @FindAll({@FindBy(xpath = "//ul[contains(@class,'js-labels-list')]/li/span")})
+    private List<WebElement> observeLabelColorList;
 
     public List<WebElement> getColorList() {
         return colorList;
@@ -93,16 +107,49 @@ public class CardListPage extends BasePage {
             convertCardToRegularButton.click();
             Thread.sleep(2000);
             changeCardCoverButton.click();
-        }
-
-        catch(org.openqa.selenium.ElementNotInteractableException e)
-        {
+        } catch (org.openqa.selenium.ElementNotInteractableException e) {
             changeCardCoverButton.click();
         }
         Thread.sleep(2000);
         Random random = new Random();
         coverList.get(random.nextInt(5)).click();
         submitCover.click();
+        return this;
+    }
+
+    public CardListPage addLabelWithText() throws InterruptedException {
+        Thread.sleep(2000);
+        CommonActions.explicitWaitOfOneElementVisible(activeCardPropertyButton.get(0));
+        activeCardPropertyButton.get(activeCardPropertyButton.size() - 1).click();
+        try {
+            convertCardToRegularButton.click();
+            CommonActions.explicitWaitOfOneElementVisible(changeLabelButton);
+            changeLabelButton.click();
+        } catch (org.openqa.selenium.ElementNotInteractableException e) {
+            CommonActions.explicitWaitOfOneElementVisible(changeLabelButton);
+            changeLabelButton.click();
+        }
+        editLabelList.get(1).click();
+        Thread.sleep(2000);
+        CommonActions.explicitWaitOfOneElementVisible(labelNameInput);
+        String labelNameValue = RandomStringUtils.randomAlphanumeric(10);
+        labelNameInput.sendKeys(labelNameValue);
+        Thread.sleep(2000);
+        Random random = new Random();
+        editLabelColorList.get(random.nextInt(9)).click();
+        submitLabel.click();
+        Thread.sleep(4000);
+        CommonActions.explicitWaitOfOneElementVisible(observeLabelColorList.get(0));
+
+        int i;
+        for (i = 0; i < 5; i++) {
+            if(observeLabelColorList.get(i).getText().contains(labelNameValue)){
+                break;
+            }
+        } if (i >= 5){
+            Assert.fail();
+        }
+
         return this;
     }
 }

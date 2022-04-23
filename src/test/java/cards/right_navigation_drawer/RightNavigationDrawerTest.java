@@ -117,7 +117,15 @@ public class RightNavigationDrawerTest  extends BaseTest {
 
     //TC ID TRE037 Labels displaying on cards.
     @Test
-    public void labelsDisplayingOnCardsTest() {
+    public void labelsDisplayingOnCardsTest() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        CardListPage cardListPage = PageFactory.initElements(driver, CardListPage.class);
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
+        CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        cardListPage.createCard()
+                    .addLabelWithText();
     }
 
     //TC ID TRE038 Collections premium require checking.
