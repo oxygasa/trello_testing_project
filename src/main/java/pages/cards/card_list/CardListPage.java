@@ -40,12 +40,18 @@ public class CardListPage extends BasePage {
     private List<WebElement> colorList;
     @FindBy(xpath = "//span[@data-color='green']")
     private WebElement greenLabel;
+    @FindAll({@FindBy(xpath = "//div[contains(@class,'js-card-details')]")})
+    private List<WebElement> activeCardList;
     @FindAll({@FindBy(xpath = "//span[contains(@class,'js-open-quick-card-editor')]")})
     private List<WebElement> activeCardPropertyButton;
+    @FindBy(xpath = "//div[@class='list-header-extras']")
+    WebElement listPropertyButton;
     @FindBy(xpath = "//div[@id='convert-card-role-button-react-root']")
     private WebElement convertCardToRegularButton;
     @FindBy(xpath = "//div/a[contains(@class,'js-edit-cover')]")
     private WebElement changeCardCoverButton;
+    @FindBy(xpath = "//div/a[contains(@class,'js-archive')]")
+    private WebElement archiveSingleCardButton;
     @FindBy(xpath = "//div/a[contains(@class,'js-edit-labels')]")
     private WebElement changeLabelButton;
     @FindAll({@FindBy(xpath = "//ul[contains(@class,'js-labels-list')]/li")})
@@ -65,6 +71,12 @@ public class CardListPage extends BasePage {
 
     @FindAll({@FindBy(xpath = "//ul[contains(@class,'js-labels-list')]/li/span")})
     private List<WebElement> observeLabelColorList;
+    @FindBy(xpath = "//ul[@class='pop-over-list']//a[@class='js-archive-cards']/..")
+    private WebElement archiveAllCardsButton;
+    @FindBy(xpath = "//ul[@class='pop-over-list']//a[@class='js-close-list']/..")
+    private WebElement archiveListButton;
+    @FindBy(xpath = "//input[contains(@class,'js-confirm')]")
+    private WebElement archiveAllConfirmButton;
 
     public List<WebElement> getColorList() {
         return colorList;
@@ -79,7 +91,7 @@ public class CardListPage extends BasePage {
         return random.nextInt(5);
     }
 
-    public CardListPage createCard() throws InterruptedException {
+    public CardListPage createFewCards() throws InterruptedException {
         Thread.sleep(3000);
         CommonActions.explicitWaitOfOneElementVisible(addListButton.get(0));
         addListButton.get(0).click();
@@ -150,6 +162,39 @@ public class CardListPage extends BasePage {
             Assert.fail();
         }
 
+        return this;
+    }
+
+    public CardListPage addSingleCardToArchive() throws InterruptedException {
+        Thread.sleep(2000);
+        CommonActions.explicitWaitOfOneElementVisible(activeCardPropertyButton.get(0));
+        activeCardPropertyButton.get(activeCardPropertyButton.size() - 1).click();
+        try {
+            convertCardToRegularButton.click();
+            Thread.sleep(2000);
+            archiveSingleCardButton.click();
+        } catch (org.openqa.selenium.ElementNotInteractableException e) {
+            archiveSingleCardButton.click();
+        }
+    return this;
+    }
+    public int countCardsInBeginning(){
+        return activeCardList.size();
+    }
+    public int countCardsInEnd() throws InterruptedException {
+        Thread.sleep(2000);
+        CommonActions.explicitWaitOfOneElementVisible(activeCardList.get(0));
+        return activeCardList.size();
+    }
+    public CardListPage addAllCardsToArchive(){
+        listPropertyButton.click();
+        archiveAllCardsButton.click();
+        archiveAllConfirmButton.click();
+        return this;
+    }
+    public CardListPage addListOfCardsToArchive(){
+        listPropertyButton.click();
+        archiveListButton.click();
         return this;
     }
 }

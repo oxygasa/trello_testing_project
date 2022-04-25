@@ -175,7 +175,7 @@ public class CardsHeaderTest extends BaseTest {
         driver.get(boardsPage.getDefaultWorkspaceUrl());
         boardsPage.openFirstExistingBoard();
         /*** Select random filter values **/
-        cardListPage.createCard();
+        cardListPage.createFewCards();
         cardsHeader.selectRandomFilterDetails();
     }
 }

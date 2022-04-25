@@ -11,6 +11,7 @@ import org.testng.Assert;
 import pages.base.BasePage;
 import pages.boards.BoardsPage;
 
+import java.security.cert.X509Certificate;
 import java.util.List;
 
 public class RightNavigationDrawer extends BasePage {
@@ -38,7 +39,18 @@ public class RightNavigationDrawer extends BasePage {
     private List<WebElement> commentPermissionOptions;
     @FindAll({@FindBy(xpath = "//ul[@class='pop-over-list']/li")})
     private List<WebElement> addRemovePermOptions;
-
+    @FindBy(xpath = "//button[@data-test-id='collections-upgrade-prompt']")
+    private WebElement premiumModuleUpgradeToPremiumButton;
+    @FindAll({@FindBy(xpath = "//div[contains(@class,'js-card-details')]")})
+    List<WebElement> archivedCardList;
+    @FindAll({@FindBy(xpath = "//a[@class='js-reopen']")})
+    List<WebElement> reopenCards;
+    @FindBy(xpath = "//a[contains(@class,'js-reopen')]/..")
+    WebElement reopenList;
+    @FindBy(xpath = "//a[contains(@class,'archive-controls-switch')]")
+    WebElement archiveListSwitchButton;
+    @FindBy(xpath = "//input[@id='boardEmail']")
+    WebElement generatedMailField;
     private RightNavigationDrawer navigateToSettings() throws InterruptedException {
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         boardsPage.openRightNaviDrawer()
@@ -47,6 +59,7 @@ public class RightNavigationDrawer extends BasePage {
         moreMenuList.get(0).click();
         return this;
     }
+
     public RightNavigationDrawer changeWorkspace() throws InterruptedException {
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         try {
@@ -227,5 +240,108 @@ public class RightNavigationDrawer extends BasePage {
             boardsPage.premiumAskingAssert();
         }
         return this;
+    }
+
+    public RightNavigationDrawer tryToUpgradeUser() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        try {
+            /**
+             * Don't stop if the Right Navigation Drawer is already opened.
+             **/
+            Thread.sleep(2000);
+            boardsPage.hideExistingDrawer();
+            boardsPage.openRightNaviDrawer()
+                    .clickMoreButton();
+            CommonActions.explicitWaitOfOneElementVisible(premiumModuleUpgradeToPremiumButton);
+            premiumModuleUpgradeToPremiumButton.click();
+            boardsPage.premiumAskingAssert();
+        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException |
+                 org.openqa.selenium.TimeoutException e) {
+            /**
+             * Within opening the Right Navigation Drawer
+             **/
+            boardsPage.openRightNaviDrawer()
+                    .clickMoreButton();
+            CommonActions.explicitWaitOfOneElementVisible(premiumModuleUpgradeToPremiumButton);
+            premiumModuleUpgradeToPremiumButton.click();
+            boardsPage.premiumAskingAssert();
+        }
+        return this;
+    }
+
+    private RightNavigationDrawer navigateToArchive() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        boardsPage.openRightNaviDrawer()
+                .clickMoreButton();
+        CommonActions.explicitWaitOfOneElementVisible(moreMenuList.get(0));
+        moreMenuList.get(2).click();
+        Thread.sleep(5000);
+        CommonActions.explicitWaitOfOneElementVisible(archivedCardList.get(0));
+        return this;
+    }
+    private RightNavigationDrawer navigateToEmailGenerator() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        boardsPage.openRightNaviDrawer()
+                .clickMoreButton();
+        CommonActions.explicitWaitOfOneElementVisible(moreMenuList.get(0));
+        moreMenuList.get(3).click();
+        Thread.sleep(5000);
+        CommonActions.explicitWaitOfOneElementVisible(generatedMailField);
+        return this;
+    }
+
+    public RightNavigationDrawer returnAllCardsFromArchive() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        try {
+            /**
+             * Don't stop if the Right Navigation Drawer is already opened.
+             **/
+            Thread.sleep(2000);
+            boardsPage.hideExistingDrawer();
+            boardsPage.openRightNaviDrawer()
+                    .clickMoreButton();
+            CommonActions.explicitWaitOfOneElementVisible(premiumModuleUpgradeToPremiumButton);
+            premiumModuleUpgradeToPremiumButton.click();
+            boardsPage.premiumAskingAssert();
+        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException |
+                 org.openqa.selenium.TimeoutException e) {
+            navigateToArchive();
+            CommonActions.explicitWaitOfOneElementVisible(reopenCards.get(0));
+            while (reopenCards.size() > 0) {
+                reopenCards.get(0).click();
+            }
+        }
+        return this;
+    }
+
+    public RightNavigationDrawer returnListOfCardsFromArchive() throws InterruptedException {
+        archiveListSwitchButton.click();
+        Thread.sleep(2000);
+        CommonActions.explicitWaitOfOneElementVisible(reopenList);
+        reopenList.click();
+        return this;
+    }
+
+    public RightNavigationDrawer generateMailAddressByTrello() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        try {
+            /**
+             * Don't stop if the Right Navigation Drawer is already opened.
+             **/
+            Thread.sleep(2000);
+            boardsPage.hideExistingDrawer();
+            boardsPage.openRightNaviDrawer()
+                    .clickMoreButton();
+            CommonActions.explicitWaitOfOneElementVisible(premiumModuleUpgradeToPremiumButton);
+            premiumModuleUpgradeToPremiumButton.click();
+            boardsPage.premiumAskingAssert();
+        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException |
+                 org.openqa.selenium.TimeoutException e) {
+            navigateToEmailGenerator();
+        }
+        return this;
+    }
+    public String getTrelloGeneratedMail(){
+        return generatedMailField.getAttribute("value");
     }
 }

@@ -3,12 +3,14 @@ package cards.right_navigation_drawer;
 import base.BaseTest;
 import commons.CommonActions;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.boards.BoardsPage;
 import pages.cards.card_fullscreen.FullscreenCardModePage;
 import pages.cards.card_list.CardListPage;
 import pages.cards.header.CardsHeader;
 import pages.cards.right_navigation_draver.RightNavigationDrawer;
+import pages.register.TempMail;
 
 import static commons.CommonActions.driver;
 
@@ -38,7 +40,7 @@ public class RightNavigationDrawerTest extends BaseTest {
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
         driver.get(boardsPage.getDefaultWorkspaceUrl());
         boardsPage.openFirstExistingBoard();
-        cardListPage.createCard()
+        cardListPage.createFewCards()
                 .addCardCover();
         rightNavigationDrawer.disableCover();
         /*** Post condition**/
@@ -57,7 +59,7 @@ public class RightNavigationDrawerTest extends BaseTest {
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
         driver.get(boardsPage.getDefaultWorkspaceUrl());
         boardsPage.openFirstExistingBoard();
-        cardListPage.createCard();
+        cardListPage.createFewCards();
         rightNavigationDrawer.changeCommentPermission();
         cardsHeader
                 .isInviteLinkValid()
@@ -81,7 +83,7 @@ public class RightNavigationDrawerTest extends BaseTest {
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
         driver.get(boardsPage.getDefaultWorkspaceUrl());
         boardsPage.openFirstExistingBoard();
-        cardListPage.createCard();
+        cardListPage.createFewCards();
         rightNavigationDrawer.addRemovePermTurnOff();
         cardsHeader
                 .isInviteLinkValid()
@@ -104,7 +106,7 @@ public class RightNavigationDrawerTest extends BaseTest {
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
         driver.get(boardsPage.getDefaultWorkspaceUrl());
         boardsPage.openFirstExistingBoard();
-        cardListPage.createCard();
+        cardListPage.createFewCards();
         rightNavigationDrawer.inviteOnlyTurnOn();
         String disallowedBoard = driver.getCurrentUrl();
         cardsHeader.logoutFromTrello();
@@ -124,8 +126,8 @@ public class RightNavigationDrawerTest extends BaseTest {
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
         driver.get(boardsPage.getDefaultWorkspaceUrl());
         boardsPage.openFirstExistingBoard();
-        cardListPage.createCard()
-                    .addLabelWithText();
+        cardListPage.createFewCards()
+                .addLabelWithText();
     }
 
     //TC ID TRE038 Collections premium require checking.
@@ -138,28 +140,68 @@ public class RightNavigationDrawerTest extends BaseTest {
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
         driver.get(boardsPage.getDefaultWorkspaceUrl());
         boardsPage.openFirstExistingBoard();
-        cardListPage.createCard();
-        rightNavigationDrawer.tryToActivateCollections();;
+        cardListPage.createFewCards();
+        rightNavigationDrawer.tryToActivateCollections();
     }
 
     //TC ID TRE039 Try Premium module is displaying and clickable.
     @Test
-    public void tryPremiumFirstModuleTest() {
+    public void tryPremiumFirstModuleTest() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
+        CardListPage cardListPage = PageFactory.initElements(driver, CardListPage.class);
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
+        CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        cardListPage.createFewCards();
+        rightNavigationDrawer.tryToUpgradeUser();
     }
 
     //TC ID TRE040 Archived items manipulations checking.
     @Test
-    public void archivedItemsTest() {
+    public void archivedItemsTest() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
+        CardListPage cardListPage = PageFactory.initElements(driver, CardListPage.class);
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
+        CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        cardListPage.createFewCards();
+        int expectedCardListCountResult = cardListPage.countCardsInBeginning();
+        cardListPage.addSingleCardToArchive()
+                .addAllCardsToArchive()
+                .createFewCards();
+        expectedCardListCountResult += cardListPage.countCardsInBeginning();
+        cardListPage.addListOfCardsToArchive();
+        rightNavigationDrawer
+                .returnAllCardsFromArchive()
+                .returnListOfCardsFromArchive();
+        Thread.sleep(3000);
+        int actualCardListCountResult = cardListPage.countCardsInEnd();
+        Assert.assertEquals(actualCardListCountResult, expectedCardListCountResult);
     }
 
     //TC ID TRE041 Add cards via email.
     @Test
-    public void addCardsViaEmailTest() {
+    public void addCardsViaEmailTest() throws InterruptedException {
+
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
+        CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        rightNavigationDrawer.generateMailAddressByTrello();
+    // Write this test to finish
+
     }
 
     //TC ID TRE042 Watch button and email notification testing.
     @Test
     public void watchAndEmailNotificationTest() {
+
     }
 
     //TC ID TRE043 Make Template Premium required checking.

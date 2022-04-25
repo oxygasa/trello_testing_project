@@ -18,11 +18,11 @@ public class TempMail extends BasePage {
     }
     public final String TEMP_MAIL_PAGE_URL = "https://temp-mail.io/";
     @FindBy(id = "email")
-    public WebElement randomTempEmail;
+    private WebElement randomTempEmail;
     @FindAll({@FindBy(xpath = "//li[contains(@class,'message list-complete')]")})
-    public List<WebElement> incomeBoxMailListButtons;
+    private List<WebElement> incomeBoxMailListButtons;
     @FindBy(xpath = "//a[contains(text(),'Workspace')]")
-    public WebElement joinWorkspaceList;
+    private WebElement joinWorkspaceList;
 
     public String createTempEmailInstance() throws InterruptedException {
         for (int i = 0; i < 3; i++) {
@@ -34,5 +34,14 @@ public class TempMail extends BasePage {
 
    public String generatedTempEmail() throws InterruptedException {
         return createTempEmailInstance();
+   }
+
+   public TempMail sendMail(String sendToMail, String message) throws InterruptedException {
+       for (int i = 0; i < 3; i++) {
+           driver.get(TEMP_MAIL_PAGE_URL);
+           CommonActions.explicitWaitOfOneElementVisible(randomTempEmail);
+
+       }
+        return this;
    }
 }

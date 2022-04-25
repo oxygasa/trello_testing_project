@@ -15,7 +15,6 @@ import pages.boards.BoardsPage;
 import pages.cards.header.CardsHeader;
 import pages.login.LoginViaTrelloPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
-
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.UnsupportedFlavorException;
@@ -23,8 +22,8 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
-
 public class CommonActions {
+
     public static WebDriver driver;
 
     /**
@@ -60,13 +59,12 @@ public class CommonActions {
         driver.manage().window().maximize();
     }
 
-
     /*** This method is a CTRL + V from buffer, when you can't getText().
      * For example click "an invitation link" protected web element and the link will save on the clipboard.
      * Then CTRL+V the link to any String or text-field by using this method. **/
-    public static String getFromClipBoard(){
+    public static String getFromClipBoard() {
         try {
-            return (String)Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor);
+            return (String) Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor);
         } catch (HeadlessException | UnsupportedFlavorException | IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -209,7 +207,8 @@ public class CommonActions {
                     .clickMoreButton()
                     .clickDeleteButtonAndConfirmIt();
 
-        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException | org.openqa.selenium.TimeoutException e) {
+        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException |
+                 org.openqa.selenium.TimeoutException e) {
             /**
              * Within opening the Right Navigation Drawer
              **/
@@ -250,6 +249,7 @@ public class CommonActions {
         action.sendKeys(Keys.ENTER).perform();
         dropdownMenuWebElementName.click();
     }
+
     public static void selectDropdownMenuValueByPositionNumber(WebElement dropdownMenuWebElementName, int countsOfPressArrowDownButton) {
         dropdownMenuWebElementName.click();
         Actions action = new Actions(driver);
