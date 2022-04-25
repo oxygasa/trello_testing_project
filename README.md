@@ -1,5 +1,10 @@
 # Diary of trello testing project
 
+## Intro
+
+* This project has a developing stage **"In progress"**.
+* Progress and a number of completed Test cases you can see [by this link](https://docs.google.com/spreadsheets/d/1gaVGRTgIrKwP1MWMsqEYsPVpk4Y6xZjXLurVHDh1ZCc/edit?usp=sharing).
+
 ## Tools quick overview
 
 * Application location:  [Trello for desktop web-browsers](https://trello.com)
@@ -212,3 +217,5 @@ Shift 11 a.m. - 11 p.m.
 * Add the parallel run, 
 * Add preconditions and post conditions.
 
+**21 Apr - 26 Apr 2022 Testing job**
+* The Goal is about to take 40 test cases automated.

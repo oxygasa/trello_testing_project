@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 public class CommonActions {
     public static WebDriver driver;
@@ -60,6 +59,7 @@ public class CommonActions {
         }
         driver.manage().window().maximize();
     }
+
 
     /*** This method is a CTRL + V from buffer, when you can't getText().
      * For example click "an invitation link" protected web element and the link will save on the clipboard.

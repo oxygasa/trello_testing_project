@@ -2,8 +2,8 @@ package commons;
 
 import org.testng.*;
 /***
- * If test flakes, this repeater makes 3 retries.
- * Only the 3rd fail fall the test down. 1st and 2nd fails marked as a miss.
+ * If test flakes, this repeater makes 1 retry.
+ * The 2-nd fail fall the test down.
  ***/
 public class FlakingTestOneChanceToPass implements IRetryAnalyzer {
     private static final int MAX_RETRY = 1; //1 chance for Pass retry.
