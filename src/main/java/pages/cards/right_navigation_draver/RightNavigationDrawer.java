@@ -1,7 +1,6 @@
 package pages.cards.right_navigation_draver;
 
 import commons.CommonActions;
-import org.apache.commons.compress.archivers.zip.X000A_NTFS;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -11,11 +10,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import pages.base.BasePage;
 import pages.boards.BoardsPage;
-import pages.cards.header.CardsHeader;
 
 import java.util.List;
-
-import static commons.CommonActions.driver;
 
 public class RightNavigationDrawer extends BasePage {
     WebDriver driver;
@@ -34,6 +30,8 @@ public class RightNavigationDrawer extends BasePage {
     private WebElement actualWorkspaceName;
     @FindBy(xpath = "//div[@class='js-loaded']/input")
     private WebElement submitWorkspaceButton;
+    @FindBy(xpath = "//button[@data-test-id='collections-upgrade-pill']/..")
+    private WebElement collectionsUpgradeToPremiumButton;
     @FindAll({@FindBy(xpath = "//div[contains(@class,'list-card-cover')]")})
     private List<WebElement> createdCovers;
     @FindAll({@FindBy(xpath = "//ul[@class='pop-over-list']/li")})
@@ -200,9 +198,34 @@ public class RightNavigationDrawer extends BasePage {
     }
 
     public RightNavigationDrawer navigateToDisallowedBoard(String disallowedBoardUrl) throws InterruptedException {
-
         driver.get(disallowedBoardUrl);
+        return this;
+    }
 
+    public RightNavigationDrawer tryToActivateCollections() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        try {
+            /**
+             * Don't stop if the Right Navigation Drawer is already opened.
+             **/
+            Thread.sleep(2000);
+            boardsPage.hideExistingDrawer();
+            boardsPage.openRightNaviDrawer()
+                    .clickMoreButton();
+            CommonActions.explicitWaitOfOneElementVisible(collectionsUpgradeToPremiumButton);
+            collectionsUpgradeToPremiumButton.click();
+            boardsPage.premiumAskingAssert();
+        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException |
+                 org.openqa.selenium.TimeoutException e) {
+            /**
+             * Within opening the Right Navigation Drawer
+             **/
+            boardsPage.openRightNaviDrawer()
+                    .clickMoreButton();
+            CommonActions.explicitWaitOfOneElementVisible(collectionsUpgradeToPremiumButton);
+            collectionsUpgradeToPremiumButton.click();
+            boardsPage.premiumAskingAssert();
+        }
         return this;
     }
 }

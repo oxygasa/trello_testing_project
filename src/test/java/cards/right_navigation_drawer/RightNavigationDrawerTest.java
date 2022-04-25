@@ -12,9 +12,9 @@ import pages.cards.right_navigation_draver.RightNavigationDrawer;
 
 import static commons.CommonActions.driver;
 
-public class RightNavigationDrawerTest  extends BaseTest {
+public class RightNavigationDrawerTest extends BaseTest {
     //TC ID TRE032 Change Workspace test.
-    @Test (groups={"critical_path"})
+    @Test(groups = {"critical_path"})
     public void changeWorkspaceTest() throws InterruptedException {
         /*** Precondition**/
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
@@ -39,7 +39,7 @@ public class RightNavigationDrawerTest  extends BaseTest {
         driver.get(boardsPage.getDefaultWorkspaceUrl());
         boardsPage.openFirstExistingBoard();
         cardListPage.createCard()
-                    .addCardCover();
+                .addCardCover();
         rightNavigationDrawer.disableCover();
         /*** Post condition**/
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
@@ -93,7 +93,7 @@ public class RightNavigationDrawerTest  extends BaseTest {
     }
 
     //TC ID TRE036 Disallow Workspace members to edit and join.
-    @Test (groups={"critical_path"})
+    @Test(groups = {"critical_path"})
     public void disAllowWorkspaceMembersToEditAndJoinTest() throws InterruptedException {
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
@@ -130,7 +130,16 @@ public class RightNavigationDrawerTest  extends BaseTest {
 
     //TC ID TRE038 Collections premium require checking.
     @Test
-    public void collectionsPremiumRequireTest() {
+    public void collectionsPremiumRequireTest() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
+        CardListPage cardListPage = PageFactory.initElements(driver, CardListPage.class);
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
+        CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        cardListPage.createCard();
+        rightNavigationDrawer.tryToActivateCollections();;
     }
 
     //TC ID TRE039 Try Premium module is displaying and clickable.

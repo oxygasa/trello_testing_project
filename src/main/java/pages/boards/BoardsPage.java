@@ -11,8 +11,6 @@ import pages.base.BasePage;
 import java.util.ArrayList;
 import java.util.List;
 
-import static commons.CommonActions.driver;
-
 public class BoardsPage extends BasePage {
     /*** Web elements, locators. **/
     private final String DEFAULT_WORKSPACE_URL = "https://trello.com/tenboardstestworkspace";
@@ -208,7 +206,9 @@ public class BoardsPage extends BasePage {
         return this;
     }
 
-    public BoardsPage the11thBoardFreeAccAssert() {
+    public BoardsPage premiumAskingAssert() throws InterruptedException {
+        Thread.sleep(2000);
+        CommonActions.explicitWaitOfOneElementVisible(startFreeTrialButton);
         String startFreeTrialTextOnButton = startFreeTrialButton.getText();
         Assert.assertEquals(startFreeTrialTextOnButton, "Upgrade"); //free version ask for premium.
         return this;

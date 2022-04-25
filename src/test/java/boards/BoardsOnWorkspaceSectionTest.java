@@ -51,7 +51,7 @@ public class BoardsOnWorkspaceSectionTest extends BaseTest {
             boardsPage.startCreateBoard(); //11-th time create the board.
             Thread.sleep(2000);
             /*** Expected result: A premium requiring pop up is shown after 10-th creating new board. **/
-            boardsPage.the11thBoardFreeAccAssert();
+            boardsPage.premiumAskingAssert();
             CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
     }
 
