@@ -2,7 +2,10 @@ package cards.right_navigation_drawer;
 
 import base.BaseTest;
 import commons.CommonActions;
+import commons.mail_sender.AppConfig;
+import commons.mail_sender.SendEmail;
 import org.openqa.selenium.support.PageFactory;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.boards.BoardsPage;
@@ -201,7 +204,9 @@ public class RightNavigationDrawerTest extends BaseTest {
     //TC ID TRE042 Watch button and email notification testing.
     @Test
     public void watchAndEmailNotificationTest() {
-
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        SendEmail bean = context.getBean(SendEmail.class);
+        bean.sendMail("imsweet75@gmail.com","Hi, Dima","Nice to see you!");
     }
 
     //TC ID TRE043 Make Template Premium required checking.
