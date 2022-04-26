@@ -17,7 +17,7 @@ public class BoardsPage extends BasePage {
     @FindAll({@FindBy(xpath = "//div[@class='board-tile-details-name']")})
     public List<WebElement> boardTitles; //need to be public for assert List preparations.
     WebDriver driver;
-    @FindAll({@FindBy(xpath = "//li[@data-test-id='create-board-tile']")})
+    @FindAll({@FindBy(xpath = "//ul[@class='boards-page-board-section-list']/li")})
     private List<WebElement> createBoardFromBoardsPageButton;
     @FindAll({@FindBy(xpath = "//a[contains(@class,'board-tile')]")})
     private List<WebElement> boardInstancesList;
@@ -234,9 +234,10 @@ public class BoardsPage extends BasePage {
 
     /*** Series of methods for creating the board. Actions **/
     public BoardsPage startCreateBoard() throws InterruptedException {
-        Thread.sleep(1500);
+        Thread.sleep(2000);
         CommonActions.explicitWaitOfOneElementVisible(createBoardFromBoardsPageButton.get(0));
         createBoardFromBoardsPageButton.get(0).click();
+        Thread.sleep(500);
         return this;
     }
 

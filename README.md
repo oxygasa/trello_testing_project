@@ -8,17 +8,18 @@
 ## Tools quick overview
 
 * Application location:  [Trello for desktop web-browsers](https://trello.com)
-* Client: Windows 10 Enterprise LTS, Chrome v. 100+ last. Server: Google cloud node + Jenkins and Localhost node.
-* Test type priority: Integration tests are prioritised.
+* Client: Windows 10 Enterprise LTS, Chrome v. 100+ last. 
+* Server: Google cloud node (Jenkins), EPAM cloud node (Jenkins), Localhost node (Jenkins).
+* Test type priority: Integration tests are prioritised. API tests are allowed.
 * Testing documentation: Git Markdown files (.md), Google Drive Docs (.gdoc)
 * Source code editing and run tools: IntelliJ IDEA Community Edition 2022.1 (Freeware IDE), Java Dev Kit 11 (Apache zulu-11 Openjdk), Apache Maven 3.8.3, Apache Gradle 7.4.2, TestNG 7.3.0, Selenium 4.1.3, WebDrivers Cross browser by Bonigarcia.
 * Report tool: QA meta Allure reports 2.17.3, slf4j-api 1.7.36, assertj 3.22.0, Maven Surefire 3.8.1, Gradle HTML reports 7.4.2
 * TestOps tool: CI/CD Jenkins 2.342, TeamCity (optional)
 For detailed info, please, check the [Test plan document.](https://docs.google.com/document/d/1l68Rcsw-6cTbhl-qOcNNxPaNueLskr_ZQUb1wRXZaB8/edit?usp=sharing)
+* MailTools: Javax (Optional), Spring-Starter (Optional), [Emkei mail sender service](https://emkei.cz/), [Temp-mail receiver](https://temp-mail.io/).
+* Comfortable screen resolution for UI web elements founding: 1920x1080 and higher. You can use less, but mind the elements must not overlap each other.
 
 ## Credentials and links
-
-* [Trello address and credentials for the test automation:](https://trello.com)
 
 Login constants for testing the [Trello login page](https://trello.com/login):
 
@@ -32,20 +33,22 @@ Login constants for testing the [Trello login page](https://trello.com/login):
 
 **Workspaces constants for tests:** TEN_BOARDS_WORKSPACE, WORKSPACE25
 
-**Testing manual style documentation:**
-* [Google drive Test suite list public link.](https://docs.google.com/spreadsheets/d/1gaVGRTgIrKwP1MWMsqEYsPVpk4Y6xZjXLurVHDh1ZCc/edit?usp=sharing)
 
-* [Test plan public link.](https://docs.google.com/document/d/1l68Rcsw-6cTbhl-qOcNNxPaNueLskr_ZQUb1wRXZaB8/edit?usp=sharing)
-
-* [GitHub address and SSH public key for source code sharing](https://github.com/oxygasa/trello_testing_project): 
-
-git@github.com:oxygasa/trello_testing_project.git
-
-* [Jenkins address and credentials for the pipelines editing](https://jenkins.epam.com/jenkins)
-  (credentials also are allowed for localhost node):
+**[Jenkins address](https://jenkins.epam.com/jenkins)
+  and credentials** for the pipelines editing (credentials also are allowed for localhost node):
 
 **LOGIN:** Dzmitry_Samasiuk@epam.com
 **PASSWORD:** TrelloTest334
+
+
+**Testing manual style documentation:**
+* [Test suite list.](https://docs.google.com/spreadsheets/d/1gaVGRTgIrKwP1MWMsqEYsPVpk4Y6xZjXLurVHDh1ZCc/edit?usp=sharing)
+
+* [Test plan.](https://docs.google.com/document/d/1l68Rcsw-6cTbhl-qOcNNxPaNueLskr_ZQUb1wRXZaB8/edit?usp=sharing)
+
+* [Bug (Defect) reports.](https://docs.google.com/document/d/1BAZBrh_fKAvKcIpSMAeZU9E4eP0P4QHBsINjis0egMA)
+
+SSH and redirecting to GitHub page by clicking: [git@github.com:oxygasa/trello_testing_project.git](https://github.com/oxygasa/trello_testing_project)
  
 
 ## Goal checklist
@@ -204,9 +207,9 @@ Shift 11 a.m. - 11 p.m.
 Shift 11 a.m. - 11 p.m.
 
 **13 Apr - 15 Apr 2022 Mentoring updates**
-
+* Mentor is on vacation from 8 Apr till 29 Apr
 * Massive refactoring.
-* Retest the 100% of the test materials.
+* Retest the 100% of the test materials made till current date.
 
 **16 Apr - 20 Apr 2022 Testing job**
 
@@ -214,8 +217,16 @@ Shift 11 a.m. - 11 p.m.
 * Make test suites by Test NG and connect them to Gradle.
 * Make scripts for running different types of tests.
 * Refactor tests by Lazy init.
-* Add the parallel run, 
-* Add preconditions and post conditions.
+* Add the parallel run, (UPD: Parallel run ruins preconditions, when they are the same at time).
+* Add preconditions and post conditions (UPD: Before methods of classes in TestNG work could ruin test, because can start before super method of login randomly).
 
 **21 Apr - 26 Apr 2022 Testing job**
-* The Goal is about to take 40 test cases automated.
+* The Goal is about to take 40-45 test cases completed till 26 Apr.
+* Add a mail sender service for cards values adding via email sending. Trello's recommendations: list must be created before providing email operations. 
+* Spring-context and mail sending via javax work correctly. But memory overloading and time-wasting are the reason to use external services for email sending and receiving.
+* Remind to make possible copy hidden invite link for 2nd user. (UPD: Done within the method of reading this link from the clipboard).
+* An achievement: now all hidden by React-select webElements could be found by parent web element (Selenium 4.1 feature). Dropdown menu hidden values problem is solved.
+* Publish a defect reports public link.
+
+**27 Apr 2022 - Mentoring updates**
+* Mentor is on vacation from 8 Apr till 29 Apr.

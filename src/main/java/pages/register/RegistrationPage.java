@@ -28,9 +28,9 @@ public class RegistrationPage extends BasePage {
     public WebElement reCaptchaIframe;
 
     public RegistrationPage tryToCreateNewUser() throws InterruptedException {
-        TempMail tempMail = PageFactory.initElements(driver, TempMail.class);
-        tempMail.createTempEmailInstance();
-        String randomTempEmailValue = tempMail.generatedTempEmail();
+        TempEmailReceiver tempEmailReceiver = PageFactory.initElements(driver, TempEmailReceiver.class);
+        tempEmailReceiver.createTempEmailInstance();
+        String randomTempEmailValue = tempEmailReceiver.generatedTempEmail();
         driver.manage().deleteAllCookies();
         driver.get(TRELLO_REGISTER_PAGE_URL);
         emailFromRegisterPage.sendKeys(randomTempEmailValue);

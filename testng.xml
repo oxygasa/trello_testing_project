@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/GitHub/Trello">
+        <classes>
+            <class name="automation.after_saving.SavedScenarioTextManipulationsTest">
+                <methods>
+                    <include name="PreviewCRUDButtonsTest"/>
+                    <include name="actionsOfCratedButtonsTest"/>
+                    <include name="notificationsInHeaderTest"/>
+                </methods>
+            </class>
+            <class name="automation.board_buttons.BoardButtonsTest">
+                <methods>
+                    <include name="addCardBoardButtonTest"/>
+                    <include name="moveCardBoardButtonTest"/>
+                    <include name="listBoardButtonTest"/>
+                    <include name="sortBoardButtonTest"/>
+                    <include name="otherBoardButtonTest"/>
+                    <include name="jiraBoardButtonTest"/>
+                    <include name="slackBoardButtonTest"/>
+                </methods>
+            </class>
+            <class name="automation.calendar.CalendarTest">
+                <methods>
+                    <include name="scheduleInCalendarCommandTest"/>
+                </methods>
+            </class>
+            <class name="automation.card_buttons.CardButtonsTest">
+                <methods>
+                    <include name="moveCardButtonTest"/>
+                    <include name="addRemoveCardButtonTest"/>
+                    <include name="dateCardButtonTest"/>
+                    <include name="checklistCardButtonTest"/>
+                    <include name="membersCardButtonTest"/>
+                    <include name="contentCardButtonTest"/>
+                    <include name="fieldsCardButtonTest"/>
+                    <include name="sortCardButtonTest"/>
+                    <include name="cascadeCardButtonTest"/>
+                    <include name="jiraCardButtonTest"/>
+                    <include name="slackCardButtonTest"/>
+                </methods>
+            </class>
+            <class name="automation.due_date.DueDateTest">
+                <methods>
+                    <include name="dueDateCommandTest"/>
+                </methods>
+            </class>
+            <class name="automation.rules.RulesTest">
+                <methods>
+                    <include name="cardMoveRulesTest"/>
+                    <include name="cardChangeRulesTest"/>
+                    <include name="datesRulesTest"/>
+                    <include name="checklistRulesTest"/>
+                    <include name="cardContentRulesTest"/>
+                    <include name="fieldsRulesPremiumRequireTest"/>
+                </methods>
+            </class>
+            <class name="boards.BoardsOnWorkspaceSectionTest">
+                <methods>
+                    <include name="boardsFilterMenuTest"/>
+                </methods>
+            </class>
+            <class name="boards.BoardsPageManipulationTest">
+                <methods>
+                    <include name="recentlyViewedBoardIsDisplayingOnBoardsPageTest"/>
+                </methods>
+            </class>
+            <class name="cards.fullscreen_card_mode.FullscreenCardModeTest">
+                <methods>
+                    <include name="customFieldsPremiumRequireTest"/>
+                    <include name="showHideButtonTest"/>
+                    <include name="cardsMultiScreenOpeningTest"/>
+                    <include name="actionsMenuTest"/>
+                    <include name="shareButtonTest"/>
+                </methods>
+            </class>
+            <class name="cards.header.CardsHeaderTest">
+                <methods>
+                    <include name="boardViewSwitcherPremiumRequireTest"/>
+                    <include name="starButtonClickableTest"/>
+                    <include name="changeAndShowWorkspacesTest"/>
+                    <include name="adminPermissionInactiveTest"/>
+                    <include name="boardByInviteLinkTest"/>
+                    <include name="filterTest"/>
+                </methods>
+            </class>
+            <class name="cards.right_navigation_drawer.RightNavigationDrawerTest">
+                <methods>
+                    <include name="cardCoverTest"/>
+                    <include name="commentingPermissionsTest"/>
+                    <include name="addRemovePermissionsTest"/>
+                    <include name="labelsDisplayingOnCardsTest"/>
+                    <include name="collectionsPremiumRequireTest"/>
+                    <include name="tryPremiumFirstModuleTest"/>
+                    <include name="archivedItemsTest"/>
+                    <include name="addCardsViaEmailTest"/>
+                    <include name="watchAndEmailNotificationTest"/>
+                    <include name="makeTemplatePremiumRequireTest"/>
+                    <include name="copyBoardTest"/>
+                    <include name="printAndExportTest"/>
+                    <include name="closeBoardTest"/>
+                    <include name="linkToThisBoardTest"/>
+                    <include name="qrCodeTest"/>
+                    <include name="aboutThisBoardFormattingTest"/>
+                    <include name="commentOnCardTest"/>
+                    <include name="changeCardBackgroundTest"/>
+                    <include name="customFieldPremiumRequireTest"/>
+                    <include name="tryPremiumSecondModuleTest"/>
+                    <include name="stickersTest"/>
+                    <include name="activityTest"/>
+                </methods>
+            </class>
+            <class name="login.LoginViaTrelloTest">
+                <methods>
+                    <include name="loginWithNotRegisteredCredentials"/>
+                    <include name="loginWithinNotConfirmedEmail"/>
+                </methods>
+            </class>
+            <class name="register.RegisterUserTest">
+                <methods>
+                    <include name="registerWithExistingDataTest"/>
+                </methods>
+            </class>
+            <class name="settings.SettingsTest">
+                <methods>
+                    <include name="activityTest"/>
+                    <include name="cardsTest"/>
+                    <include name="allowDesktopNotificationsTest"/>
+                    <include name="enableDisableSuggestionsTest"/>
+                    <include name="optOutOfMarketingEmailsTest"/>
+                    <include name="enableColorBlindFriendlyModeTest"/>
+                    <include name="applicationsTest"/>
+                    <include name="manageYourRecentDevicesTest"/>
+                    <include name="configureTwoFAAuthenticationTest"/>
+                    <include name="downloadPersonalDataTest"/>
+                </methods>
+            </class>
+            <class name="workspaces.WorkspaceListPageTest">
+                <methods>
+                    <include name="workspaceTableTabPremiumRequireTest"/>
+                    <include name="workspaceTableLeftNavigationDrawerPremiumRequireTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

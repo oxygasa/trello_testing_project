@@ -2,7 +2,6 @@ package pages.login;
 
 import commons.CommonActions;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,9 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import pages.base.BasePage;
 import pages.boards.BoardsPage;
-import pages.workspaces.WorkspaceListPage;
-
-import static commons.CommonActions.driver;
 
 public class LoginViaTrelloPage extends BasePage {
     @FindBy(className = "error-message")
@@ -45,6 +41,14 @@ public class LoginViaTrelloPage extends BasePage {
     WebDriver driver;
     public LoginViaTrelloPage(WebDriver driver) {
         this.driver = driver;
+    }
+
+    public String getLoginCredential() {
+        return LOGIN_CREDENTIAL;
+    }
+
+    public String getSecondUserLoginCredential() {
+        return SECOND_USER_LOGIN_CREDENTIAL;
     }
 
     /**Steps**/

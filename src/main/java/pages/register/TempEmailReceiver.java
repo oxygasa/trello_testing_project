@@ -9,14 +9,12 @@ import pages.base.BasePage;
 
 import java.util.List;
 
-import static commons.CommonActions.driver;
-
-public class TempMail extends BasePage {
+public class TempEmailReceiver extends BasePage {
     WebDriver driver;
-    public TempMail(WebDriver driver) {
+    public TempEmailReceiver(WebDriver driver) {
         this.driver = driver;
     }
-    public final String TEMP_MAIL_PAGE_URL = "https://temp-mail.io/";
+    private final String TEMP_MAIL_PAGE_URL = "https://temp-mail.io/";
     @FindBy(id = "email")
     private WebElement randomTempEmail;
     @FindAll({@FindBy(xpath = "//li[contains(@class,'message list-complete')]")})
@@ -36,7 +34,7 @@ public class TempMail extends BasePage {
         return createTempEmailInstance();
    }
 
-   public TempMail sendMail(String sendToMail, String message) throws InterruptedException {
+   public TempEmailReceiver sendMail(String sendToMail, String message) throws InterruptedException {
        for (int i = 0; i < 3; i++) {
            driver.get(TEMP_MAIL_PAGE_URL);
            CommonActions.explicitWaitOfOneElementVisible(randomTempEmail);

@@ -10,6 +10,7 @@ import pages.cards.card_fullscreen.FullscreenCardModePage;
 import pages.cards.card_list.CardListPage;
 import pages.cards.header.CardsHeader;
 import pages.cards.right_navigation_draver.RightNavigationDrawer;
+import pages.register.TempEmailSender;
 
 import static commons.CommonActions.driver;
 
@@ -196,8 +197,9 @@ public class RightNavigationDrawerTest extends BaseTest {
         RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
         rightNavigationDrawer.generateMailAddressByTrello();
         String mailtoGeneratedByTrello = rightNavigationDrawer.getTrelloGeneratedMail();
-        String bodyText = "Nice to see you!";
-
+        String bodyText = "Nice to see you @useruser18578591 #green ";
+        TempEmailSender tempEmailSender = PageFactory.initElements(driver, TempEmailSender.class);
+        tempEmailSender.sendEmail(mailtoGeneratedByTrello,cardTitle,bodyText);
         System.out.println("Sending mail 20 sec...");
         Thread.sleep(20000);
         System.out.println("Mail has been sent...");
