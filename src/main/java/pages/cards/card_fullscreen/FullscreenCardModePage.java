@@ -1,11 +1,11 @@
 package pages.cards.card_fullscreen;
 
 import commons.CommonActions;
-import graphql.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 import pages.base.BasePage;
 
 import java.util.List;
@@ -21,23 +21,41 @@ public class FullscreenCardModePage extends BasePage {
     private WebElement commentTextField;
     @FindBy(xpath = "//textarea[contains(@class,'js-card-detail-title-input')]")
     private WebElement cardTitleInput;
+    @FindBy(xpath = "//div[contains(@class,'js-show-with-desc')]/p")
+    private WebElement descriptionText;
 
-    public FullscreenCardModePage openActiveCard() throws InterruptedException {
+    public FullscreenCardModePage openFirstActiveCard() throws InterruptedException {
         Thread.sleep(2000);
         CommonActions.explicitWaitOfOneElementVisible(activeCards.get(0));
         activeCards.get(0).click();
         Thread.sleep(10000);
         return this;
     }
-
+    public FullscreenCardModePage openSecondActiveCard() throws InterruptedException {
+        Thread.sleep(2000);
+        CommonActions.explicitWaitOfOneElementVisible(activeCards.get(0));
+        activeCards.get(1).click();
+        Thread.sleep(10000);
+        return this;
+    }
     public FullscreenCardModePage isCommentTextFieldDoesntDisplay() throws InterruptedException {
         Thread.sleep(2000);
         CommonActions.explicitWaitOfOneElementVisible(cardTitleInput);
         try {
             commentTextField.click();
-        } catch (org.openqa.selenium.NoSuchElementException e) { //Assert.assertFalse(commentTextField.isDisplayed()) doesn't work.
+        } catch (
+                org.openqa.selenium.NoSuchElementException e) { //Assert.assertFalse(commentTextField.isDisplayed()) doesn't work.
             CommonActions.explicitWaitOfOneElementVisible(cardTitleInput);
         }
         return this;
     }
+
+    public FullscreenCardModePage isDescriptionContainsExpectedText(String expectedText) throws InterruptedException {
+        Thread.sleep(2000);
+        driver.navigate().refresh();
+        Thread.sleep(2000);
+        Assert.assertEquals(descriptionText.getText(), expectedText);
+        return this;
+    }
 }
+

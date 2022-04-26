@@ -1,3 +1,10 @@
+/** This Spring mail class works correctly
+ * but overloads the memory on weak machines.
+ * Go to register package and see https://temp-mail.io/ as a receiver
+ * And https://anonymousemail.me/ as a sender service for the email.
+ ***/
+
+/*
 package commons.mail_sender;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +20,10 @@ public class SendEmail {
      * AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
      * SendEmail bean = context.getBean(SendEmail.class);
      * bean.sendEmail();
-     * **/
+     ***/
+/*
     @Autowired
-    public MailSender mailSender;
+    private MailSender mailSender;
 
     public void sendMail(String setMailTo, String setTitle, String setBodyText){
 
@@ -28,4 +36,7 @@ public class SendEmail {
 
         mailSender.send(msg);
     }
+
 }
+
+*/

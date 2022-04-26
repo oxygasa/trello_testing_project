@@ -2,10 +2,7 @@ package cards.right_navigation_drawer;
 
 import base.BaseTest;
 import commons.CommonActions;
-import commons.mail_sender.AppConfig;
-import commons.mail_sender.SendEmail;
 import org.openqa.selenium.support.PageFactory;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.boards.BoardsPage;
@@ -13,7 +10,6 @@ import pages.cards.card_fullscreen.FullscreenCardModePage;
 import pages.cards.card_list.CardListPage;
 import pages.cards.header.CardsHeader;
 import pages.cards.right_navigation_draver.RightNavigationDrawer;
-import pages.register.TempMail;
 
 import static commons.CommonActions.driver;
 
@@ -71,7 +67,7 @@ public class RightNavigationDrawerTest extends BaseTest {
         driver.get(boardsPage.getDefaultWorkspaceUrl());
         boardsPage.openFirstExistingBoard();
         fullscreenCardModePage
-                .openActiveCard()
+                .openFirstActiveCard()
                 .isCommentTextFieldDoesntDisplay();
     }
 
@@ -116,7 +112,7 @@ public class RightNavigationDrawerTest extends BaseTest {
         CommonActions.loginIntoTrelloBySecondUserCredentials();
         rightNavigationDrawer.navigateToDisallowedBoard(disallowedBoard);
         fullscreenCardModePage
-                .openActiveCard()
+                .openFirstActiveCard()
                 .isCommentTextFieldDoesntDisplay();
     }
 
@@ -189,24 +185,35 @@ public class RightNavigationDrawerTest extends BaseTest {
     //TC ID TRE041 Add cards via email.
     @Test
     public void addCardsViaEmailTest() throws InterruptedException {
-
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-        RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
         driver.get(boardsPage.getDefaultWorkspaceUrl());
         boardsPage.openFirstExistingBoard();
+        CardListPage cardListPage = PageFactory.initElements(driver, CardListPage.class);
+        cardListPage.createFewCards();
+        String cardTitle = cardListPage.rememberCardTitle();
+        RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
         rightNavigationDrawer.generateMailAddressByTrello();
-    // Write this test to finish
+        String mailtoGeneratedByTrello = rightNavigationDrawer.getTrelloGeneratedMail();
+        String bodyText = "Nice to see you!";
 
+        System.out.println("Sending mail 20 sec...");
+        Thread.sleep(20000);
+        System.out.println("Mail has been sent...");
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        FullscreenCardModePage fullscreenCardModePage = PageFactory.initElements(driver, FullscreenCardModePage.class);
+        fullscreenCardModePage
+                .openSecondActiveCard()
+                .isDescriptionContainsExpectedText(bodyText);
     }
 
     //TC ID TRE042 Watch button and email notification testing.
     @Test
     public void watchAndEmailNotificationTest() {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-        SendEmail bean = context.getBean(SendEmail.class);
-        bean.sendMail("imsweet75@gmail.com","Hi, Dima","Nice to see you!");
+
+
     }
 
     //TC ID TRE043 Make Template Premium required checking.

@@ -1,3 +1,32 @@
+/** This Spring mail method works correctly
+ * but overloads the memory on weak machines.
+ * Go to "register" package and see https://temp-mail.io/ as a receiver
+ * and https://anonymousemail.me/ as a sender service for the tests within email.
+ ***/
+
+/* Dependencies.
+  Gradle
+ implementation group: 'com.sun.mail', name: 'javax.mail', version: '1.6.2'
+ implementation group: 'javax.mail', name: 'javax.mail-api', version: '1.6.2'
+ implementation group: 'org.springframework', name: 'spring-context-support', version: '5.3.19'
+
+  Maven
+ <dependency>
+ <groupId>javax.mail</groupId>
+ <artifactId>javax.mail-api</artifactId>
+ <version>1.6.2</version>
+ </dependency>
+ <dependency>
+ <groupId>com.sun.mail</groupId>
+ <artifactId>javax.mail</artifactId>
+ <version>1.6.2</version>
+ </dependency>
+ <dependency>
+ <groupId>org.springframework</groupId>
+ <artifactId>spring-context-support</artifactId>
+ <version>5.3.19</version>
+ </dependency>
+
 package commons.mail_sender;
 
 import org.springframework.context.annotation.Bean;
@@ -12,7 +41,7 @@ import java.util.Properties;
 @Configuration
 public class AppConfig {
     @Bean
-    public MailSender mailSender() {
+    private MailSender mailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
@@ -31,3 +60,7 @@ public class AppConfig {
         return mailSender;
     }
 }
+
+
+
+ */

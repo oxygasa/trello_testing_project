@@ -12,6 +12,8 @@ import pages.base.BasePage;
 import java.util.List;
 import java.util.Random;
 
+import static commons.CommonActions.driver;
+
 public class CardListPage extends BasePage {
     WebDriver driver;
     @FindAll({@FindBy(xpath = "//a[contains(@class,'js-open-add-list')]/..")})
@@ -111,6 +113,11 @@ public class CardListPage extends BasePage {
         return this;
     }
 
+    public String rememberCardTitle() {
+        return activeCardList.get(0).getText();
+    }
+
+
     public CardListPage addCardCover() throws InterruptedException {
         Thread.sleep(2000);
         CommonActions.explicitWaitOfOneElementVisible(activeCardPropertyButton.get(0));
@@ -155,10 +162,11 @@ public class CardListPage extends BasePage {
 
         int i;
         for (i = 0; i < 5; i++) {
-            if(observeLabelColorList.get(i).getText().contains(labelNameValue)){
+            if (observeLabelColorList.get(i).getText().contains(labelNameValue)) {
                 break;
             }
-        } if (i >= 5){
+        }
+        if (i >= 5) {
             Assert.fail();
         }
 
@@ -176,23 +184,27 @@ public class CardListPage extends BasePage {
         } catch (org.openqa.selenium.ElementNotInteractableException e) {
             archiveSingleCardButton.click();
         }
-    return this;
+        return this;
     }
-    public int countCardsInBeginning(){
+
+    public int countCardsInBeginning() {
         return activeCardList.size();
     }
+
     public int countCardsInEnd() throws InterruptedException {
         Thread.sleep(2000);
         CommonActions.explicitWaitOfOneElementVisible(activeCardList.get(0));
         return activeCardList.size();
     }
-    public CardListPage addAllCardsToArchive(){
+
+    public CardListPage addAllCardsToArchive() {
         listPropertyButton.click();
         archiveAllCardsButton.click();
         archiveAllConfirmButton.click();
         return this;
     }
-    public CardListPage addListOfCardsToArchive(){
+
+    public CardListPage addListOfCardsToArchive() {
         listPropertyButton.click();
         archiveListButton.click();
         return this;
