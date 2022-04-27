@@ -20,7 +20,7 @@ public class TempEmailSender {
     private WebElement senderEmailTextBox;
     @FindBy(id="rcpt")
     private WebElement receiverEmailTextBox;
-    @FindBy(id="reply")
+    @FindBy(id="cc")
     private WebElement sendCopyToTextBox;
     @FindBy(id="subject")
     private WebElement emailTitleTextBox;

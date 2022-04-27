@@ -116,6 +116,10 @@ public class CardsHeader extends BasePage {
         return this;
     }
 
+    public String getBoardName(){
+        return boardRenameInput.getText();
+    }
+
     public CardsHeader checkTheBoardNameIsExpected(String expectedBoardName) throws InterruptedException {
         Thread.sleep(4000);
         CommonActions.explicitWaitOfOneElementVisible(boardRenameInput);

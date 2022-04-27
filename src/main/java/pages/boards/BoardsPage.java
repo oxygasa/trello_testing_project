@@ -14,6 +14,7 @@ import java.util.List;
 public class BoardsPage extends BasePage {
     /*** Web elements, locators. **/
     private final String DEFAULT_WORKSPACE_URL = "https://trello.com/tenboardstestworkspace";
+    private final String SECONDARY_WORKSPACE_URL = "https://trello.com/workspacename25";
     @FindAll({@FindBy(xpath = "//div[@class='board-tile-details-name']")})
     public List<WebElement> boardTitles; //need to be public for assert List preparations.
     WebDriver driver;
@@ -79,7 +80,9 @@ public class BoardsPage extends BasePage {
     public String getDefaultWorkspaceUrl() {
         return DEFAULT_WORKSPACE_URL;
     }
-
+    public String getSecondaryWorkspaceUrl() {
+        return SECONDARY_WORKSPACE_URL;
+    }
     /*** There are methods to make test steps code shorter **/
 
     public List<String> createCollectionOfFiveExpectedBoards() throws InterruptedException {

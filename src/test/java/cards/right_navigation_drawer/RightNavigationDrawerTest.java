@@ -1,6 +1,7 @@
 package cards.right_navigation_drawer;
 
 import base.BaseTest;
+import com.google.zxing.NotFoundException;
 import commons.CommonActions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -11,6 +12,8 @@ import pages.cards.card_list.CardListPage;
 import pages.cards.header.CardsHeader;
 import pages.cards.right_navigation_draver.RightNavigationDrawer;
 import pages.register.TempEmailSender;
+
+import java.io.IOException;
 
 import static commons.CommonActions.driver;
 
@@ -197,11 +200,11 @@ public class RightNavigationDrawerTest extends BaseTest {
         RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
         rightNavigationDrawer.generateMailAddressByTrello();
         String mailtoGeneratedByTrello = rightNavigationDrawer.getTrelloGeneratedMail();
-        String bodyText = "Nice to see you @useruser18578591 #green ";
+        String bodyText = "Nice to see you @useruser18578591 #green";
         TempEmailSender tempEmailSender = PageFactory.initElements(driver, TempEmailSender.class);
         tempEmailSender.sendEmail(mailtoGeneratedByTrello,cardTitle,bodyText);
-        System.out.println("Sending mail 20 sec...");
-        Thread.sleep(20000);
+        System.out.println("Sending mail 30 sec...");
+        Thread.sleep(30000);
         System.out.println("Mail has been sent...");
         driver.get(boardsPage.getDefaultWorkspaceUrl());
         boardsPage.openFirstExistingBoard();
@@ -213,40 +216,92 @@ public class RightNavigationDrawerTest extends BaseTest {
 
     //TC ID TRE042 Watch button and email notification testing.
     @Test
-    public void watchAndEmailNotificationTest() {
-
-
+    public void watchAndEmailNotificationTest() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
+        CardListPage cardListPage = PageFactory.initElements(driver, CardListPage.class);
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
+        CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        cardListPage.createFewCards();
+        rightNavigationDrawer.startWatchBoard();
+        cardListPage.startWatchList()
+                    .stopWatchBoard()
+                    .stopwatchList();
     }
 
     //TC ID TRE043 Make Template Premium required checking.
     @Test
-    public void makeTemplatePremiumRequireTest() {
+    public void makeTemplatePremiumRequireTest() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
+        CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        rightNavigationDrawer.tryToActivateTemplate();
     }
 
     //TC ID TRE044 Copy Board function testing.
     @Test
-    public void copyBoardTest() {
+    public void copyBoardTest() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
+        CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        rightNavigationDrawer.copyBoard();
+        CommonActions.closeAllVisibleBoards(boardsPage.getSecondaryWorkspaceUrl());
+
     }
 
     //TC ID TRE045 Print and Export to suggested formats.
     @Test
-    public void printAndExportTest() {
+    public void printAndExportTest() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
+        CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        rightNavigationDrawer.isJsonValid();
     }
 
     //TC ID TRE046 Close Board function testing.
     @Test
-    public void closeBoardTest() {
+    public void closeBoardTest() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
     }
 
     //TC ID TRE047 Link to this board testing.
     @Test
-    public void linkToThisBoardTest() {
+    public void linkToThisBoardTest() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
+        CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        rightNavigationDrawer.copyAndNavigateToBoardLink();
     }
 
+    /*
+    Secured by not direct link to image
     //TC ID TRE048 QR Code test.
     @Test
-    public void qrCodeTest() {
+    public void qrCodeTest() throws InterruptedException, IOException, NotFoundException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
+        CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        rightNavigationDrawer.copyAndNavigateToBoardQR();
     }
+     */
 
     //TC ID TRE049 About this board formatting testing.
     @Test

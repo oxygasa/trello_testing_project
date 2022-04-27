@@ -30,6 +30,7 @@ dependencies {
     implementation group: 'io.cucumber', name: 'cucumber-java', version: '7.2.3'
     implementation group: 'io.cucumber', name: 'cucumber-testng', version: '7.2.3'
     testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '5.0.1'
+    implementation group: 'com.google.zxing', name: 'javase', version: '3.4.1'
 }
 
 /**Project info**/
