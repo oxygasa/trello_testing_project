@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 public class RightNavigationDrawer extends BasePage {
     WebDriver driver;
@@ -55,6 +56,8 @@ public class RightNavigationDrawer extends BasePage {
     private WebElement descLink;
     @FindBy(xpath = "//div[contains(@class,'js-desc')]//img")
     private WebElement descImage;
+    @FindBy(xpath = "//body/div[@id='trello-root']")
+    private WebElement boardBackground;
     @FindAll({@FindBy(xpath = "//li[@class='board-menu-navigation-item']")})
     private List<WebElement> mainMenuListOnDrawer;
     @FindAll({@FindBy(xpath = "//ul[contains(@class,'pop-over-list')]/li")})
@@ -71,6 +74,8 @@ public class RightNavigationDrawer extends BasePage {
     private WebElement collectionsUpgradeToPremiumButton;
     @FindBy(xpath = "//button[@data-test-id='templates-upgrade-pill']/..")
     private WebElement templatesUpgradeToPremiumButton;
+    @FindBy(xpath = "//button[contains(@class,'_2m_u7Mih_gK082')]/..")
+    private WebElement customFieldsUpgradeToPremiumButton;
     @FindAll({@FindBy(xpath = "//div[contains(@class,'list-card-cover')]")})
     private List<WebElement> createdCovers;
     @FindAll({@FindBy(xpath = "//ul[@class='pop-over-list']/li")})
@@ -78,13 +83,21 @@ public class RightNavigationDrawer extends BasePage {
     @FindAll({@FindBy(xpath = "//ul[@class='pop-over-list']/li")})
     private List<WebElement> addRemovePermOptions;
     @FindBy(xpath = "//button[@data-test-id='collections-upgrade-prompt']")
-    private WebElement premiumModuleUpgradeToPremiumButton;
+    private WebElement firstPremiumModule;
+    @FindBy(xpath = "//button[contains(@class,'_2QS-_EUQY6wswi')]")
+    private WebElement secondPremiumModule;
     @FindAll({@FindBy(xpath = "//div[contains(@class,'js-card-details')]")})
     private List<WebElement> archivedCardList;
     @FindAll({@FindBy(xpath = "//a[@class='js-reopen']")})
     private List<WebElement> reopenCards;
     @FindBy(xpath = "//a[@download='trello-board-qr-code.png']")
     private WebElement QRcodeDownloadButton;
+    @FindBy(xpath = "//li[contains(@class,'mod-background')]")
+    private WebElement changeBackgroundButton;
+    @FindAll({@FindBy( xpath = "//div[@class='image']")})
+    private List<WebElement> backgroudTypeList;
+    @FindAll({@FindBy( xpath = "//div[contains(@class,'photo-attribution-component')]")})
+    private List<WebElement> photosByUnsplashTM;
     @FindBy(xpath = "//a[contains(@class,'js-reopen')]/..")
     private WebElement reopenList;
     @FindBy(xpath = "//a[contains(@class,'archive-controls-switch')]")
@@ -255,18 +268,32 @@ public class RightNavigationDrawer extends BasePage {
         boardsPage.premiumAskingAssert();
         return this;
     }
-
-    public RightNavigationDrawer tryToUpgradeUser() throws InterruptedException {
+    public RightNavigationDrawer tryToActivateCustomFields() throws InterruptedException {
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-        navigateToMoreSectionWithinDrawerOpeningStatusChecking();
-        CommonActions.explicitWaitOfOneElementVisible(premiumModuleUpgradeToPremiumButton);
-        premiumModuleUpgradeToPremiumButton.click();
+        navigateToDrawerMainMenu();
+        CommonActions.explicitWaitOfOneElementVisible(customFieldsUpgradeToPremiumButton);
+        customFieldsUpgradeToPremiumButton.click();
         boardsPage.premiumAskingAssert();
         return this;
     }
 
-    public RightNavigationDrawer startWatchBoard() throws InterruptedException {
+    public RightNavigationDrawer tryToUpgradeUserFirstModule() throws InterruptedException {
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        navigateToMoreSectionWithinDrawerOpeningStatusChecking();
+        CommonActions.explicitWaitOfOneElementVisible(firstPremiumModule);
+        firstPremiumModule.click();
+        boardsPage.premiumAskingAssert();
+        return this;
+    }
+    public RightNavigationDrawer tryToUpgradeUserSecondModule() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        navigateToDrawerMainMenu();
+        CommonActions.explicitWaitOfOneElementVisible(secondPremiumModule);
+        secondPremiumModule.click();
+        boardsPage.premiumAskingAssert();
+        return this;
+    }
+    public RightNavigationDrawer startWatchBoard() throws InterruptedException {
         navigateToMoreSectionWithinDrawerOpeningStatusChecking();
         CommonActions.explicitWaitOfOneElementVisible(moreMenuList.get(0));
         moreMenuList.get(4).click();
@@ -405,8 +432,8 @@ public class RightNavigationDrawer extends BasePage {
             boardsPage.hideExistingDrawer();
             boardsPage.openRightNaviDrawer()
                     .clickMoreButton();
-            CommonActions.explicitWaitOfOneElementVisible(premiumModuleUpgradeToPremiumButton);
-            premiumModuleUpgradeToPremiumButton.click();
+            CommonActions.explicitWaitOfOneElementVisible(firstPremiumModule);
+            firstPremiumModule.click();
             boardsPage.premiumAskingAssert();
         } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException |
                  org.openqa.selenium.TimeoutException e) {
@@ -437,8 +464,8 @@ public class RightNavigationDrawer extends BasePage {
             boardsPage.hideExistingDrawer();
             boardsPage.openRightNaviDrawer()
                     .clickMoreButton();
-            CommonActions.explicitWaitOfOneElementVisible(premiumModuleUpgradeToPremiumButton);
-            premiumModuleUpgradeToPremiumButton.click();
+            CommonActions.explicitWaitOfOneElementVisible(firstPremiumModule);
+            firstPremiumModule.click();
             boardsPage.premiumAskingAssert();
         } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException |
                  org.openqa.selenium.TimeoutException e) {
@@ -468,6 +495,23 @@ public class RightNavigationDrawer extends BasePage {
         Assert.assertEquals(descBullet.get(0).getText(),"Eggs");
         Assert.assertEquals(descLink.getAttribute("href"),"https://example.com/scrambled-eggs.pdf");
         Assert.assertEquals(descImage.getAttribute("src"),"https://mvnrepository.com/assets/images/392dffac024b9632664e6f2c0cac6fe5-logo.png");
+        return this;
+    }
+    public RightNavigationDrawer changeBoardBackground() throws InterruptedException {
+        String backgroundBefore = boardBackground.getAttribute("style");
+        navigateToDrawerMainMenu();
+        CommonActions.explicitWaitOfOneElementVisible(changeBackgroundButton);
+        changeBackgroundButton.click();
+        CommonActions.explicitWaitOfOneElementVisible(backgroudTypeList.get(0));
+        backgroudTypeList.get(0).click();
+        Thread.sleep(2000);
+        CommonActions.explicitWaitOfOneElementVisible(photosByUnsplashTM.get(0));
+        Random random = new Random();
+        photosByUnsplashTM.get(random.nextInt(10)).click();
+        Thread.sleep(5000);
+        CommonActions.explicitWaitOfOneElementVisible(boardBackground);
+        String backgroundAfter = boardBackground.getAttribute("style");
+        Assert.assertNotEquals(backgroundAfter, backgroundBefore);
         return this;
     }
     public String getTrelloGeneratedMail() {

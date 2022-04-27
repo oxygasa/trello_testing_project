@@ -158,7 +158,7 @@ public class RightNavigationDrawerTest extends BaseTest {
         driver.get(boardsPage.getDefaultWorkspaceUrl());
         boardsPage.openFirstExistingBoard();
         cardListPage.createFewCards();
-        rightNavigationDrawer.tryToUpgradeUser();
+        rightNavigationDrawer.tryToUpgradeUserFirstModule();
     }
 
     //TC ID TRE040 Archived items manipulations checking.
@@ -315,22 +315,44 @@ public class RightNavigationDrawerTest extends BaseTest {
 
     //TC ID TRE050 Commenting on a card testing.
     @Test
-    public void commentOnCardTest() {
+    public void commentOnCardTest() throws InterruptedException {
+    //This menu redirects to the section of TC ID TRE034 Commenting permissions.
     }
 
     //TC ID TRE051 Change card background testing.
     @Test
-    public void changeCardBackgroundTest() {
+    public void changeBoardBackgroundTest() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
+        CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        rightNavigationDrawer.changeBoardBackground();
     }
 
     //TC ID TRE052 Custom fields Premium requiring test.
     @Test
-    public void customFieldPremiumRequireTest() {
+    public void customFieldPremiumRequireTest() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
+        CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        rightNavigationDrawer.tryToActivateCustomFields();
     }
 
     //TC ID TRE053 Try Premium module checking.
     @Test
-    public void tryPremiumSecondModuleTest() {
+    public void tryPremiumSecondModuleTest() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
+        CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        rightNavigationDrawer.tryToUpgradeUserSecondModule();
     }
 
     //TC ID TRE054 Stickers module testing.
