@@ -303,7 +303,14 @@ public class RightNavigationDrawerTest extends BaseTest {
 
     //TC ID TRE049 About this board formatting testing.
     @Test
-    public void aboutThisBoardFormattingTest() {
+    public void aboutThisBoardFormattingTest() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
+        CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        rightNavigationDrawer.editAboutThisBoardDescription();
     }
 
     //TC ID TRE050 Commenting on a card testing.

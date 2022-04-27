@@ -15,14 +15,18 @@ import pages.boards.BoardsPage;
 import pages.cards.header.CardsHeader;
 import pages.login.LoginViaTrelloPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
+
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
+
 public class CommonActions {
 
     public static WebDriver driver;
@@ -71,6 +75,19 @@ public class CommonActions {
             e.printStackTrace();
         }
         return "";
+    }
+
+    /*** Convert any file to String **/
+    public static String convertTextFileToString(String file_path) {
+        String str = "";
+        try {
+            str = new String(
+                    Files.readAllBytes(Paths.get(file_path)));
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return str;
     }
 
     /*** New Browser tab opening within Url typing **/

@@ -15,6 +15,7 @@ import org.testng.Assert;
 import pages.base.BasePage;
 import pages.boards.BoardsPage;
 import pages.cards.header.CardsHeader;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -32,6 +33,30 @@ public class RightNavigationDrawer extends BasePage {
 
     @FindAll({@FindBy(xpath = "//li[@class='board-menu-navigation-item']")})
     private List<WebElement> moreMenuList;
+    @FindBy(xpath = "//span[contains(@class,'js-editing-members-description')]/..")
+    private WebElement editDescriptionButton;
+    @FindBy(xpath = "//div[contains(@class,'description-edit')]/textarea")
+    private WebElement editDescriptionTextArea;
+    @FindBy(xpath = "//p[contains(@class, 'js-hide-with-desc')]")
+    private WebElement editDescriptionPreEditingArea;
+    @FindBy(xpath = "//input[contains(@class,'mod-submit')]")
+    private WebElement submitDescriptionButton;
+    @FindBy(xpath = "//div[contains(@class,'js-desc')]//h1")
+    private WebElement descFirstLevelTitle;
+    @FindBy(xpath = "//div[contains(@class,'js-desc')]//h2")
+    private WebElement descSecondLevelTitle;
+    @FindBy(xpath = "//div[contains(@class,'js-desc')]//strong")
+    private WebElement descBoldText;
+    @FindAll({@FindBy(xpath = "//div[contains(@class,'js-desc')]//em")})
+    private List<WebElement> descItalicText;
+    @FindAll({@FindBy(xpath = "//div[contains(@class,'js-desc')]//ul/li")})
+    private List<WebElement> descBullet;
+    @FindBy(xpath = "//div[contains(@class,'js-desc')]//a[@target='_blank']")
+    private WebElement descLink;
+    @FindBy(xpath = "//div[contains(@class,'js-desc')]//img")
+    private WebElement descImage;
+    @FindAll({@FindBy(xpath = "//li[@class='board-menu-navigation-item']")})
+    private List<WebElement> mainMenuListOnDrawer;
     @FindAll({@FindBy(xpath = "//ul[contains(@class,'pop-over-list')]/li")})
     private List<WebElement> settingsMenuList;
     @FindBy(xpath = "//select[@class='js-org']")
@@ -83,6 +108,28 @@ public class RightNavigationDrawer extends BasePage {
     @FindBy(xpath = "//input[@id='result']")
     private WebElement qrResultLink;
 
+    private RightNavigationDrawer navigateToDrawerMainMenu() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        boardsPage.openRightNaviDrawer();
+        try {
+            /**
+             * Don't stop if the Right Navigation Drawer is already opened.
+             **/
+            Thread.sleep(2000);
+            boardsPage.hideExistingDrawer();
+            boardsPage.openRightNaviDrawer();
+        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException |
+                 org.openqa.selenium.TimeoutException e) {
+            /**
+             * Within opening the Right Navigation Drawer
+             **/
+            boardsPage.openRightNaviDrawer();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        Thread.sleep(1000);
+    return this;
+    }
     private RightNavigationDrawer navigateToSettingsSectionOfMoreMenuWithinDrawerOpeningStatusChecking() throws InterruptedException {
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         try {
@@ -253,21 +300,25 @@ public class RightNavigationDrawer extends BasePage {
             }
         }
     }
-    private void deleteRepeatingQRimagesFromFS() {
+
+    private void deleteRepeatingQRImagesFromFS() {
         for (File myFile : Objects.requireNonNull(new File("C:\\Users\\user\\Downloads").listFiles()))
             if (myFile.getName().contains("trello-board-qr-code")) myFile.delete();
     }
-    private void analizeFileSystemAboutExistingQRimagesAndDeleteThem() throws InterruptedException {
+
+    private void analiseFileSystemAboutExistingQRImagesAndDeleteThem() throws InterruptedException {
         CommonActions.explicitWaitOfOneElementVisible(linkToQR);
         linkToQR.click();
         CommonActions.explicitWaitOfOneElementVisible(QRcodeDownloadButton);
         ArrayList<File> fileList = new ArrayList<>();
         findDownloadedQrCodeImage(new File("C:\\Users\\user\\Downloads"), fileList);
     }
+
     private void downloadQRcode() throws InterruptedException {
         QRcodeDownloadButton.click();
         Thread.sleep(5000);
     }
+
     public RightNavigationDrawer copyAndNavigateToBoardQR() throws InterruptedException, IOException, NotFoundException {
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
@@ -275,8 +326,8 @@ public class RightNavigationDrawer extends BasePage {
         String expectedBoardName = boardsPage.getFirstBoardTitle();
         boardsPage.openFirstExistingBoard();
         navigateToMoreSectionWithinDrawerOpeningStatusChecking();
-        analizeFileSystemAboutExistingQRimagesAndDeleteThem();
-        deleteRepeatingQRimagesFromFS();
+        analiseFileSystemAboutExistingQRImagesAndDeleteThem();
+        deleteRepeatingQRImagesFromFS();
         downloadQRcode();
         ArrayList<File> fileList1 = new ArrayList<>();
         findDownloadedQrCodeImage(new File("C:\\Users\\user\\Downloads"), fileList1);
@@ -396,6 +447,29 @@ public class RightNavigationDrawer extends BasePage {
         return this;
     }
 
+    public RightNavigationDrawer editAboutThisBoardDescription() throws InterruptedException {
+        navigateToDrawerMainMenu();
+        CommonActions.explicitWaitOfOneElementVisible(mainMenuListOnDrawer.get(0));
+        mainMenuListOnDrawer.get(0).click();
+        CommonActions.explicitWaitOfOneElementVisible(editDescriptionPreEditingArea);
+        editDescriptionPreEditingArea.click();
+        CommonActions.explicitWaitOfOneElementVisible(editDescriptionTextArea);
+        editDescriptionTextArea.clear();
+        String separator = File.separator;
+        String path = "." + separator + "src" + separator + "test" + separator + "resources" + separator + "TRE049TestCaseMockText.txt";
+        String descriptionText = CommonActions.convertTextFileToString(path);
+        editDescriptionTextArea.sendKeys(descriptionText);
+        submitDescriptionButton.click();
+        Assert.assertEquals(descFirstLevelTitle.getText(),"Making Scrambled Eggs: A Primer");
+        Assert.assertEquals(descSecondLevelTitle.getText(),"1.1: Preparation");
+        Assert.assertEquals(descBoldText.getText(),"Carefully");
+        Assert.assertEquals(descItalicText.get(0).getText(),"vigorously");
+        Assert.assertEquals(descItalicText.get(1).getText(),"Optional:");
+        Assert.assertEquals(descBullet.get(0).getText(),"Eggs");
+        Assert.assertEquals(descLink.getAttribute("href"),"https://example.com/scrambled-eggs.pdf");
+        Assert.assertEquals(descImage.getAttribute("src"),"https://mvnrepository.com/assets/images/392dffac024b9632664e6f2c0cac6fe5-logo.png");
+        return this;
+    }
     public String getTrelloGeneratedMail() {
         return generatedMailField.getAttribute("value");
     }

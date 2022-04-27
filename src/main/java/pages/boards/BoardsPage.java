@@ -162,7 +162,8 @@ public class BoardsPage extends BasePage {
 
 
     /*** Series of methods for deleting the board. Actions **/
-    public BoardsPage openRightNaviDrawer() {
+    public BoardsPage openRightNaviDrawer() throws InterruptedException {
+        CommonActions.explicitWaitOfOneElementVisible(showRightSidebarButton);
         showRightSidebarButton.click();
         return this;
     }
