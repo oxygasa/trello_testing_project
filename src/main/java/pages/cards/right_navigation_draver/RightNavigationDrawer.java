@@ -5,7 +5,6 @@ import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 import commons.CommonActions;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.checkerframework.checker.units.qual.Luminance;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -16,14 +15,13 @@ import org.testng.Assert;
 import pages.base.BasePage;
 import pages.boards.BoardsPage;
 import pages.cards.header.CardsHeader;
-
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class RightNavigationDrawer extends BasePage {
     WebDriver driver;
@@ -61,7 +59,7 @@ public class RightNavigationDrawer extends BasePage {
     @FindAll({@FindBy(xpath = "//a[@class='js-reopen']")})
     private List<WebElement> reopenCards;
     @FindBy(xpath = "//a[@download='trello-board-qr-code.png']")
-    private WebElement QRcode;
+    private WebElement QRcodeDownloadButton;
     @FindBy(xpath = "//a[contains(@class,'js-reopen')]/..")
     private WebElement reopenList;
     @FindBy(xpath = "//a[contains(@class,'archive-controls-switch')]")
@@ -84,7 +82,50 @@ public class RightNavigationDrawer extends BasePage {
     private WebElement qrReader;
     @FindBy(xpath = "//input[@id='result']")
     private WebElement qrResultLink;
-    private RightNavigationDrawer navigateToSettings() throws InterruptedException {
+
+    private RightNavigationDrawer navigateToSettingsSectionOfMoreMenuWithinDrawerOpeningStatusChecking() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        try {
+            /**
+             * Don't stop if the Right Navigation Drawer is already opened.
+             **/
+            Thread.sleep(2000);
+            boardsPage.hideExistingDrawer();
+            navigateToSettingsMoreSection();
+        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException |
+                 org.openqa.selenium.TimeoutException e) {
+            /**
+             * Within opening the Right Navigation Drawer
+             **/
+            navigateToSettingsMoreSection();
+        }
+        return this;
+    }
+
+    private RightNavigationDrawer navigateToMoreSectionWithinDrawerOpeningStatusChecking() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        try {
+            /**
+             * Don't stop if the Right Navigation Drawer is already opened.
+             **/
+            Thread.sleep(2000);
+            boardsPage.hideExistingDrawer();
+            boardsPage.openRightNaviDrawer()
+                    .clickMoreButton();
+        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException |
+                 org.openqa.selenium.TimeoutException e) {
+            /**
+             * Within opening the Right Navigation Drawer
+             **/
+            boardsPage.openRightNaviDrawer()
+                    .clickMoreButton();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return this;
+    }
+
+    private RightNavigationDrawer navigateToSettingsMoreSection() throws InterruptedException {
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         boardsPage.openRightNaviDrawer()
                 .clickMoreButton();
@@ -94,152 +135,54 @@ public class RightNavigationDrawer extends BasePage {
     }
 
     public RightNavigationDrawer changeWorkspace() throws InterruptedException {
-        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-        try {
-            /**
-             * Don't stop if the Right Navigation Drawer is already opened.
-             **/
-            Thread.sleep(2000);
-            boardsPage.hideExistingDrawer();
-            navigateToSettings();
-            CommonActions.explicitWaitOfOneElementVisible(settingsMenuList.get(0));
-            settingsMenuList.get(0).click();
-            Select workspaceDropdown = new Select(workspaceSelector);
-            workspaceDropdown.selectByIndex(1);
-            Thread.sleep(2000);
-            CommonActions.explicitWaitOfOneElementVisible(submitWorkspaceButton);
-            submitWorkspaceButton.click();
-            Thread.sleep(2000);
-            Assert.assertEquals(actualWorkspaceName.getText(), "Workspace name");
-            settingsMenuList.get(0).click();
-            workspaceDropdown.selectByIndex(0);
-            Thread.sleep(4000);
-            CommonActions.explicitWaitOfOneElementVisible(submitWorkspaceButton);
-            submitWorkspaceButton.click();
-        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException |
-                 org.openqa.selenium.TimeoutException e) {
-            /**
-             * Within opening the Right Navigation Drawer
-             **/
-            navigateToSettings();
-            CommonActions.explicitWaitOfOneElementVisible(settingsMenuList.get(0));
-            settingsMenuList.get(0).click();
-            Select workspaceDropdown = new Select(workspaceSelector);
-            workspaceDropdown.selectByIndex(1);
-            Thread.sleep(2000);
-            CommonActions.explicitWaitOfOneElementVisible(submitWorkspaceButton);
-            submitWorkspaceButton.click();
-            Thread.sleep(2000);
-            Assert.assertEquals(actualWorkspaceName.getText(), "Workspace name");
-            settingsMenuList.get(0).click();
-            workspaceDropdown.selectByIndex(0);
-            Thread.sleep(4000);
-            CommonActions.explicitWaitOfOneElementVisible(submitWorkspaceButton);
-            submitWorkspaceButton.click();
-        }
+        navigateToSettingsSectionOfMoreMenuWithinDrawerOpeningStatusChecking();
+        CommonActions.explicitWaitOfOneElementVisible(settingsMenuList.get(0));
+        settingsMenuList.get(0).click();
+        Select workspaceDropdown = new Select(workspaceSelector);
+        workspaceDropdown.selectByIndex(1);
+        Thread.sleep(2000);
+        CommonActions.explicitWaitOfOneElementVisible(submitWorkspaceButton);
+        submitWorkspaceButton.click();
+        Thread.sleep(2000);
+        Assert.assertEquals(actualWorkspaceName.getText(), "Workspace name");
+        settingsMenuList.get(0).click();
+        workspaceDropdown.selectByIndex(0);
+        Thread.sleep(4000);
+        CommonActions.explicitWaitOfOneElementVisible(submitWorkspaceButton);
+        submitWorkspaceButton.click();
         return this;
     }
 
     public RightNavigationDrawer disableCover() throws InterruptedException {
-        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-
-        try {
-            /**
-             * Don't stop if the Right Navigation Drawer is already opened.
-             **/
-            Thread.sleep(2000);
-            boardsPage.hideExistingDrawer();
-            navigateToSettings();
-            CommonActions.explicitWaitOfOneElementVisible(settingsMenuList.get(0));
-            settingsMenuList.get(1).click();
-            Assert.assertFalse(createdCovers.get(0).isDisplayed());
-        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException |
-                 org.openqa.selenium.TimeoutException e) {
-            /**
-             * Within opening the Right Navigation Drawer
-             **/
-            navigateToSettings();
-            CommonActions.explicitWaitOfOneElementVisible(settingsMenuList.get(0));
-            settingsMenuList.get(1).click();
-            Assert.assertFalse(createdCovers.get(0).isDisplayed());
-        }
+        navigateToSettingsSectionOfMoreMenuWithinDrawerOpeningStatusChecking();
+        CommonActions.explicitWaitOfOneElementVisible(settingsMenuList.get(0));
+        settingsMenuList.get(1).click();
+        Assert.assertFalse(createdCovers.get(0).isDisplayed());
         return this;
     }
 
     public RightNavigationDrawer changeCommentPermission() throws InterruptedException {
-        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-        try {
-            /**
-             * Don't stop if the Right Navigation Drawer is already opened.
-             **/
-            Thread.sleep(2000);
-            boardsPage.hideExistingDrawer();
-            navigateToSettings();
-            CommonActions.explicitWaitOfOneElementVisible(settingsMenuList.get(0));
-            settingsMenuList.get(2).click();
-            CommonActions.explicitWaitOfOneElementVisible(commentPermissionOptions.get(1));
-            commentPermissionOptions.get(1).click();
-        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException |
-                 org.openqa.selenium.TimeoutException e) {
-            /**
-             * Within opening the Right Navigation Drawer
-             **/
-            navigateToSettings();
-            CommonActions.explicitWaitOfOneElementVisible(settingsMenuList.get(0));
-            settingsMenuList.get(2).click();
-            CommonActions.explicitWaitOfOneElementVisible(commentPermissionOptions.get(1));
-            commentPermissionOptions.get(1).click();
-        }
+        navigateToSettingsSectionOfMoreMenuWithinDrawerOpeningStatusChecking();
+        CommonActions.explicitWaitOfOneElementVisible(settingsMenuList.get(0));
+        settingsMenuList.get(2).click();
+        CommonActions.explicitWaitOfOneElementVisible(commentPermissionOptions.get(1));
+        commentPermissionOptions.get(1).click();
         return this;
     }
 
     public RightNavigationDrawer addRemovePermTurnOff() throws InterruptedException {
-        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-        try {
-            /**
-             * Don't stop if the Right Navigation Drawer is already opened.
-             **/
-            Thread.sleep(2000);
-            boardsPage.hideExistingDrawer();
-            navigateToSettings();
-            CommonActions.explicitWaitOfOneElementVisible(settingsMenuList.get(0));
-            settingsMenuList.get(3).click();
-            CommonActions.explicitWaitOfOneElementVisible(addRemovePermOptions.get(1));
-            addRemovePermOptions.get(1).click();
-        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException |
-                 org.openqa.selenium.TimeoutException e) {
-            /**
-             * Within opening the Right Navigation Drawer
-             **/
-            navigateToSettings();
-            CommonActions.explicitWaitOfOneElementVisible(settingsMenuList.get(0));
-            settingsMenuList.get(3).click();
-            CommonActions.explicitWaitOfOneElementVisible(addRemovePermOptions.get(1));
-            addRemovePermOptions.get(1).click();
-        }
+        navigateToSettingsSectionOfMoreMenuWithinDrawerOpeningStatusChecking();
+        CommonActions.explicitWaitOfOneElementVisible(settingsMenuList.get(0));
+        settingsMenuList.get(3).click();
+        CommonActions.explicitWaitOfOneElementVisible(addRemovePermOptions.get(1));
+        addRemovePermOptions.get(1).click();
         return this;
     }
 
     public RightNavigationDrawer inviteOnlyTurnOn() throws InterruptedException {
-        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-        try {
-            /**
-             * Don't stop if the Right Navigation Drawer is already opened.
-             **/
-            Thread.sleep(2000);
-            boardsPage.hideExistingDrawer();
-            navigateToSettings();
-            CommonActions.explicitWaitOfOneElementVisible(settingsMenuList.get(0));
-            settingsMenuList.get(4).click();
-        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException |
-                 org.openqa.selenium.TimeoutException e) {
-            /**
-             * Within opening the Right Navigation Drawer
-             **/
-            navigateToSettings();
-            CommonActions.explicitWaitOfOneElementVisible(settingsMenuList.get(0));
-            settingsMenuList.get(4).click();
-        }
+        navigateToSettingsSectionOfMoreMenuWithinDrawerOpeningStatusChecking();
+        CommonActions.explicitWaitOfOneElementVisible(settingsMenuList.get(0));
+        settingsMenuList.get(4).click();
         return this;
     }
 
@@ -250,135 +193,80 @@ public class RightNavigationDrawer extends BasePage {
 
     public RightNavigationDrawer tryToActivateCollections() throws InterruptedException {
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-        try {
-            /**
-             * Don't stop if the Right Navigation Drawer is already opened.
-             **/
-            Thread.sleep(2000);
-            boardsPage.hideExistingDrawer();
-            boardsPage.openRightNaviDrawer()
-                    .clickMoreButton();
-            CommonActions.explicitWaitOfOneElementVisible(collectionsUpgradeToPremiumButton);
-            collectionsUpgradeToPremiumButton.click();
-            boardsPage.premiumAskingAssert();
-        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException |
-                 org.openqa.selenium.TimeoutException e) {
-            /**
-             * Within opening the Right Navigation Drawer
-             **/
-            boardsPage.openRightNaviDrawer()
-                    .clickMoreButton();
-            CommonActions.explicitWaitOfOneElementVisible(collectionsUpgradeToPremiumButton);
-            collectionsUpgradeToPremiumButton.click();
-            boardsPage.premiumAskingAssert();
-        }
+        navigateToMoreSectionWithinDrawerOpeningStatusChecking();
+        CommonActions.explicitWaitOfOneElementVisible(collectionsUpgradeToPremiumButton);
+        collectionsUpgradeToPremiumButton.click();
+        boardsPage.premiumAskingAssert();
         return this;
     }
+
     public RightNavigationDrawer tryToActivateTemplate() throws InterruptedException {
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-        try {
-            /**
-             * Don't stop if the Right Navigation Drawer is already opened.
-             **/
-            Thread.sleep(2000);
-            boardsPage.hideExistingDrawer();
-            boardsPage.openRightNaviDrawer()
-                    .clickMoreButton();
-            CommonActions.explicitWaitOfOneElementVisible(templatesUpgradeToPremiumButton);
-            templatesUpgradeToPremiumButton.click();
-            boardsPage.premiumAskingAssert();
-        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException |
-                 org.openqa.selenium.TimeoutException e) {
-            /**
-             * Within opening the Right Navigation Drawer
-             **/
-            boardsPage.openRightNaviDrawer()
-                    .clickMoreButton();
-            CommonActions.explicitWaitOfOneElementVisible(templatesUpgradeToPremiumButton);
-            templatesUpgradeToPremiumButton.click();
-            boardsPage.premiumAskingAssert();
-        }
+        navigateToMoreSectionWithinDrawerOpeningStatusChecking();
+        CommonActions.explicitWaitOfOneElementVisible(templatesUpgradeToPremiumButton);
+        templatesUpgradeToPremiumButton.click();
+        boardsPage.premiumAskingAssert();
         return this;
     }
 
     public RightNavigationDrawer tryToUpgradeUser() throws InterruptedException {
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-        try {
-            /**
-             * Don't stop if the Right Navigation Drawer is already opened.
-             **/
-            Thread.sleep(2000);
-            boardsPage.hideExistingDrawer();
-            boardsPage.openRightNaviDrawer()
-                    .clickMoreButton();
-            CommonActions.explicitWaitOfOneElementVisible(premiumModuleUpgradeToPremiumButton);
-            premiumModuleUpgradeToPremiumButton.click();
-            boardsPage.premiumAskingAssert();
-        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException |
-                 org.openqa.selenium.TimeoutException e) {
-            /**
-             * Within opening the Right Navigation Drawer
-             **/
-            boardsPage.openRightNaviDrawer()
-                    .clickMoreButton();
-            CommonActions.explicitWaitOfOneElementVisible(premiumModuleUpgradeToPremiumButton);
-            premiumModuleUpgradeToPremiumButton.click();
-            boardsPage.premiumAskingAssert();
-        }
+        navigateToMoreSectionWithinDrawerOpeningStatusChecking();
+        CommonActions.explicitWaitOfOneElementVisible(premiumModuleUpgradeToPremiumButton);
+        premiumModuleUpgradeToPremiumButton.click();
+        boardsPage.premiumAskingAssert();
         return this;
     }
+
     public RightNavigationDrawer startWatchBoard() throws InterruptedException {
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-        try {
-            /**
-             * Don't stop if the Right Navigation Drawer is already opened.
-             **/
-            Thread.sleep(2000);
-            boardsPage.hideExistingDrawer();
-            boardsPage.openRightNaviDrawer()
-                    .clickMoreButton();
-            CommonActions.explicitWaitOfOneElementVisible(moreMenuList.get(0));
-            moreMenuList.get(4).click();
-        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException |
-                 org.openqa.selenium.TimeoutException e) {
-            /**
-             * Within opening the Right Navigation Drawer
-             **/
-            boardsPage.openRightNaviDrawer()
-                    .clickMoreButton();
-            CommonActions.explicitWaitOfOneElementVisible(moreMenuList.get(0));
-            moreMenuList.get(4).click();
-        }
+        navigateToMoreSectionWithinDrawerOpeningStatusChecking();
+        CommonActions.explicitWaitOfOneElementVisible(moreMenuList.get(0));
+        moreMenuList.get(4).click();
         return this;
     }
+
     public RightNavigationDrawer copyAndNavigateToBoardLink() throws InterruptedException {
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
         driver.get(boardsPage.getDefaultWorkspaceUrl());
         String expectedBoardName = boardsPage.getFirstBoardTitle();
         boardsPage.openFirstExistingBoard();
-        try {
-            /**
-             * Don't stop if the Right Navigation Drawer is already opened.
-             **/
-            Thread.sleep(2000);
-            boardsPage.hideExistingDrawer();
-            boardsPage.openRightNaviDrawer()
-                    .clickMoreButton();
-        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException |
-                 org.openqa.selenium.TimeoutException e) {
-            /**
-             * Within opening the Right Navigation Drawer
-             **/
-            boardsPage.openRightNaviDrawer()
-                    .clickMoreButton();
-        }
+        navigateToMoreSectionWithinDrawerOpeningStatusChecking();
         CommonActions.explicitWaitOfOneElementVisible(moreMenuList.get(0));
         String expectedBoardUrl = boardUrl.getAttribute("value");
         driver.get(expectedBoardUrl);
         String actualBoardName = cardsHeader.getBoardName();
-        Assert.assertEquals(actualBoardName,expectedBoardName);
+        Assert.assertEquals(actualBoardName, expectedBoardName);
         return this;
+    }
+
+    private void findDownloadedQrCodeImage(File rootFile, List<File> fileList) {
+        if (rootFile.isDirectory()) {
+            File[] directoryFiles = rootFile.listFiles();
+            if (directoryFiles != null) {
+                for (File file : directoryFiles) {
+                    if (file.getName().toLowerCase().startsWith("trello-board-qr-code")) {
+                        fileList.add(file);
+                    }
+                }
+            }
+        }
+    }
+    private void deleteRepeatingQRimagesFromFS() {
+        for (File myFile : Objects.requireNonNull(new File("C:\\Users\\user\\Downloads").listFiles()))
+            if (myFile.getName().contains("trello-board-qr-code")) myFile.delete();
+    }
+    private void analizeFileSystemAboutExistingQRimagesAndDeleteThem() throws InterruptedException {
+        CommonActions.explicitWaitOfOneElementVisible(linkToQR);
+        linkToQR.click();
+        CommonActions.explicitWaitOfOneElementVisible(QRcodeDownloadButton);
+        ArrayList<File> fileList = new ArrayList<>();
+        findDownloadedQrCodeImage(new File("C:\\Users\\user\\Downloads"), fileList);
+    }
+    private void downloadQRcode() throws InterruptedException {
+        QRcodeDownloadButton.click();
+        Thread.sleep(5000);
     }
     public RightNavigationDrawer copyAndNavigateToBoardQR() throws InterruptedException, IOException, NotFoundException {
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
@@ -386,62 +274,29 @@ public class RightNavigationDrawer extends BasePage {
         driver.get(boardsPage.getDefaultWorkspaceUrl());
         String expectedBoardName = boardsPage.getFirstBoardTitle();
         boardsPage.openFirstExistingBoard();
-        try {
-            /**
-             * Don't stop if the Right Navigation Drawer is already opened.
-             **/
-            Thread.sleep(2000);
-            boardsPage.hideExistingDrawer();
-            boardsPage.openRightNaviDrawer()
-                    .clickMoreButton();
-        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException |
-                 org.openqa.selenium.TimeoutException e) {
-            /**
-             * Within opening the Right Navigation Drawer
-             **/
-            boardsPage.openRightNaviDrawer()
-                    .clickMoreButton();
-        }
-        CommonActions.explicitWaitOfOneElementVisible(linkToQR);
-        linkToQR.click();
-        //////
-        CommonActions.explicitWaitOfOneElementVisible(QRcode);
-        String src = QRcode.getAttribute("src");
-        System.out.println(src);
-        URL qrCodeUrl = new URL(src);
-        BufferedImage bufferedImage = ImageIO.read(qrCodeUrl);
+        navigateToMoreSectionWithinDrawerOpeningStatusChecking();
+        analizeFileSystemAboutExistingQRimagesAndDeleteThem();
+        deleteRepeatingQRimagesFromFS();
+        downloadQRcode();
+        ArrayList<File> fileList1 = new ArrayList<>();
+        findDownloadedQrCodeImage(new File("C:\\Users\\user\\Downloads"), fileList1);
+        File qrCodeInFiles = new File(fileList1.get(fileList1.size() - 1).getPath());
+        BufferedImage bufferedImage = ImageIO.read(qrCodeInFiles);
         LuminanceSource luminanceSource = new BufferedImageLuminanceSource(bufferedImage);
         BinaryBitmap binaryBitmap = new BinaryBitmap(new HybridBinarizer(luminanceSource));
         Result result = new MultiFormatReader().decode(binaryBitmap);
         String expectedBoardUrl = result.getText();
         driver.get(expectedBoardUrl);
         String actualBoardName = cardsHeader.getBoardName();
-        Assert.assertEquals(actualBoardName,expectedBoardName);
+        Assert.assertEquals(actualBoardName, expectedBoardName);
         return this;
     }
+
     public RightNavigationDrawer copyBoard() throws InterruptedException {
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-        try {
-            /**
-             * Don't stop if the Right Navigation Drawer is already opened.
-             **/
-            Thread.sleep(2000);
-            boardsPage.hideExistingDrawer();
-            boardsPage.openRightNaviDrawer()
-                    .clickMoreButton();
-            CommonActions.explicitWaitOfOneElementVisible(moreMenuList.get(0));
-            moreMenuList.get(5).click();
-
-        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException |
-                 org.openqa.selenium.TimeoutException e) {
-            /**
-             * Within opening the Right Navigation Drawer
-             **/
-            boardsPage.openRightNaviDrawer()
-                    .clickMoreButton();
-            CommonActions.explicitWaitOfOneElementVisible(moreMenuList.get(0));
-            moreMenuList.get(5).click();
-        }
+        navigateToMoreSectionWithinDrawerOpeningStatusChecking();
+        CommonActions.explicitWaitOfOneElementVisible(moreMenuList.get(0));
+        moreMenuList.get(5).click();
         Thread.sleep(1000);
         CommonActions.explicitWaitOfOneElementVisible(clonedBoardNewTitleField);
         Select workspaceDropdown = new Select(workspaceOptions);
@@ -453,7 +308,7 @@ public class RightNavigationDrawer extends BasePage {
         Thread.sleep(500);
         submitCloneBoardButton.click();
         driver.get(boardsPage.getSecondaryWorkspaceUrl());
-        Assert.assertEquals(boardsPage.getFirstBoardTitle(),newBoardName);
+        Assert.assertEquals(boardsPage.getFirstBoardTitle(), newBoardName);
         return this;
     }
 
@@ -463,47 +318,25 @@ public class RightNavigationDrawer extends BasePage {
         driver.get(boardsPage.getDefaultWorkspaceUrl());
         String expectedBoardName = boardsPage.getFirstBoardTitle();
         boardsPage.openFirstExistingBoard();
-        try {
-            /**
-             * Don't stop if the Right Navigation Drawer is already opened.
-             **/
-            Thread.sleep(2000);
-            boardsPage.hideExistingDrawer();
-            boardsPage.openRightNaviDrawer()
-                    .clickMoreButton();
-            CommonActions.explicitWaitOfOneElementVisible(moreMenuList.get(0));
-            moreMenuList.get(6).click();
-
-        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.ElementNotInteractableException |
-                 org.openqa.selenium.TimeoutException e) {
-            /**
-             * Within opening the Right Navigation Drawer
-             **/
-            boardsPage.openRightNaviDrawer()
-                    .clickMoreButton();
-            CommonActions.explicitWaitOfOneElementVisible(moreMenuList.get(0));
-            moreMenuList.get(6).click();
-        }
+        navigateToMoreSectionWithinDrawerOpeningStatusChecking();
+        CommonActions.explicitWaitOfOneElementVisible(moreMenuList.get(0));
+        moreMenuList.get(6).click();
         exportToJson.click();
-
         Assert.assertTrue(json.getText().contains(expectedBoardName));
         return this;
     }
 
     private RightNavigationDrawer navigateToArchive() throws InterruptedException {
-        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-        boardsPage.openRightNaviDrawer()
-                .clickMoreButton();
+        navigateToMoreSectionWithinDrawerOpeningStatusChecking();
         CommonActions.explicitWaitOfOneElementVisible(moreMenuList.get(0));
         moreMenuList.get(2).click();
         Thread.sleep(5000);
         CommonActions.explicitWaitOfOneElementVisible(archivedCardList.get(0));
         return this;
     }
+
     private RightNavigationDrawer navigateToEmailGenerator() throws InterruptedException {
-        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-        boardsPage.openRightNaviDrawer()
-                .clickMoreButton();
+        navigateToMoreSectionWithinDrawerOpeningStatusChecking();
         CommonActions.explicitWaitOfOneElementVisible(moreMenuList.get(0));
         moreMenuList.get(3).click();
         Thread.sleep(5000);
@@ -562,7 +395,8 @@ public class RightNavigationDrawer extends BasePage {
         }
         return this;
     }
-    public String getTrelloGeneratedMail(){
+
+    public String getTrelloGeneratedMail() {
         return generatedMailField.getAttribute("value");
     }
 }

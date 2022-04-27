@@ -18,6 +18,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.UnsupportedFlavorException;
+import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.List;

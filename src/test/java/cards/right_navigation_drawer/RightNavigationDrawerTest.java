@@ -288,8 +288,6 @@ public class RightNavigationDrawerTest extends BaseTest {
         rightNavigationDrawer.copyAndNavigateToBoardLink();
     }
 
-    /*
-    Secured by not direct link to image
     //TC ID TRE048 QR Code test.
     @Test
     public void qrCodeTest() throws InterruptedException, IOException, NotFoundException {
@@ -301,7 +299,7 @@ public class RightNavigationDrawerTest extends BaseTest {
         boardsPage.openFirstExistingBoard();
         rightNavigationDrawer.copyAndNavigateToBoardQR();
     }
-     */
+
 
     //TC ID TRE049 About this board formatting testing.
     @Test
