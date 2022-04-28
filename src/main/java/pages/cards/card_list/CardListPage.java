@@ -79,6 +79,8 @@ public class CardListPage extends BasePage {
     private WebElement confirmStopWatchBoardButton;
     @FindBy(xpath = "//a[contains(@class,'pop-over-header-close-btn')]")
     private WebElement closePopoverButton;
+    @FindAll({@FindBy(xpath = "//a[contains(@class,'js-open-card-composer')]/..")})
+    public static List<WebElement> cardTitle; //need to be static for drag and drop test.
 
     public List<WebElement> getColorList() {
         return colorList;

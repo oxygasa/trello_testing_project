@@ -7,6 +7,7 @@ import commons.CommonActions;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -14,6 +15,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import pages.base.BasePage;
 import pages.boards.BoardsPage;
+import pages.cards.card_list.CardListPage;
 import pages.cards.header.CardsHeader;
 
 import javax.imageio.ImageIO;
@@ -70,6 +72,8 @@ public class RightNavigationDrawer extends BasePage {
     private WebElement actualWorkspaceName;
     @FindBy(xpath = "//div[@class='js-loaded']/input")
     private WebElement submitWorkspaceButton;
+    @FindBy(xpath = "//div[@class='sticker-removing']")
+    private WebElement stickerRemoveButton;
     @FindBy(xpath = "//button[@data-test-id='collections-upgrade-pill']/..")
     private WebElement collectionsUpgradeToPremiumButton;
     @FindBy(xpath = "//button[@data-test-id='templates-upgrade-pill']/..")
@@ -94,10 +98,12 @@ public class RightNavigationDrawer extends BasePage {
     private WebElement QRcodeDownloadButton;
     @FindBy(xpath = "//li[contains(@class,'mod-background')]")
     private WebElement changeBackgroundButton;
-    @FindAll({@FindBy( xpath = "//div[@class='image']")})
+    @FindAll({@FindBy(xpath = "//div[@class='image']")})
     private List<WebElement> backgroudTypeList;
-    @FindAll({@FindBy( xpath = "//div[contains(@class,'photo-attribution-component')]")})
+    @FindAll({@FindBy(xpath = "//div[contains(@class,'photo-attribution-component')]")})
     private List<WebElement> photosByUnsplashTM;
+    @FindAll({@FindBy(xpath = "//div[contains(@class,'js-draggable-sticker')]")})
+    private List<WebElement> stickersByGiphyTM;
     @FindBy(xpath = "//a[contains(@class,'js-reopen')]/..")
     private WebElement reopenList;
     @FindBy(xpath = "//a[contains(@class,'archive-controls-switch')]")
@@ -120,7 +126,12 @@ public class RightNavigationDrawer extends BasePage {
     private WebElement qrReader;
     @FindBy(xpath = "//input[@id='result']")
     private WebElement qrResultLink;
-
+    @FindAll({@FindBy(xpath = "//div[contains(@class,'js-list-header')]")})
+    private List<WebElement> listTitles;
+    @FindAll({@FindBy(xpath = "//span[contains(@class,'js-card-name')]")})
+    private List<WebElement> cardTitles;
+    @FindAll({@FindBy(xpath = "//div[@class='phenom-desc']")})
+    private List<WebElement> actionList;
     private RightNavigationDrawer navigateToDrawerMainMenu() throws InterruptedException {
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         boardsPage.openRightNaviDrawer();
@@ -512,6 +523,31 @@ public class RightNavigationDrawer extends BasePage {
         CommonActions.explicitWaitOfOneElementVisible(boardBackground);
         String backgroundAfter = boardBackground.getAttribute("style");
         Assert.assertNotEquals(backgroundAfter, backgroundBefore);
+        return this;
+    }
+    public RightNavigationDrawer selectStickers() throws InterruptedException {
+        navigateToDrawerMainMenu();
+        CommonActions.explicitWaitOfOneElementVisible(mainMenuListOnDrawer.get(1));
+        mainMenuListOnDrawer.get(1).click();
+        Thread.sleep(2000);
+        CommonActions.explicitWaitOfOneElementVisible(stickersByGiphyTM.get(0));
+        Random random = new Random();
+        Actions actions = new Actions(driver);
+        actions.dragAndDrop(stickersByGiphyTM.get(random.nextInt(10)), CardListPage.cardTitle.get(0))
+               .moveToElement(CardListPage.cardTitle.get(0))
+               .click(stickerRemoveButton);
+        return this;
+    }
+    public RightNavigationDrawer checkActivityIsInteractive() throws InterruptedException {
+        String expectedListTitle = listTitles.get(0).getText();
+        String expectedCardTitle = cardTitles.get(0).getText();
+        navigateToDrawerMainMenu();
+        String actualCardAndListTitles = actionList.get(0).getText();
+        String actualBoardStatusInfo = actionList.get(2).getText();
+        System.out.println("expectedListTitle: "+expectedListTitle+". expectedCardTitle: "+expectedCardTitle+". actualCardTitle: "+actualCardAndListTitles);
+        Assert.assertEquals(actualCardAndListTitles,"trello rafs added "+expectedCardTitle+" to "+expectedListTitle);
+        System.out.println(actualBoardStatusInfo);
+        Assert.assertEquals(actualBoardStatusInfo,"trello rafs added this board to tenboardstestworkspace");
         return this;
     }
     public String getTrelloGeneratedMail() {

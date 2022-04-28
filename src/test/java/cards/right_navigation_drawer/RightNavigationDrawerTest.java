@@ -357,11 +357,29 @@ public class RightNavigationDrawerTest extends BaseTest {
 
     //TC ID TRE054 Stickers module testing.
     @Test
-    public void stickersTest() {
+    public void stickersTest() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        CardListPage cardListPage = PageFactory.initElements(driver, CardListPage.class);
+        RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
+        CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        cardListPage.createFewCards();
+        rightNavigationDrawer.selectStickers();
     }
 
     //TC ID TRE055 Activity history checking.
     @Test
-    public void activityTest() {
+    public void activityTest() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        CardListPage cardListPage = PageFactory.initElements(driver, CardListPage.class);
+        RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
+        CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        cardListPage.createFewCards();
+        rightNavigationDrawer.checkActivityIsInteractive();
     }
 }
