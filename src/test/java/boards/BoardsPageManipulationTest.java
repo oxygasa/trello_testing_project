@@ -16,9 +16,7 @@ public class BoardsPageManipulationTest extends BaseTest {
     //TC ID TRE020 Boards page: Recently viewed.
     @Test
     public void recentlyViewedBoardIsDisplayingOnBoardsPageTest() {
-        ///TC TRE021 Randomly catch recent viewed board in case of selenium reaction.
-        // List collection change size when recent board is cached and test this case.
-    
+        ///This TC has been covered by TC TRE021  Boards page: Your workspaces.
     }
 
     //TC ID TRE021 Boards page: Your workspaces.

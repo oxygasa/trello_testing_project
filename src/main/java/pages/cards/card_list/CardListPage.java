@@ -4,18 +4,25 @@ import commons.CommonActions;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import pages.base.BasePage;
+import pages.boards.BoardsPage;
 
 import java.util.List;
 import java.util.Random;
+
+import static commons.CommonActions.driver;
 
 public class CardListPage extends BasePage {
     WebDriver driver;
     @FindAll({@FindBy(xpath = "//a[contains(@class,'js-open-add-list')]/..")})
     private List<WebElement> addListButton;
+    @FindAll({@FindBy(xpath = "//div[contains(@class,'list-header-target')]")})
+    private List<WebElement> activeListHeaderList;
     @FindAll({@FindBy(xpath = "//input[@class='list-name-input']")})
     private List<WebElement> listNameInput;
     @FindAll({@FindBy(xpath = "//input[contains(@class,'mod-list-add-button js-save-edit')]")})
@@ -24,6 +31,8 @@ public class CardListPage extends BasePage {
     private List<WebElement> addCardTitleButton;
     @FindAll({@FindBy(xpath = "//textarea[contains(@class,'list-card-composer-textarea')]")})
     private List<WebElement> cardTextArea;
+    @FindAll({@FindBy(xpath = "//div[contains(@class,'js-card-details')]")})
+    private List<WebElement> interactibleCards;
     @FindAll({@FindBy(xpath = "//input[contains(@class,'js-add-card')]")})
     private List<WebElement> saveCardTitleButton;
     @FindAll({@FindBy(xpath = "//a[contains(@class,'js-cc-menu')]")})
@@ -82,9 +91,6 @@ public class CardListPage extends BasePage {
     @FindAll({@FindBy(xpath = "//a[contains(@class,'js-open-card-composer')]/..")})
     public static List<WebElement> cardTitle; //need to be static for drag and drop test.
 
-    public List<WebElement> getColorList() {
-        return colorList;
-    }
 
     public CardListPage(WebDriver driver) {
         this.driver = driver;
@@ -206,19 +212,51 @@ public class CardListPage extends BasePage {
         archiveListButton.click();
         return this;
     }
+
     public CardListPage startWatchList() {
         listPropertyButton.click();
         watchListButton.click();
         closePopoverButton.click();
         return this;
     }
+
     public CardListPage stopWatchBoard() {
         stopWatchBoardButton.click();
         confirmStopWatchBoardButton.click();
         return this;
     }
+
     public CardListPage stopwatchList() {
         startWatchList();
+        return this;
+    }
+
+    public CardListPage moveCards() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        createFewCards();
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.openFirstExistingBoard();
+        createFewCards();
+        try{
+        closePopoverButton.click();}
+        catch(org.openqa.selenium.NoSuchElementException e){
+            Thread.sleep(10);
+        }
+        /**In manual style drag a card to the next list activates free space creating for a drop.
+         * In automation card hasn't a place for drop, because drop place must be created before the drop action.
+         * Selenium drag and drop is a teleport.
+         * Creating the drop point is possible via JavascriptExecutor, but is not present user experience.**/
+        //Actions actions = new Actions(driver);
+        //actions.clickAndHold().dragAndDrop(interactibleCards.get(0), activeListHeaderList.get(0)).release().build().perform();
+
+        return this;
+    }
+
+    public CardListPage moveLists() throws InterruptedException {
+        /**List drag and drop is finished successfully, because a drop element is visible**/
+        Actions actions = new Actions(driver);
+        actions.clickAndHold().dragAndDrop(activeListHeaderList.get(0), activeListHeaderList.get(1)).release().build().perform();
+        Thread.sleep(5000);
         return this;
     }
 }
