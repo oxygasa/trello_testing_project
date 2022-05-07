@@ -89,9 +89,13 @@ public class WorkspaceListPage extends BasePage {
     public WorkspaceListPage createNewWorkspace() throws InterruptedException {
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         driver.get(boardsPage.getDefaultWorkspaceUrl());
+        Thread.sleep(3000);
         CommonActions.explicitWaitOfOneElementVisible(headerAddWorkspace);
         headerAddWorkspace.click();
+        CommonActions.explicitWaitOfOneElementVisible(headerCreateWorkspaceButton);
         headerCreateWorkspaceButton.click();
+        Thread.sleep(2000);
+        CommonActions.explicitWaitOfOneElementVisible(newWorkspaceNameInput);
         String newWorkspaceInputText = RandomStringUtils.randomAlphanumeric(10);
         newWorkspaceNameInput.sendKeys(newWorkspaceInputText);
         CommonActions.selectDropdownMenuNextValue(workspaceTypeSelectDropdown);
@@ -112,6 +116,8 @@ public class WorkspaceListPage extends BasePage {
         String newWorkspaceDescriptionText = RandomStringUtils.randomAlphanumeric(10);
         newWorkspaceDescriptionOptional.sendKeys(newWorkspaceDescriptionText);
         newWorkspaceSubmitButton.click();
+        Thread.sleep(2000);
+        CommonActions.explicitWaitOfOneElementVisible(inviteIDoItLaterLink);
         inviteIDoItLaterLink.click();
         return this;
     }
@@ -167,7 +173,9 @@ public class WorkspaceListPage extends BasePage {
         return this;
     }
 
-    public WorkspaceListPage assertLeftNaviDrawerTrialAsk() {
+    public WorkspaceListPage assertLeftNaviDrawerTrialAsk() throws InterruptedException {
+        Thread.sleep(1500);
+        CommonActions.explicitWaitOfOneElementVisible(trialButton);
         String trialButtonActualTitle = trialButton.getText();
         /*** Expected Results: Premium account required message is displayed. **/
         Assert.assertEquals(trialButtonActualTitle, getExpectedTrialButtonTitle());

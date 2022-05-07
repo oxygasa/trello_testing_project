@@ -9,6 +9,7 @@ import pages.register.RegistrationPage;
 import static commons.CommonActions.driver;
 
 public class RegisterUserTest extends BaseTest {
+    RegistrationPage registrationPage = PageFactory.initElements(driver, RegistrationPage.class);
     //TC ID TRE001 Register a new user through Trello
     @Test (groups={"smoke", "critical_path"})
     public void registerNewUserViaTrelloTest() throws InterruptedException {
@@ -17,7 +18,6 @@ public class RegisterUserTest extends BaseTest {
          * Type the email from https://temp-mail.io/  then submit it.
          * On https://id.atlassian.com/signup type the email from https://temp-mail.io/  then submit it.
          **/
-        RegistrationPage registrationPage = PageFactory.initElements(driver, RegistrationPage.class);
         registrationPage.tryToCreateNewUser();
 
 
@@ -30,7 +30,6 @@ public class RegisterUserTest extends BaseTest {
          * Type [default email name] in email text field then click the "Sign up it's free" button.
          * In the "Display name" type random name then submit.
          **/
-        RegistrationPage registrationPage = PageFactory.initElements(driver, RegistrationPage.class);
         registrationPage.tryToRegisterWithExistingLoginCredentials();
     }
 }

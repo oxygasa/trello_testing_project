@@ -11,11 +11,13 @@ import static commons.CommonActions.driver;
 
 public class WorkspaceListPageTest extends BaseTest {
 
+    WorkspaceListPage workspaceListPage = PageFactory.initElements(driver, WorkspaceListPage.class);
+    LeftNavigationDrawer leftNavigationDrawer = PageFactory.initElements(driver, LeftNavigationDrawer.class);
+    BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+
     //TC ID TRE010 Workspace page: change the information about.
     @Test (retryAnalyzer = FlakingTestOneChanceToPass.class, groups={"smoke", "critical_path"})
     public void changeInformationAboutWorkspaceTest() throws InterruptedException {
-        /*** Precondition: login **/
-        WorkspaceListPage workspaceListPage = PageFactory.initElements(driver, WorkspaceListPage.class);
         /*** Create, change workspace description field values. **/
         workspaceListPage
                 .createNewWorkspace()
@@ -27,7 +29,6 @@ public class WorkspaceListPageTest extends BaseTest {
     //TC ID TRE011 Workspace page: Workspace page: Workspace table Premium require
     @Test
     public void workspaceTableTabPremiumRequireTest() throws InterruptedException {
-        WorkspaceListPage workspaceListPage = PageFactory.initElements(driver, WorkspaceListPage.class);
         /*** Create new Workspace and navigate to the Workspace table tab.**/
         workspaceListPage.createNewWorkspace();
         String currentWorkspaceUrl = driver.getCurrentUrl();
@@ -44,14 +45,9 @@ public class WorkspaceListPageTest extends BaseTest {
     //TC ID TRE012 Left Navigation Drawer: Workspace table Premium require checking
     @Test (retryAnalyzer = FlakingTestOneChanceToPass.class)
     public void workspaceTableLeftNavigationDrawerPremiumRequireTest() throws InterruptedException {
-        /*** Precondition: login and open the workspace**/
-        WorkspaceListPage workspaceListPage = PageFactory.initElements(driver, WorkspaceListPage.class);
-        LeftNavigationDrawer leftNavigationDrawer = PageFactory.initElements(driver, LeftNavigationDrawer.class);
-        Thread.sleep(5000); //CI-CD need it to finish login process completely.
         workspaceListPage.createNewWorkspace();
         String currentWorkspaceUrl = driver.getCurrentUrl();
         driver.navigate().refresh();
-        Thread.sleep(5000);
         /*** Expand Left Navigation Drawer then click Workspace table button. **/
         leftNavigationDrawer
                 .expandLeftNaviDrawer()
@@ -66,9 +62,6 @@ public class WorkspaceListPageTest extends BaseTest {
     //TC ID TRE013 Left Navigation Drawer on Boards: Create new Workspace.
     @Test (retryAnalyzer = FlakingTestOneChanceToPass.class, groups={"critical_path"})
     public void createNewWorkspaceFromLeftNavigationDrawerOnBoardsTest() throws InterruptedException {
-        /*** Precondition: login**/
-        WorkspaceListPage workspaceListPage = PageFactory.initElements(driver, WorkspaceListPage.class);
-        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         /*** Create the workspace from the board page.**/
         driver.get(boardsPage.getDefaultWorkspaceUrl()+"/boards");
         boardsPage.createWorkspaceFromLeftNaviDrawer();

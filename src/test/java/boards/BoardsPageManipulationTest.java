@@ -12,6 +12,7 @@ import java.util.List;
 import static commons.CommonActions.driver;
 
 public class BoardsPageManipulationTest extends BaseTest {
+    BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
 
     //TC ID TRE020 Boards page: Recently viewed.
     @Test
@@ -23,7 +24,6 @@ public class BoardsPageManipulationTest extends BaseTest {
     @Test (groups={"smoke", "critical_path"})
     public void boardsDisplayingInYourWorkspacesSectionTest() throws InterruptedException {
         /*** Precondition: login, close all visible boards. Create 4 boards (and remember their names). **/
-        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         List<String> expectedBoardNamesListener = boardsPage.createCollectionOfFiveExpectedBoards();
         expectedBoardNamesListener.sort(String.CASE_INSENSITIVE_ORDER);

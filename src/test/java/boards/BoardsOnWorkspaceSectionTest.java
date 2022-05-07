@@ -15,12 +15,10 @@ import java.util.List;
 import static commons.CommonActions.driver;
 
 public class BoardsOnWorkspaceSectionTest extends BaseTest {
-
+    BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
     //TC ID TRE014 Workspace page: Boards Creation
     @Test (groups={"smoke", "critical_path"})
     public void boardsCreationTest() throws InterruptedException {
-        /*** Precondition: login **/
-        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         /*** Create a board with random parameters from Workspaces. **/
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
@@ -35,7 +33,6 @@ public class BoardsOnWorkspaceSectionTest extends BaseTest {
     @Test (retryAnalyzer = FlakingTestOneChanceToPass.class, groups={"smoke", "critical_path"})
     public void boardsFreeAccountLimitCounterTest() throws InterruptedException {
         /*** Precondition: login, close all visible boards. **/
-        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         driver.get(boardsPage.getDefaultWorkspaceUrl());
         /*** Open or create any workspace, create 10 boards. **/
             while (boardsPage.countBoardsNumber() < 10) {
@@ -58,8 +55,6 @@ public class BoardsOnWorkspaceSectionTest extends BaseTest {
     //TC ID TRE017 Workspace page: Boards add to  favourite.
     @Test (groups={"critical_path"})
     public void boardsAddToFavouriteTest() throws InterruptedException {
-        /*** Precondition: login, close all visible boards. **/
-        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         /*** Open any workspace. Add to favorite any board inside the board instance. **/
         driver.get(boardsPage.getDefaultWorkspaceUrl());
@@ -88,8 +83,6 @@ public class BoardsOnWorkspaceSectionTest extends BaseTest {
     //TC ID TRE018 Workspace page: Boards filter menu
     @Test
     public void boardsFilterMenuTest() throws InterruptedException {
-        /*** Precondition: login, close all visible boards. Create 4 boards (and remember their names). **/
-        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         List<String> expectedBoardNamesListener = boardsPage.createCollectionOfFiveExpectedBoards();
         System.out.println("Expected List" + expectedBoardNamesListener);

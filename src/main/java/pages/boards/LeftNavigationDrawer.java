@@ -40,13 +40,13 @@ public class LeftNavigationDrawer extends BasePage {
     }
 
     public LeftNavigationDrawer expandLeftNaviDrawer()  throws InterruptedException{
-        Thread.sleep(3000);
-        CommonActions.explicitWaitOfOneElementVisible(expander);
-        expander.click();
-        return this;
-    }
-    public LeftNavigationDrawer collapseLeftNaviDrawer(){
-        collapser.click();
+        try {
+            CommonActions.explicitWaitOfOneElementVisible(expander);
+            expander.click();
+        }
+        catch (org.openqa.selenium.TimeoutException e) {
+        Thread.sleep(100);
+        }
         return this;
     }
 

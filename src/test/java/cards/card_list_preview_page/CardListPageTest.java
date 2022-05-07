@@ -10,11 +10,11 @@ import pages.cards.card_list.CardListPage;
 import static commons.CommonActions.driver;
 
 public class CardListPageTest extends BaseTest {
+    BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+    CardListPage cardListPage = PageFactory.initElements(driver, CardListPage.class);
     //TC ID TRE056 Add another list
     @Test (groups={"smoke", "critical_path"})
     public void dragListsAndCardsTest() throws InterruptedException {
-        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-        CardListPage cardListPage = PageFactory.initElements(driver, CardListPage.class);
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
         boardsPage.openFirstExistingBoard();
@@ -25,8 +25,6 @@ public class CardListPageTest extends BaseTest {
     //TC ID TRE057 Checking the list filling by cards.
     @Test (groups={"smoke", "critical_path"})
     public void addCardTest() throws InterruptedException {
-        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-        CardListPage cardListPage = PageFactory.initElements(driver, CardListPage.class);
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
         boardsPage.openFirstExistingBoard();

@@ -12,13 +12,14 @@ import pages.cards.power_ups.PowerUpsPage;
 import static commons.CommonActions.driver;
 
 public class CardsHeaderTest extends BaseTest {
-
+    BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+    PowerUpsPage powerUpsPage = PageFactory.initElements(driver, PowerUpsPage.class);
+    CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
+    CardListPage cardListPage = PageFactory.initElements(driver, CardListPage.class);
     //TC ID TRE023 Board dropdown Premium require checking.
     @Test
     public void boardViewSwitcherPremiumRequireTest() throws InterruptedException {
         /*** Precondition**/
-        CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
-        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
         /*** Open any board. Click Board button. **/
@@ -31,8 +32,6 @@ public class CardsHeaderTest extends BaseTest {
     @Test (groups={"smoke", "critical_path"})
     public void boardNameChangingTest() throws InterruptedException {
         /*** Precondition: login**/
-        CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
-        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
         /*** Open any board. Change the board name. **/
@@ -52,8 +51,6 @@ public class CardsHeaderTest extends BaseTest {
     @Test
     public void changeAndShowWorkspacesTest() throws InterruptedException {
         /*** Precondition**/
-       CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
-        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
         /*** Open any board. Change the workspace. Check the place of the board is changed. **/
@@ -68,9 +65,6 @@ public class CardsHeaderTest extends BaseTest {
     @Test (groups={"smoke", "critical_path"})
     public void workspaceVisibleChangeTest() throws InterruptedException {
         /*** Precondition**/
-        CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
-        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-
         try {
             driver.get(boardsPage.getDefaultWorkspaceUrl());
             CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
@@ -99,8 +93,6 @@ public class CardsHeaderTest extends BaseTest {
     @Test (groups={"smoke", "critical_path"})
     public void workspaceVisibleChangeContinueTest() throws InterruptedException {
         /*** Precondition**/
-       CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
-        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         driver.get(boardsPage.getDefaultWorkspaceUrl());
         boardsPage.openFirstExistingBoard();
         if (cardsHeader.getVisibleWorkspaceButtonText().equals("Public")) {
@@ -123,8 +115,6 @@ public class CardsHeaderTest extends BaseTest {
     //TC ID TRE028 Member board permission change.
     @Test
     public void adminPermissionInactiveTest() throws InterruptedException {
-        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-        CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
         cardsHeader
@@ -139,8 +129,6 @@ public class CardsHeaderTest extends BaseTest {
     //TC ID TRE029 Invite link is valid.
     @Test
     public void boardByInviteLinkTest() throws InterruptedException {
-        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-        CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
         cardsHeader.isInviteLinkValid();
@@ -150,8 +138,6 @@ public class CardsHeaderTest extends BaseTest {
     @Test (groups={"critical_path"})
     public void powerUpsFunctionalityTest() throws InterruptedException {
         /*** Precondition**/
-        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-        PowerUpsPage powerUpsPage = PageFactory.initElements(driver, PowerUpsPage.class);
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
         driver.get(boardsPage.getDefaultWorkspaceUrl());
@@ -167,9 +153,6 @@ public class CardsHeaderTest extends BaseTest {
     @Test
     public void filterTest() throws InterruptedException {
         /*** Precondition:login, create a board, create the card for the filter testing**/
-        CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
-        CardListPage cardListPage = PageFactory.initElements(driver, CardListPage.class);
-        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
         driver.get(boardsPage.getDefaultWorkspaceUrl());
