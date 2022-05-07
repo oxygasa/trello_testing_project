@@ -14,6 +14,7 @@ public class LoginViaApplePage extends BasePage {
     WebDriver driver;
     public LoginViaApplePage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver,this);
     }
     public final String LOGIN_CREDENTIAL = "trellou0@gmail.com";
     public final String PASSWORD_CREDENTIAL = "sfjkg@Gygfuyg%%^$12521";

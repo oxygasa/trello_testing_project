@@ -12,6 +12,7 @@ public class LoginViaMicrosoftPage extends BasePage {
     WebDriver driver;
     public LoginViaMicrosoftPage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver,this);
     }
     public final String LOGIN_CREDENTIAL = "trellou0@outlook.com";
     public final String PASSWORD_CREDENTIAL = "Trellouser999Te!42";

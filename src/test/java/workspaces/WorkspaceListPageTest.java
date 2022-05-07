@@ -11,9 +11,9 @@ import static commons.CommonActions.driver;
 
 public class WorkspaceListPageTest extends BaseTest {
 
-    WorkspaceListPage workspaceListPage = PageFactory.initElements(driver, WorkspaceListPage.class);
-    LeftNavigationDrawer leftNavigationDrawer = PageFactory.initElements(driver, LeftNavigationDrawer.class);
-    BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+    WorkspaceListPage workspaceListPage = new WorkspaceListPage(driver);
+    LeftNavigationDrawer leftNavigationDrawer = new LeftNavigationDrawer(driver);
+    BoardsPage boardsPage = new BoardsPage(driver);
 
     //TC ID TRE010 Workspace page: change the information about.
     @Test (retryAnalyzer = FlakingTestOneChanceToPass.class, groups={"smoke", "critical_path"})

@@ -9,7 +9,7 @@ import pages.login.LoginViaTrelloPage;
 import static commons.CommonActions.driver;
 
 public class ForgotPasswordTest extends BaseTest {
-    ForgotPasswordPage forgotPasswordPage = PageFactory.initElements(driver, ForgotPasswordPage.class);
+    ForgotPasswordPage forgotPasswordPage = new ForgotPasswordPage(driver);
     //TC ID TRE009 Forget password
     @Test (groups={"smoke", "critical_path"})
     public void restoreForgottenPasswordTest() {

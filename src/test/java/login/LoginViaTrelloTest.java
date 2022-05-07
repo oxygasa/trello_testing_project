@@ -11,7 +11,7 @@ import pages.login.LoginViaTrelloPage;
 import static commons.CommonActions.driver;
 
 public class LoginViaTrelloTest extends BaseTest {
-    LoginViaTrelloPage loginViaTrelloPage = PageFactory.initElements(driver, LoginViaTrelloPage.class);
+    LoginViaTrelloPage loginViaTrelloPage = new LoginViaTrelloPage(driver);
     //TC ID TRE003 Incorrect credentials
     @Test
     public void loginWithNotRegisteredCredentials() throws InterruptedException {

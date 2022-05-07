@@ -91,6 +91,7 @@ public class CardsHeader extends BasePage {
 
     public CardsHeader(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver,this);
     }
 
 

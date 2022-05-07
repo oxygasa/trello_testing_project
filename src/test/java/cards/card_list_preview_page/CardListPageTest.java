@@ -10,8 +10,8 @@ import pages.cards.card_list.CardListPage;
 import static commons.CommonActions.driver;
 
 public class CardListPageTest extends BaseTest {
-    BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-    CardListPage cardListPage = PageFactory.initElements(driver, CardListPage.class);
+    BoardsPage boardsPage = new BoardsPage(driver);
+    CardListPage cardListPage = new CardListPage(driver);
     //TC ID TRE056 Add another list
     @Test (groups={"smoke", "critical_path"})
     public void dragListsAndCardsTest() throws InterruptedException {

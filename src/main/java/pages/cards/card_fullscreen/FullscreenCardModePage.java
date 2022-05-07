@@ -5,14 +5,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import pages.base.BasePage;
 
 import java.util.List;
 
 public class FullscreenCardModePage extends BasePage {
+    WebDriver driver;
     public FullscreenCardModePage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver,this);
     }
 
     @FindAll({@FindBy(xpath = "//div[contains(@class,'js-card-details')]")})

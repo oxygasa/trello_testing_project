@@ -14,6 +14,7 @@ public class RegistrationPage extends BasePage {
     WebDriver driver;
     public RegistrationPage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver,this);
     }
     public final String TRELLO_WELCOME_PAGE_URL = "https://trello.com";
     public final String TRELLO_REGISTER_PAGE_URL = "https://trello.com/signup";

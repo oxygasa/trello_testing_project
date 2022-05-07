@@ -79,6 +79,7 @@ public class WorkspaceListPage extends BasePage {
     private WebElement inviteIDoItLaterLink;
     public WorkspaceListPage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver,this);
     }
 
     public String getExpectedTrialButtonTitle() {

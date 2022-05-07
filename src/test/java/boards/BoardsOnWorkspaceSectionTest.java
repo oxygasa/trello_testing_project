@@ -15,7 +15,7 @@ import java.util.List;
 import static commons.CommonActions.driver;
 
 public class BoardsOnWorkspaceSectionTest extends BaseTest {
-    BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+    BoardsPage boardsPage = new BoardsPage(driver);
     //TC ID TRE014 Workspace page: Boards Creation
     @Test (groups={"smoke", "critical_path"})
     public void boardsCreationTest() throws InterruptedException {

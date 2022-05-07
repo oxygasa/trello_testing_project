@@ -12,9 +12,9 @@ import pages.cards.header.CardsHeader;
 
 import static commons.CommonActions.driver;
 public class BoardTemplateTest  extends BaseTest {
-    TemplatePage templatePage = PageFactory.initElements(driver, TemplatePage.class);
-    CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
-    BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+    TemplatePage templatePage = new TemplatePage(driver);
+    CardsHeader cardsHeader = new CardsHeader(driver);
+    BoardsPage boardsPage = new BoardsPage(driver);
 
     //TC ID TRE022 Make a board from Template.
     @Test (groups={"critical_path"})

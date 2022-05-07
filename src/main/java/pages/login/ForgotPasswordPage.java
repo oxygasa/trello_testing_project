@@ -13,6 +13,7 @@ public class ForgotPasswordPage extends BasePage {
     WebDriver driver;
     public ForgotPasswordPage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver,this);
     }
     @FindBy(xpath = "//ul//a[@href='/forgot']")
     public WebElement forgotPasswordLink;

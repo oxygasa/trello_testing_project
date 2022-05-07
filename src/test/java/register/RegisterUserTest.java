@@ -9,7 +9,7 @@ import pages.register.RegistrationPage;
 import static commons.CommonActions.driver;
 
 public class RegisterUserTest extends BaseTest {
-    RegistrationPage registrationPage = PageFactory.initElements(driver, RegistrationPage.class);
+    RegistrationPage registrationPage = new RegistrationPage(driver);
     //TC ID TRE001 Register a new user through Trello
     @Test (groups={"smoke", "critical_path"})
     public void registerNewUserViaTrelloTest() throws InterruptedException {

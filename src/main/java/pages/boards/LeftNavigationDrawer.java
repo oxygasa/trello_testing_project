@@ -37,6 +37,7 @@ public class LeftNavigationDrawer extends BasePage {
     WebDriver driver;
     public LeftNavigationDrawer(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver,this);
     }
 
     public LeftNavigationDrawer expandLeftNaviDrawer()  throws InterruptedException{

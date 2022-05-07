@@ -13,6 +13,7 @@ public class LoginViaGooglePage extends BasePage {
     WebDriver driver;
     public LoginViaGooglePage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver,this);
     }
     @FindBy(id = "googleButton")
     public WebElement googleOauthButton;

@@ -29,9 +29,9 @@ import java.util.Random;
 
 public class RightNavigationDrawer extends BasePage {
     WebDriver driver;
-
     public RightNavigationDrawer(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver,this);
     }
 
     @FindAll({@FindBy(xpath = "//li[@class='board-menu-navigation-item']")})

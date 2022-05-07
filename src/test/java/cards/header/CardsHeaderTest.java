@@ -12,10 +12,10 @@ import pages.cards.power_ups.PowerUpsPage;
 import static commons.CommonActions.driver;
 
 public class CardsHeaderTest extends BaseTest {
-    BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-    PowerUpsPage powerUpsPage = PageFactory.initElements(driver, PowerUpsPage.class);
-    CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
-    CardListPage cardListPage = PageFactory.initElements(driver, CardListPage.class);
+    BoardsPage boardsPage = new BoardsPage(driver);
+    PowerUpsPage powerUpsPage = new PowerUpsPage(driver);
+    CardsHeader cardsHeader = new CardsHeader(driver);
+    CardListPage cardListPage = new CardListPage(driver);
     //TC ID TRE023 Board dropdown Premium require checking.
     @Test
     public void boardViewSwitcherPremiumRequireTest() throws InterruptedException {

@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import pages.base.BasePage;
 
 import java.util.List;
@@ -13,6 +14,7 @@ public class TempEmailReceiver extends BasePage {
     WebDriver driver;
     public TempEmailReceiver(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver,this);
     }
     private final String TEMP_MAIL_PAGE_URL = "https://temp-mail.io/";
     @FindBy(id = "email")

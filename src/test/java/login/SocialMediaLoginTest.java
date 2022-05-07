@@ -11,9 +11,9 @@ import pages.login.LoginViaMicrosoftPage;
 import static commons.CommonActions.driver;
 
 public class SocialMediaLoginTest extends BaseTest {
-    LoginViaGooglePage loginViaGooglePage = PageFactory.initElements(driver, LoginViaGooglePage.class);
-    LoginViaMicrosoftPage loginViaMicrosoftPage = PageFactory.initElements(driver, LoginViaMicrosoftPage.class);
-    LoginViaApplePage loginViaApplePage = PageFactory.initElements(driver, LoginViaApplePage.class);
+    LoginViaGooglePage loginViaGooglePage = new LoginViaGooglePage(driver);
+    LoginViaMicrosoftPage loginViaMicrosoftPage = new LoginViaMicrosoftPage(driver);
+    LoginViaApplePage loginViaApplePage = new LoginViaApplePage(driver);
     //TC ID TRE005 Social media login. Google.
     @Test (groups={"critical_path"})
     public void socialMediaLoginGoogleTest() {

@@ -12,7 +12,7 @@ import java.util.List;
 import static commons.CommonActions.driver;
 
 public class BoardsPageManipulationTest extends BaseTest {
-    BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+    BoardsPage boardsPage = new BoardsPage(driver);
 
     //TC ID TRE020 Boards page: Recently viewed.
     @Test

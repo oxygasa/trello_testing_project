@@ -18,12 +18,12 @@ import java.io.IOException;
 import static commons.CommonActions.driver;
 
 public class RightNavigationDrawerTest extends BaseTest {
-    BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-    RightNavigationDrawer rightNavigationDrawer = PageFactory.initElements(driver, RightNavigationDrawer.class);
-    CardListPage cardListPage = PageFactory.initElements(driver, CardListPage.class);
-    CardsHeader cardsHeader = PageFactory.initElements(driver, CardsHeader.class);
-    FullscreenCardModePage fullscreenCardModePage = PageFactory.initElements(driver, FullscreenCardModePage.class);
-    TempEmailSender tempEmailSender = PageFactory.initElements(driver, TempEmailSender.class);
+    BoardsPage boardsPage = new BoardsPage(driver);
+    RightNavigationDrawer rightNavigationDrawer = new RightNavigationDrawer(driver);
+    CardListPage cardListPage = new CardListPage(driver);
+    CardsHeader cardsHeader = new CardsHeader(driver);
+    FullscreenCardModePage fullscreenCardModePage = new FullscreenCardModePage(driver);
+    TempEmailSender tempEmailSender = new TempEmailSender(driver);
 
     //TC ID TRE032 Change Workspace test.
     @Test(groups = {"critical_path"})

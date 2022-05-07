@@ -41,6 +41,7 @@ public class LoginViaTrelloPage extends BasePage {
     WebDriver driver;
     public LoginViaTrelloPage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver,this);
     }
 
     public String getLoginCredential() {

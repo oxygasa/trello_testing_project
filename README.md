@@ -240,8 +240,10 @@ Shift 11 a.m. - 11 p.m.
 * Fill up EPAM Past project section in the Telescope profile.
 
 **4 May - 5 May 2022 - External job**
+
 Shift 11 a.m. - 11 p.m.
 
 **6 May - 10 May 2022 - Final preparations to the technical interview**
+
 Make the project more pretty.
 Prepare to the conversation with the interviewer.

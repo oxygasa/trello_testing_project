@@ -15,6 +15,7 @@ public class PowerUpsPage extends BasePage {
     WebDriver driver;
     public PowerUpsPage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver,this);
     }
     @FindBy(xpath = "//button[@data-test-id='board-header-plugin-button']")
     public WebElement powerUpsButton;

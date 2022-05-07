@@ -12,6 +12,7 @@ public class TempEmailSender {
     WebDriver driver;
     public TempEmailSender(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver,this);
     }
     private final String MAIL_SENDER_URL = "https://emkei.cz/";
     @FindBy(id="fromname")

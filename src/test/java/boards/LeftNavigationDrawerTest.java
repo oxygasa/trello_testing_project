@@ -9,8 +9,8 @@ import pages.boards.LeftNavigationDrawer;
 import static commons.CommonActions.driver;
 
 public class LeftNavigationDrawerTest extends BaseTest {
-    LeftNavigationDrawer leftNavigationDrawer = PageFactory.initElements(driver, LeftNavigationDrawer.class);
-    BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+    LeftNavigationDrawer leftNavigationDrawer = new LeftNavigationDrawer(driver);
+    BoardsPage boardsPage = new BoardsPage(driver);
     //TC ID TRE019 Left Navigation Drawer: Add, Favourite, close boards.
     @Test (groups={"smoke", "critical_path"})
     public void CRUDBoardsFromLeftNaviDrawerTest() throws InterruptedException {

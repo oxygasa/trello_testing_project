@@ -94,6 +94,7 @@ public class CardListPage extends BasePage {
 
     public CardListPage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver,this);
     }
 
     public int randomLabelColor() {

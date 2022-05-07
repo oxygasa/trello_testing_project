@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import pages.base.BasePage;
 import java.util.ArrayList;
@@ -54,18 +55,10 @@ public class BoardsPage extends BasePage {
     private WebElement filterByCollectionPremiumRequireClosePopupButton;
     @FindBy(xpath = "//input[@id='search']")
     private WebElement boardsSearchBox;
-    @FindBy(xpath = "//button[contains(@class,'_3Ik0JLsERwh6Ui')]")
-    private WebElement premiumCreateCollection;
     @FindAll({@FindBy(xpath = "//h3[contains(text(),'WORKSPACES')]//..//div[@class='board-tile-details-name']/div")})
     private List<WebElement> boardsPageAllWorkspacesBoards;
-    @FindAll({@FindBy(xpath = "//div[@class='board-tile-details-name']/div")})
-    private List<WebElement> boardsPageRecentBoardAndAllBoards;
-    @FindBy(xpath = "//span[@data-test-id='business-class-text']")
-    private WebElement premiumUserStatusText;
     @FindBy(xpath = "//button[@data-test-id='home-navigation-create-team-button']")
     private WebElement createWorkspaceLeftNaviDrawer;
-    @FindAll({@FindBy(xpath = "//h3[@class='boards-page-board-section-header-name']")})
-    private List<WebElement> recentViewedBoard;
     @FindBy(xpath = "//a[contains(@class,'js-hide-sidebar')]")
     private WebElement hideRightSidebar;
     @FindBy(xpath = "//a[contains(@class,'js-show-sidebar')]")
@@ -75,6 +68,7 @@ public class BoardsPage extends BasePage {
 
     public BoardsPage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver,this);
     }
 
     public String getDefaultWorkspaceUrl() {
@@ -281,6 +275,7 @@ public class BoardsPage extends BasePage {
     }
 
     public BoardsPage isStarInteractiveInTheBoardList() throws InterruptedException {
+        Thread.sleep(3000);
         CommonActions.explicitWaitOfOneElementVisible(boardsStarredIcon.get(0));
         boardsStarredIcon.get(0).click();
         Assert.assertFalse(boardsStarredIcon.get(0).isSelected());
