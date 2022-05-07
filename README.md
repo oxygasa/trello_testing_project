@@ -228,5 +228,20 @@ Shift 11 a.m. - 11 p.m.
 * An achievement: now all hidden by React-select webElements could be found by parent web element (Selenium 4.1 feature). Dropdown menu hidden values problem is solved.
 * Publish a defect reports public link.
 
-**27 Apr 2022 - Mentoring updates**
+**27 Apr 2022 - 28 Apr 2022 - Mentoring updates**
 * Mentor is on vacation from 8 Apr till 29 Apr.
+
+**29 Apr - 2 May 2022 - External job**
+Shift 11 a.m. - 11 p.m.
+
+**3 May - Finishing Mentoring programm**
+* Mark API Rest Assured demo test project as completed.
+* Mark Appium demo test project as completed.
+* Fill up EPAM Past project section in the Telescope profile.
+
+**4 May - 5 May 2022 - External job**
+Shift 11 a.m. - 11 p.m.
+
+**6 May - 10 May 2022 - Final preparations to the technical interview**
+Make the project more pretty.
+Prepare to the conversation with the interviewer.
