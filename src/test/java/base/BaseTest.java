@@ -1,7 +1,7 @@
 package base;
 
 import commons.CommonActions;
-import commons.Config;
+import commons.ConfigurationReader;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
@@ -47,15 +47,15 @@ public class BaseTest extends BasePage {
 
     @AfterTest (alwaysRun = true)
     public void closeBrowser() throws IOException {
-        if (Config.makeScreenshots && !(driver == null)) {
+        if (ConfigurationReader.get().makeScreenshots() && !(driver == null)) {
             Date date = new Date();
             String currentTime = String.valueOf(date.getTime());
             TakesScreenshot ts = (TakesScreenshot) driver;
             File bufferedScreenshotFile = ts.getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(bufferedScreenshotFile, new File("./screenshots/" + currentTime + ".png"));
         }
-        if (!Config.holdBrowserOpen) {
-            if (Config.clearCookies) {
+        if (!ConfigurationReader.get().holdBrowserOpen()) {
+            if (ConfigurationReader.get().clearCookies()) {
                 assert driver != null;
                 driver.manage().deleteAllCookies();
             }

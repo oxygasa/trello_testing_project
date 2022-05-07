@@ -1,0 +1,7 @@
+/** BROWSER VARIATIONS:
+     * CHROME_WINDOWS
+     * CHROME_LINUX
+     * FIREFOX_WINDOWS
+     * EDGE_WINDOWS
+     * SAFARI_MAC
+     **/

@@ -19,7 +19,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.UnsupportedFlavorException;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -33,11 +32,11 @@ public class CommonActions {
 
     /**
      * This is a browser setup method.
-     * Make your choices only by editing values in a txt file /src/main/resources/WebdriverConfig.txt:
+     * test.properties is a file for editing.
      **/
 
     static {
-        switch (Config.platformAndBrowser) {
+        switch (ConfigurationReader.get().platformAndBrowser()) {
             case "CHROME_WINDOWS":
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
@@ -59,7 +58,7 @@ public class CommonActions {
                 driver = new SafariDriver();
                 break;
             default:
-                Assert.fail("Incorrect browser name. Choose name of browser in src/main/java/commons/Config Browser name for now is: " + Config.platformAndBrowser);
+                Assert.fail("Incorrect browser name. Choose name of browser in src/main/java/commons/Config Browser name for now is: " + ConfigurationReader.get().platformAndBrowser());
         }
         driver.manage().window().maximize();
     }
