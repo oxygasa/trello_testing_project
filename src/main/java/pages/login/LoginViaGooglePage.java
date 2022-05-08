@@ -7,14 +7,14 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import pages.base.BasePage;
 
-import static commons.CommonActions.driver;
-
 public class LoginViaGooglePage extends BasePage {
     WebDriver driver;
+
     public LoginViaGooglePage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
+
     @FindBy(id = "googleButton")
     public WebElement googleOauthButton;
     @FindBy(id = "identifierId")
@@ -24,7 +24,7 @@ public class LoginViaGooglePage extends BasePage {
     @FindBy(id = "headingText")
     public WebElement googleSeleniumBlockerMessage;
 
-    public LoginViaGooglePage tryToLoginViaGoogle(){
+    public LoginViaGooglePage tryToLoginViaGoogle() {
         LoginViaTrelloPage loginViaTrelloPage = PageFactory.initElements(driver, LoginViaTrelloPage.class);
         driver.manage().deleteAllCookies();
         driver.get(loginViaTrelloPage.TRELLO_LOGIN_PAGE);

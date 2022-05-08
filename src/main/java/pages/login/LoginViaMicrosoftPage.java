@@ -10,10 +10,12 @@ import pages.base.BasePage;
 
 public class LoginViaMicrosoftPage extends BasePage {
     WebDriver driver;
+
     public LoginViaMicrosoftPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
+
     public final String LOGIN_CREDENTIAL = "trellou0@outlook.com";
     public final String PASSWORD_CREDENTIAL = "Trellouser999Te!42";
     @FindBy(id = "msftButton")
@@ -41,6 +43,7 @@ public class LoginViaMicrosoftPage extends BasePage {
         Assert.assertEquals(loginViaTrelloPage.avatarEmail.getText(), LOGIN_CREDENTIAL);
         return this;
     }
+
     public LoginViaMicrosoftPage followTheLoginProcessOnMSLogPage() throws InterruptedException {
         microsoftOauthButton.click();
         CommonActions.explicitWaitOfOneElementVisible(microsoftLoginTextField);
@@ -51,6 +54,6 @@ public class LoginViaMicrosoftPage extends BasePage {
         microsoftSignInButton.click();
         CommonActions.explicitWaitOfOneElementVisible(buttonNoAboutSavingSession);
         buttonNoAboutSavingSession.click();
-    return this;
+        return this;
     }
 }

@@ -25,8 +25,7 @@ public class RightNavigationDrawerTest extends BaseTest {
     FullscreenCardModePage fullscreenCardModePage = new FullscreenCardModePage(driver);
     TempEmailSender tempEmailSender = new TempEmailSender(driver);
 
-    //TC ID TRE032 Change Workspace test.
-    @Test(groups = {"critical_path"})
+    @Test(description = "TC ID TRE032 Change Workspace test.", groups = {"critical_path"})
     public void changeWorkspaceTest() throws InterruptedException {
         /*** Precondition**/
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
@@ -38,8 +37,7 @@ public class RightNavigationDrawerTest extends BaseTest {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
     }
 
-    //TC ID TRE033 Card cover test.
-    @Test
+    @Test(description = "TC ID TRE033 Card cover test.")
     public void cardCoverTest() throws InterruptedException {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
@@ -52,8 +50,7 @@ public class RightNavigationDrawerTest extends BaseTest {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
     }
 
-    //TC ID TRE034 Commenting permissions.
-    @Test
+    @Test(description = "TC ID TRE034 Commenting permissions.")
     public void commentingPermissionsTest() throws InterruptedException {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
@@ -72,8 +69,7 @@ public class RightNavigationDrawerTest extends BaseTest {
                 .isCommentTextFieldDoesntDisplay();
     }
 
-    //TC ID TRE035 Add, Remove permissions
-    @Test
+    @Test(description = "TC ID TRE035 Add, Remove permissions")
     public void addRemovePermissionsTest() throws InterruptedException {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
@@ -90,8 +86,8 @@ public class RightNavigationDrawerTest extends BaseTest {
         cardsHeader.checkTheHigherAndSelfPermissionsAreInactive();
     }
 
-    //TC ID TRE036 Disallow Workspace members to edit and join.
-    @Test(groups = {"critical_path"})
+    @Test(description = "TC ID TRE036 Disallow Workspace members to edit and join.",
+            groups = {"critical_path"})
     public void disAllowWorkspaceMembersToEditAndJoinTest() throws InterruptedException {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
@@ -108,8 +104,7 @@ public class RightNavigationDrawerTest extends BaseTest {
                 .isCommentTextFieldDoesntDisplay();
     }
 
-    //TC ID TRE037 Labels displaying on cards.
-    @Test
+    @Test(description = "TC ID TRE037 Labels displaying on cards.")
     public void labelsDisplayingOnCardsTest() throws InterruptedException {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
@@ -119,8 +114,7 @@ public class RightNavigationDrawerTest extends BaseTest {
                 .addLabelWithText();
     }
 
-    //TC ID TRE038 Collections premium require checking.
-    @Test
+    @Test(description = "TC ID TRE038 Collections premium require checking.")
     public void collectionsPremiumRequireTest() throws InterruptedException {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
@@ -130,8 +124,7 @@ public class RightNavigationDrawerTest extends BaseTest {
         rightNavigationDrawer.tryToActivateCollections();
     }
 
-    //TC ID TRE039 Try Premium module is displaying and clickable.
-    @Test
+    @Test(description = "TC ID TRE039 Try Premium module is displaying and clickable.")
     public void tryPremiumFirstModuleTest() throws InterruptedException {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
@@ -141,8 +134,7 @@ public class RightNavigationDrawerTest extends BaseTest {
         rightNavigationDrawer.tryToUpgradeUserFirstModule();
     }
 
-    //TC ID TRE040 Archived items manipulations checking.
-    @Test
+    @Test(description = "TC ID TRE040 Archived items manipulations checking.")
     public void archivedItemsTest() throws InterruptedException {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
@@ -163,8 +155,7 @@ public class RightNavigationDrawerTest extends BaseTest {
         Assert.assertEquals(actualCardListCountResult, expectedCardListCountResult);
     }
 
-    //TC ID TRE041 Add cards via email.
-    @Test
+    @Test(description = "TC ID TRE041 Add cards via email.")
     public void addCardsViaEmailTest() throws InterruptedException {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
@@ -176,7 +167,7 @@ public class RightNavigationDrawerTest extends BaseTest {
         rightNavigationDrawer.generateMailAddressByTrello();
         String mailtoGeneratedByTrello = rightNavigationDrawer.getTrelloGeneratedMail();
         String bodyText = "Nice to see you @useruser18578591 #green";
-        tempEmailSender.sendEmail(mailtoGeneratedByTrello,cardTitle,bodyText);
+        tempEmailSender.sendEmail(mailtoGeneratedByTrello, cardTitle, bodyText);
         System.out.println("Sending mail 30 sec...");
         Thread.sleep(30000);
         System.out.println("Mail has been sent...");
@@ -187,8 +178,7 @@ public class RightNavigationDrawerTest extends BaseTest {
                 .isDescriptionContainsExpectedText(bodyText);
     }
 
-    //TC ID TRE042 Watch button and email notification testing.
-    @Test
+    @Test(description = "TC ID TRE042 Watch button and email notification testing.")
     public void watchAndEmailNotificationTest() throws InterruptedException {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
@@ -197,12 +187,11 @@ public class RightNavigationDrawerTest extends BaseTest {
         cardListPage.createFewCards();
         rightNavigationDrawer.startWatchBoard();
         cardListPage.startWatchList()
-                    .stopWatchBoard()
-                    .stopwatchList();
+                .stopWatchBoard()
+                .stopwatchList();
     }
 
-    //TC ID TRE043 Make Template Premium required checking.
-    @Test
+    @Test(description = "TC ID TRE043 Make Template Premium required checking.")
     public void makeTemplatePremiumRequireTest() throws InterruptedException {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
@@ -211,8 +200,7 @@ public class RightNavigationDrawerTest extends BaseTest {
         rightNavigationDrawer.tryToActivateTemplate();
     }
 
-    //TC ID TRE044 Copy Board function testing.
-    @Test
+    @Test(description = "TC ID TRE044 Copy Board function testing.")
     public void copyBoardTest() throws InterruptedException {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
@@ -223,8 +211,7 @@ public class RightNavigationDrawerTest extends BaseTest {
 
     }
 
-    //TC ID TRE045 Print and Export to suggested formats.
-    @Test
+    @Test(description = "TC ID TRE045 Print and Export to suggested formats.")
     public void printAndExportTest() throws InterruptedException {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
@@ -233,14 +220,12 @@ public class RightNavigationDrawerTest extends BaseTest {
         rightNavigationDrawer.isJsonValid();
     }
 
-    //TC ID TRE046 Close Board function testing.
-    @Test
+    @Test(description = "TC ID TRE046 Close Board function testing.")
     public void closeBoardTest() throws InterruptedException {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
     }
 
-    //TC ID TRE047 Link to this board testing.
-    @Test
+    @Test(description = "TC ID TRE047 Link to this board testing.")
     public void linkToThisBoardTest() throws InterruptedException {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
@@ -249,8 +234,7 @@ public class RightNavigationDrawerTest extends BaseTest {
         rightNavigationDrawer.copyAndNavigateToBoardLink();
     }
 
-    //TC ID TRE048 QR Code test.
-    @Test
+    @Test(description = "TC ID TRE048 QR Code test.")
     public void qrCodeTest() throws InterruptedException, IOException, NotFoundException {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
@@ -259,9 +243,7 @@ public class RightNavigationDrawerTest extends BaseTest {
         rightNavigationDrawer.copyAndNavigateToBoardQR();
     }
 
-
-    //TC ID TRE049 About this board formatting testing.
-    @Test
+    @Test(description = "TC ID TRE049 About this board formatting testing.")
     public void aboutThisBoardFormattingTest() throws InterruptedException {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
@@ -270,14 +252,12 @@ public class RightNavigationDrawerTest extends BaseTest {
         rightNavigationDrawer.editAboutThisBoardDescription();
     }
 
-    //TC ID TRE050 Commenting on a card testing.
-    @Test
+    @Test(description = "TC ID TRE050 Commenting on a card testing.")
     public void commentOnCardTest() throws InterruptedException {
-    //This menu redirects to the section of TC ID TRE034 Commenting permissions.
+        //This menu redirects to the section of TC ID TRE034 Commenting permissions.
     }
 
-    //TC ID TRE051 Change card background testing.
-    @Test
+    @Test(description = "TC ID TRE051 Change card background testing.")
     public void changeBoardBackgroundTest() throws InterruptedException {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
@@ -286,8 +266,7 @@ public class RightNavigationDrawerTest extends BaseTest {
         rightNavigationDrawer.changeBoardBackground();
     }
 
-    //TC ID TRE052 Custom fields Premium requiring test.
-    @Test
+    @Test(description = "TC ID TRE052 Custom fields Premium requiring test.")
     public void customFieldPremiumRequireTest() throws InterruptedException {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
@@ -296,8 +275,7 @@ public class RightNavigationDrawerTest extends BaseTest {
         rightNavigationDrawer.tryToActivateCustomFields();
     }
 
-    //TC ID TRE053 Try Premium module checking.
-    @Test
+    @Test(description = "TC ID TRE053 Try Premium module checking.")
     public void tryPremiumSecondModuleTest() throws InterruptedException {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
@@ -306,8 +284,7 @@ public class RightNavigationDrawerTest extends BaseTest {
         rightNavigationDrawer.tryToUpgradeUserSecondModule();
     }
 
-    //TC ID TRE054 Stickers module testing.
-    @Test
+    @Test(description = "TC ID TRE054 Stickers module testing.")
     public void stickersTest() throws InterruptedException {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
@@ -317,8 +294,7 @@ public class RightNavigationDrawerTest extends BaseTest {
         rightNavigationDrawer.selectStickers();
     }
 
-    //TC ID TRE055 Activity history checking.
-    @Test
+    @Test(description = "TC ID TRE055 Activity history checking.")
     public void activityTest() throws InterruptedException {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());

@@ -2,17 +2,18 @@ package boards;
 
 import base.BaseTest;
 import commons.CommonActions;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 import pages.boards.BoardsPage;
 import pages.boards.LeftNavigationDrawer;
+
 import static commons.CommonActions.driver;
 
 public class LeftNavigationDrawerTest extends BaseTest {
     LeftNavigationDrawer leftNavigationDrawer = new LeftNavigationDrawer(driver);
     BoardsPage boardsPage = new BoardsPage(driver);
-    //TC ID TRE019 Left Navigation Drawer: Add, Favourite, close boards.
-    @Test (groups={"smoke", "critical_path"})
+
+    @Test(description = "TC ID TRE019 Left Navigation Drawer: Add, Favourite, close boards.",
+            groups = {"smoke", "critical_path"})
     public void CRUDBoardsFromLeftNaviDrawerTest() throws InterruptedException {
         /*** Precondition: login, close all visible boards. **/
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
@@ -25,5 +26,5 @@ public class LeftNavigationDrawerTest extends BaseTest {
                 .createBoardInstance();
         /*** Close the boards from Left Navigation Drawer. **/
         leftNavigationDrawer.closeAllVisibleBoardsViaLeftNaviDrawer();
-        }
+    }
 }

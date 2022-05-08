@@ -10,7 +10,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import pages.base.BasePage;
 import pages.boards.BoardsPage;
-
 import java.util.List;
 
 public class CardsHeader extends BasePage {
@@ -91,7 +90,7 @@ public class CardsHeader extends BasePage {
 
     public CardsHeader(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
 
@@ -117,7 +116,7 @@ public class CardsHeader extends BasePage {
         return this;
     }
 
-    public String getBoardName(){
+    public String getBoardName() {
         return boardRenameInput.getText();
     }
 

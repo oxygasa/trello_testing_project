@@ -9,14 +9,14 @@ import org.testng.Assert;
 import pages.base.BasePage;
 import pages.boards.BoardsPage;
 
-import static commons.CommonActions.driver;
-
 public class PowerUpsPage extends BasePage {
     WebDriver driver;
+
     public PowerUpsPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
+
     @FindBy(xpath = "//button[@data-test-id='board-header-plugin-button']")
     public WebElement powerUpsButton;
     @FindBy(xpath = "//button[contains(@class,'_3Ik0JLsERwh6Ui')]")
@@ -34,33 +34,33 @@ public class PowerUpsPage extends BasePage {
     @FindBy(xpath = "//div[contains(@class,'pop-over')]//div[@class='no-back']")
     public WebElement installedPowerUpInteractiveWindow;
 
-public PowerUpsPage openPowUpsStore() throws InterruptedException {
-    Thread.sleep(5000);
+    public PowerUpsPage openPowUpsStore() throws InterruptedException {
+        Thread.sleep(5000);
         CommonActions.explicitWaitOfOneElementVisible(powerUpsButton);
         powerUpsButton.click();
         CommonActions.explicitWaitOfOneElementVisible(confirmRedirectToPowerUpsPage);
         confirmRedirectToPowerUpsPage.click();
         Thread.sleep(8000);
-return this;
-}
+        return this;
+    }
 
-public PowerUpsPage installJira() throws InterruptedException {
-    CommonActions.explicitWaitOfOneElementVisible(madeByTrelloButton);
-    madeByTrelloButton.click();
-    CommonActions.explicitWaitOfOneElementVisible(addPowerUpJiraButton);
-    addPowerUpJiraButton.click();
-    Assert.assertTrue(powerUpJiraSettingButton.isDisplayed());
-    closePowerUpsPageButton.click();
-    return this;
-}
+    public PowerUpsPage installJira() throws InterruptedException {
+        CommonActions.explicitWaitOfOneElementVisible(madeByTrelloButton);
+        madeByTrelloButton.click();
+        CommonActions.explicitWaitOfOneElementVisible(addPowerUpJiraButton);
+        addPowerUpJiraButton.click();
+        Assert.assertTrue(powerUpJiraSettingButton.isDisplayed());
+        closePowerUpsPageButton.click();
+        return this;
+    }
 
-public PowerUpsPage IsJiraInstalled() throws InterruptedException {
-    BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
-    installedPowerUpOpeningButton.click();
-    CommonActions.explicitWaitOfOneElementVisible(installedPowerUpInteractiveWindow);
-    Assert.assertTrue(installedPowerUpInteractiveWindow.isDisplayed());
-    driver.get(boardsPage.getDefaultWorkspaceUrl());
-    return this;
-}
+    public PowerUpsPage IsJiraInstalled() throws InterruptedException {
+        BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
+        installedPowerUpOpeningButton.click();
+        CommonActions.explicitWaitOfOneElementVisible(installedPowerUpInteractiveWindow);
+        Assert.assertTrue(installedPowerUpInteractiveWindow.isDisplayed());
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        return this;
+    }
 
 }

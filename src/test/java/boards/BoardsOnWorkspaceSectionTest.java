@@ -4,11 +4,9 @@ import base.BaseTest;
 import commons.CommonActions;
 import commons.FlakingTestOneChanceToPass;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.boards.BoardsPage;
-
 import java.util.Collections;
 import java.util.List;
 
@@ -16,8 +14,9 @@ import static commons.CommonActions.driver;
 
 public class BoardsOnWorkspaceSectionTest extends BaseTest {
     BoardsPage boardsPage = new BoardsPage(driver);
-    //TC ID TRE014 Workspace page: Boards Creation
-    @Test (groups={"smoke", "critical_path"})
+
+    @Test(description = "TC ID TRE014 Workspace page: Boards Creation",
+            groups = {"smoke", "critical_path"})
     public void boardsCreationTest() throws InterruptedException {
         /*** Create a board with random parameters from Workspaces. **/
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
@@ -28,32 +27,31 @@ public class BoardsOnWorkspaceSectionTest extends BaseTest {
         CommonActions.closeAllVisibleBoards((boardsPage.getDefaultWorkspaceUrl()));
     }
 
-
-    //TC ID TRE015 Workspace page: Boards Free account limit counter checking
-    @Test (retryAnalyzer = FlakingTestOneChanceToPass.class, groups={"smoke", "critical_path"})
+    @Test(description = "TC ID TRE015 Workspace page: Boards Free account limit counter checking",
+            retryAnalyzer = FlakingTestOneChanceToPass.class, groups = {"smoke", "critical_path"})
     public void boardsFreeAccountLimitCounterTest() throws InterruptedException {
         /*** Precondition: login, close all visible boards. **/
         driver.get(boardsPage.getDefaultWorkspaceUrl());
         /*** Open or create any workspace, create 10 boards. **/
-            while (boardsPage.countBoardsNumber() < 10) {
-                try {
-                    CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
-                    driver.get(boardsPage.getDefaultWorkspaceUrl());
-                } catch (org.openqa.selenium.ElementClickInterceptedException e) {
-                    CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
-                    driver.get(boardsPage.getDefaultWorkspaceUrl());
-                }
+        while (boardsPage.countBoardsNumber() < 10) {
+            try {
+                CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
+                driver.get(boardsPage.getDefaultWorkspaceUrl());
+            } catch (org.openqa.selenium.ElementClickInterceptedException e) {
+                CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
+                driver.get(boardsPage.getDefaultWorkspaceUrl());
             }
-            driver.get(boardsPage.getDefaultWorkspaceUrl());
-            boardsPage.startCreateBoard(); //11-th time create the board.
-            Thread.sleep(2000);
-            /*** Expected result: A premium requiring pop up is shown after 10-th creating new board. **/
-            boardsPage.premiumAskingAssert();
-            CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
+        }
+        driver.get(boardsPage.getDefaultWorkspaceUrl());
+        boardsPage.startCreateBoard(); //11-th time create the board.
+        Thread.sleep(2000);
+        /*** Expected result: A premium requiring pop up is shown after 10-th creating new board. **/
+        boardsPage.premiumAskingAssert();
+        CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
     }
 
-    //TC ID TRE017 Workspace page: Boards add to  favourite.
-    @Test (groups={"critical_path"})
+    @Test(description = "TC ID TRE017 Workspace page: Boards add to  favourite.",
+            groups = {"critical_path"})
     public void boardsAddToFavouriteTest() throws InterruptedException {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         /*** Open any workspace. Add to favorite any board inside the board instance. **/
@@ -80,8 +78,7 @@ public class BoardsOnWorkspaceSectionTest extends BaseTest {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
     }
 
-    //TC ID TRE018 Workspace page: Boards filter menu
-    @Test
+    @Test(description = "TC ID TRE018 Workspace page: Boards filter menu")
     public void boardsFilterMenuTest() throws InterruptedException {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         List<String> expectedBoardNamesListener = boardsPage.createCollectionOfFiveExpectedBoards();

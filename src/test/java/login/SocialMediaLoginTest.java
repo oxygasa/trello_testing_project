@@ -2,7 +2,6 @@ package login;
 
 import base.BaseTest;
 import commons.FlakingTestOneChanceToPass;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 import pages.login.LoginViaApplePage;
 import pages.login.LoginViaGooglePage;
@@ -14,15 +13,14 @@ public class SocialMediaLoginTest extends BaseTest {
     LoginViaGooglePage loginViaGooglePage = new LoginViaGooglePage(driver);
     LoginViaMicrosoftPage loginViaMicrosoftPage = new LoginViaMicrosoftPage(driver);
     LoginViaApplePage loginViaApplePage = new LoginViaApplePage(driver);
-    //TC ID TRE005 Social media login. Google.
-    @Test (groups={"critical_path"})
+
+    @Test(description = "TC ID TRE005 Social media login. Google.", groups = {"critical_path"})
     public void socialMediaLoginGoogleTest() {
         /*** Select "Sign in via Google". Type a [Login credential] and a [Password credential]. **/
         loginViaGooglePage.tryToLoginViaGoogle();
     }
 
-    //TC ID TRE007 Social media login. Microsoft.
-    @Test (groups={"critical_path"})
+    @Test(description = "TC ID TRE007 Social media login. Microsoft.", groups = {"critical_path"})
     public void socialMediaLoginMicrosoftTest() throws InterruptedException {
         /**
          * Select "Sign in via Microsoft". Type a [Login credential] and a [Password credential].
@@ -33,8 +31,8 @@ public class SocialMediaLoginTest extends BaseTest {
 // After 3 days MS oauth is available again.
     }
 
-    //TC ID TRE007 Social media login. Apple.
-    @Test (retryAnalyzer = FlakingTestOneChanceToPass.class, groups={"critical_path"})
+    @Test(description = "TC ID TRE007 Social media login. Apple.",
+            retryAnalyzer = FlakingTestOneChanceToPass.class, groups = {"critical_path"})
     public void socialMediaLoginAppleTest() throws InterruptedException {
         /*** Select "Sign in via Apple". Type a [Login credential] and a [Password credential]. **/
         loginViaApplePage.tryToLoginViaApple();

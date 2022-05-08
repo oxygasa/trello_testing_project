@@ -68,15 +68,17 @@ public class BoardsPage extends BasePage {
 
     public BoardsPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
     public String getDefaultWorkspaceUrl() {
         return DEFAULT_WORKSPACE_URL;
     }
+
     public String getSecondaryWorkspaceUrl() {
         return SECONDARY_WORKSPACE_URL;
     }
+
     /*** There are methods to make test steps code shorter **/
 
     public List<String> createCollectionOfFiveExpectedBoards() throws InterruptedException {
@@ -195,7 +197,7 @@ public class BoardsPage extends BasePage {
         return boardInstancesList.size();
     }
 
-    public String getFirstBoardTitle(){
+    public String getFirstBoardTitle() {
         return boardTitles.get(0).getText();
     }
 
@@ -214,7 +216,7 @@ public class BoardsPage extends BasePage {
 
     public BoardsPage activatePremiumBoardFilter() throws InterruptedException {
         filterByCollectionDropdown.click();
-            Assert.assertEquals(filterByCollectionPremiumRequireButton.getText(), "Upgrade to Premium");
+        Assert.assertEquals(filterByCollectionPremiumRequireButton.getText(), "Upgrade to Premium");
         filterByCollectionPremiumRequireClosePopupButton.click();
         boardsSearchBox.sendKeys(chooseZAFromDropdownAndSaveToCollection().get(0));
         return this;
@@ -299,7 +301,8 @@ public class BoardsPage extends BasePage {
         createWorkspaceLeftNaviDrawer.click();
         return this;
     }
-    public BoardsPage navigateToNaviDrawerBoardList(){
+
+    public BoardsPage navigateToNaviDrawerBoardList() {
         addBoardFromLeftNavigationDrawer.click();
         return this;
     }

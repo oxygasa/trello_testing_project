@@ -2,11 +2,11 @@ package workspaces;
 
 import base.BaseTest;
 import commons.FlakingTestOneChanceToPass;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 import pages.boards.BoardsPage;
 import pages.boards.LeftNavigationDrawer;
 import pages.workspaces.WorkspaceListPage;
+
 import static commons.CommonActions.driver;
 
 public class WorkspaceListPageTest extends BaseTest {
@@ -15,8 +15,10 @@ public class WorkspaceListPageTest extends BaseTest {
     LeftNavigationDrawer leftNavigationDrawer = new LeftNavigationDrawer(driver);
     BoardsPage boardsPage = new BoardsPage(driver);
 
-    //TC ID TRE010 Workspace page: change the information about.
-    @Test (retryAnalyzer = FlakingTestOneChanceToPass.class, groups={"smoke", "critical_path"})
+
+    @Test(description = "ID TRE010 Workspace page: change the information about.",
+            retryAnalyzer = FlakingTestOneChanceToPass.class,
+            groups = {"smoke", "critical_path"})
     public void changeInformationAboutWorkspaceTest() throws InterruptedException {
         /*** Create, change workspace description field values. **/
         workspaceListPage
@@ -26,8 +28,7 @@ public class WorkspaceListPageTest extends BaseTest {
                 .deleteWorkspace();
     }
 
-    //TC ID TRE011 Workspace page: Workspace page: Workspace table Premium require
-    @Test
+    @Test(description = "TC ID TRE011 Workspace page: Workspace page: Workspace table Premium require")
     public void workspaceTableTabPremiumRequireTest() throws InterruptedException {
         /*** Create new Workspace and navigate to the Workspace table tab.**/
         workspaceListPage.createNewWorkspace();
@@ -42,8 +43,9 @@ public class WorkspaceListPageTest extends BaseTest {
         workspaceListPage.deleteWorkspace();
     }
 
-    //TC ID TRE012 Left Navigation Drawer: Workspace table Premium require checking
-    @Test (retryAnalyzer = FlakingTestOneChanceToPass.class)
+
+    @Test(description = "TC ID TRE012 Left Navigation Drawer: Workspace table Premium require checking",
+            retryAnalyzer = FlakingTestOneChanceToPass.class)
     public void workspaceTableLeftNavigationDrawerPremiumRequireTest() throws InterruptedException {
         workspaceListPage.createNewWorkspace();
         String currentWorkspaceUrl = driver.getCurrentUrl();
@@ -59,11 +61,11 @@ public class WorkspaceListPageTest extends BaseTest {
     }
 
 
-    //TC ID TRE013 Left Navigation Drawer on Boards: Create new Workspace.
-    @Test (retryAnalyzer = FlakingTestOneChanceToPass.class, groups={"critical_path"})
+    @Test(description = "TC ID TRE013 Left Navigation Drawer on Boards: Create new Workspace.",
+            retryAnalyzer = FlakingTestOneChanceToPass.class, groups = {"critical_path"})
     public void createNewWorkspaceFromLeftNavigationDrawerOnBoardsTest() throws InterruptedException {
         /*** Create the workspace from the board page.**/
-        driver.get(boardsPage.getDefaultWorkspaceUrl()+"/boards");
+        driver.get(boardsPage.getDefaultWorkspaceUrl() + "/boards");
         boardsPage.createWorkspaceFromLeftNaviDrawer();
         workspaceListPage.createNewWorkspaceHeadless();
         workspaceListPage.deleteWorkspace();

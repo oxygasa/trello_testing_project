@@ -12,7 +12,6 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import pages.base.BasePage;
 import pages.login.LoginViaTrelloPage;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
@@ -20,7 +19,7 @@ import java.util.Date;
 public class BaseTest extends BasePage {
     WebDriver driver;
 
-    @BeforeTest (alwaysRun = true)
+    @BeforeTest(alwaysRun = true)
     public WebDriver startBrowser() throws InterruptedException {
         driver = CommonActions.driver;
         LoginViaTrelloPage loginViaTrelloPage = PageFactory.initElements(driver, LoginViaTrelloPage.class);
@@ -40,12 +39,12 @@ public class BaseTest extends BasePage {
             loginViaTrelloPage.password.sendKeys(loginViaTrelloPage.PASSWORD_CREDENTIAL);
             loginViaTrelloPage.submitButtonAtlassian.click();
             Thread.sleep(7000); // <== Hardly need for finish load the login
-                                     // completely and prevent Cookies loss and Flake all tests.
+            // completely and prevent Cookies loss and Flake all tests.
         }
         return driver;
     }
 
-    @AfterTest (alwaysRun = true)
+    @AfterTest(alwaysRun = true)
     public void closeBrowser() throws IOException {
         if (ConfigurationReader.get().makeScreenshots() && !(driver == null)) {
             Date date = new Date();

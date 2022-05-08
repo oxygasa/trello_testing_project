@@ -8,14 +8,14 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import pages.base.BasePage;
-
 import java.util.List;
 
 public class FullscreenCardModePage extends BasePage {
     WebDriver driver;
+
     public FullscreenCardModePage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
     @FindAll({@FindBy(xpath = "//div[contains(@class,'js-card-details')]")})
@@ -34,6 +34,7 @@ public class FullscreenCardModePage extends BasePage {
         Thread.sleep(10000);
         return this;
     }
+
     public FullscreenCardModePage openSecondActiveCard() throws InterruptedException {
         Thread.sleep(2000);
         CommonActions.explicitWaitOfOneElementVisible(activeCards.get(0));
@@ -41,6 +42,7 @@ public class FullscreenCardModePage extends BasePage {
         Thread.sleep(10000);
         return this;
     }
+
     public FullscreenCardModePage isCommentTextFieldDoesntDisplay() throws InterruptedException {
         Thread.sleep(2000);
         CommonActions.explicitWaitOfOneElementVisible(cardTitleInput);

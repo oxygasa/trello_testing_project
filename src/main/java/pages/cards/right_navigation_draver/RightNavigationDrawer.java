@@ -17,7 +17,6 @@ import pages.base.BasePage;
 import pages.boards.BoardsPage;
 import pages.cards.card_list.CardListPage;
 import pages.cards.header.CardsHeader;
-
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -29,9 +28,10 @@ import java.util.Random;
 
 public class RightNavigationDrawer extends BasePage {
     WebDriver driver;
+
     public RightNavigationDrawer(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
     @FindAll({@FindBy(xpath = "//li[@class='board-menu-navigation-item']")})
@@ -132,6 +132,7 @@ public class RightNavigationDrawer extends BasePage {
     private List<WebElement> cardTitles;
     @FindAll({@FindBy(xpath = "//div[@class='phenom-desc']")})
     private List<WebElement> actionList;
+
     private RightNavigationDrawer navigateToDrawerMainMenu() throws InterruptedException {
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         boardsPage.openRightNaviDrawer();
@@ -152,8 +153,9 @@ public class RightNavigationDrawer extends BasePage {
             throw new RuntimeException(e);
         }
         Thread.sleep(1000);
-    return this;
+        return this;
     }
+
     private RightNavigationDrawer navigateToSettingsSectionOfMoreMenuWithinDrawerOpeningStatusChecking() throws InterruptedException {
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         try {
@@ -279,6 +281,7 @@ public class RightNavigationDrawer extends BasePage {
         boardsPage.premiumAskingAssert();
         return this;
     }
+
     public RightNavigationDrawer tryToActivateCustomFields() throws InterruptedException {
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         navigateToDrawerMainMenu();
@@ -296,6 +299,7 @@ public class RightNavigationDrawer extends BasePage {
         boardsPage.premiumAskingAssert();
         return this;
     }
+
     public RightNavigationDrawer tryToUpgradeUserSecondModule() throws InterruptedException {
         BoardsPage boardsPage = PageFactory.initElements(driver, BoardsPage.class);
         navigateToDrawerMainMenu();
@@ -304,6 +308,7 @@ public class RightNavigationDrawer extends BasePage {
         boardsPage.premiumAskingAssert();
         return this;
     }
+
     public RightNavigationDrawer startWatchBoard() throws InterruptedException {
         navigateToMoreSectionWithinDrawerOpeningStatusChecking();
         CommonActions.explicitWaitOfOneElementVisible(moreMenuList.get(0));
@@ -498,16 +503,17 @@ public class RightNavigationDrawer extends BasePage {
         String descriptionText = CommonActions.convertTextFileToString(path);
         editDescriptionTextArea.sendKeys(descriptionText);
         submitDescriptionButton.click();
-        Assert.assertEquals(descFirstLevelTitle.getText(),"Making Scrambled Eggs: A Primer");
-        Assert.assertEquals(descSecondLevelTitle.getText(),"1.1: Preparation");
-        Assert.assertEquals(descBoldText.getText(),"Carefully");
-        Assert.assertEquals(descItalicText.get(0).getText(),"vigorously");
-        Assert.assertEquals(descItalicText.get(1).getText(),"Optional:");
-        Assert.assertEquals(descBullet.get(0).getText(),"Eggs");
-        Assert.assertEquals(descLink.getAttribute("href"),"https://example.com/scrambled-eggs.pdf");
-        Assert.assertEquals(descImage.getAttribute("src"),"https://mvnrepository.com/assets/images/392dffac024b9632664e6f2c0cac6fe5-logo.png");
+        Assert.assertEquals(descFirstLevelTitle.getText(), "Making Scrambled Eggs: A Primer");
+        Assert.assertEquals(descSecondLevelTitle.getText(), "1.1: Preparation");
+        Assert.assertEquals(descBoldText.getText(), "Carefully");
+        Assert.assertEquals(descItalicText.get(0).getText(), "vigorously");
+        Assert.assertEquals(descItalicText.get(1).getText(), "Optional:");
+        Assert.assertEquals(descBullet.get(0).getText(), "Eggs");
+        Assert.assertEquals(descLink.getAttribute("href"), "https://example.com/scrambled-eggs.pdf");
+        Assert.assertEquals(descImage.getAttribute("src"), "https://mvnrepository.com/assets/images/392dffac024b9632664e6f2c0cac6fe5-logo.png");
         return this;
     }
+
     public RightNavigationDrawer changeBoardBackground() throws InterruptedException {
         String backgroundBefore = boardBackground.getAttribute("style");
         navigateToDrawerMainMenu();
@@ -525,6 +531,7 @@ public class RightNavigationDrawer extends BasePage {
         Assert.assertNotEquals(backgroundAfter, backgroundBefore);
         return this;
     }
+
     public RightNavigationDrawer selectStickers() throws InterruptedException {
         navigateToDrawerMainMenu();
         CommonActions.explicitWaitOfOneElementVisible(mainMenuListOnDrawer.get(1));
@@ -534,22 +541,24 @@ public class RightNavigationDrawer extends BasePage {
         Random random = new Random();
         Actions actions = new Actions(driver);
         actions.dragAndDrop(stickersByGiphyTM.get(random.nextInt(10)), CardListPage.cardTitle.get(0))
-               .moveToElement(CardListPage.cardTitle.get(0))
-               .click(stickerRemoveButton);
+                .moveToElement(CardListPage.cardTitle.get(0))
+                .click(stickerRemoveButton);
         return this;
     }
+
     public RightNavigationDrawer checkActivityIsInteractive() throws InterruptedException {
         String expectedListTitle = listTitles.get(0).getText();
         String expectedCardTitle = cardTitles.get(0).getText();
         navigateToDrawerMainMenu();
         String actualCardAndListTitles = actionList.get(0).getText();
         String actualBoardStatusInfo = actionList.get(2).getText();
-        System.out.println("expectedListTitle: "+expectedListTitle+". expectedCardTitle: "+expectedCardTitle+". actualCardTitle: "+actualCardAndListTitles);
-        Assert.assertEquals(actualCardAndListTitles,"trello rafs added "+expectedCardTitle+" to "+expectedListTitle);
+        System.out.println("expectedListTitle: " + expectedListTitle + ". expectedCardTitle: " + expectedCardTitle + ". actualCardTitle: " + actualCardAndListTitles);
+        Assert.assertEquals(actualCardAndListTitles, "trello rafs added " + expectedCardTitle + " to " + expectedListTitle);
         System.out.println(actualBoardStatusInfo);
-        Assert.assertEquals(actualBoardStatusInfo,"trello rafs added this board to tenboardstestworkspace");
+        Assert.assertEquals(actualBoardStatusInfo, "trello rafs added this board to tenboardstestworkspace");
         return this;
     }
+
     public String getTrelloGeneratedMail() {
         return generatedMailField.getAttribute("value");
     }

@@ -2,7 +2,6 @@ package cards.header;
 
 import base.BaseTest;
 import commons.CommonActions;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 import pages.boards.BoardsPage;
 import pages.cards.card_list.CardListPage;
@@ -16,8 +15,8 @@ public class CardsHeaderTest extends BaseTest {
     PowerUpsPage powerUpsPage = new PowerUpsPage(driver);
     CardsHeader cardsHeader = new CardsHeader(driver);
     CardListPage cardListPage = new CardListPage(driver);
-    //TC ID TRE023 Board dropdown Premium require checking.
-    @Test
+
+    @Test(description = "TC ID TRE023 Board dropdown Premium require checking.")
     public void boardViewSwitcherPremiumRequireTest() throws InterruptedException {
         /*** Precondition**/
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
@@ -28,8 +27,8 @@ public class CardsHeaderTest extends BaseTest {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
     }
 
-    //TC ID TRE024 Board name changing.
-    @Test (groups={"smoke", "critical_path"})
+    @Test(description = "TC ID TRE024 Board name changing.",
+            groups = {"smoke", "critical_path"})
     public void boardNameChangingTest() throws InterruptedException {
         /*** Precondition: login**/
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
@@ -40,15 +39,13 @@ public class CardsHeaderTest extends BaseTest {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
     }
 
-    //TC ID TRE025 Star button clickable.
-    @Test
+    @Test(description = "TC ID TRE025 Star button clickable.")
     public void starButtonClickableTest() throws InterruptedException {
-     //TC ID TRE 025 is a repeat of TC ID TRE017 Workspace page: Boards add to  favourite.
-     // Because TC ID TRE017 cover inside board assert.
+        //TC ID TRE 025 is a repeat of TC ID TRE017 Workspace page: Boards add to  favourite.
+        // Because TC ID TRE017 cover inside board assert.
     }
 
-    //TC ID TRE026 Change and show workspaces.
-    @Test
+    @Test(description = "TC ID TRE026 Change and show workspaces.")
     public void changeAndShowWorkspacesTest() throws InterruptedException {
         /*** Precondition**/
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
@@ -61,8 +58,7 @@ public class CardsHeaderTest extends BaseTest {
         CommonActions.closeAllVisibleBoards(driver.getCurrentUrl());
     }
 
-    //TC ID TRE027 Workspace visible change.
-    @Test (groups={"smoke", "critical_path"})
+    @Test(description = "TC ID TRE027 Workspace visible change.", groups = {"smoke", "critical_path"})
     public void workspaceVisibleChangeTest() throws InterruptedException {
         /*** Precondition**/
         try {
@@ -89,8 +85,7 @@ public class CardsHeaderTest extends BaseTest {
         driver.get(boardUrl);
     }
 
-    //TC ID TRE027 Workspace visible change.
-    @Test (groups={"smoke", "critical_path"})
+    @Test(description = "TC ID TRE027 Workspace visible change.", groups = {"smoke", "critical_path"})
     public void workspaceVisibleChangeContinueTest() throws InterruptedException {
         /*** Precondition**/
         driver.get(boardsPage.getDefaultWorkspaceUrl());
@@ -112,8 +107,7 @@ public class CardsHeaderTest extends BaseTest {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
     }
 
-    //TC ID TRE028 Member board permission change.
-    @Test
+    @Test(description = "TC ID TRE028 Member board permission change.")
     public void adminPermissionInactiveTest() throws InterruptedException {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
@@ -126,16 +120,15 @@ public class CardsHeaderTest extends BaseTest {
         cardsHeader.checkTheHigherAndSelfPermissionsAreInactive();
     }
 
-    //TC ID TRE029 Invite link is valid.
-    @Test
+    @Test(description = "TC ID TRE029 Invite link is valid.")
     public void boardByInviteLinkTest() throws InterruptedException {
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
         CommonActions.createOneRandomBoardInstance(boardsPage.getDefaultWorkspaceUrl());
         cardsHeader.isInviteLinkValid();
 
     }
-    //TC ID TRE030 Power-Ups functionality.
-    @Test (groups={"critical_path"})
+
+    @Test(description = "TC ID TRE030 Power-Ups functionality.", groups = {"critical_path"})
     public void powerUpsFunctionalityTest() throws InterruptedException {
         /*** Precondition**/
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
@@ -144,13 +137,12 @@ public class CardsHeaderTest extends BaseTest {
         boardsPage.openFirstExistingBoard();
         /*** Open any board. Click Board button. **/
         powerUpsPage.openPowUpsStore()
-                        .installJira()
-                        .IsJiraInstalled();
+                .installJira()
+                .IsJiraInstalled();
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());
     }
 
-    //TC ID TRE 031 Filter testing.
-    @Test
+    @Test(description = "TC ID TRE 031 Filter testing.")
     public void filterTest() throws InterruptedException {
         /*** Precondition:login, create a board, create the card for the filter testing**/
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());

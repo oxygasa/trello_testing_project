@@ -9,13 +9,14 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pages.base.BasePage;
 
-
 public class TemplatePage extends BasePage {
     WebDriver driver;
+
     public TemplatePage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
+
     private final String searchRequest = "Kanban";
     public final String expectedBoardName = "Kanban Template";
     @FindBy(xpath = "//div[contains(@class,'css-1hwfws3')]")
@@ -25,7 +26,9 @@ public class TemplatePage extends BasePage {
     @FindBy(xpath = "//input[@value='Create']")
     private WebElement templateCreateConfirmButton;
 
-    /**This field eats***/
+    /**
+     * This field eats
+     ***/
 
     public TemplatePage searchAndConnectKanbanBoard() throws InterruptedException {
         Actions actions = new Actions(driver);

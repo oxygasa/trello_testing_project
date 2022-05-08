@@ -7,14 +7,14 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import pages.base.BasePage;
 
-import static commons.CommonActions.driver;
-
 public class ForgotPasswordPage extends BasePage {
     WebDriver driver;
+
     public ForgotPasswordPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
+
     @FindBy(xpath = "//ul//a[@href='/forgot']")
     public WebElement forgotPasswordLink;
     @FindBy(id = "email")
@@ -28,7 +28,7 @@ public class ForgotPasswordPage extends BasePage {
     @FindBy(className = "css-19r5em7")
     public WebElement atlassianSubmitButton;
 
-    public ForgotPasswordPage askPasswordRestore(){
+    public ForgotPasswordPage askPasswordRestore() {
         LoginViaTrelloPage loginViaTrelloPage = PageFactory.initElements(driver, LoginViaTrelloPage.class);
         driver.manage().deleteAllCookies();
         driver.get(loginViaTrelloPage.TRELLO_LOGIN_PAGE);

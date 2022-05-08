@@ -58,7 +58,8 @@ public class CommonActions {
                 driver = new SafariDriver();
                 break;
             default:
-                Assert.fail("Incorrect browser name. Choose name of browser in src/main/java/commons/Config Browser name for now is: " + ConfigurationReader.get().platformAndBrowser());
+                Assert.fail("Incorrect browser name. Choose name of browser in src/main/java/commons/Config Browser name for now is: "
+                        + ConfigurationReader.get().platformAndBrowser());
         }
         driver.manage().window().maximize();
     }

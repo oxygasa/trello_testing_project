@@ -11,11 +11,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import pages.base.BasePage;
 import pages.boards.BoardsPage;
-
 import java.util.List;
 import java.util.Random;
 
-import static commons.CommonActions.driver;
 
 public class CardListPage extends BasePage {
     WebDriver driver;
@@ -94,7 +92,7 @@ public class CardListPage extends BasePage {
 
     public CardListPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
     public int randomLabelColor() {
@@ -238,9 +236,9 @@ public class CardListPage extends BasePage {
         driver.get(boardsPage.getDefaultWorkspaceUrl());
         boardsPage.openFirstExistingBoard();
         createFewCards();
-        try{
-        closePopoverButton.click();}
-        catch(org.openqa.selenium.NoSuchElementException e){
+        try {
+            closePopoverButton.click();
+        } catch (org.openqa.selenium.NoSuchElementException e) {
             Thread.sleep(10);
         }
         /**In manual style drag a card to the next list activates free space creating for a drop.

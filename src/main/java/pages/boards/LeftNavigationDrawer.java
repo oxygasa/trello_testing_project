@@ -9,11 +9,7 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pages.base.BasePage;
-import pages.workspaces.WorkspaceListPage;
-
 import java.util.List;
-
-import static commons.CommonActions.driver;
 
 public class LeftNavigationDrawer extends BasePage {
     @FindBy(xpath = "//a[@title='Table']")
@@ -35,18 +31,18 @@ public class LeftNavigationDrawer extends BasePage {
     @FindBy(xpath = "//button[@data-test-id='boards-list-show-more-button']")
     public WebElement showMore;
     WebDriver driver;
+
     public LeftNavigationDrawer(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
-    public LeftNavigationDrawer expandLeftNaviDrawer()  throws InterruptedException{
+    public LeftNavigationDrawer expandLeftNaviDrawer() throws InterruptedException {
         try {
             CommonActions.explicitWaitOfOneElementVisible(expander);
             expander.click();
-        }
-        catch (org.openqa.selenium.TimeoutException e) {
-        Thread.sleep(100);
+        } catch (org.openqa.selenium.TimeoutException e) {
+            Thread.sleep(100);
         }
         return this;
     }
@@ -55,7 +51,7 @@ public class LeftNavigationDrawer extends BasePage {
         BoardsPage boardsPage = PageFactory.initElements(CommonActions.driver, BoardsPage.class);
         addBoard.click();
         boardsPage.typeRandomBoardTitle().submitBoardSave();
-    return this;
+        return this;
     }
 
     public LeftNavigationDrawer closeAllVisibleBoardsViaLeftNaviDrawer() {
@@ -88,7 +84,7 @@ public class LeftNavigationDrawer extends BasePage {
                 break; // boards are successfully closed.
             }
         }
-    return this;
+        return this;
     }
 
     public LeftNavigationDrawer selectWorkspaceTable() throws InterruptedException {

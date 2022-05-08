@@ -1,17 +1,15 @@
 package login;
 
 import base.BaseTest;
-import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.login.ForgotPasswordPage;
-import pages.login.LoginViaTrelloPage;
+
 import static commons.CommonActions.driver;
 
 public class ForgotPasswordTest extends BaseTest {
     ForgotPasswordPage forgotPasswordPage = new ForgotPasswordPage(driver);
-    //TC ID TRE009 Forget password
-    @Test (groups={"smoke", "critical_path"})
+
+    @Test(description = "TC ID TRE009 Forget password", groups = {"smoke", "critical_path"})
     public void restoreForgottenPasswordTest() {
         /**
          * Select "I can't sign in"

@@ -13,8 +13,6 @@ import pages.boards.BoardsPage;
 
 import java.util.List;
 
-import static commons.CommonActions.driver;
-
 public class WorkspaceListPage extends BasePage {
     /**
      * Web elements
@@ -77,9 +75,10 @@ public class WorkspaceListPage extends BasePage {
     private WebElement confirmDeleteWorkspaceButton;
     @FindBy(xpath = "//a[@data-test-id='show-later-button']")
     private WebElement inviteIDoItLaterLink;
+
     public WorkspaceListPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
     public String getExpectedTrialButtonTitle() {

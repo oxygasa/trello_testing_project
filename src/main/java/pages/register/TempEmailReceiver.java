@@ -12,10 +12,12 @@ import java.util.List;
 
 public class TempEmailReceiver extends BasePage {
     WebDriver driver;
+
     public TempEmailReceiver(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
+
     private final String TEMP_MAIL_PAGE_URL = "https://temp-mail.io/";
     @FindBy(id = "email")
     private WebElement randomTempEmail;
@@ -32,16 +34,16 @@ public class TempEmailReceiver extends BasePage {
         return randomTempEmail.getAttribute("title");
     }
 
-   public String generatedTempEmail() throws InterruptedException {
+    public String generatedTempEmail() throws InterruptedException {
         return createTempEmailInstance();
-   }
+    }
 
-   public TempEmailReceiver sendMail(String sendToMail, String message) throws InterruptedException {
-       for (int i = 0; i < 3; i++) {
-           driver.get(TEMP_MAIL_PAGE_URL);
-           CommonActions.explicitWaitOfOneElementVisible(randomTempEmail);
+    public TempEmailReceiver sendMail(String sendToMail, String message) throws InterruptedException {
+        for (int i = 0; i < 3; i++) {
+            driver.get(TEMP_MAIL_PAGE_URL);
+            CommonActions.explicitWaitOfOneElementVisible(randomTempEmail);
 
-       }
+        }
         return this;
-   }
+    }
 }

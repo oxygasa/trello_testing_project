@@ -2,7 +2,6 @@ package boards;
 
 import base.BaseTest;
 import commons.CommonActions;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.boards.BoardsPage;
@@ -14,14 +13,12 @@ import static commons.CommonActions.driver;
 public class BoardsPageManipulationTest extends BaseTest {
     BoardsPage boardsPage = new BoardsPage(driver);
 
-    //TC ID TRE020 Boards page: Recently viewed.
-    @Test
+    @Test(description = "TC ID TRE020 Boards page: Recently viewed.")
     public void recentlyViewedBoardIsDisplayingOnBoardsPageTest() {
         ///This TC has been covered by TC TRE021  Boards page: Your workspaces.
     }
 
-    //TC ID TRE021 Boards page: Your workspaces.
-    @Test (groups={"smoke", "critical_path"})
+    @Test(description = "TC ID TRE021 Boards page: Your workspaces.", groups = {"smoke", "critical_path"})
     public void boardsDisplayingInYourWorkspacesSectionTest() throws InterruptedException {
         /*** Precondition: login, close all visible boards. Create 4 boards (and remember their names). **/
         CommonActions.closeAllVisibleBoards(boardsPage.getDefaultWorkspaceUrl());

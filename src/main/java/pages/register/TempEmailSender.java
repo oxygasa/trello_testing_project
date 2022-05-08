@@ -10,22 +10,24 @@ import pages.login.LoginViaTrelloPage;
 
 public class TempEmailSender {
     WebDriver driver;
+
     public TempEmailSender(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
+
     private final String MAIL_SENDER_URL = "https://emkei.cz/";
-    @FindBy(id="fromname")
+    @FindBy(id = "fromname")
     private WebElement senderNameTextBox;
-    @FindBy(id="from")
+    @FindBy(id = "from")
     private WebElement senderEmailTextBox;
-    @FindBy(id="rcpt")
+    @FindBy(id = "rcpt")
     private WebElement receiverEmailTextBox;
-    @FindBy(id="cc")
+    @FindBy(id = "cc")
     private WebElement sendCopyToTextBox;
-    @FindBy(id="subject")
+    @FindBy(id = "subject")
     private WebElement emailTitleTextBox;
-    @FindBy(id="text")
+    @FindBy(id = "text")
     private WebElement emailBodyTextBox;
     @FindBy(xpath = "//input[@type='submit']")
     private WebElement sendEmailButton;

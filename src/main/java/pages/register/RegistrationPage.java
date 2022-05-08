@@ -8,14 +8,17 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 import pages.base.BasePage;
+
 import static commons.CommonActions.explicitWaitOfOneElementVisible;
 
 public class RegistrationPage extends BasePage {
     WebDriver driver;
+
     public RegistrationPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
+
     public final String TRELLO_WELCOME_PAGE_URL = "https://trello.com";
     public final String TRELLO_REGISTER_PAGE_URL = "https://trello.com/signup";
     public final String EMAIL_REGISTERED_EARLIER = "trellou0@gmail.com";
